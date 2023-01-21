@@ -3,13 +3,25 @@
 This is a project to implement approval testing in LabVIEW. It is based off the work of Llewellyn Falco, which can be found [here](https://approvaltests.com/). 
 
 
-If you are already familiar with approval testing then jump right to getting started.
+If you are already familiar with approval testing then jump right to getting started NEEDS LINK.
 
 ## What Is Approval Testing?
 
 It is basically the Golden Template Method. You run the code you are testing once and observe the output and then compare each subsequent run of the code to that first run to make sure nothing has changed. If nothing changed, the test passes. If anything changes, then the test fails until the change is approved.
 
-## Why Is It Useful?
+## How Does It Work
+
+This particular implementation works with an unit testing framework. There is one VI, Approval Test. You drop that into your test. You wire the output of the code you are testing into the test data input (if the output of the code you are testing is not a string, see the Printers section. NEEDS LINK).
+
+### The First Run
+
+
+
+### Passing Tests
+
+### Failing Tests
+
+## Why Is Approval Testing Useful?
 
 Approval Testing is very useful for dealing with legacy code that does not have tests.
 
@@ -27,4 +39,9 @@ You can get a little fancy with printer functions and do things like replacing t
 
 ## Getting Started
 
-You can get the latest version off of VIPM. NEEDS LINK.
+You can get the latest version off of VIPM. NEEDS LINK. 
+
+### Source Code Control Notes
+
+- Make sure you are committing the .approved files and tracking those.
+- Add *.actual to your .gitignore file. There is no need to keep track of these files.
