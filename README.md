@@ -10,7 +10,7 @@ It is basically the Golden Template Method. You run the code you are testing onc
 
 ## How Does It Work
 
-This particular implementation works with any unit testing framework. There is one VI, Approval Test. You drop that into your test. You wire the output of the code you are testing into the test data input (if the output of the code you are testing is not a string, see the [Printers](#printers). You should only call Approval Test.vi once per unit test. Having more will cause problems since it stores the approved results using the name of the test VI.
+This particular implementation works with any unit testing framework. There is one VI, Approval Test. You drop that into your test. You wire the output of the code you are testing into the test data input (if the output of the code you are testing is not a string, see the [Printers Section](#printers). You should only call Approval Test.vi once per unit test. Having more will cause problems since it stores the approved results using the name of the test VI.
 
 ### The First Run
 
@@ -42,7 +42,7 @@ You can get a little fancy with printer functions and do things like replacing t
 
 ## Getting Started
 
-You can get the latest version off of VIPM. NEEDS LINK. 
+You can download the latest released version off of VIPM. You can also get the latest and greatest on the release page here. 
 
 ### Source Code Control Notes
 
