@@ -2,7 +2,7 @@
 
 This is a project to implement approval testing in LabVIEW. It is based off the work of Llewellyn Falco, which can be found [here](https://approvaltests.com/). 
 
-If you are already familiar with approval testing then jump right to [Getting Started](#Getting-Started)
+If you are already familiar with approval testing then jump right to [Getting Started](#getting-started)
 
 ## What Is Approval Testing?
 
@@ -10,7 +10,7 @@ It is basically the Golden Template Method. You run the code you are testing onc
 
 ## How Does It Work
 
-This particular implementation works with any unit testing framework. There is one VI, Approval Test. You drop that into your test. You wire the output of the code you are testing into the test data input (if the output of the code you are testing is not a string, see the [Printers](#Printers). You should only call Approval Test.vi once per unit test. Having more will cause problems since it stores the approved results using the name of the test VI.
+This particular implementation works with any unit testing framework. There is one VI, Approval Test. You drop that into your test. You wire the output of the code you are testing into the test data input (if the output of the code you are testing is not a string, see the [Printers](#printers). You should only call Approval Test.vi once per unit test. Having more will cause problems since it stores the approved results using the name of the test VI.
 
 ### The First Run
 
