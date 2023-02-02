@@ -1,0 +1,3 @@
+#! /bin/bash
+
+g-cli vitester -- -r UnitTestReport.xml "Approval Testing.lvproj"
