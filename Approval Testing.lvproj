@@ -13,12 +13,6 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
-		<Item Name="Get Paths.vi" Type="VI" URL="../Approval Tests/Get Paths.vi">
-			<Property Name="marked" Type="Int">0</Property>
-		</Item>
-		<Item Name="Pass If Approved.vi" Type="VI" URL="../Approval Tests/Pass If Approved.vi">
-			<Property Name="marked" Type="Int">0</Property>
-		</Item>
 		<Item Name="Testing Approval Tests.lvclass" Type="LVClass" URL="../Testing Approval Tests/Testing Approval Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
