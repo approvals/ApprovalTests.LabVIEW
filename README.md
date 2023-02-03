@@ -8,7 +8,7 @@ If you are already familiar with approval testing then jump right to [Getting St
 
 It is basically the Golden Template Method. You run the code you are testing once and observe the output and then compare each subsequent run of the code to that first run to make sure nothing has changed. If nothing changed, the test passes. If anything changes, then the test fails until the change is approved.
 
-This method is unit testing framework agnostic. Pass If Approved simply outputs a boolean indicating if the test passed and failure message if the test fails. The failure message simply explains how to determine what changed and how to approve the change. You can then pass these outputs to your unit testing framework of choice.
+This method is unit testing framework agnostic. Pass If Approved simply outputs a boolean indicating if the test passed and a failure message if the test fails. The failure message simply explains how to determine what changed and how to approve the change. You can then pass these outputs to your unit testing framework of choice.
 
 ## How Does It Work
 
