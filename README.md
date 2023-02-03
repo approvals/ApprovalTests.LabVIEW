@@ -14,7 +14,7 @@ This particular implementation works with any unit testing framework. There is o
 
 ### The First Run
 
-The very first run fails and stores the test data in a .actual file. If your unit test was called test_inputA_produces_outputb.vi then the actual results would be test_inputA_produces_outputb.actual file. To approve the results, simply change the extension to .approved. Run the test again and it should pass (assuming the code your are testing outputs the same data).
+The very first run fails and stores the test data in a .actual file. If your unit test was called test_inputA_produces_outputb.vi then the actual results would be test_inputA_produces_outputb.actual file. To approve the results, simply change the extension to .approved. Run the test again and it should pass (assuming the code you are testing outputs the same data).
 
 ### Passing Tests
 
