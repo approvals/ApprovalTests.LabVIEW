@@ -13,7 +13,7 @@ build_vipm_pkg:
     - LV20x64
   script:
     - 'g-cli clearlvcache'
-    - 'g-cli vitester -- -r UnitTestReport.xml Approval\ Testing.lvproj'
+    - 'g-cli --kill vitester -- -r UnitTestReport.xml Approval\ Testing.lvproj'
     - 'g-cli --kill vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt' 
   artifacts:
     paths:
