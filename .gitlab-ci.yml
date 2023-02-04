@@ -1,0 +1,56 @@
+stages:
+  - build
+  - upload
+  - release
+
+
+build_vipm_pkg:
+  variables:
+    GIT_DEPTH: 0 # this is needed so build numbers calculate correctly. It is based on number of commits in entire repository.
+    GIT_STRATEGY: clone
+  stage: build 
+  tags:
+    - LV20Q3x64
+  script:
+    - 'g-cli ClearCache'
+    - 'g-cli vitester -- -r UnitTestReport.xml Approval\ Testing.lvproj'
+    - 'g-cli --kill vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt' 
+  artifacts:
+    paths:
+      - build/
+    reports:
+      junit: UnitTestReport.xml
+    when: always
+
+     
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG =~ /[0-9]*.[0-9]*.[0-9]/                 # Run this job when a tag is created manually
+  script:
+    - 'echo "creating release"'
+ 
+  release:
+    name: 'Release $CI_COMMIT_TAG'
+    description: '$(cat release-notes.txt)' 
+    tag_name: '$CI_COMMIT_TAG'             
+    ref: '$CI_COMMIT_TAG'   
+    assets:
+      links:
+        - name: '$(ls -t builds/package | head -1)'
+          url: '${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/approvel-tests/${CI_COMMIT_TAG}/$(ls -t build/ | head -1)'
+      
+
+upload_job:
+  stage: upload
+  image: registry.gitlab.com/sas_public/curl-jq
+  rules:
+    - if: $CI_COMMIT_TAG  =~ /[0-9]*.[0-9]*.[0-9]/                  # Run this job when a tag is created manually
+  script:
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "build/$(ls -t build/ | head -1)"  "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/approval-tests/${CI_COMMIT_TAG}/$(ls -t build/ | head -1)"'
+
+
+
+
+
