@@ -4,3 +4,4 @@ QuickVIAN.json
 *.actual
 *.un~
 UnitTestReport.xml
+build/*
