@@ -18,6 +18,7 @@ build_vipm_pkg:
   artifacts:
     paths:
       - build/
+      - UnitTestReport.xml
     reports:
       junit: UnitTestReport.xml
     when: always
