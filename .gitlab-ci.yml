@@ -39,7 +39,7 @@ release_job:
     ref: '$CI_COMMIT_TAG'   
     assets:
       links:
-        - name: '$(ls -t builds/package | head -1)'
+        - name: '$(ls -t build | head -1)'
           url: '${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/approvel-tests/${CI_COMMIT_TAG}/$(ls -t build/ | head -1)'
       
 
