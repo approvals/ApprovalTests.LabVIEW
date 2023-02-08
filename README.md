@@ -54,3 +54,21 @@ You can download the latest officially released version off of [VIPM](https://ww
 ## Contributing
 
 This is written in LV2020. If possible submit your changes in LV2020. If you have ideas for improvement, please feel free to open an issue or pull request. I will add a .vipc file for necesesary development dependencies (the installed package should have no dependencies).
+
+### Local Git Hooks
+There is a Setup_Local_Git_Hooks script which will setup a hook to check for an issue number in the commit message and will run the unit tests before pushing. You can use them if you want.
+
+### Running CI Locally
+To run the CI locally, just copy the appropriate lines of the script section in the build step, being careful with the --kill flag for G-CLI. 
+
+Here are the appropriate lines with the kill flag removed.
+
+Run the unit tests
+
+`g-cli vitester -- -r UnitTestReport.xml 
+Approval\ Testing.lvproj`
+
+Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
+
+`g-cli kill vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt`
+
