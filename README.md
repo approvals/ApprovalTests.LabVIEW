@@ -44,7 +44,7 @@ You can get a little fancy with printer functions and do things like replacing d
 
 ## Getting Started
 
-You can download the latest released version off of VIPM. You can also get the latest and greatest on the release page here NEEDS LINK. 
+You can download the latest officially released version off of [VIPM](https://www.vipm.io/package/sas_lib_approval_tests/). If you like living dangerously and want the latest and greatest, you can find that on our release page [here](https://gitlab.com/sas-blog/approval-testing/-/releases). 
 
 ### Source Code Control Notes
 
@@ -53,4 +53,4 @@ You can download the latest released version off of VIPM. You can also get the l
 
 ## Contributing
 
-This written in LV2020. If possible submit your changes in LV2020. If you have ideas for improvement, please feel free to open an issue or pull request. I will add a .vipc file for necesesary development dependencies (the installed package should have no dependencies).
+This is written in LV2020. If possible submit your changes in LV2020. If you have ideas for improvement, please feel free to open an issue or pull request. I will add a .vipc file for necesesary development dependencies (the installed package should have no dependencies).
