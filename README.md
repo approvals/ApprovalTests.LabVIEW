@@ -51,6 +51,12 @@ You can download the latest officially released version off of [VIPM](https://ww
 - Make sure you are committing the .approved files and tracking those.
 - Add *.actual to your .gitignore file. There is no need to keep track of these files.
 
+### NOTE on Line Endings
+
+Often if you are a running a parameterized test - ie a single test VI that has a for loop and runs through multiple sets of inputs - it can be useful to add a line ending at the end so each result shows up on its own line. This makes diffing easier. That is a great idea. However don't just drop the line-ending constant. For some reason I was having issues with it on Windows with tests not passing when they should -ie diffing the text files showed no difference. I think it has something to do with LabVIEW converting EOLs when it writes to files. I will admit I am not expert on this. Line endings can get complicated especially when taking into account git autocrlf settings. 
+
+What I can tell you, is if you want each of your parameterized test results on a seperate line, then use a string constant, set it to display slash codes and use \n. That seems to work - at least on Windows. I haven't tried it on other Operating Systems. If you encounter other issues with tests not passing when they should, please enter an issue and I'll look at it.
+
 ## Contributing
 
 This is written in LV2020. If possible submit your changes in LV2020. If you have ideas for improvement, please feel free to open an issue or pull request. I will add a .vipc file for necesesary development dependencies (the installed package should have no dependencies).
