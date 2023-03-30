@@ -1,8 +1,12 @@
+[![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=installs)](https://www.vipm.io/package/sas_lib_approval_tests/) [![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=stars)](https://www.vipm.io/package/sas_lib_approval_tests/)
 # Approval Testing For LabVIEW
+
 
 This is a project to implement approval testing in LabVIEW. It is based off the work of Llewellyn Falco, which can be found [here](https://approvaltests.com/). 
 
 If you are already familiar with approval testing then jump right to [Getting Started](#getting-started)
+
+[TOC]
 
 ## What Is Approval Testing?
 
