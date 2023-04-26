@@ -14,7 +14,7 @@ build_vipm_pkg:
   script:
     - 'g-cli clearlvcache'
     - 'g-cli --kill vitester -- -r UnitTestReport.xml Approval\ Testing.lvproj'
-    - 'g-cli --kill vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt' 
+    - 'g-cli --kill vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt' -t 600
   artifacts:
     paths:
       - build/
