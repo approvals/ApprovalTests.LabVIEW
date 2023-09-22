@@ -80,5 +80,5 @@ Approval\ Testing.lvproj`
 
 Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
 
-`g-cli kill vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt`
+`g-cli vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt`
 
