@@ -77,8 +77,7 @@ Here are the appropriate lines with the kill flag removed.
 
 Run the unit tests
 
-`g-cli vitester -- -r UnitTestReport.xml 
-Approval\ Testing.lvproj`
+snippet: run_tests
 
 Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
 
