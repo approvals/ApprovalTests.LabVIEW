@@ -3,7 +3,7 @@ on: [ push, workflow_dispatch ]
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: LV20x64
     steps:
       - uses: actions/checkout@v3
       - name: Test g-cli
