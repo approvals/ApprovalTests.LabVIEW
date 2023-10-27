@@ -1,4 +1,6 @@
 [![Image](https://gitlab.com/sas-blog/approval-testing/-/badges/release.svg)](https://gitlab.com/sas-blog/approval-testing/-/releases) [![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=installs)](https://www.vipm.io/package/sas_lib_approval_tests/) [![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=stars)](https://www.vipm.io/package/sas_lib_approval_tests/)
+
+[![CI - Test&Build](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/build.yml/badge.svg)](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/build.yml)
 # Approval Testing For LabVIEW
 
 
@@ -6,7 +8,7 @@ This is a project to implement approval testing in LabVIEW. It is based off the 
 
 If you are already familiar with approval testing then jump right to [Getting Started](#getting-started)
 
-[TOC]
+toc
 
 ## What Is Approval Testing?
 
