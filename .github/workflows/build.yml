@@ -1,0 +1,17 @@
+name: CI - Test&Build
+on: [ push, workflow_dispatch ]
+
+jobs:
+  build:
+    runs-on: LV20x64
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test g-cli
+        shell: bash
+        run: ./run_test.sh
+      - name: Test Summary
+        uses: test-summary/action@v2
+        with:
+          paths: "UnitTestReport.xml"
+        if: always()
+
