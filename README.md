@@ -8,7 +8,24 @@ This is a project to implement approval testing in LabVIEW. It is based off the 
 
 If you are already familiar with approval testing then jump right to [Getting Started](#getting-started)
 
-toc
+<!-- toc -->
+## Contents
+
+  * [What Is Approval Testing?](#what-is-approval-testing)
+  * [How Does It Work](#how-does-it-work)
+    * [The First Run](#the-first-run)
+    * [Passing Tests](#passing-tests)
+    * [Failing Tests](#failing-tests)
+  * [Why Is Approval Testing Useful?](#why-is-approval-testing-useful)
+  * [Printers](#printers)
+    * [What If My Output Is Not A String? or I Have Multiple Outputs?](#what-if-my-output-is-not-a-string-or-i-have-multiple-outputs)
+    * [Getting Fancy - Dealing With Test Data That Varies.](#getting-fancy---dealing-with-test-data-that-varies)
+  * [Getting Started](#getting-started)
+    * [Source Code Control Notes](#source-code-control-notes)
+    * [NOTE on Line Endings](#note-on-line-endings)
+  * [Contributing](#contributing)
+    * [Local Git Hooks](#local-git-hooks)
+    * [Running CI Locally](#running-ci-locally)<!-- endToc -->
 
 ## What Is Approval Testing?
 
@@ -77,7 +94,13 @@ Here are the appropriate lines with the kill flag removed.
 
 Run the unit tests
 
-snippet: run_tests
+<!-- snippet: run_tests -->
+<a id='snippet-run_tests'></a>
+```sh
+g-cli vitester -- -r "UnitTestReport.xml" "Approval Testing.lvproj"
+```
+<sup><a href='/run_test.sh#L9-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
 
