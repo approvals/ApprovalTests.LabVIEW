@@ -14,15 +14,15 @@
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Tests" Type="Folder">
 			<Item Name="Person" Type="Folder">
-				<Item Name="Person.lvclass" Type="LVClass" URL="../Tests/Person/Person.lvclass"/>
+				<Item Name="Person.lvclass" Type="LVClass" URL="../Caraya.Tests/Person/Person.lvclass"/>
 			</Item>
-			<Item Name="json approval test.vi" Type="VI" URL="../Tests/json approval test.vi">
+			<Item Name="json approval test.vi" Type="VI" URL="../Caraya.Tests/json approval test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
-			<Item Name="simple approval test.vi" Type="VI" URL="../Tests/simple approval test.vi">
+			<Item Name="simple approval test.vi" Type="VI" URL="../Caraya.Tests/simple approval test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
-			<Item Name="simple test.vi" Type="VI" URL="../Tests/simple test.vi">
+			<Item Name="simple test.vi" Type="VI" URL="../Caraya.Tests/simple test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
 		</Item>
