@@ -28,7 +28,7 @@
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Approval Tests.vipb" Type="Document" URL="../Approval Tests/Approval Tests.vipb"/>
-		<Item Name="Testing Approval Tests.lvclass" Type="LVClass" URL="../Testing Approval Tests/Testing Approval Tests.lvclass"/>
+		<Item Name="Testing Approval Tests.lvclass" Type="LVClass" URL="../VITester.Tests/Testing Approval Tests/Testing Approval Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/_Caraya_internal_deps/7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi">
