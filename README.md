@@ -97,9 +97,10 @@ Run the unit tests
 <!-- snippet: run_tests -->
 <a id='snippet-run_tests'></a>
 ```sh
-g-cli vitester -- -r "UnitTestReport.xml" "Approval Testing.lvproj"
+g-cli caraya -- -s "Caraya.Tests" -x "Caraya.UnitTestReport.xml"
+g-cli vitester -- -r "VItester.UnitTestReport.xml" "Approval Testing.lvproj"
 ```
-<sup><a href='/run_test.sh#L9-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/run_test.sh#L8-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
