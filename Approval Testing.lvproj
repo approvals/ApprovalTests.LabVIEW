@@ -16,6 +16,9 @@
 			<Item Name="Person" Type="Folder">
 				<Item Name="Person.lvclass" Type="LVClass" URL="../Caraya.Tests/Person/Person.lvclass"/>
 			</Item>
+			<Item Name="Caraya Verify Hello Caraya.vi" Type="VI" URL="../Caraya.Tests/Caraya Verify Hello Caraya.vi">
+				<Property Name="marked" Type="Int">0</Property>
+			</Item>
 			<Item Name="json approval test.vi" Type="VI" URL="../Caraya.Tests/json approval test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
@@ -28,6 +31,7 @@
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Approval Tests.vipb" Type="Document" URL="../Approval Tests/Approval Tests.vipb"/>
+		<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Caraya.Extension/Caraya.Extension.lvlib"/>
 		<Item Name="Testing Approval Tests.lvclass" Type="LVClass" URL="../VITester.Tests/Testing Approval Tests/Testing Approval Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
