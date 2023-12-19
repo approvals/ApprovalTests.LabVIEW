@@ -11,5 +11,5 @@
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		<Item Name="Get Paths.vi" Type="VI" URL="../Get Paths.vi"/>
 	</Item>
-	<Item Name="Verify Core.vi" Type="VI" URL="../Verify Core.vi"/>
+	<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
 </Library>

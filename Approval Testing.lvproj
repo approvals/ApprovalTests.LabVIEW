@@ -1211,6 +1211,9 @@
 				<Item Name="System Directory Type.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/System Directory Type.ctl">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
+				<Item Name="System Exec.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/system.llb/System Exec.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
 				<Item Name="TagReturnType.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/TagReturnType.ctl">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
