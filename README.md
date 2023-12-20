@@ -97,12 +97,14 @@ Run the unit tests
 <!-- snippet: run_tests -->
 <a id='snippet-run_tests'></a>
 ```sh
+SECONDS=0
 echo "Running Caraya Tests" # needed because caray tool is not very verbose.
 g-cli caraya -- -s "Tests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.UnitTestReport.xml"
+echo "Test Time: $SECONDS"
 g-cli vitester -- -r "reports\\VItester.UnitTestReport.xml" "Approval Testing.lvproj"
 g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
 ```
-<sup><a href='/run_test.sh#L12-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/run_test.sh#L12-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
