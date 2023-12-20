@@ -13,26 +13,30 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Tests" Type="Folder">
-			<Item Name="Person" Type="Folder">
-				<Item Name="Person.lvclass" Type="LVClass" URL="../Caraya.Tests/Person/Person.lvclass"/>
+			<Item Name="Caraya" Type="Folder">
+				<Item Name="Caraya Extension Test Suite.lvclass" Type="LVClass" URL="../Tests/Caraya.Tests/Caraya Extension Test Suite/Caraya Extension Test Suite.lvclass"/>
 			</Item>
-			<Item Name="Caraya Verify Hello Caraya.vi" Type="VI" URL="../Caraya.Tests/Caraya Verify Hello Caraya.vi">
+			<Item Name="Common" Type="Folder">
+				<Item Name="Person" Type="Folder">
+					<Item Name="Person.lvclass" Type="LVClass" URL="../Tests/Common/Person/Person.lvclass"/>
+				</Item>
+			</Item>
+			<Item Name="VITester" Type="Folder">
+				<Item Name="Testing Approval Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/Testing Approval Tests/Testing Approval Tests.lvclass"/>
+			</Item>
+			<Item Name="json approval test.vi" Type="VI" URL="../Tests/Caraya.Tests/json approval test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
-			<Item Name="json approval test.vi" Type="VI" URL="../Caraya.Tests/json approval test.vi">
+			<Item Name="simple approval test.vi" Type="VI" URL="../Tests/Caraya.Tests/simple approval test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
-			<Item Name="simple approval test.vi" Type="VI" URL="../Caraya.Tests/simple approval test.vi">
-				<Property Name="marked" Type="Int">0</Property>
-			</Item>
-			<Item Name="simple test.vi" Type="VI" URL="../Caraya.Tests/simple test.vi">
+			<Item Name="simple test.vi" Type="VI" URL="../Tests/Caraya.Tests/simple test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Approval Tests.vipb" Type="Document" URL="../Approval Tests/Approval Tests.vipb"/>
 		<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Caraya.Extension/Caraya.Extension.lvlib"/>
-		<Item Name="Testing Approval Tests.lvclass" Type="LVClass" URL="../VITester.Tests/Testing Approval Tests/Testing Approval Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/_Caraya_internal_deps/7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi">
