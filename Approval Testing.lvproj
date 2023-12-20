@@ -22,7 +22,7 @@
 				</Item>
 			</Item>
 			<Item Name="VITester" Type="Folder">
-				<Item Name="Testing Approval Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/Testing Approval Tests/Testing Approval Tests.lvclass"/>
+				<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/Testing Approval Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
 			</Item>
 			<Item Name="json approval test.vi" Type="VI" URL="../Tests/Caraya.Tests/json approval test.vi">
 				<Property Name="marked" Type="Int">0</Property>
@@ -37,6 +37,7 @@
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Approval Tests.vipb" Type="Document" URL="../Approval Tests/Approval Tests.vipb"/>
 		<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Caraya.Extension/Caraya.Extension.lvlib"/>
+		<Item Name="VITester.Extension.lvlib" Type="Library" URL="../VITester.Extension/VITester.Extension.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/_Caraya_internal_deps/7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi">
