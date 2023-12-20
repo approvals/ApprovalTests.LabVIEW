@@ -6,3 +6,4 @@ QuickVIAN.json
 UnitTestReport.xml
 build/*
 *.UnitTestReport.xml
+reports/*
