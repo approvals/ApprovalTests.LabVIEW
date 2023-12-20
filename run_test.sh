@@ -1,5 +1,9 @@
 #! /usr/bin/bash
 mkdir reports 2> /dev/null
+rm "reports\\Caraya.UnitTestReport.xml" 2>/dev/null
+rm "reports\\LUnit.UnitTestReport.xml" 2>/dev/null
+rm "reports\\VITester.UnitTestReport.xml" 2>/dev/null
+
 set -euo pipefail
 
 HERE=$(cygpath -w $(pwd))

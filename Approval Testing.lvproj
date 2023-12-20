@@ -30,10 +30,7 @@
 				<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
 			</Item>
 			<Item Name="VITester" Type="Folder">
-				<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/Testing Approval Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
-			</Item>
-			<Item Name="json approval test.vi" Type="VI" URL="../Tests/Caraya.Tests/json approval test.vi">
-				<Property Name="marked" Type="Int">0</Property>
+				<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
 			</Item>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
