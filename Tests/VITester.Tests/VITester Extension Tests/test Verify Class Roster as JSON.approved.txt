@@ -1,0 +1,45 @@
+{
+  "Subject":"Chemistry",
+  "Teacher":{"First Name":"Mrs","Last Name":"Gray"},
+  "Assignments":[
+    {
+      "Description":"Homework 1",
+      "Grades":[
+        [
+          {
+            "First Name":"Bobby",
+            "Last Name":"Tables"
+          },
+          81
+        ],
+        [
+          {"First Name":"Lisa","Last Name":"Marie"},
+          90
+        ]
+      ]
+    },
+    {
+      "Description":"Homework 2",
+      "Grades":[
+        [
+          {
+            "First Name":"Bobby",
+            "Last Name":"Tables"
+          },
+          100
+        ],
+        [
+          {"First Name":"Lisa","Last Name":"Marie"},
+          95
+        ]
+      ]
+    }
+  ],
+  "Roster":[
+    {
+      "First Name":"Bobby",
+      "Last Name":"Tables"
+    },
+    {"First Name":"Lisa","Last Name":"Marie"}
+  ]
+}
