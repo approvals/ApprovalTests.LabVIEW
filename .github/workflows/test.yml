@@ -13,7 +13,7 @@ jobs:
         uses: test-summary/action@v2
         with:
           paths: |
-                reports/Caray.UnitTestReport.xml
+                reports/Caraya.UnitTestReport.xml
                 reports/LUnit.UnitTestReport.xml
                 reports/VITester.UnitTestReport.xml
         if: always()
