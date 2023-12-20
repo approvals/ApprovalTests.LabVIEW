@@ -19,12 +19,15 @@
 		</Item>
 		<Item Name="Tests" Type="Folder">
 			<Item Name="Caraya" Type="Folder">
-				<Item Name="Caraya Extension Test Suite.lvclass" Type="LVClass" URL="../Tests/Caraya.Tests/Caraya Extension Test Suite/Caraya Extension Test Suite.lvclass"/>
+				<Item Name="Caraya Extension Tests.lvclass" Type="LVClass" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass"/>
 			</Item>
 			<Item Name="Common" Type="Folder">
 				<Item Name="Person" Type="Folder">
 					<Item Name="Person.lvclass" Type="LVClass" URL="../Tests/Common/Person/Person.lvclass"/>
 				</Item>
+			</Item>
+			<Item Name="LUnit" Type="Folder">
+				<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
 			</Item>
 			<Item Name="VITester" Type="Folder">
 				<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/Testing Approval Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
