@@ -35,12 +35,6 @@
 			<Item Name="json approval test.vi" Type="VI" URL="../Tests/Caraya.Tests/json approval test.vi">
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
-			<Item Name="simple approval test.vi" Type="VI" URL="../Tests/Caraya.Tests/simple approval test.vi">
-				<Property Name="marked" Type="Int">0</Property>
-			</Item>
-			<Item Name="simple test.vi" Type="VI" URL="../Tests/Caraya.Tests/simple test.vi">
-				<Property Name="marked" Type="Int">0</Property>
-			</Item>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Approval Tests.vipb" Type="Document" URL="../Approval Tests/Approval Tests.vipb"/>
