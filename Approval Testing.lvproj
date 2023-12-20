@@ -25,6 +25,9 @@
 				<Item Name="Person" Type="Folder">
 					<Item Name="Person.lvclass" Type="LVClass" URL="../Tests/Common/Person/Person.lvclass"/>
 				</Item>
+				<Item Name="Class Roster Cluster--constant.vi" Type="VI" URL="../Tests/Common/Class Roster Cluster--constant.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
 			</Item>
 			<Item Name="LUnit" Type="Folder">
 				<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
