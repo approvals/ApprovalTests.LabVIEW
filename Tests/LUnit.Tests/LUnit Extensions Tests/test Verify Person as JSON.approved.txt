@@ -1,5 +1,4 @@
 {
-  "$type":"Person.lvclass",
   "First Name":"Sam",
   "Last Name":"Taggart",
   "Title":"The Amazing"
