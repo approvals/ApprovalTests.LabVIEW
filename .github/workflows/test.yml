@@ -14,6 +14,6 @@ jobs:
       - name: Test Summary
         uses: test-summary/action@v2
         with:
-          paths: "reports/*.UnitTestReport.xml"
+          paths: "reports/Caraya.UnitTestReport.xml"
         if: always()
 
