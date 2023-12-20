@@ -98,9 +98,9 @@ Run the unit tests
 <a id='snippet-run_tests'></a>
 ```sh
 echo "Running Caraya Tests" # needed because caray tool is not very verbose.
-g-cli caraya -- -s "Tests\\Caraya.Tests\\Caraya Extension Test Suite\\Caraya Extension Test Suite.lvclass" -x "reports\\Caraya.UnitTestReport.xml"
-# Temporarily disable VITester.
+g-cli caraya -- -s "Tests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.UnitTestReport.xml"
 g-cli vitester -- -r "reports\\VItester.UnitTestReport.xml" "Approval Testing.lvproj"
+g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
 ```
 <sup><a href='/run_test.sh#L8-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
