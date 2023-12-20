@@ -12,6 +12,11 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="Extensions" Type="Folder">
+			<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Extensions/Caraya.Extension/Caraya.Extension.lvlib"/>
+			<Item Name="LUnitExtension.lvlib" Type="Library" URL="../Extensions/LUnit.Extension/LUnitExtension.lvlib"/>
+			<Item Name="VITester.Extension.lvlib" Type="Library" URL="../Extensions/VITester.Extension/VITester.Extension.lvlib"/>
+		</Item>
 		<Item Name="Tests" Type="Folder">
 			<Item Name="Caraya" Type="Folder">
 				<Item Name="Caraya Extension Test Suite.lvclass" Type="LVClass" URL="../Tests/Caraya.Tests/Caraya Extension Test Suite/Caraya Extension Test Suite.lvclass"/>
@@ -36,9 +41,6 @@
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Approval Tests.vipb" Type="Document" URL="../Approval Tests/Approval Tests.vipb"/>
-		<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Extensions/Caraya.Extension/Caraya.Extension.lvlib"/>
-		<Item Name="LUnitExtension.lvlib" Type="Library" URL="../Extensions/LUnit.Extension/LUnitExtension.lvlib"/>
-		<Item Name="VITester.Extension.lvlib" Type="Library" URL="../Extensions/VITester.Extension/VITester.Extension.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/_Caraya_internal_deps/7F74EC14CB6F87B712ADB3E4000AA489Array Size(s)__ogtk.vi">
