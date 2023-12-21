@@ -9,8 +9,6 @@ jobs:
       - name: Test g-cli
         shell: bash
         run: ./run_test.sh
-  test_report:
-    steps:
       - name: Test Summary
         uses: test-summary/action@v2
         with:
