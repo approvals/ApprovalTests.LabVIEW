@@ -14,6 +14,6 @@ SECONDS=0
 echo "Running Caraya Tests" # needed because caray tool is not very verbose.
 g-cli caraya -- -s "Tests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.UnitTestReport.xml"
 echo "Test Time: $SECONDS"
-g-cli vitester -- -r "reports\\VItester.UnitTestReport.xml" "Approval Testing.lvproj"
+g-cli vitester -- -r "reports\\VITester.UnitTestReport.xml" "Approval Testing.lvproj"
 g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
 # end-snippet
