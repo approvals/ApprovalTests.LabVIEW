@@ -9,9 +9,4 @@ jobs:
       - name: Test g-cli
         shell: bash
         run: ./run_test.sh
-      - name: Test Summary
-        uses: test-summary/action@v2
-        with:
-          paths: "reports/Caraya.UnitTestReport.xml\nreports/VITester.UnitTestReport.xml\nreports/LUnitTestReport.xml"
-        if: always()
 
