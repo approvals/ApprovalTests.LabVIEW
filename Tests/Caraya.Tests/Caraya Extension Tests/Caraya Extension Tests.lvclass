@@ -24,6 +24,7 @@
 	<Item Name="Caraya Extension Tests.ctl" Type="Class Private Data" URL="Caraya Extension Tests.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
+	<Item Name="Test Subject" Type="Folder"/>
 	<Item Name="Verify a VI.vi" Type="VI" URL="../Verify a VI.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!#^!!!!"Q!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!#"!5!!$!!!!!1!#%W6S=G^S)'FO)#BO&lt;S"F=H*P=CE!6!$Q!!Q!!Q!%!!1!"!!%!!1!"!!%!!5!"!!%!!1$!!"Y!!!*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!I!!!!!!!!!!!!!!!!!!!!!!1!'!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
@@ -60,7 +61,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
 	</Item>
-	<Item Name="VI to Verify.vi" Type="VI" URL="../VI to Verify.vi">
+	<Item Name="Verify Scripting Code.vi" Type="VI" URL="../Verify Scripting Code.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!"A!!!!!A!%!!!!6!$Q!!Q!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$!!"Y!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>

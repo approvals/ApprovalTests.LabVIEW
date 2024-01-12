@@ -28,6 +28,15 @@
 				<Item Name="Class Roster Cluster--constant.vi" Type="VI" URL="../Tests/Common/Class Roster Cluster--constant.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
+				<Item Name="Scripting Replace Message.vi" Type="VI" URL="../Tests/Common/Scripting Replace Message.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
+				<Item Name="Scripting Start.vi" Type="VI" URL="../Tests/Common/Scripting Start.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
+				<Item Name="VI to Verify.vi" Type="VI" URL="../Tests/Common/VI to Verify.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
 			</Item>
 			<Item Name="LUnit" Type="Folder">
 				<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
@@ -649,6 +658,9 @@
 				<Item Name="General Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/General Error Handler.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
+				<Item Name="Generate Temporary File Path.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Generate Temporary File Path.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
 				<Item Name="Generic Object Serializer.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/PNR/JSONtext Object Serialization/Generic Object Serializer/Generic Object Serializer.lvclass"/>
 				<Item Name="Get Array Element TDEnum__ogtk__jki_vi_tester.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/VI Tester/_support/Support.llb/Get Array Element TDEnum__ogtk__jki_vi_tester.vi">
 					<Property Name="marked" Type="Int">0</Property>
@@ -663,6 +675,9 @@
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="Get File System Separator.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/sysinfo.llb/Get File System Separator.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
+				<Item Name="Get GObject Label.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/traverseref.llb/Get GObject Label.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="Get Header from TD__ogtk__jki_vi_tester.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/VI Tester/_support/Support.llb/Get Header from TD__ogtk__jki_vi_tester.vi">
@@ -1250,6 +1265,9 @@
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="Three Button Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Three Button Dialog.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
+				<Item Name="TRef Find Object By Label.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/traverseref.llb/TRef Find Object By Label.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="TRef Traverse for References.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/traverseref.llb/TRef Traverse for References.vi">
