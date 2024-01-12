@@ -7,3 +7,4 @@ UnitTestReport.xml
 build/*
 *.UnitTestReport.xml
 reports/*
+*.received.*
