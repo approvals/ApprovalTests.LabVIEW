@@ -8,5 +8,6 @@
 
 </Property>
 	<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
+	<Item Name="Verify VI.vi" Type="VI" URL="../Verify VI.vi"/>
 	<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
 </Library>

@@ -17,6 +17,7 @@
 	</Item>
 	<Item Name="Reporters" Type="Folder">
 		<Item Name="Beyond Compare.lvclass" Type="LVClass" URL="../Beyond Compare/Beyond Compare.lvclass"/>
+		<Item Name="LVCompare.lvclass" Type="LVClass" URL="../LVCompare/LVCompare.lvclass"/>
 		<Item Name="Reporter.lvclass" Type="LVClass" URL="../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Utility" Type="Folder">
@@ -24,5 +25,6 @@
 	</Item>
 	<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
 	<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
+	<Item Name="Verify VI.vi" Type="VI" URL="../Verify VI.vi"/>
 	<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
 </Library>
