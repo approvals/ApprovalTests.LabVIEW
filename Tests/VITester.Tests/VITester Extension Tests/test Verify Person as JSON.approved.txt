@@ -1,5 +1,0 @@
-{
-  "First Name":"Sam",
-  "Last Name":"Taggart",
-  "Title":"The Amazing"
-}
