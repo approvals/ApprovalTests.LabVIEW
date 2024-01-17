@@ -799,6 +799,7 @@
 				<Item Name="NI_Keccak.lvlib" Type="Library" URL="/&lt;vilib&gt;/security/Message Digest/Keccak/NI_Keccak.lvlib"/>
 				<Item Name="NI_Message Digest API.lvlib" Type="Library" URL="/&lt;vilib&gt;/security/Message Digest/API/NI_Message Digest API.lvlib"/>
 				<Item Name="NI_PackedLibraryUtility.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/LVLibp/NI_PackedLibraryUtility.lvlib"/>
+				<Item Name="NI_SCC.lvlib" Type="Library" URL="/&lt;vilib&gt;/SourceControl/sccapi/NI_SCC.lvlib"/>
 				<Item Name="NI_SHA-3.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/security/Message Digest/SHA-3/NI_SHA-3.lvclass"/>
 				<Item Name="NI_SHA-256.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/security/Message Digest/SHA-2/SHA-256/NI_SHA-256.lvclass"/>
 				<Item Name="NI_SHA-512.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/security/Message Digest/SHA-2/SHA-512/NI_SHA-512.lvclass"/>
@@ -1025,6 +1026,12 @@
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="Resolve Timestamp Format__ogtk__jki_vi_tester.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/VI Tester/_support/Support.llb/Resolve Timestamp Format__ogtk__jki_vi_tester.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
+				<Item Name="SCCSup Compare Two VIs.vi" Type="VI" URL="/&lt;vilib&gt;/SourceControl/support/SCCSup Compare Two VIs.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
+				<Item Name="SCCSup Lock VI.vi" Type="VI" URL="/&lt;vilib&gt;/SourceControl/support/SCCSup Lock VI.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="Search 1D Array (Boolean)__ogtk__jki_vi_tester.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI Toolkits/VI Tester/_support/Support.llb/Search 1D Array (Boolean)__ogtk__jki_vi_tester.vi">
