@@ -24,7 +24,7 @@
 		<Item Name="Replace with Caller if Empty.vi" Type="VI" URL="../Replace with Caller if Empty.vi"/>
 	</Item>
 	<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
-	<Item Name="Verify as Binary File.vi" Type="VI" URL="../Verify as Binary File.vi"/>
 	<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
+	<Item Name="Verify VI or CTL.vi" Type="VI" URL="../Verify VI or CTL.vi"/>
 	<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
 </Library>
