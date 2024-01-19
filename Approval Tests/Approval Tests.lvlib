@@ -28,6 +28,6 @@
 	</Item>
 	<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
 	<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
-	<Item Name="Verify VI or CTL.vi" Type="VI" URL="../Verify VI or CTL.vi"/>
+	<Item Name="Verify File.vi" Type="VI" URL="../Verify File.vi"/>
 	<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
 </Library>
