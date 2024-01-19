@@ -18,6 +18,9 @@
 	<Item Name="Reporters" Type="Folder">
 		<Item Name="Beyond Compare.lvclass" Type="LVClass" URL="../Beyond Compare/Beyond Compare.lvclass"/>
 		<Item Name="LVCompare.lvclass" Type="LVClass" URL="../LVCompare/LVCompare.lvclass"/>
+		<Item Name="Report Nothing.lvclass" Type="LVClass" URL="../Report Nothing/Report Nothing.lvclass"/>
+		<Item Name="Report With DiffTool.lvclass" Type="LVClass" URL="../Report With DiffTool/Report With DiffTool.lvclass"/>
+		<Item Name="Report With First Working.lvclass" Type="LVClass" URL="../Report With First Working/Report With First Working.lvclass"/>
 		<Item Name="Reporter.lvclass" Type="LVClass" URL="../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Utility" Type="Folder">
