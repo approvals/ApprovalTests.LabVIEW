@@ -24,10 +24,18 @@
 		<Item Name="Reporter.lvclass" Type="LVClass" URL="../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Utility" Type="Folder">
+		<Item Name="Combo Recurse.vi" Type="VI" URL="../Combo Recurse.vi"/>
+		<Item Name="Create Parameters List.vi" Type="VI" URL="../Create Parameters List.vi"/>
+		<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
+		<Item Name="Parameterized Data to JSON.vi" Type="VI" URL="../Parameterized Data to JSON.vi"/>
+		<Item Name="Prepare VI for Parameterized Test.vi" Type="VI" URL="../Prepare VI for Parameterized Test.vi"/>
 		<Item Name="Replace with Caller if Empty.vi" Type="VI" URL="../Replace with Caller if Empty.vi"/>
 	</Item>
-	<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
-	<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
-	<Item Name="Verify File.vi" Type="VI" URL="../Verify File.vi"/>
-	<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
+	<Item Name="Verifies" Type="Folder">
+		<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
+		<Item Name="Verify Combinations.vi" Type="VI" URL="../Verify Combinations.vi"/>
+		<Item Name="Verify File.vi" Type="VI" URL="../Verify File.vi"/>
+		<Item Name="Verify Parameterized.vi" Type="VI" URL="../Verify Parameterized.vi"/>
+		<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
+	</Item>
 </Library>
