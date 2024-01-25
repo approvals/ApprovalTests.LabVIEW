@@ -28,6 +28,9 @@
 				<Item Name="Class Roster Cluster--constant.vi" Type="VI" URL="../Tests/Common/Class Roster Cluster--constant.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
+				<Item Name="MyAnd.vi" Type="VI" URL="../Tests/Common/MyAnd.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
 				<Item Name="Scripting Replace Message.vi" Type="VI" URL="../Tests/Common/Scripting Replace Message.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>

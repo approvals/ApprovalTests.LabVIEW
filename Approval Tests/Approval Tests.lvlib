@@ -13,7 +13,11 @@
 	</Item>
 	<Item Name="private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
+		<Item Name="Combo Recurse.vi" Type="VI" URL="../Combo Recurse.vi"/>
+		<Item Name="Create Parameters List.vi" Type="VI" URL="../Create Parameters List.vi"/>
 		<Item Name="Get Paths.vi" Type="VI" URL="../Get Paths.vi"/>
+		<Item Name="Parameterized Data to JSON.vi" Type="VI" URL="../Parameterized Data to JSON.vi"/>
+		<Item Name="Prepare VI for Parameterized Test.vi" Type="VI" URL="../Prepare VI for Parameterized Test.vi"/>
 	</Item>
 	<Item Name="Reporters" Type="Folder">
 		<Item Name="Report Nothing.lvclass" Type="LVClass" URL="../Report Nothing/Report Nothing.lvclass"/>
@@ -24,11 +28,8 @@
 		<Item Name="Reporter.lvclass" Type="LVClass" URL="../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Utility" Type="Folder">
-		<Item Name="Combo Recurse.vi" Type="VI" URL="../Combo Recurse.vi"/>
-		<Item Name="Create Parameters List.vi" Type="VI" URL="../Create Parameters List.vi"/>
+		<Item Name="array to array of variants.vim" Type="VI" URL="../array to array of variants.vim"/>
 		<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
-		<Item Name="Parameterized Data to JSON.vi" Type="VI" URL="../Parameterized Data to JSON.vi"/>
-		<Item Name="Prepare VI for Parameterized Test.vi" Type="VI" URL="../Prepare VI for Parameterized Test.vi"/>
 		<Item Name="Replace with Caller if Empty.vi" Type="VI" URL="../Replace with Caller if Empty.vi"/>
 	</Item>
 	<Item Name="Verifies" Type="Folder">
