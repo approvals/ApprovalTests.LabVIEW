@@ -1,0 +1,4 @@
+{"A":false,"B":false} => {"A and B":false}
+{"A":false,"B":true} => {"A and B":false}
+{"A":true,"B":false} => {"A and B":false}
+{"A":true,"B":true} => {"A and B":true}
