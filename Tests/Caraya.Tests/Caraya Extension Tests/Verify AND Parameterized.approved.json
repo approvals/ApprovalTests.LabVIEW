@@ -1,18 +1,4 @@
-[
-  {
-    "Input":{"A":false,"B":false},
-    "Results":{"A and B":false}
-  },
-  {
-    "Input":{"A":false,"B":true},
-    "Results":{"A and B":false}
-  },
-  {
-    "Input":{"A":true,"B":false},
-    "Results":{"A and B":false}
-  },
-  {
-    "Input":{"A":true,"B":true},
-    "Results":{"A and B":true}
-  }
-]
+{"A":false,"B":false} => {"A and B":false}
+{"A":false,"B":true} => {"A and B":false}
+{"A":true,"B":false} => {"A and B":false}
+{"A":true,"B":true} => {"A and B":true}
