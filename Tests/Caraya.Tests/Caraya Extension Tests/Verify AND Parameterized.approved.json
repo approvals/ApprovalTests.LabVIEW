@@ -5,11 +5,11 @@
   },
   {
     "Input":{"A":false,"B":true},
-    "Results":{"A and B":true}
+    "Results":{"A and B":false}
   },
   {
     "Input":{"A":true,"B":false},
-    "Results":{"A and B":true}
+    "Results":{"A and B":false}
   },
   {
     "Input":{"A":true,"B":true},
