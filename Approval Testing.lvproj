@@ -13,9 +13,9 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Extensions" Type="Folder">
-			<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Extensions/Caraya.Extension/Caraya.Extension.lvlib"/>
-			<Item Name="LUnitExtension.lvlib" Type="Library" URL="../Extensions/LUnit.Extension/LUnitExtension.lvlib"/>
-			<Item Name="VITester.Extension.lvlib" Type="Library" URL="../Extensions/VITester.Extension/VITester.Extension.lvlib"/>
+			<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Source/Extensions/Caraya.Extension/Caraya.Extension.lvlib"/>
+			<Item Name="LUnitExtension.lvlib" Type="Library" URL="../Source/Extensions/LUnit.Extension/LUnitExtension.lvlib"/>
+			<Item Name="VITester.Extension.lvlib" Type="Library" URL="../Source/Extensions/VITester.Extension/VITester.Extension.lvlib"/>
 		</Item>
 		<Item Name="Tests" Type="Folder">
 			<Item Name="Caraya" Type="Folder">
@@ -51,8 +51,7 @@
 				<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
 			</Item>
 		</Item>
-		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Approval Tests/Approval Tests.lvlib"/>
-		<Item Name="Approval Tests.vipb" Type="Document" URL="../Approval Tests/Approval Tests.vipb"/>
+		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="1D String Array to Delimited String.vi" Type="VI" URL="/&lt;vilib&gt;/AdvancedString/1D String Array to Delimited String.vi">
