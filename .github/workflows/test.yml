@@ -11,5 +11,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Unit Tests
         shell: bash
-        run: ./run_test.sh
+        run: ./run_unittests.sh
 
