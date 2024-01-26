@@ -5,11 +5,11 @@ on:
   schedule:
     - cron: "0 0 * * *" # keeps GitHub from removing runner due to inactivity
 jobs:
-  build:
+  test:
     runs-on: LV20x64
     steps:
       - uses: actions/checkout@v3
-      - name: Test g-cli
+      - name: Run Unit Tests
         shell: bash
         run: ./run_test.sh
 
