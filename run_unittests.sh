@@ -8,7 +8,7 @@ set -euo pipefail
 
 HERE=$(cygpath -w $(pwd))
 
-g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "Approval Testing.vipc"
+g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "approvals-dev.vipc"
 # begin-snippet: run_tests
 SECONDS=0
 echo "Running Caraya Tests" # needed because caray tool is not very verbose.
