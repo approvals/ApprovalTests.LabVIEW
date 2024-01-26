@@ -1,6 +1,8 @@
 name: CI - Test&Build
-on: [ push, workflow_dispatch ]
-
+on: 
+  push:
+  workflow_dispatch:
+  cron: "0 0 * * *" # keeps GitHub from removing runner due to inactivity
 jobs:
   build:
     runs-on: LV20x64
