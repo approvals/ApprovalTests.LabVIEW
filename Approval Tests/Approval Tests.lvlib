@@ -27,6 +27,7 @@
 		<Item Name="Report With DiffTool.lvclass" Type="LVClass" URL="../Report With DiffTool/Report With DiffTool.lvclass"/>
 		<Item Name="Report With First Working.lvclass" Type="LVClass" URL="../Report With First Working/Report With First Working.lvclass"/>
 		<Item Name="Report With LVCompare.lvclass" Type="LVClass" URL="../Report With LVCompare/Report With LVCompare.lvclass"/>
+		<Item Name="Report With WinMerge.lvclass" Type="LVClass" URL="../Report With WinMerge/Report With WinMerge.lvclass"/>
 		<Item Name="Reporter.lvclass" Type="LVClass" URL="../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Utility" Type="Folder">
