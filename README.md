@@ -29,8 +29,8 @@ You can download the latest officially released version off of [VIPM](https://ww
 
 ### Source Code Control Notes
 
-- Make sure you are committing the *.approved.* files and tracking those.
-- Add *.actual.* to your .gitignore file. There is no need to keep track of these files.
+- Make sure you are committing the `*.approved.*` files and tracking those.
+- Add `*.actual.*` to your .gitignore file. There is no need to keep track of these files.
 
 ### Available Verify Methods
 
