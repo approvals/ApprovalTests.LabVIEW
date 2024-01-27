@@ -13,12 +13,6 @@ If you are already familiar with approval testing then jump right to [Getting St
 
   * [What Is Approval Testing?](#what-is-approval-testing)
   * [How Does It Work](#how-does-it-work)
-    * [The First Run](#the-first-run)
-    * [Passing Tests](#passing-tests)
-    * [Failing Tests](#failing-tests)
-  * [Why Is Approval Testing Useful?](#why-is-approval-testing-useful)
-  * [Printers](#printers)
-    * [What If My Output Is Not A String? or I Have Multiple Outputs?](#what-if-my-output-is-not-a-string-or-i-have-multiple-outputs)
     * [Getting Fancy - Dealing With Test Data That Varies.](#getting-fancy---dealing-with-test-data-that-varies)
   * [Getting Started](#getting-started)
     * [Source Code Control Notes](#source-code-control-notes)
