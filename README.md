@@ -13,6 +13,12 @@ If you are already familiar with approval testing then jump right to [Getting St
 
   * [What Is Approval Testing?](#what-is-approval-testing)
   * [How Does It Work](#how-does-it-work)
+    * [The First Run](#the-first-run)
+    * [Passing Tests](#passing-tests)
+    * [Failing Tests](#failing-tests)
+  * [Why Is Approval Testing Useful?](#why-is-approval-testing-useful)
+  * [Printers](#printers)
+    * [What If My Output Is Not A String? or I Have Multiple Outputs?](#what-if-my-output-is-not-a-string-or-i-have-multiple-outputs)
     * [Getting Fancy - Dealing With Test Data That Varies.](#getting-fancy---dealing-with-test-data-that-varies)
   * [Getting Started](#getting-started)
     * [Source Code Control Notes](#source-code-control-notes)
@@ -23,17 +29,7 @@ If you are already familiar with approval testing then jump right to [Getting St
 
 ## What Is Approval Testing?
 
-It is basically the Golden Template Method. You run the code you are testing once and observe the output and then compare each subsequent run of the code to that first run to make sure nothing has changed. If nothing changed, the test passes. If anything changes, then the test fails until the change is approved.
-
-This method is unit testing framework agnostic. Pass If Approved simply outputs a boolean indicating if the test passed and a failure message if the test fails. The failure message simply explains how to determine what changed and how to approve the change. You can then pass these outputs to your unit testing framework of choice.
-
 ## How Does It Work
-
-The base library will work with any unit testing framework. The VIPM package includes Extensions for VI Tester, LUnit, and Caraya. You should the extensions. If you prefer a different unit test framework, then let's talk about creating an extension for it.
-
-### Getting Fancy - Dealing With Test Data That Varies.
-
-You can get a little fancy with printer functions and do things like replacing data that may vary from one test run to another such as dates or file references. You could replace a date with a generic 'date' string. That way the output wouldn't vary from run to run. Of course, in that case your test is not checking that your code outputs the correct date. It is basically ignoring the date output. For a file reference you could see if it is open or closed and  just replace the reference value with 'open' or 'closed'. In this case the test is only checking that the file is closed or remains open. Using json makes this easy. You just flatten everything to json and then do a json replace on specific elements where you don't necessarily care about the exact value of the elements just some property or where you expect the elements to change from one test run to the next.
 
 ## Getting Started
 
@@ -41,28 +37,56 @@ You can download the latest officially released version off of [VIPM](https://ww
 
 ### Source Code Control Notes
 
-- Make sure you are committing the .approved files and tracking those.
-- Add *.actual to your .gitignore file. There is no need to keep track of these files.
+- Make sure you are committing the *.approved.* files and tracking those.
+- Add *.actual.* to your .gitignore file. There is no need to keep track of these files.
 
-### NOTE on Line Endings
+### Available Verify Methods
+
+There are a variety of verify methods available depending on what you want to verify.
+
+#### Verify
+
+Takes in anything. With default printer, it needs to be a string or it will error out. With the correct printer, you can pass in anything, in that case you are responsible for providing the printer class that will decode the variant in and flatten to some reasonable string.
+
+#### Verify as JSON
+
+Takes in anything. Flattens it to JSON.
+
+#### Verify File
+
+Takes in a file path. In general compares to approved using the filehash. If it detects a .vi or .ctl file, it uses the built-in comparison function in LabVIEW. In LabVIEW 2020, It is buggy. Apparently some of those bugs have been fixed in newer versions.
+
+#### Verify Parameterized
+
+You pass in a reference to the function you want to test. You also pass in a set of maps. Each map maps each control label to a variant value (You must use the "to Variant" primitive or you'll get a broken run arrow due to the type mismatch). The control must be connected to the connector pane. Ideally you would have the same number of elements in your map as controls connected to the connector pane. If you don't specify a value for a control, it just stays whatever the default is set at. The underlying code will cycle through the set and for each map, will set the control values appropriately and then run the vi and capture any indicators connected to the connector pane. The control and corresponding indicator values are all stored in the approved file.
+
+#### Verify Combinations
+
+This is similar to the verify parameterized (in fact it calls it behind the scenes). Instead of specifying each set of parameters, you specify a single map which maps each control label to an array of variant values (there is a utility vi, "array to array of variants.vim) to assist with this. From this, the verify function calculates each set of parameters from all the possible combinations.
 
 Often if you are a running a parameterized test - ie a single test VI that has a for loop and runs through multiple sets of inputs - it can be useful to add a line ending at the end so each result shows up on its own line. This makes diffing easier. That is a great idea. However don't just drop the line-ending constant. For some reason I was having issues with it on Windows with tests not passing when they should -ie diffing the text files showed no difference. I think it has something to do with LabVIEW converting EOLs when it writes to files. I will admit I am not expert on this. Line endings can get complicated especially when taking into account git autocrlf settings. 
 
 What I can tell you, is if you want each of your parameterized test results on a seperate line, then use a string constant, set it to display slash codes and use \n. That seems to work - at least on Windows. I haven't tried it on other Operating Systems. If you encounter other issues with tests not passing when they should, please enter an issue and I'll look at it.
 
+### Reporters
+
+Reporters are automatically launched when a test fails. This makes it easy to see what has changed and approve the changes if desired.
+
+- Beyond Compare - This the preferred reporter but it is not free.
+- WinMerge - This is free.
+- LVCompare - If you try to verify a VI or ctl, it will launch LVCompare
+
+#### Reporters and CI
+
+If no reporter is detected then nothing is reported. This works well for CI - simply don't install Beyond Compare or WinMerge on your CI machine. For LVCompare we need to figure out a solution...
+
 ## Contributing
 
-This is written in LV2020. If possible submit your changes in LV2020. If you have ideas for improvement, please feel free to open an issue or pull request. I will add a .vipc file for necesesary development dependencies (the installed package should have no dependencies).
+This is written in LV2020. If you want to contribute, reach out.
 
-### Local Git Hooks
-There is a Setup_Local_Git_Hooks script which will setup a hook to check for an issue number in the commit message and will run the unit tests before pushing. You can use them if you want.
+##
 
-### Running CI Locally
-To run the CI locally, just copy the appropriate lines of the script section in the build step, being careful with the --kill flag for G-CLI. 
-
-Here are the appropriate lines with the kill flag removed.
-
-Run the unit tests
+If you happen to clone the repo and want to run the unit tests for the extensions, there is a run_unittests.sh script.
 
 <!-- snippet: run_tests -->
 <a id='snippet-run_tests'></a>
@@ -80,4 +104,3 @@ g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
 Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
 
 `g-cli vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt`
-
