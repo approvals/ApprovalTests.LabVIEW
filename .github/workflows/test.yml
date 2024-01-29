@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: LV20x64
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run Unit Tests
         shell: bash
         run: ./run_unittests.sh
