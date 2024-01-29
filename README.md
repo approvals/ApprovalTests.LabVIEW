@@ -89,6 +89,3 @@ g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
 <sup><a href='/run_unittests.sh#L12-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-Build the package. You'll want to use this to get the version correct. The g-cl script will automatically calculate it. You'll also want to update the release-notes.txt before you run this command. I usually put a bulleted list of features.
-
-`g-cli vipb -- -av -b Approval\ Tests\\Approval\ Tests.vipb -rn release-notes.txt`
