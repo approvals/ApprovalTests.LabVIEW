@@ -40,6 +40,7 @@
 		<Item Name="Verify Combinations.vi" Type="VI" URL="../Verify Combinations.vi"/>
 		<Item Name="Verify File.vi" Type="VI" URL="../Verify File.vi"/>
 		<Item Name="Verify Parameterized.vi" Type="VI" URL="../Verify Parameterized.vi"/>
-		<Item Name="Verify.vi" Type="VI" URL="../Verify.vi"/>
+		<Item Name="Verify.vim" Type="VI" URL="../Verify.vim"/>
 	</Item>
+	<Item Name="to String.vim" Type="VI" URL="../Printer/to String.vim"/>
 </Library>
