@@ -9,4 +9,5 @@ build/*
 reports/*
 *.received.*
 .DS_Store
+sandbox
 

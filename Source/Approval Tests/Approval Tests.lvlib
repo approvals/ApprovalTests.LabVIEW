@@ -42,5 +42,5 @@
 		<Item Name="Verify Parameterized.vi" Type="VI" URL="../Verify Parameterized.vi"/>
 		<Item Name="Verify.vim" Type="VI" URL="../Verify.vim"/>
 	</Item>
-	<Item Name="to String.vim" Type="VI" URL="../Printer/to String.vim"/>
+	<Item Name="to String.vim" Type="VI" URL="../to String.vim"/>
 </Library>
