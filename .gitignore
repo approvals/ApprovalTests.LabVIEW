@@ -8,3 +8,5 @@ build/*
 *.UnitTestReport.xml
 reports/*
 *.received.*
+.DS_Store
+
