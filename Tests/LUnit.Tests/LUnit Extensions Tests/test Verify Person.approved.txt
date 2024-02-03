@@ -1,0 +1,22 @@
+<Object>
+<Name>value</Name>
+<NumLevels>1</NumLevels>
+<Class>Person.lvclass</Class>
+<Version>1.0.0.1</Version>
+<Cluster>
+<Name>Person.lvclass</Name>
+<NumElts>3</NumElts>
+<String>
+<Name>First Name</Name>
+<Val>Sam</Val>
+</String>
+<String>
+<Name>Last Name</Name>
+<Val>Taggart</Val>
+</String>
+<String>
+<Name>Title</Name>
+<Val>The Amazing</Val>
+</String>
+</Cluster>
+</Object>
