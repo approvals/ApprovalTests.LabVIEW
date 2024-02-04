@@ -33,6 +33,8 @@
 		<Item Name="Reporter.lvclass" Type="LVClass" URL="../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Scrubbers" Type="Folder">
+		<Item Name="Multi Scrubber.lvclass" Type="LVClass" URL="../Multi Scrubber/Multi Scrubber.lvclass"/>
+		<Item Name="Regex Scrubber.lvclass" Type="LVClass" URL="../Regex Scrubber/Regex Scrubber.lvclass"/>
 		<Item Name="Scrubber.lvclass" Type="LVClass" URL="../Scrubber/Scrubber.lvclass"/>
 	</Item>
 	<Item Name="Utility" Type="Folder">
@@ -51,5 +53,4 @@
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
-	<Item Name="Regex Scrubber.lvclass" Type="LVClass" URL="../Regex Scrubber/Regex Scrubber.lvclass"/>
 </Library>
