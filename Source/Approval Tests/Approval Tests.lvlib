@@ -8,9 +8,7 @@
 
 </Property>
 	<Item Name="Namers" Type="Folder">
-		<Item Name="Namer.lvclass" Type="LVClass" URL="../Namer/Namer.lvclass">
-			<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		</Item>
+		<Item Name="Namer.lvclass" Type="LVClass" URL="../Namer/Namer.lvclass"/>
 	</Item>
 	<Item Name="private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
