@@ -8,7 +8,6 @@
 
 </Property>
 	<Item Name="Printers" Type="Folder">
-		<Item Name="JSON Printer.lvclass" Type="LVClass" URL="../JSON Printer/JSON Printer.lvclass"/>
 		<Item Name="Printer.lvclass" Type="LVClass" URL="../Printer/Printer.lvclass"/>
 	</Item>
 	<Item Name="private" Type="Folder">
