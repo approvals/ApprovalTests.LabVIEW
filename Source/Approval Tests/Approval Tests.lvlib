@@ -51,4 +51,5 @@
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
+	<Item Name="Regex Scrubber.lvclass" Type="LVClass" URL="../Regex Scrubber/Regex Scrubber.lvclass"/>
 </Library>
