@@ -34,6 +34,7 @@
 	</Item>
 	<Item Name="Scrubbers" Type="Folder">
 		<Item Name="Multi Scrubber.lvclass" Type="LVClass" URL="../Multi Scrubber/Multi Scrubber.lvclass"/>
+		<Item Name="Regex Scrubber with Numbered Replacement.lvclass" Type="LVClass" URL="../Regex Scrubber With Numbered Replacements/Regex Scrubber with Numbered Replacement.lvclass"/>
 		<Item Name="Regex Scrubber.lvclass" Type="LVClass" URL="../Regex Scrubber/Regex Scrubber.lvclass"/>
 		<Item Name="Scrubber.lvclass" Type="LVClass" URL="../Scrubber/Scrubber.lvclass"/>
 	</Item>
