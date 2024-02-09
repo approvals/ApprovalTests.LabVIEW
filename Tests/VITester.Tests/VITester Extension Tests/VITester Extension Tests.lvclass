@@ -131,4 +131,12 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
 	</Item>
+	<Item Name="test Verify AND Combos.approved.txt" Type="Document" URL="../test Verify AND Combos.approved.txt"/>
+	<Item Name="test Verify AND Parameterized.approved.txt" Type="Document" URL="../test Verify AND Parameterized.approved.txt"/>
+	<Item Name="test Verify Class Roster as JSON.approved.json" Type="Document" URL="../test Verify Class Roster as JSON.approved.json"/>
+	<Item Name="test Verify Class Roster.approved.txt" Type="Document" URL="../test Verify Class Roster.approved.txt"/>
+	<Item Name="test Verify Hello VITester.approved.txt" Type="Document" URL="../test Verify Hello VITester.approved.txt"/>
+	<Item Name="test Verify MultiCombos.approved.txt" Type="Document" URL="../test Verify MultiCombos.approved.txt"/>
+	<Item Name="test Verify Person as JSON.approved.json" Type="Document" URL="../test Verify Person as JSON.approved.json"/>
+	<Item Name="test Verify Person.approved.txt" Type="Document" URL="../test Verify Person.approved.txt"/>
 </LVClass>
