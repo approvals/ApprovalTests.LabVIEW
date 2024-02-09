@@ -19,7 +19,6 @@
 		<Item Name="Combo Recurse.vi" Type="VI" URL="../Combo Recurse.vi"/>
 		<Item Name="conv EOL.vi" Type="VI" URL="../conv EOL.vi"/>
 		<Item Name="Create Parameters List.vi" Type="VI" URL="../Create Parameters List.vi"/>
-		<Item Name="Ensure File Exists.vi" Type="VI" URL="../Ensure File Exists.vi"/>
 		<Item Name="Get Paths.vi" Type="VI" URL="../Get Paths.vi"/>
 		<Item Name="Parameterized Data to JSON.vi" Type="VI" URL="../Parameterized Data to JSON.vi"/>
 		<Item Name="Prepare VI for Parameterized Test.vi" Type="VI" URL="../Prepare VI for Parameterized Test.vi"/>
