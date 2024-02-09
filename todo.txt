@@ -1,2 +1,6 @@
 - add test for nested multi scrubber
 - add test scrubber with nothing found.
+- fix options up
+- replace xml in to string with JSON
+- clean up the vim and make it more responsive - ie. make it call something that isn't a Vim.
+- add Ensure Approved File exists to reporter parent class.
