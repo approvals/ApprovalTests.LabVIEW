@@ -22,6 +22,7 @@
 		<Item Name="Get Paths.vi" Type="VI" URL="../Get Paths.vi"/>
 		<Item Name="Parameterized Data to JSON.vi" Type="VI" URL="../Parameterized Data to JSON.vi"/>
 		<Item Name="Prepare VI for Parameterized Test.vi" Type="VI" URL="../Prepare VI for Parameterized Test.vi"/>
+		<Item Name="Verify Core.vi" Type="VI" URL="../Verify Core.vi"/>
 	</Item>
 	<Item Name="Reporters" Type="Folder">
 		<Item Name="Report Nothing.lvclass" Type="LVClass" URL="../Report Nothing/Report Nothing.lvclass"/>
