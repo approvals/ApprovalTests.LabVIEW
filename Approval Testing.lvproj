@@ -18,9 +18,6 @@
 			<Item Name="VITester.Extension.lvlib" Type="Library" URL="../Source/Extensions/VITester.Extension/VITester.Extension.lvlib"/>
 		</Item>
 		<Item Name="Tests" Type="Folder">
-			<Item Name="Caraya" Type="Folder">
-				<Item Name="Caraya Extension Tests.lvclass" Type="LVClass" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass"/>
-			</Item>
 			<Item Name="Common" Type="Folder">
 				<Item Name="Person" Type="Folder">
 					<Item Name="Person.lvclass" Type="LVClass" URL="../Tests/Common/Person/Person.lvclass"/>
@@ -44,12 +41,10 @@
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 			</Item>
-			<Item Name="LUnit" Type="Folder">
-				<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
-			</Item>
-			<Item Name="VITester" Type="Folder">
-				<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
-			</Item>
+			<Item Name="Caraya Extension Tests.lvclass" Type="LVClass" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass"/>
+			<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
+			<Item Name="Scrubber Testing.lvclass" Type="LVClass" URL="../Tests/Scrubber Tests/Scrubber Testing.lvclass"/>
+			<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
