@@ -12,6 +12,7 @@
 	</Item>
 	<Item Name="Namers" Type="Folder">
 		<Item Name="Namer.lvclass" Type="LVClass" URL="../Namer/Namer.lvclass"/>
+		<Item Name="Naming Data.lvclass" Type="LVClass" URL="../Naming Data/Naming Data.lvclass"/>
 	</Item>
 	<Item Name="private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
@@ -54,4 +55,5 @@
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
+	<Item Name="Options.lvclass" Type="LVClass" URL="../Options/Options.lvclass"/>
 </Library>
