@@ -30,6 +30,16 @@
 	<Item Name="Report With DiffTool.ctl" Type="Class Private Data" URL="Report With DiffTool.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
+	<Item Name="Report Core.vi" Type="VI" URL="../Report Core.vi">
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!'.!!!!$!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!!R!)1&gt;8&lt;X*L:71`!&amp;:!=!!?!!!T&amp;%&amp;Q=(*P&gt;G&amp;M)&amp;2F=X2T,GRW&lt;'FC(&amp;*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M,GRW9WRB=X-!'&amp;*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M)'^V&gt;!!!&amp;E"1!!-!!!!"!!)):8*S&lt;X)A;7Y!!"*!-P````])5G6D:7FW:71!!"*!-P````])18"Q=G^W:71!!&amp;2!=!!?!!!T&amp;%&amp;Q=(*P&gt;G&amp;M)&amp;2F=X2T,GRW&lt;'FC(&amp;*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M,GRW9WRB=X-!&amp;V*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M)'FO!&amp;1!]!!-!!-!"!!&amp;!!9!"!!%!!1!"!!(!!A!#1!+!Q!!?!!!$1A!!!!!!!!*!!!!D1M!!!!!!!!!!!!!!!!!!!!!!!!+!!!!%!!!!"!!!!#3!!!!!!%!#Q!!!!!</Property>
+		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">3</Property>
+		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">false</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">3</Property>
+		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1074541072</Property>
+		<Property Name="NI.LibItem.Scope" Type="Int">3</Property>
+	</Item>
 	<Item Name="Report.vi" Type="VI" URL="../Report.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!'.!!!!$!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!!R!)1&gt;8&lt;X*L:71`!&amp;:!=!!?!!!T&amp;%&amp;Q=(*P&gt;G&amp;M)&amp;2F=X2T,GRW&lt;'FC(&amp;*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M,GRW9WRB=X-!'&amp;*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M)'^V&gt;!!!&amp;E"1!!-!!!!"!!)):8*S&lt;X)A;7Y!!"*!-P````])5G6D:7FW:71!!"*!-P````])18"Q=G^W:71!!&amp;2!=!!?!!!T&amp;%&amp;Q=(*P&gt;G&amp;M)&amp;2F=X2T,GRW&lt;'FC(&amp;*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M,GRW9WRB=X-!&amp;V*F='^S&gt;#"8;82I)%2J:G:5&lt;W^M)'FO!&amp;1!]!!-!!-!"!!&amp;!!9!"!!%!!1!"!!(!!A!#1!+!Q!!?!!!$1A!!!!!!!!*!!!!D1M!!!!!!!!!!!!!!!!!!!!!!!!+!!!!%!!!!"!!!!#3!!!!!!%!#Q!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>

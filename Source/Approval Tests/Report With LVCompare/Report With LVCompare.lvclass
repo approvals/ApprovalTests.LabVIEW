@@ -29,6 +29,16 @@
 	<Item Name="Report With LVCompare.ctl" Type="Class Private Data" URL="Report With LVCompare.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
+	<Item Name="Report Core.vi" Type="VI" URL="../Report Core.vi">
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!'4!!!!$!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!!R!)1&gt;8&lt;X*L:71`!&amp;B!=!!?!!!U&amp;%&amp;Q=(*P&gt;G&amp;M)&amp;2F=X2T,GRW&lt;'FC(6*F='^S&gt;#"8;82I)%R71W^N='&amp;S:3ZM&gt;G.M98.T!!!:5G6Q&lt;X*U)&amp;&gt;J&gt;'AA4&amp;:$&lt;WVQ98*F)'^V&gt;!!71&amp;!!!Q!!!!%!!ABF=H*P=C"J&lt;A!!%E!S`````QB3:7.F;8:F:!!!%E!S`````QB"=("S&lt;X:F:!!!7%"Q!"Y!!$1518"Q=G^W97QA6'6T&gt;(-O&lt;(:M;7)&gt;5G6Q&lt;X*U)&amp;&gt;J&gt;'AA4&amp;:$&lt;WVQ98*F,GRW9WRB=X-!!"B3:8"P=H1A6WFU;#"-6E.P&lt;8"B=G5A;7Y!!&amp;1!]!!-!!-!"!!&amp;!!9!"!!%!!1!"!!(!!A!#1!+!Q!!?!!!$1A!!!!!!!!*!!!!D1M!!!!!!!!!!!!!!!!!!!!!!!!)!!!!%!!!!"!!!!#1!!!!!!%!#Q!!!!!</Property>
+		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">2</Property>
+		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">false</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">3</Property>
+		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1074541072</Property>
+		<Property Name="NI.LibItem.Scope" Type="Int">3</Property>
+	</Item>
 	<Item Name="Report.vi" Type="VI" URL="../Report.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!'4!!!!$!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!!R!)1&gt;8&lt;X*L:71`!&amp;B!=!!?!!!U&amp;%&amp;Q=(*P&gt;G&amp;M)&amp;2F=X2T,GRW&lt;'FC(6*F='^S&gt;#"8;82I)%R71W^N='&amp;S:3ZM&gt;G.M98.T!!!:5G6Q&lt;X*U)&amp;&gt;J&gt;'AA4&amp;:$&lt;WVQ98*F)'^V&gt;!!71&amp;!!!Q!!!!%!!ABF=H*P=C"J&lt;A!!%E!S`````QB3:7.F;8:F:!!!%E!S`````QB"=("S&lt;X:F:!!!7%"Q!"Y!!$1518"Q=G^W97QA6'6T&gt;(-O&lt;(:M;7)&gt;5G6Q&lt;X*U)&amp;&gt;J&gt;'AA4&amp;:$&lt;WVQ98*F,GRW9WRB=X-!!"B3:8"P=H1A6WFU;#"-6E.P&lt;8"B=G5A;7Y!!&amp;1!]!!-!!-!"!!&amp;!!9!"!!%!!1!"!!(!!A!#1!+!Q!!?!!!$1A!!!!!!!!*!!!!D1M!!!!!!!!!!!!!!!!!!!!!!!!)!!!!%!!!!"!!!!#1!!!!!!%!#Q!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
