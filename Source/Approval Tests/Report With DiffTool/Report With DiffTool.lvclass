@@ -27,7 +27,6 @@
 </Property>
 	<Item Name="Parent Libraries" Type="Parent Libraries">
 		<Item Name="Approval Tests.lvlib:Report With First Working.lvclass" Type="Parent" URL="../../Report With First Working/Report With First Working.lvclass"/>
-		<Item Name="Approval Tests.lvlib:Reporter.lvclass" Type="Parent" URL="../../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Report With DiffTool.ctl" Type="Class Private Data" URL="Report With DiffTool.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
