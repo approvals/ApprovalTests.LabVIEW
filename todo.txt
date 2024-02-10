@@ -6,4 +6,4 @@
 - [x] add Ensure Approved File exists to reporter parent class.
 - [x]Caray pass other parameters to/from Caraya assert
 - [ ]Add set extension to options and consider hiding internal classes???
-- [ ]Verify file remove file extension - set in options now.
+- [x]Verify file remove file extension - set in options now.
