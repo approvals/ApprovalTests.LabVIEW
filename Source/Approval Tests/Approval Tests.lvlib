@@ -57,5 +57,4 @@
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
 	<Item Name="Options.lvclass" Type="LVClass" URL="../Options/Options.lvclass"/>
-	<Item Name="Temproray.vi" Type="VI" URL="../Temproray.vi"/>
 </Library>
