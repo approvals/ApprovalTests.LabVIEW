@@ -5,3 +5,4 @@
 - clean up the vim and make it more responsive - ie. make it call something that isn't a Vim.
 - add Ensure Approved File exists to reporter parent class.
 - Caray pass other parameters to/from Caraya assert
+- Add set extension to options and consider hiding internal classes???
