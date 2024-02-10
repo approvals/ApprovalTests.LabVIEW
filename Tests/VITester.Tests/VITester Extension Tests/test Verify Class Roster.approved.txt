@@ -1,148 +1,45 @@
-<Cluster>
-<Name>value</Name>
-<NumElts>4</NumElts>
-<String>
-<Name>Subject</Name>
-<Val>Chemistry</Val>
-</String>
-<Cluster>
-<Name>Teacher</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>First Name</Name>
-<Val>Mrs</Val>
-</String>
-<String>
-<Name>Last Name</Name>
-<Val>Gray</Val>
-</String>
-</Cluster>
-<Array>
-<Name>Assignments</Name>
-<Dimsize>2</Dimsize>
-<Cluster>
-<Name>Assignment</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>Description</Name>
-<Val>Homework 1</Val>
-</String>
-<Map>
-<Name>Grades</Name>
-<NumElts>2</NumElts>
-<KeyValPair>
-<Cluster>
-<Name>Student</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>First Name</Name>
-<Val>Bobby</Val>
-</String>
-<String>
-<Name>Last Name</Name>
-<Val>Tables</Val>
-</String>
-</Cluster>
-<I32>
-<Name></Name>
-<Val>81</Val>
-</I32>
-</KeyValPair>
-<KeyValPair>
-<Cluster>
-<Name>Student</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>First Name</Name>
-<Val>Lisa</Val>
-</String>
-<String>
-<Name>Last Name</Name>
-<Val>Marie</Val>
-</String>
-</Cluster>
-<I32>
-<Name></Name>
-<Val>90</Val>
-</I32>
-</KeyValPair>
-</Map>
-</Cluster>
-<Cluster>
-<Name>Assignment</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>Description</Name>
-<Val>Homework 2</Val>
-</String>
-<Map>
-<Name>Grades</Name>
-<NumElts>2</NumElts>
-<KeyValPair>
-<Cluster>
-<Name>Student</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>First Name</Name>
-<Val>Bobby</Val>
-</String>
-<String>
-<Name>Last Name</Name>
-<Val>Tables</Val>
-</String>
-</Cluster>
-<I32>
-<Name></Name>
-<Val>100</Val>
-</I32>
-</KeyValPair>
-<KeyValPair>
-<Cluster>
-<Name>Student</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>First Name</Name>
-<Val>Lisa</Val>
-</String>
-<String>
-<Name>Last Name</Name>
-<Val>Marie</Val>
-</String>
-</Cluster>
-<I32>
-<Name></Name>
-<Val>95</Val>
-</I32>
-</KeyValPair>
-</Map>
-</Cluster>
-</Array>
-<Array>
-<Name>Roster</Name>
-<Dimsize>2</Dimsize>
-<Cluster>
-<Name>Student</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>First Name</Name>
-<Val>Bobby</Val>
-</String>
-<String>
-<Name>Last Name</Name>
-<Val>Tables</Val>
-</String>
-</Cluster>
-<Cluster>
-<Name>Student</Name>
-<NumElts>2</NumElts>
-<String>
-<Name>First Name</Name>
-<Val>Lisa</Val>
-</String>
-<String>
-<Name>Last Name</Name>
-<Val>Marie</Val>
-</String>
-</Cluster>
-</Array>
-</Cluster>
+{
+  "Subject":"Chemistry",
+  "Teacher":{"First Name":"Mrs","Last Name":"Gray"},
+  "Assignments":[
+    {
+      "Description":"Homework 1",
+      "Grades":[
+        [
+          {
+            "First Name":"Bobby",
+            "Last Name":"Tables"
+          },
+          81
+        ],
+        [
+          {"First Name":"Lisa","Last Name":"Marie"},
+          90
+        ]
+      ]
+    },
+    {
+      "Description":"Homework 2",
+      "Grades":[
+        [
+          {
+            "First Name":"Bobby",
+            "Last Name":"Tables"
+          },
+          100
+        ],
+        [
+          {"First Name":"Lisa","Last Name":"Marie"},
+          95
+        ]
+      ]
+    }
+  ],
+  "Roster":[
+    {
+      "First Name":"Bobby",
+      "Last Name":"Tables"
+    },
+    {"First Name":"Lisa","Last Name":"Marie"}
+  ]
+}
