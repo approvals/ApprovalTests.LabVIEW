@@ -47,6 +47,8 @@
 		<Item Name="to String.vim" Type="VI" URL="../to String.vim"/>
 	</Item>
 	<Item Name="Verifies" Type="Folder">
+		<Property Name="NI.SortType" Type="Int">3</Property>
+		<Item Name="Verify CLI Output.vi" Type="VI" URL="../Verify CLI Output.vi"/>
 		<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
 		<Item Name="Verify Combinations.vi" Type="VI" URL="../Verify Combinations.vi"/>
 		<Item Name="Verify File.vi" Type="VI" URL="../Verify File.vi"/>
