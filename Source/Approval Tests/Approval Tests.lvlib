@@ -54,6 +54,7 @@
 		<Item Name="Verify File.vi" Type="VI" URL="../Verify File.vi"/>
 		<Item Name="Verify Parameterized.vi" Type="VI" URL="../Verify Parameterized.vi"/>
 		<Item Name="Verify.vim" Type="VI" URL="../Verify.vim"/>
+		<Item Name="Verify CLI Options.ctl" Type="VI" URL="../Verify CLI Options.ctl"/>
 	</Item>
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
