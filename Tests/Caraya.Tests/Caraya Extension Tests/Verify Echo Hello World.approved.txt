@@ -1,0 +1,5 @@
+{
+  "trimmed string":"\"Hello World\"",
+  "trimmed string":"",
+  "return code":0
+}
