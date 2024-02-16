@@ -1,5 +1,5 @@
 {
-  "trimmed string":"\"Hello World\"",
-  "trimmed string":"",
+  "standard output":"\"Hello World\"",
+  "standard error":"",
   "return code":0
 }

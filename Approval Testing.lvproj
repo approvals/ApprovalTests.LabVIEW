@@ -47,7 +47,6 @@
 			<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
-		<Item Name="Verify Echo Hello World.approved.txt" Type="Document" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Verify Echo Hello World.approved.txt"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="1D String Array to Delimited String.vi" Type="VI" URL="/&lt;vilib&gt;/AdvancedString/1D String Array to Delimited String.vi">
@@ -816,6 +815,9 @@
 				<Item Name="NI_SHA-3.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/security/Message Digest/SHA-3/NI_SHA-3.lvclass"/>
 				<Item Name="NI_SHA-256.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/security/Message Digest/SHA-2/SHA-256/NI_SHA-256.lvclass"/>
 				<Item Name="NI_SHA-512.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/security/Message Digest/SHA-2/SHA-512/NI_SHA-512.lvclass"/>
+				<Item Name="Normalize End Of Line.vi" Type="VI" URL="/&lt;vilib&gt;/AdvancedString/Normalize End Of Line.vi">
+					<Property Name="marked" Type="Int">0</Property>
+				</Item>
 				<Item Name="Not Found Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Not Found Dialog.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
