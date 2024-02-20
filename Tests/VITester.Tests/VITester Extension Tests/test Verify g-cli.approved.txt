@@ -1,0 +1,5 @@
+{
+  "standard output":"",
+  "standard error":"error: The following required arguments were not provided:\n    <app to run>...\n\nUSAGE:\n    g-cli [OPTIONS] <app to run>...\n\nFor more information try --help",
+  "return code":2
+}
