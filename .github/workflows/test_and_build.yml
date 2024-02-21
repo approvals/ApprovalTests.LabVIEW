@@ -16,6 +16,7 @@ jobs:
         shell: bash
         run: ./build.sh $GITHUB_RUN_NUMBER  
       - name: Install 
+        shell: bash
         run: g-cli vip -- -local-vip-file "$(ls build/*.vip)" -lv "20.0 (64-bit)"
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v4
