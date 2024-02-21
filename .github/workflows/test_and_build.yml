@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run Unit Tests
         shell: bash
-        run: -./run_unittests.sh
+        run: ./run_unittests.sh
       - name: Build Package
         shell: bash
-        run: -./build.sh $GITHUB_RUN_NUMBER  
+        run: ./build.sh $GITHUB_RUN_NUMBER  
       - name: Install 
-        run: -g-cli vip -- -local-vip-file "$(ls build/*.vip)" -v "20.0 (64-bit)"
+        run: g-cli vip -- -local-vip-file "$(ls build/*.vip)" -v "20.0 (64-bit)"
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v4
         if: success() || failure() # always run even if the previous step fails
