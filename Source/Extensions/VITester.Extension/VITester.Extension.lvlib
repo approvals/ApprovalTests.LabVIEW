@@ -8,8 +8,12 @@
 
 </Property>
 	<Item Name="For Pallettes" Type="Folder">
+		<Item Name="New Verify as JSON.vi" Type="VI" URL="../New Verify as JSON.vi"/>
 		<Item Name="New Verify as Parameterized.vi" Type="VI" URL="../New Verify as Parameterized.vi"/>
+		<Item Name="New Verify CLI Output.vi" Type="VI" URL="../New Verify CLI Output.vi"/>
 		<Item Name="New Verify Combinations.vi" Type="VI" URL="../New Verify Combinations.vi"/>
+		<Item Name="New Verify File.vi" Type="VI" URL="../New Verify File.vi"/>
+		<Item Name="New Verify.vi" Type="VI" URL="../New Verify.vi"/>
 	</Item>
 	<Item Name="Verify as JSON.vi" Type="VI" URL="../Verify as JSON.vi"/>
 	<Item Name="Verify CLI Output.vi" Type="VI" URL="../Verify CLI Output.vi"/>
