@@ -15,7 +15,7 @@
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Extensions" Type="Folder">
 			<Item Name="Caraya.Extension.lvlib" Type="Library" URL="../Source/Extensions/Caraya.Extension/Caraya.Extension.lvlib"/>
-			<Item Name="LUnitExtension.lvlib" Type="Library" URL="../Source/Extensions/LUnit.Extension/LUnitExtension.lvlib"/>
+			<Item Name="LUnit.Extension.lvlib" Type="Library" URL="../Source/Extensions/LUnit.Extension/LUnit.Extension.lvlib"/>
 			<Item Name="VITester.Extension.lvlib" Type="Library" URL="../Source/Extensions/VITester.Extension/VITester.Extension.lvlib"/>
 		</Item>
 		<Item Name="Tests" Type="Folder">
