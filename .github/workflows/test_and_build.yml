@@ -17,7 +17,7 @@ jobs:
         run: ./build.sh $GITHUB_RUN_NUMBER  
       - name: Install 
         shell: bash
-        run: g-cli vip -- -local-vip-file "build\\$(ls build/*.vip)" -lv "20.0 (64-bit)"
+        run: g-cli vip -- --local-vip-file "build\\$(ls build/*.vip)" -lv "20.0 (64-bit)"
       - name: Switch Tests
         shell: bash
         run: ./switch_tests.sh
