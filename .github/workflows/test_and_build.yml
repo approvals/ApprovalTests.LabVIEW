@@ -17,7 +17,7 @@ jobs:
         run: ./_build.sh $GITHUB_RUN_NUMBER  
       - name: Install 
         shell: bash
-        run: g-cli vip -- --local-vip-file "$(cygpath -w $(ls build/*.vip))" -lv "20.0 (64-bit)"
+        run: ./_install.sh 
       - name: Switch Tests
         shell: bash
         run: ./_switch_tests.sh
