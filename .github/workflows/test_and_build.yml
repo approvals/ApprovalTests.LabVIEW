@@ -15,6 +15,10 @@ jobs:
       - name: Build Package
         shell: bash
         run: ./_build.sh $GITHUB_RUN_NUMBER  
+        uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: 'build/*.vip'
       - name: Install 
         shell: bash
         run: ./_install.sh 
