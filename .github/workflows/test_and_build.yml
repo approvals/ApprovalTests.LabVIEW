@@ -32,6 +32,7 @@ jobs:
       - name: Grab Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: package
-          path: 'build/*.vip'
-
+          name: artifacts 
+          path: |
+            build/*.vip
+            reports
