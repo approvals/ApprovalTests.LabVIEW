@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2024-02-21 15:39:07" Creator="Samuel Taggart" Comments="" ID="91dc78f8e418c106c5d7f4e4ac787582">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2024-02-26 18:46:20" Creator="Samuel Taggart" Comments="" ID="609c0007e1815b3b88b881dd302630d6">
   <Library_General_Settings>
     <Package_File_Name>SAS_lib_Approval_Tests</Package_File_Name>
-    <Library_Version>2.0.0.13</Library_Version>
+    <Library_Version>2.0.1.110</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>Source</Library_Source_Folder>
     <Library_Output_Folder>build</Library_Output_Folder>
@@ -128,11 +128,6 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       </Namespace_Overrides>
       <Namespace_Overrides>
         <Path>Extensions/Caraya.Extension/Caraya.Extension.lvlib</Path>
-        <Namespace_Type>Prefix</Namespace_Type>
-        <Namespace>lib_</Namespace>
-      </Namespace_Overrides>
-      <Namespace_Overrides>
-        <Path>Extensions/LUnit.Extension/LUnitExtension.lvlib</Path>
         <Namespace_Type>Prefix</Namespace_Type>
         <Namespace>lib_</Namespace>
       </Namespace_Overrides>
@@ -318,7 +313,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Options</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>6D4C88476F2703657872A257D9802FA8</GUID>
+      <GUID>262B6AD3B77861E417E2FB0A0BC34F33</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -423,7 +418,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\VITester.Extension\New Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>6AEA6A4B12B3EA91B5FF0B07DF4FD7DD</GUID>
+      <GUID>B3940898D9200B9DAA759C51A6B063E8</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -528,7 +523,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\LUnit.Extension\New Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>37AE34806EB8FE8A59CE2FBBC597DCD1</GUID>
+      <GUID>6B74A5301EC96C093F7637E4E06CD322</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -633,7 +628,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\Caraya.Extension\New Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>353D44A9EC058C334E545DCB22FF76BE</GUID>
+      <GUID>E3778796929AD95B548335AA6AFFF74E</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -696,7 +691,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Add Regex Scrubber Unique.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>662FF999C7D632A018C403726F011823</GUID>
+      <GUID>E441F5C7EC36A49EAFC341505B8BB1A4</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -801,7 +796,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>22737F059CC74E52601FB0E3819D7CEF</GUID>
+      <GUID>67079738D0DA6114C62A92BDBC322CCB</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
   <Library_Palette_Definition>
@@ -824,7 +819,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Synchronyze_with_Directory>false</Synchronyze_with_Directory>
         <Synchronize_Directory_Path>.</Synchronize_Directory_Path>
       </Synchronization_Info>
-      <GUID>943269DA22591386969EA06AB8A9F437</GUID>
+      <GUID>115B19463261D6B4F5B0A8636FE9158B</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>

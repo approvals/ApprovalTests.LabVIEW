@@ -3,6 +3,7 @@ mkdir reports 2> /dev/null
 rm "reports\\Caraya.UnitTestReport.xml" 2>/dev/null
 rm "reports\\LUnit.UnitTestReport.xml" 2>/dev/null
 rm "reports\\VITester.UnitTestReport.xml" 2>/dev/null
+rm "reports\\Scrubber.UnitTestReport.xml" 2>/dev/null
 
 set -euo pipefail
 

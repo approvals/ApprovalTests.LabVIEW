@@ -1,0 +1,23 @@
+#! /usr/bin/bash
+mkdir reports 2> /dev/null
+rm "reports\\Caraya.InstallTestReport.xml" 2>/dev/null
+rm "reports\\LUnit.InstallTestReport.xml" 2>/dev/null
+rm "reports\\VITester.InstallTestReport.xml" 2>/dev/null
+
+set -euo pipefail
+
+HERE=$(cygpath -w $(pwd))
+
+g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "approvals-dev.vipc"
+
+SECONDS=0
+echo "Running Caraya Tests" # needed because caray tool is not very verbose.
+g-cli caraya -- -s "InstallTests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.InstallTestReport.xml"
+echo "Test Time: $SECONDS"
+SECONDS=0
+echo "Running Scrubber Tests"
+g-cli caraya -- -s "InstallTests\\Scrubber.Tests\\Scrubber.Tests.lvclass" -x "reports\\Scrubber.InstallTestReport.xml"
+echo "Test Time: $SECONDS"
+g-cli vitester -- -r "reports\\VITester.InstallTestReport.xml" "InstallTests\\VITester.Tests\\VITester Extension Tests\\VITester Extension Tests.lvclass"
+g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "InstallTests\\LUnit.Tests"
+

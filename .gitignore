@@ -10,4 +10,4 @@ reports/*
 *.received.*
 .DS_Store
 sandbox
-
+InstallTests
