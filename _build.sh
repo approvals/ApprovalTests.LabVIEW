@@ -9,5 +9,5 @@ HERE=$(cygpath -w $(pwd))
 SECONDS=0
 g-cli clearlvcache
 g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "approvals-dev.vipc"
-g-cli vipb -- -b "Approval Tests.vipb" -v "$VERSION.$1" -r "release-notes.txt"
+g-cli vipb -- -b "Approval Tests.vipb" -v "$VERSION.$1" -rn "release-notes.txt"
 echo "Script Time: $SECONDS"
