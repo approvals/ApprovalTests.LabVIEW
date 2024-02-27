@@ -1,4 +1,5 @@
-- Version 2.0 - Breaking Changes
+- Fixed bug with release notes not showing up.
+Version 2.0 - Breaking Changes
 - Renamed pass if approved.vi to verify.vim It now accepts anything, not just strings.
 - changed .actual to .approved and added a second suffix (ie .approved.txt or .received.json)
 - Added several different verify methods. JSON, File, Combinations, Parameterized, and CLI.
