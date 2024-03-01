@@ -1345,7 +1345,6 @@
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
-				<Item Name="lib_Approval Tests.lvlib" Type="Library" URL="/&lt;vilib&gt;/SAS/Approval Tests/Approval Tests/lib_Approval Tests.lvlib"/>
 			</Item>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
