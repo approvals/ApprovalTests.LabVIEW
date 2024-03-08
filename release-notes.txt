@@ -1,1 +1,2 @@
-- Made options optional on all verifies. Was required on Verify.vim and Verify File. Was recommmended a few other places.
+- Added Date Scrubber
+- Added code to remove recieved file once test passes.
