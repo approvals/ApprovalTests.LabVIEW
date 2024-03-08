@@ -38,6 +38,7 @@
 		<Item Name="Reporter.lvclass" Type="LVClass" URL="../Reporter/Reporter.lvclass"/>
 	</Item>
 	<Item Name="Scrubbers" Type="Folder">
+		<Item Name="Date Scrubber.lvclass" Type="LVClass" URL="../Date Scrubber/Date Scrubber.lvclass"/>
 		<Item Name="Multi Scrubber.lvclass" Type="LVClass" URL="../Multi Scrubber/Multi Scrubber.lvclass"/>
 		<Item Name="Regex Scrubber Count Unique.lvclass" Type="LVClass" URL="../Regex Scrubber Count Unique/Regex Scrubber Count Unique.lvclass"/>
 		<Item Name="Regex Scrubber.lvclass" Type="LVClass" URL="../Regex Scrubber/Regex Scrubber.lvclass"/>
