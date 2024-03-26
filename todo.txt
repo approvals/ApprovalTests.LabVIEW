@@ -7,3 +7,4 @@
 - [x]Caray pass other parameters to/from Caraya assert
 - [ ]Add set extension to options and consider hiding internal classes???
 - [x]Verify file remove file extension - set in options now.
+- [ ] Add VScode reporter
