@@ -9,6 +9,11 @@ jobs:
     runs-on: LV20x64
     steps:
       - uses: actions/checkout@v4
+      - uses: nick-fields/retry@v2
+        with:
+           max_attepmets: 3
+           retry_on: error
+           timeout_seconds: 1800
       - name: Run Unit Tests
         shell: bash
         run: ./_run_unittests.sh
