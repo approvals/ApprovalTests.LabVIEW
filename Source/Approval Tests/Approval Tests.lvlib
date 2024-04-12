@@ -11,6 +11,7 @@
 		<Item Name="Comparator.lvclass" Type="LVClass" URL="../Comparator/Comparator.lvclass"/>
 	</Item>
 	<Item Name="for pallettes" Type="Folder">
+		<Item Name="Add Regex Scrubber Unique.vi" Type="VI" URL="../Add Regex Scrubber Unique.vi"/>
 		<Item Name="Add Regex Scrubber.vi" Type="VI" URL="../Add Regex Scrubber.vi"/>
 		<Item Name="Options Cube.vi" Type="VI" URL="../Options Cube.vi"/>
 	</Item>
@@ -64,6 +65,6 @@
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
-	<Item Name="Add Regex Scrubber Unique.vi" Type="VI" URL="../Add Regex Scrubber Unique.vi"/>
+	<Item Name="Add Date Scrubber.vi" Type="VI" URL="../Add Date Scrubber.vi"/>
 	<Item Name="Options.lvclass" Type="LVClass" URL="../Options/Options.lvclass"/>
 </Library>

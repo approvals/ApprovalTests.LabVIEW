@@ -1,2 +1,3 @@
 - Added Date Scrubber
+- Added a merge VI to pallettes to drop a Date Scrubber
 - Added code to remove recieved file once test passes.
