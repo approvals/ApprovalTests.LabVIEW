@@ -46,7 +46,7 @@
 			<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
 			<Item Name="Scrubber.Tests.lvclass" Type="LVClass" URL="../Tests/Scrubber.Tests/Scrubber.Tests.lvclass"/>
 			<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
-			<Item Name="Basic Mechanics Tests.lvclass" Type="LVClass" URL="../Tests/Basic Mechanics Tests/Basic Mechanics Tests.lvclass"/>
+			<Item Name="Basic.Mechanics.Tests.lvclass" Type="LVClass" URL="../Tests/Basic.Mechanics.Tests/Basic.Mechanics.Tests.lvclass"/>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
