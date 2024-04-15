@@ -11,6 +11,10 @@ HERE=$(cygpath -w $(pwd))
 g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "approvals-dev.vipc"
 
 SECONDS=0
+echo "Running Basic Mechanics Tests"
+g-cli caraya -- -s "InstallTests\\Basic.Mechanics.Tests\\Basic.Mechanics.Tests.lvclass" -x "reports\\Basic.Mechanics.InstallTestReport.xml"
+echo "Test Time: $SECONDS"
+SECONDS=0
 echo "Running Caraya Tests" # needed because caray tool is not very verbose.
 g-cli caraya -- -s "InstallTests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.InstallTestReport.xml"
 echo "Test Time: $SECONDS"
