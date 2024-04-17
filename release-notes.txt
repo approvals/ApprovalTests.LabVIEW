@@ -1,6 +1,1 @@
-- Updated dependencies to include JSONtext and JSONtext Opbject Serialization.
-- Add a Custom Diff Tool Option. Only works in Windows. Set an environment variable named LV_APPROVALS_CUSTOM_DIFFTOOL. An example value for Notepad++ would be:
-notepad++ -pluginMessage=compare "%RECEIVED%" "%APPROVED%"
-The %APPROVED% and %RECEIVED% get replaced with the path to the recieved and approved files. 
-With this, one can now use any 3rd party difftool on Windows that is callable from the command line.
-
+- Added an entry to Date Scrubber to account for HSE Logger Default Date Format.
