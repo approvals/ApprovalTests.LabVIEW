@@ -14,6 +14,8 @@ If you are already familiar with approval testing then jump right to [Getting St
   * [What Is Approval Testing?](#what-is-approval-testing)
   * [How Does It Work](#how-does-it-work)
   * [Getting Started](#getting-started)
+    * [New Project](#new-project)
+    * [Existing Projects](#existing-projects)
     * [Source Code Control Notes](#source-code-control-notes)
     * [Available Verify Methods](#available-verify-methods)
     * [Reporters](#reporters)
