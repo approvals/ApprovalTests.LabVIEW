@@ -25,6 +25,12 @@ If you are already familiar with approval testing then jump right to [Getting St
 
 ## Getting Started
 
+###  New Project
+
+The easiest way to use Approval Tests in a new project is to clone the [Starter Project](https://github.com/approvals/ApprovalTests.LabVIEW.StarterProject/blob/main/README.md)
+
+### Existing Projects
+
 You can download the latest officially released version off of [VIPM](https://www.vipm.io/package/sas_lib_approval_tests/). 
 
 ### Source Code Control Notes
