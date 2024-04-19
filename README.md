@@ -1,6 +1,8 @@
-[![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=installs)](https://www.vipm.io/package/sas_lib_approval_tests/) [![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=stars)](https://www.vipm.io/package/sas_lib_approval_tests/)
+[![CI - Test&Build](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/test_and_build.yml/badge.svg)](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/test_and_build.yml)
+[![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=installs)](https://www.vipm.io/package/sas_lib_approval_tests/)
+[![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=stars)](https://www.vipm.io/package/sas_lib_approval_tests/)
 
-CI Status (https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/test_and_build.yml)
+
 # Approval Testing For LabVIEW
 
 
