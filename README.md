@@ -21,7 +21,8 @@ If you are already familiar with approval testing then jump right to [Getting St
     * [Source Code Control Notes](#source-code-control-notes)
     * [Available Verify Methods](#available-verify-methods)
     * [Reporters](#reporters)
-  * [Contributing](#contributing)<!-- endToc -->
+  * [Contributing](#contributing)
+  * [Need Help](#need-help)<!-- endToc -->
 
 ## What Is Approval Testing?
 
