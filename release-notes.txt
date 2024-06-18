@@ -1,1 +1,1 @@
-- Added an entry to Date Scrubber to account for HSE Logger Default Date Format.
+- fixed bug in VIM for array of other things. add a 0 index instead of using default of last value. See issue [#1]
