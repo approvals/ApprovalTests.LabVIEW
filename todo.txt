@@ -10,3 +10,5 @@
 - [ ] Add Notepad++ reporter
 - [ ] Add VScode reporter
 - [ ] Add Generic Difftool
+- [ ] Add path to string conversion in vim to avoid json (particularly for arrays of file paths)
+- [ ] Add plain verify methods to pallettes so I can do a QuickDrop Replace.
