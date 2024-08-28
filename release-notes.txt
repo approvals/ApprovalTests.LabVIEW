@@ -1,1 +1,1 @@
-- fixed bug in VIM for array of other things. add a 0 index instead of using default of last value. See issue [#1]
+- Fixed issue with passing incoming errors through. In few cases they were getting dropped.
