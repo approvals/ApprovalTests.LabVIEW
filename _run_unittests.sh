@@ -23,6 +23,10 @@ SECONDS=0
 echo "Running Scrubber Tests"
 g-cli caraya -- -s "Tests\\Scrubber.Tests\\Scrubber.Tests.lvclass" -x "reports\\Scrubber.UnitTestReport.xml"
 echo "Test Time: $SECONDS"
+SECONDS=0
+echo "Running Error Propagation Tests"
+g-cli caraya -- -s "Tests\\Error.Propagation.Tests\\Error.Propagation.Tests.lvclass" -x "reports\\Error.Propagation.UnitTestReport.xml"
+echo "Test Time: $SECONDS"
 g-cli vitester -- -r "reports\\VITester.UnitTestReport.xml" "Approval Testing.lvproj"
 g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
 # end-snippet

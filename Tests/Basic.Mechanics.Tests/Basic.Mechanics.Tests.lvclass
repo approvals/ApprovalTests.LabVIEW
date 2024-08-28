@@ -24,7 +24,7 @@
 	<Item Name="Basic.Mechanics.Tests.ctl" Type="Class Private Data" URL="Basic.Mechanics.Tests.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
-	<Item Name="Test Fails Generate Received Approved stays the same..approved.txt" Type="Document" URL="../../Basic Mechanics Tests/Test Fails Generate Received Approved stays the same..approved.txt"/>
+	<Item Name="Test Fails Generate Received Approved stays the same..approved.txt" Type="Document" URL="../Test Fails Generate Received Approved stays the same..approved.txt"/>
 	<Item Name="Test Fails Generate Received Approved stays the same..vi" Type="VI" URL="../Test Fails Generate Received Approved stays the same..vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!"A!!!!!A!%!!!!6!$Q!!Q!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$!!"Y!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
@@ -34,7 +34,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
 	</Item>
-	<Item Name="Test Gets Rid of Old Received.approved.txt" Type="Document" URL="../../Basic Mechanics Tests/Test Gets Rid of Old Received.approved.txt"/>
+	<Item Name="Test Gets Rid of Old Received.approved.txt" Type="Document" URL="../Test Gets Rid of Old Received.approved.txt"/>
 	<Item Name="Test Gets Rid of Old Received.vi" Type="VI" URL="../Test Gets Rid of Old Received.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!"A!!!!!A!%!!!!6!$Q!!Q!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$!!"Y!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
@@ -44,7 +44,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
 	</Item>
-	<Item Name="Test Initial Verify.approved.txt" Type="Document" URL="../../Basic Mechanics Tests/Test Initial Verify.approved.txt"/>
+	<Item Name="Test Initial Verify.approved.txt" Type="Document" URL="../Test Initial Verify.approved.txt"/>
 	<Item Name="Test Initial Verify.vi" Type="VI" URL="../Test Initial Verify.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!"A!!!!!A!%!!!!6!$Q!!Q!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$!!"Y!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
