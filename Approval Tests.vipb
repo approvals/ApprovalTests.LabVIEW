@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2024-08-28 11:28:25" Creator="Samuel Taggart" Comments="" ID="2510fd029a7d3c34dfa055ff000ec924">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2024-08-28 11:52:12" Creator="Samuel Taggart" Comments="" ID="a566dd272229bbe9ceeac614a45c16c8">
   <Library_General_Settings>
     <Package_File_Name>SAS_lib_Approval_Tests</Package_File_Name>
-    <Library_Version>2.2.3.2</Library_Version>
+    <Library_Version>2.2.3.3</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>Source</Library_Source_Folder>
     <Library_Output_Folder>build</Library_Output_Folder>
@@ -317,7 +317,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Options</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>7FA462474D353E22180B06607100C635</GUID>
+      <GUID>F49E35263117E60A1C36AD373D5C3D28</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -422,7 +422,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\VITester.Extension\New Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>9E25072AEAADCD2F9CFF4E2986D1D505</GUID>
+      <GUID>B61D413CFC7E8F3D9647ACA0FD6CAD39</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -527,7 +527,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\LUnit.Extension\New Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>56D0494DBC5F6BA38EB38B62ED3CFD72</GUID>
+      <GUID>2EF9224EBE42D57B653143964B9CCE10</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -632,7 +632,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\Caraya.Extension\New Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>8D9FB3325AFD54A2E422C5BA3A09C5AE</GUID>
+      <GUID>F0A9899D4B0CAF5212C5ADC1AA1F1FBE</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -709,7 +709,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Add Date Scrubber.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>46F66E1979B7BBFF8323F00A2959DD40</GUID>
+      <GUID>4300D5CD8DA65C1DF75881DBABC0E5F4</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -814,7 +814,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>079700806528EF1BE1531DA6D3950738</GUID>
+      <GUID>52F815F77CA7415E3C5ABDF83C660121</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
   <Library_Palette_Definition>
@@ -837,7 +837,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Synchronyze_with_Directory>false</Synchronyze_with_Directory>
         <Synchronize_Directory_Path>.</Synchronize_Directory_Path>
       </Synchronization_Info>
-      <GUID>AB20214EBDA6A70B81418B3F390D23E5</GUID>
+      <GUID>D501D97FBE83E46E423D531C4E1712AA</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>
