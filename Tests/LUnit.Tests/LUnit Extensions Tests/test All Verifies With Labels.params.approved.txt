@@ -1,0 +1,3 @@
+{"Greeting":"Hallo","Name":"Charlie"} => {"Output":"Hallo Charlie"}
+{"Greeting":"Hello","Name":"Alice"} => {"Output":"Hello Alice"}
+{"Greeting":"Hola","Name":"Bobby"} => {"Output":"Hola Bobby"}
