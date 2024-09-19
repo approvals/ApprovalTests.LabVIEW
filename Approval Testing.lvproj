@@ -52,6 +52,18 @@
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Verify Hello Caraya " Type="Document" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Verify Hello Caraya "/>
 		<Item Name="Verify Hello Caraya.approved." Type="Document" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Verify Hello Caraya.approved."/>
+		<Item Name="test Verify AND Combos.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify AND Combos.approved."/>
+		<Item Name="test Verify AND Parameterized.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify AND Parameterized.approved."/>
+		<Item Name="test Verify Class Roster as JSON.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Class Roster as JSON.approved."/>
+		<Item Name="test Verify Class Roster.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Class Roster.approved."/>
+		<Item Name="test Verify Echo Hello World.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Echo Hello World.approved."/>
+		<Item Name="test Verify Hello LUnit.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Hello LUnit.approved."/>
+		<Item Name="test Verify Multi Combos.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Multi Combos.approved."/>
+		<Item Name="test Verify Person as JSON.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Person as JSON.approved."/>
+		<Item Name="test Verify Person.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Person.approved."/>
+		<Item Name="test Verify Scripting Code.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify Scripting Code.approved."/>
+		<Item Name="test Verify a VI.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify a VI.approved."/>
+		<Item Name="test Verify g-cli.approved." Type="Document" URL="../Tests/LUnit.Tests/LUnit Extensions Tests/test Verify g-cli.approved."/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="1D String Array to Delimited String.vi" Type="VI" URL="/&lt;vilib&gt;/AdvancedString/1D String Array to Delimited String.vi">

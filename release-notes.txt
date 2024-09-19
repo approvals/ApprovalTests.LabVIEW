@@ -1,1 +1,1 @@
-- Added support for nested Caraya tests per request/bug report by Peter Horn. See issue [#2] in GitHub.
+- Added labels to allow for mulitple verifies in a single test VI per request/bug report by Peter Horn. See issue [#3] in GitHub.
