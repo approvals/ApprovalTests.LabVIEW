@@ -50,6 +50,8 @@
 			<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
+		<Item Name="Verify Hello Caraya " Type="Document" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Verify Hello Caraya "/>
+		<Item Name="Verify Hello Caraya.approved." Type="Document" URL="../Tests/Caraya.Tests/Caraya Extension Tests/Verify Hello Caraya.approved."/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="1D String Array to Delimited String.vi" Type="VI" URL="/&lt;vilib&gt;/AdvancedString/1D String Array to Delimited String.vi">
