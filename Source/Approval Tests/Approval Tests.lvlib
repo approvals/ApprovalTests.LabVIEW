@@ -50,6 +50,7 @@
 	<Item Name="Utility" Type="Folder">
 		<Item Name="array to array of variants.vim" Type="VI" URL="../array to array of variants.vim"/>
 		<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
+		<Item Name="Replace if Empty.vi" Type="VI" URL="../Replace if Empty.vi"/>
 		<Item Name="Replace with Caller if Empty.vi" Type="VI" URL="../Replace with Caller if Empty.vi"/>
 		<Item Name="Scalar To String.vim" Type="VI" URL="../Scalar To String.vim"/>
 		<Item Name="to String.vim" Type="VI" URL="../to String.vim"/>
