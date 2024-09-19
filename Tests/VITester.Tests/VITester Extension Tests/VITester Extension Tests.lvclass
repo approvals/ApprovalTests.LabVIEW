@@ -41,6 +41,21 @@
 	<Item Name="VITester Extension Tests.ctl" Type="Class Private Data" URL="VITester Extension Tests.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
+	<Item Name="test All Verifies With Labels.vi" Type="VI" URL="../test All Verifies With Labels.vi">
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%'!!!!#!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!%:!=!!?!!!C)&amp;:*6'6T&gt;'6S)%6Y&gt;'6O=WFP&lt;C"5:8.U=SZM&gt;G.M98.T!!!:6'6T&gt;'FO:S""=("S&lt;X:B&lt;#"5:8.U=S"J&lt;A!71&amp;!!!Q!!!!%!!ABF=H*P=C"J&lt;A!!91$Q!!Q!!Q!%!!1!"1!%!!1!"!!%!!9!"!!%!!5$!!"Y!!!.#!!!!!!!!!!!!!!.#Q!!!!!!!!!!!!!!!!!!!!!!!!I!!!!!!!!!!!!!!")!!!U!!!!-!!!!!!!!!!!!!!%!"Q!!!!!</Property>
+		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
+		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
+	</Item>
+	<Item Name="test All Verifies With Labels.cli.approved.txt" Type="Document" URL="../test All Verifies With Labels.cli.approved.txt"/>
+	<Item Name="test All Verifies With Labels.combo.approved.txt" Type="Document" URL="../test All Verifies With Labels.combo.approved.txt"/>
+	<Item Name="test All Verifies With Labels.file.approved.tmp" Type="Document" URL="../test All Verifies With Labels.file.approved.tmp"/>
+	<Item Name="test All Verifies With Labels.json.approved.json" Type="Document" URL="../test All Verifies With Labels.json.approved.json"/>
+	<Item Name="test All Verifies With Labels.params.approved.txt" Type="Document" URL="../test All Verifies With Labels.params.approved.txt"/>
+	<Item Name="test All Verifies With Labels.verify.approved.txt" Type="Document" URL="../test All Verifies With Labels.verify.approved.txt"/>
 	<Item Name="test Verify Hello VITester.vi" Type="VI" URL="../test Verify Hello VITester.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;/!!!!#1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!%B!=!!?!!!C)&amp;:*6'6T&gt;'6S)%6Y&gt;'6O=WFP&lt;C"5:8.U=SZM&gt;G.M98.T!!!;6'6T&gt;'FO:S""=("S&lt;X:B&lt;#"5:8.U=S"P&gt;81!!":!5!!$!!!!!1!##'6S=G^S)'FO!!"'1(!!(A!!)C"7362F=X2F=C"&amp;?(2F&lt;H.J&lt;WYA6'6T&gt;(-O&lt;(:D&lt;'&amp;T=Q!!'62F=X2J&lt;G=A18"Q=G^W97QA6'6T&gt;(-A;7Y!91$Q!!Q!!Q!%!!1!"1!%!!1!"!!%!!9!"!!%!!=$!!"Y!!!.#!!!!!!!!!!!!!!.#Q!!!!!!!!!!!!!!!!!!!!!!!!I!!!!!!!!!!!!!!")!!!U!!!!-!!!!!!!!!!!!!!%!#!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
