@@ -1,1 +1,2 @@
-- Added labels to allow for mulitple verifies in a single test VI per request/bug report by Peter Horn. See issue [#3] in GitHub.
+- Added an experimental feature to set VI Compare options. Needed it to work around some bug in VICompare for a project.
+
