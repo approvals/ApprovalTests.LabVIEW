@@ -10,6 +10,13 @@
 	<Item Name="Comparators" Type="Folder">
 		<Item Name="Comparator.lvclass" Type="LVClass" URL="../Comparator/Comparator.lvclass"/>
 	</Item>
+	<Item Name="Experimental" Type="Folder">
+		<Item Name="Get LVCompare Options.vi" Type="VI" URL="../Get LVCompare Options.vi"/>
+		<Item Name="Global.vi" Type="VI" URL="../Global.vi">
+			<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
+		</Item>
+		<Item Name="Set LVCompare Options.vi" Type="VI" URL="../Set LVCompare Options.vi"/>
+	</Item>
 	<Item Name="for pallettes" Type="Folder">
 		<Item Name="Add Date Scrubber.vi" Type="VI" URL="../Add Date Scrubber.vi"/>
 		<Item Name="Add Regex Scrubber Unique.vi" Type="VI" URL="../Add Regex Scrubber Unique.vi"/>
