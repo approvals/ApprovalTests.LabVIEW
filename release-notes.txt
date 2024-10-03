@@ -1,2 +1,2 @@
-- Added an experimental feature to set VI Compare options. Needed it to work around some bug in VICompare for a project.
+- Added lib_ prefix to installed LUnit Extension library to avoid crosslinking issues. Was doing it for other extensions. Somehow I missed this one."
 
