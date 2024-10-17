@@ -1,2 +1,4 @@
-- Added lib_ prefix to installed LUnit Extension library to avoid crosslinking issues. Was doing it for other extensions. Somehow I missed this one."
-
+2 Minor Dev Improvements
+- Fixed string produced by verify when test fails to remove an extra space
+- Removed error in on LUnit Extension merge VIs in the pallettes. Not needed for LUnit.
+Improvements came from a merge request from Anton Sundqvist
