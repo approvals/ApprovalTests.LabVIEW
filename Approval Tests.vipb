@@ -346,7 +346,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify as Parameterized.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>VITester.Extension.lvlib:New Verify as Parameterized.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -360,7 +360,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify Combinations.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>VITester.Extension.lvlib:New Verify Combinations.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -374,7 +374,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>VITester.Extension.lvlib:New Verify.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -388,7 +388,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify as JSON.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>VITester.Extension.lvlib:New Verify as JSON.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -402,7 +402,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify CLI Output.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>VITester.Extension.lvlib:New Verify CLI Output.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -416,7 +416,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify File.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>VITester.Extension.lvlib:New Verify File.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -465,7 +465,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify as Parameterized.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>LUnit.Extension.lvlib:New Verify as Parameterized.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -479,7 +479,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify Combinations.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>LUnit.Extension.lvlib:New Verify Combinations.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -493,7 +493,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>LUnit.Extension.lvlib:New Verify.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -507,7 +507,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify as JSON.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>LUnit.Extension.lvlib:New Verify as JSON.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -521,7 +521,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify CLI Output.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>LUnit.Extension.lvlib:New Verify CLI Output.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -535,7 +535,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify File.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>LUnit.Extension.lvlib:New Verify File.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -584,7 +584,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>Caraya.Extension.lvlib:New Verify.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -598,7 +598,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify as JSON.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>Caraya.Extension.lvlib:New Verify as JSON.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -612,7 +612,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify as Parameterized.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>Caraya.Extension.lvlib:New Verify as Parameterized.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -626,7 +626,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify Combinations.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>Caraya.Extension.lvlib:New Verify Combinations.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -640,7 +640,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify CLI Output.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>Caraya.Extension.lvlib:New Verify CLI Output.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
@@ -654,7 +654,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Items_Data>
         <Type>Item</Type>
         <Sub_Palette_Index>-1</Sub_Palette_Index>
-        <NameSub_Menu_Name>New Verify File.vi</NameSub_Menu_Name>
+        <NameSub_Menu_Name>Caraya.Extension.lvlib:New Verify File.vi</NameSub_Menu_Name>
         <Short_Name/>
         <is_Merge_VI>true</is_Merge_VI>
         <Position>
