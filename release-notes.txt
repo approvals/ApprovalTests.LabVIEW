@@ -1,4 +1,1 @@
-2 Minor Dev Improvements
-- Fixed string produced by verify when test fails to remove an extra space
-- Removed error in on LUnit Extension merge VIs in the pallettes. Not needed for LUnit.
-Improvements came from a merge request from Anton Sundqvist
+- Added individual verifies for extension to pallettes under an advanced subpallette. This is in addition to the existing New Verify ... Merge VIs. I added so that now you can drop them individually or using Quick Drop.
