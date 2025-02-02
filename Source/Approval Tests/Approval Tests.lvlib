@@ -38,6 +38,7 @@
 		<Item Name="Verify Core.vi" Type="VI" URL="../Verify Core.vi"/>
 	</Item>
 	<Item Name="Reporters" Type="Folder">
+		<Item Name="Report Native Compare Tool.lvclass" Type="LVClass" URL="../Report Native Compare Tool/Report Native Compare Tool.lvclass"/>
 		<Item Name="Report Nothing.lvclass" Type="LVClass" URL="../Report Nothing/Report Nothing.lvclass"/>
 		<Item Name="Report With Beyond Compare.lvclass" Type="LVClass" URL="../Report With Beyord Compare/Report With Beyond Compare.lvclass"/>
 		<Item Name="Report With Custom DiffTool.lvclass" Type="LVClass" URL="../Report With Custom DiffTool/Report With Custom DiffTool.lvclass"/>
