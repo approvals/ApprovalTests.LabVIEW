@@ -7,9 +7,8 @@ rm "reports\\VITester.InstallTestReport.xml" 2>/dev/null
 set -euo pipefail
 
 HERE=$(cygpath -w $(pwd))
-
-g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "approvals-dev.vipc"
-
+g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc"
+# if above fails set LV_VERSION ENV variable. If you have the vip tool. then `g-cli vip -- --list` will list all available version strings.
 SECONDS=0
 echo "Running Basic Mechanics Tests"
 g-cli caraya -- -s "InstallTests\\Basic.Mechanics.Tests\\Basic.Mechanics.Tests.lvclass" -x "reports\\Basic.Mechanics.InstallTestReport.xml"
