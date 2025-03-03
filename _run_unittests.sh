@@ -9,7 +9,7 @@ set -euo pipefail
 
 HERE=$(cygpath -w $(pwd))
 
-g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "approvals-dev.vipc"
+g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc"
 # begin-snippet: run_tests
 SECONDS=0
 echo "Running Basic Mechanics Tests"
