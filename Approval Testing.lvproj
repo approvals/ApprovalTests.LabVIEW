@@ -51,12 +51,12 @@
 			<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		</Item>
 		<Item Name="astemes-string-diff-utils" Type="Folder">
-			<Item Name="Find All Highlights.vi" Type="VI" URL="../astemes-string-diff-utils/source/Find All Highlights.vi"/>
-			<Item Name="Find Highlights.vi" Type="VI" URL="../astemes-string-diff-utils/source/Find Highlights.vi"/>
-			<Item Name="Diff Tool.vi" Type="VI" URL="../astemes-string-diff-utils/source/Diff Tool.vi"/>
-			<Item Name="Find Common Chars.vi" Type="VI" URL="../astemes-string-diff-utils/source/Find Common Chars.vi"/>
-			<Item Name="Find Added Sections.vi" Type="VI" URL="../astemes-string-diff-utils/source/Find Added Sections.vi"/>
-			<Item Name="Find Index to Insert at.vi" Type="VI" URL="../astemes-string-diff-utils/tests/Diff Tool Test/Find Index to Insert at.vi"/>
+			<Item Name="Find All Highlights.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find All Highlights.vi"/>
+			<Item Name="Find Highlights.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Highlights.vi"/>
+			<Item Name="Diff Tool.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Diff Tool.vi"/>
+			<Item Name="Find Common Chars.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Common Chars.vi"/>
+			<Item Name="Find Added Sections.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Added Sections.vi"/>
+			<Item Name="Find Index to Insert at.vi" Type="VI" URL="../Source/astemes-string-diff-utils/tests/Diff Tool Test/Find Index to Insert at.vi"/>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
