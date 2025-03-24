@@ -1,4 +1,4 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2024-11-10 11:45:48" Creator="Samuel Taggart" Comments="" ID="86b925c744a61e09453af3116790eb13">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2025-03-24 16:33:19" Creator="Samuel Taggart" Comments="" ID="f45ce26f01aea0c2b990497ac4c9cfaf">
   <Library_General_Settings>
     <Package_File_Name>SAS_lib_Approval_Tests</Package_File_Name>
     <Library_Version>2.2.3.3</Library_Version>
@@ -144,6 +144,26 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Namespace_Type>Prefix</Namespace_Type>
         <Namespace>lib_</Namespace>
       </Namespace_Overrides>
+      <Namespace_Overrides>
+        <Path>astemes-string-diff-utils/source</Path>
+        <Namespace_Type>Prefix</Namespace_Type>
+        <Namespace>lib_</Namespace>
+      </Namespace_Overrides>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/tests</Path>
+      </Exclusions>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/.git</Path>
+      </Exclusions>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/.gitattributes</Path>
+      </Exclusions>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/.gitignore</Path>
+      </Exclusions>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/LICENSE</Path>
+      </Exclusions>
       <Place_Folder_Contents>
         <Path/>
       </Place_Folder_Contents>
@@ -322,7 +342,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>5948C286BCEF6861C99F9B599C90E9E2</GUID>
+      <GUID>37FF664D6D522CE6C8984DA37FC80173</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -441,7 +461,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>64C88332FB98FB128CA58DC762659E11</GUID>
+      <GUID>B0EB81CE464286CD147CAFEF08C4F270</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -560,7 +580,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>FC50628521EF412DFD02BD177161583D</GUID>
+      <GUID>7281602A77D48C4021306283350710CA</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -679,7 +699,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>F68362D3373D69F723B1382FDE14DB96</GUID>
+      <GUID>1F25BE5A8B06DF4F316BB218F0941493</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -756,7 +776,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Add Date Scrubber.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>AA0C5956CFBA7A1A2E68268A5DFF430C</GUID>
+      <GUID>8901B4465308D70E3334934DC7C534B5</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -889,7 +909,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Date Scrubber\Find Scrubber For Date.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>C62759DFEAB6F399B816E90C3412CB0C</GUID>
+      <GUID>87B16DA4AF3C00DD2490D3AED993EECF</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>2</Parent_Palette_Index>
@@ -994,7 +1014,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\LUnit.Extension\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>C12671EDC81D65AEB8856972F0639A0C</GUID>
+      <GUID>819D111F2F28DC48BA6A1316AB9F1B2B</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>1</Parent_Palette_Index>
@@ -1099,7 +1119,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\VITester.Extension\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>B00011AF4BF582FF207E617F57C8B34A</GUID>
+      <GUID>22A43343EC630A2C392D91A2E2DAEC47</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>3</Parent_Palette_Index>
@@ -1204,7 +1224,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\Caraya.Extension\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>F5BC7C496B28D4494CDA1AFCC7198513</GUID>
+      <GUID>39362AABFD186B5A629A752DE417B67C</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
   <Library_Palette_Definition>
@@ -1227,7 +1247,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Synchronyze_with_Directory>false</Synchronyze_with_Directory>
         <Synchronize_Directory_Path>.</Synchronize_Directory_Path>
       </Synchronization_Info>
-      <GUID>496BD41EBC214E521B245364B29E9677</GUID>
+      <GUID>86E2D1A157A1C6987845047FFCE8F61E</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>
