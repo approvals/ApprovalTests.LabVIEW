@@ -5,7 +5,6 @@
 	<Property Name="NI.Lib.HelpPath" Type="Str"></Property>
 	<Property Name="NI.Lib.Icon" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!)9!!!*Q(C=\&gt;3^41."%-8R"S)A&gt;1@),5R-ZB&lt;=QL4AF0";?#WY"&lt;=Q,&lt;A&amp;NW$_NT&gt;#"$:'!A1"?VZ`P,O&gt;`8FP&gt;&gt;*ID^+$TL@;]Y@N%_&gt;(D;6@??.D@FV]/S^$FVK8RD^@(&lt;K-8W&lt;I)O@X1\P_6``@D@-XGP\&lt;@`P&gt;^H*TE`\YHLX4`##C&amp;^XUJ)@GK=Z&amp;8O2&amp;8O2&amp;8O1G.\H*47ZSES&gt;ZEC&gt;ZEC&gt;ZEA&gt;ZE!&gt;ZE!&gt;ZE)_$8/1C&amp;TGE9P*CIK*I5;#Y')K+N]*4?!J0Y?'H#E`B+4S&amp;J`"QC1J0Y3E]B;@Q-%S&amp;J`!5HM*4?#AV*$5/=DS&amp;B`)S(O-R(O-R(K;5]2C!G=Q5.E6AS*QU8YT(?)S(LT)?YT%?YT%?4MNYD-&gt;YD-&gt;Y'$*7R5-T(_2Y++0%EXA34_**0*27YEE]C3@R*"[G5_**0!ECG4!J$E(*I/3#Z%@C34R]+0%EHM34?")0J]9&gt;SL%SMW9_S0%%HM!4?!*0Y+'%!E`A#4S"*`"16I%H]!3?Q".YG%K"*`!%HA!34-LU#II&amp;!Y/,AC$Q]"K\*=:&gt;]J$%/+4?P/J.K&gt;ZM[EWEXBTKG[[_G?K&lt;J&amp;Z]^;+K&amp;UO^#/I`JU;L-?J*V)0H#X8C`5A`U0@UC&lt;[D&lt;_E&lt;_JK_GI&gt;_]Y7HUUH(YV'(QU(\`6\4.'GXWWG\X7KTW7C^8GOV7LU^"JYYXBY)@_'Z^#=-^XJ@FT6[":+[R+Q!!!!!</Property>
 	<Property Name="NI.Lib.LocalName" Type="Str">Scrubber</Property>
-	<Property Name="NI.Lib.SourceVersion" Type="Int">536903680</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.LVClass.ClassNameVisibleInProbe" Type="Bool">true</Property>

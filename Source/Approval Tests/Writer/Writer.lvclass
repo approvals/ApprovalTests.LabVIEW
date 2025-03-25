@@ -5,7 +5,6 @@
 	<Property Name="NI.Lib.HelpPath" Type="Str"></Property>
 	<Property Name="NI.Lib.Icon" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!*(!!!*Q(C=\:7R47N"%%8P2T^!)H)(8WZB7H#!%#*T#V/!%[?%&amp;JE$AGH",&lt;C&amp;;=%"$&lt;Q7(G@89Q-#Y3]"AI"&gt;TXPL/TMTR\OLN&gt;4&lt;O@28Y[FW]7\\(X_&lt;-F[-_W&amp;\(?TIX`@$IQ,WLS@`?(4WU60]M\AXYV`\R`'&amp;`Y/`\XX`C;&lt;@^NO_N^W?0+2@@G&lt;`K&amp;V%7'+"/7:KJ=:%4`2%4`2%4`2!$`2!$`2!$X2(&gt;X2(&gt;X2(&gt;X2$.X2$.X2$.`4?U95O&gt;+'$F"20#C6*EQ4*:&amp;#50"+?B#@B38DYKI1HY5FY%J[%BSF+?"+?B#@B38A)5]+4]#1]#5`#1[J/ELWDQZ0QE&amp;Y"4]!4]!1]!1]F&amp;@!%!%'R)('1"!Q&amp;TG!1]!1]!1^$"4Q"4]!4]!1]O"8Q"$Q"4]!4]"$36S5[4?PI]*"'$I`$Y`!Y0!Y0K?8Q/$Q/D]0D]&amp;"/$I`$YU!Y":XE)-A*=C9Y8RQ?BY?8("[(R_&amp;R?"Q?8(W(P+^-IWE&gt;(2[$R_!R?!Q?AY=5-HA-(I0(Y$&amp;Y3#O$R_!R?!Q?AY&gt;3-HA-(I0(!$'+5FZ'-C01G'1)"A_@@FKM\V*U%ON&gt;KM/L/J3KQ[9[2+L$I&gt;JUV7;K.EGV_+J&amp;63W7;B&amp;50UY&amp;L9*2&amp;6%&amp;NYE;?/[Q,&lt;&lt;"6NA3GW-T&lt;)J.7OAH4RS'1&lt;P&gt;4NPN6JP.2KP63MPF5P0Z8,0:4.0J6*0*Z(A.`+-@,Y4^P84,O.F[-4T=8VWO\R@8$X?]\[ZOVA&gt;@MS`[,`U"&gt;[0/^$QP;`1)7%*RX1!!!!!</Property>
 	<Property Name="NI.Lib.LocalName" Type="Str">Writer</Property>
-	<Property Name="NI.Lib.SourceVersion" Type="Int">536903680</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.LVClass.ClassNameVisibleInProbe" Type="Bool">true</Property>
