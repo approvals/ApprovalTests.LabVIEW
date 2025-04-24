@@ -1,1 +1,2 @@
-- Added individual verifies for extension to pallettes under an advanced subpallette. This is in addition to the existing New Verify ... Merge VIs. I added so that now you can drop them individually or using Quick Drop.
+- Added a Default Diff Reporter built in LabVIEW supplied by Anton Sundqvist - thank you Anton! This means that you no longer need to install WInMerge or Beyond Compare to view the diffs. I still recommend BeyondCompare though since it is a very nice tool.
+- Added code to the reporter interface to check if in Unattended Mode and report nothing in that case, since presumably that means you are running as part of CI pipeline and you don't want to hang the machine.
