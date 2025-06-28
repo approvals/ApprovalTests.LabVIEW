@@ -49,6 +49,7 @@
 			<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../Tests/VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
 			<Item Name="Basic.Mechanics.Tests.lvclass" Type="LVClass" URL="../Tests/Basic.Mechanics.Tests/Basic.Mechanics.Tests.lvclass"/>
 			<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
+			<Item Name="Namer.Tests.lvclass" Type="LVClass" URL="../Tests/Namer.Tests/Namer.Tests.lvclass"/>
 		</Item>
 		<Item Name="astemes-string-diff-utils" Type="Folder">
 			<Item Name="Find All Highlights.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find All Highlights.vi"/>
