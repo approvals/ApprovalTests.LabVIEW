@@ -1,1 +1,2 @@
 - Updated Pallettes to add Namer with Folder to Options Pallette
+- Added code to Namer with Folder to create Folder if it does not exist.
