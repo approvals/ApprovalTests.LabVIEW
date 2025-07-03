@@ -20,6 +20,5 @@
 	<Item Name="Verify Combinations.vi" Type="VI" URL="../Verify Combinations.vi"/>
 	<Item Name="Verify File.vi" Type="VI" URL="../Verify File.vi"/>
 	<Item Name="Verify Parameterized.vi" Type="VI" URL="../Verify Parameterized.vi"/>
-	<Item Name="Verify Scripting Code.approved.vi" Type="VI" URL="../../../../Tests/Caraya.Tests/Caraya Extension Tests/Verify Scripting Code.approved.vi"/>
 	<Item Name="Verify.vim" Type="VI" URL="../Verify.vim"/>
 </Library>
