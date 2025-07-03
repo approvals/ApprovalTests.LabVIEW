@@ -1,1 +1,1 @@
-- Added a new Namer, Namer with Folder, to put approved files into a separate folder. You can set it in the Options Class. By default it puts the approval files (*.recieved.* and *.approved.*) into an Approvals subdirectory. You can optionally specify any relative path. The path is relative to the path of the test VI. Currently does not suport absolute paths. I may add that in the future if there is demand.
+- Updated Pallettes to add Namer with Folder to Options Pallette

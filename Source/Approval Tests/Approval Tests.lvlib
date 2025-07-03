@@ -76,6 +76,7 @@
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
+	<Item Name="Add Namer With Folder.vi" Type="VI" URL="../Add Namer With Folder.vi"/>
 	<Item Name="Options.lvclass" Type="LVClass" URL="../Options/Options.lvclass"/>
 	<Item Name="Safe Trim.vi" Type="VI" URL="../Safe Trim.vi"/>
 </Library>
