@@ -1,5 +1,5 @@
 #! /usr/bin/bash
-VERSION="2.3.2"
+VERSION="2.4.0"
 rm build/*.vip 2>/dev/null
 set -euo pipefail
 

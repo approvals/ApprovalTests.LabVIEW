@@ -1,2 +1,1 @@
-- Updated Pallettes to add Namer with Folder to Options Pallette
-- Added code to Namer with Folder to create Folder if it does not exist.
+- Added ability to specify approval file. Useful if several tests should all produce the same results. As an example I added this feature for blue because I wanted to support long and short cli options. -l and --list should both produce the samething. I didn't want to have to maintain separate approval files for each test and run the risk that perhaps they would diverge and I wouldn't notice.
