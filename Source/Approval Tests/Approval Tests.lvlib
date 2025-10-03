@@ -19,8 +19,11 @@
 	</Item>
 	<Item Name="for pallettes" Type="Folder">
 		<Item Name="Add Date Scrubber.vi" Type="VI" URL="../Add Date Scrubber.vi"/>
+		<Item Name="Add Namer With Folder.vi" Type="VI" URL="../Add Namer With Folder.vi"/>
+		<Item Name="Add Namer with Shared Approval File.vi" Type="VI" URL="../Add Namer with Shared Approval File.vi"/>
 		<Item Name="Add Regex Scrubber Unique.vi" Type="VI" URL="../Add Regex Scrubber Unique.vi"/>
 		<Item Name="Add Regex Scrubber.vi" Type="VI" URL="../Add Regex Scrubber.vi"/>
+		<Item Name="Add Shared Approval File and Folder.vi" Type="VI" URL="../Add Shared Approval File and Folder.vi"/>
 		<Item Name="Options Cube.vi" Type="VI" URL="../Options Cube.vi"/>
 	</Item>
 	<Item Name="Namers" Type="Folder">
@@ -78,7 +81,6 @@
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
-	<Item Name="Add Namer With Folder.vi" Type="VI" URL="../Add Namer With Folder.vi"/>
 	<Item Name="Options.lvclass" Type="LVClass" URL="../Options/Options.lvclass"/>
 	<Item Name="Safe Trim.vi" Type="VI" URL="../Safe Trim.vi"/>
 </Library>

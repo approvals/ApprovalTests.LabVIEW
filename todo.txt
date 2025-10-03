@@ -13,3 +13,10 @@
 - [ ] Add path to string conversion in vim to avoid json (particularly for arrays of file paths)
 - [ ] Add plain verify methods to pallettes so I can do a QuickDrop Replace.
 - [ ] Breaking Change - add lib_ prefix to the extensions when building package.
+
+10/3/25
+- [ ] back over previous list above and trim
+- [ ] Release new version with decorator and shared approval files
+- [ ] replace Caraya Tests in project with Lunit. Consider seperate project for tests to easy load time.
+- [ ] Investigate if we have circular  dependencies because load and IDE lag is crazy slow
+- [ ] before release add pallette VIs for new decorator and shared approval files.
