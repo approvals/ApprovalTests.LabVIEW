@@ -24,6 +24,7 @@
 		<Item Name="Options Cube.vi" Type="VI" URL="../Options Cube.vi"/>
 	</Item>
 	<Item Name="Namers" Type="Folder">
+		<Item Name="Namer Decorator.lvclass" Type="LVClass" URL="../Namer Decorator/Namer Decorator.lvclass"/>
 		<Item Name="Namer with Folder.lvclass" Type="LVClass" URL="../Namer with Folder/Namer with Folder.lvclass"/>
 		<Item Name="Namer With Shared Approved File.lvclass" Type="LVClass" URL="../Namer With Shared Approved File/Namer With Shared Approved File.lvclass"/>
 		<Item Name="Namer.lvclass" Type="LVClass" URL="../Namer/Namer.lvclass"/>
