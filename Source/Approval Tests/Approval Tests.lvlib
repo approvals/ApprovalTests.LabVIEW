@@ -25,6 +25,7 @@
 	</Item>
 	<Item Name="Namers" Type="Folder">
 		<Item Name="Namer with Folder.lvclass" Type="LVClass" URL="../Namer with Folder/Namer with Folder.lvclass"/>
+		<Item Name="Namer With Shared Approved File.lvclass" Type="LVClass" URL="../Namer With Shared Approved File/Namer With Shared Approved File.lvclass"/>
 		<Item Name="Namer.lvclass" Type="LVClass" URL="../Namer/Namer.lvclass"/>
 		<Item Name="Naming Data.lvclass" Type="LVClass" URL="../Naming Data/Naming Data.lvclass"/>
 	</Item>
