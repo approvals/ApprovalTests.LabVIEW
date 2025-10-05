@@ -22,7 +22,7 @@ jobs:
         run: ./scripts/install.sh 
       - name: Create Install Tests
         shell: bash
-        run: ./scripts/_create_install_tests.sh
+        run: ./scripts/create_install_tests.sh
       - name: Rerun Tests on Installed Libraries 
         shell: bash
         run: ./scripts/run_install_tests.sh
