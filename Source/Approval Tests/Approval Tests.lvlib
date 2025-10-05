@@ -8,7 +8,8 @@
 
 </Property>
 	<Item Name="Comparators" Type="Folder">
-		<Item Name="Comparator.lvclass" Type="LVClass" URL="../Comparator/Comparator.lvclass"/>
+		<Item Name="File Comparator.lvclass" Type="LVClass" URL="../File Comparator/File Comparator.lvclass"/>
+		<Item Name="Text Comparator.lvclass" Type="LVClass" URL="../Text Comparator/Text Comparator.lvclass"/>
 	</Item>
 	<Item Name="Experimental" Type="Folder">
 		<Item Name="Get LVCompare Options.vi" Type="VI" URL="../Get LVCompare Options.vi"/>
