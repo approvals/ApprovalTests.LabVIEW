@@ -17,6 +17,7 @@
 		</Item>
 		<Item Name="Basic Mechanics Tests.lvclass" Type="LVClass" URL="../Basic Mechanics Tests/Basic Mechanics Tests.lvclass"/>
 		<Item Name="Basic.Mechanics.Tests.lvclass" Type="LVClass" URL="../Basic.Mechanics.Tests/Basic.Mechanics.Tests.lvclass"/>
+		<Item Name="Comparator Tests.lvclass" Type="LVClass" URL="../Comparator Tests/Comparator Tests.lvclass"/>
 		<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		<Item Name="Namer.Tests.lvclass" Type="LVClass" URL="../Namer.Tests/Namer.Tests.lvclass"/>
 		<Item Name="Scrubber.Tests.lvclass" Type="LVClass" URL="../Scrubber.Tests/Scrubber.Tests.lvclass"/>
