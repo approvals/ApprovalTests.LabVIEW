@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /usr/bin/env bash
 mkdir reports 2> /dev/null
 rm "reports\\Caraya.UnitTestReport.xml" 2>/dev/null
 rm "reports\\LUnit.UnitTestReport.xml" 2>/dev/null

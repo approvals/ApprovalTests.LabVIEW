@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /usr/bin/env bash
 VERSION="2.5.0"
 rm build/*.vip 2>/dev/null
 set -euo pipefail

@@ -15,6 +15,7 @@
 		<Item Name="Common" Type="Folder" URL="../Common">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
+		<Item Name="Basic Mechanics Tests.lvclass" Type="LVClass" URL="../Basic Mechanics Tests/Basic Mechanics Tests.lvclass"/>
 		<Item Name="Basic.Mechanics.Tests.lvclass" Type="LVClass" URL="../Basic.Mechanics.Tests/Basic.Mechanics.Tests.lvclass"/>
 		<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		<Item Name="Namer.Tests.lvclass" Type="LVClass" URL="../Namer.Tests/Namer.Tests.lvclass"/>
