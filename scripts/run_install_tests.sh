@@ -22,5 +22,5 @@ echo "Running Scrubber Tests"
 g-cli caraya -- -s "InstallTests\\Scrubber.Tests\\Scrubber.Tests.lvclass" -x "reports\\Scrubber.InstallTestReport.xml"
 echo "Test Time: $SECONDS"
 g-cli vitester -- -r "reports\\VITester.InstallTestReport.xml" "InstallTests\\VITester.Tests\\VITester Extension Tests\\VITester Extension Tests.lvclass"
-g-cli lunit -- -r "reports\\LUnit.InstallTestReport.xml" "InstallTests\\LUnit.Tests"
+g-cli lunit -- -r "reports\\LUnit.InstallTestReport.xml" "InstallTests"
 
