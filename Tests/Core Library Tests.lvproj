@@ -24,6 +24,8 @@
 		<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		<Item Name="Namer.Tests.lvclass" Type="LVClass" URL="../Namer.Tests/Namer.Tests.lvclass"/>
 		<Item Name="Scrubber.Tests.lvclass" Type="LVClass" URL="../Scrubber.Tests/Scrubber.Tests.lvclass"/>
+		<Item Name="Scrubber Tests.lvclass" Type="LVClass" URL="../Scrubber Tests/Scrubber Tests.lvclass"/>
+		<Item Name="Date Regex Finder Tests.lvclass" Type="LVClass" URL="../Date Regex Finder Tests/Date Regex Finder Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
