@@ -16,6 +16,7 @@
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
 		<Item Name="Caraya Extension Tests.lvclass" Type="LVClass" URL="../Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass"/>
+		<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
 		<Item Name="VITester Extension Tests.lvclass" Type="LVClass" URL="../VITester.Tests/VITester Extension Tests/VITester Extension Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies"/>

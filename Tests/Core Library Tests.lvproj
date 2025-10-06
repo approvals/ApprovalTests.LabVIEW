@@ -21,7 +21,6 @@
 			<Item Name="Core Library Error Propagation.lvclass" Type="LVClass" URL="../Core Library Error Propagation/Core Library Error Propagation.lvclass"/>
 			<Item Name="Basic Mechanics Tests.lvclass" Type="LVClass" URL="../Basic Mechanics Tests/Basic Mechanics Tests.lvclass"/>
 		</Item>
-		<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		<Item Name="Namer.Tests.lvclass" Type="LVClass" URL="../Namer.Tests/Namer.Tests.lvclass"/>
 		<Item Name="Scrubber.Tests.lvclass" Type="LVClass" URL="../Scrubber.Tests/Scrubber.Tests.lvclass"/>
 		<Item Name="Scrubber Tests.lvclass" Type="LVClass" URL="../Scrubber Tests/Scrubber Tests.lvclass"/>
