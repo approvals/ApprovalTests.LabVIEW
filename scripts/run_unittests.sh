@@ -31,6 +31,6 @@ SECONDS=0
 echo "Running Error Propagation Tests"
 g-cli caraya -- -s "Tests\\Error.Propagation.Tests\\Error.Propagation.Tests.lvclass" -x "reports\\Error.Propagation.UnitTestReport.xml"
 echo "Test Time: $SECONDS"
-g-cli vitester -- -r "reports\\VITester.UnitTestReport.xml" "Approval Testing.lvproj"
+g-cli vitester -- -r "reports\\VITester.UnitTestReport.xml" "Tests\\Extension Tests.lvproj"
 g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
 # end-snippet
