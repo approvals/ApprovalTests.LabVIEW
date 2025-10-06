@@ -31,4 +31,20 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1082139152</Property>
 	</Item>
+	<Item Name="Verify With 3 Scrubbers.approved.txt" Type="Document" URL="../Verify With 3 Scrubbers.approved.txt"/>
+	<Item Name="Verify With Multi Scrubber.approved.txt" Type="Document" URL="../Verify With Multi Scrubber.approved.txt"/>
+	<Item Name="Verify With Nested Scrubbers.approved.txt" Type="Document" URL="../Verify With Nested Scrubbers.approved.txt"/>
+	<Item Name="Verify With Regex Scrubber Count Unique Not Found.approved.txt" Type="Document" URL="../Verify With Regex Scrubber Count Unique Not Found.approved.txt"/>
+	<Item Name="Verify With Regex Scrubber Count Unique.approved.txt" Type="Document" URL="../Verify With Regex Scrubber Count Unique.approved.txt"/>
+	<Item Name="Verify With Regex Scrubber Not Found.approved.txt" Type="Document" URL="../Verify With Regex Scrubber Not Found.approved.txt"/>
+	<Item Name="Verify With Regex Scrubber.approved.txt" Type="Document" URL="../Verify With Regex Scrubber.approved.txt"/>
+	<Item Name="Verify With Three Scrubbers.vi" Type="VI" URL="../Verify With Three Scrubbers.vi">
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%+!!!!#!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!$"!=!!?!!!9&amp;F.D=H6C9G6S)&amp;2F=X2T,GRW9WRB=X-!!!V5:8.U)%.B=W5A4X6U!$"!=!!?!!!9&amp;F.D=H6C9G6S)&amp;2F=X2T,GRW9WRB=X-!!!R5:8.U)%.B=W5A37Y!!'%!]!!-!!-!"!!%!!5!"!!%!!1!"!!%!!1!"!!'!Q!!?!!!#1!!!!!!!!!!!!!!$1M!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!3!!!.!!!!$!!!!!!!!!!!!!!"!!=!!!!!</Property>
+		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
+		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
+	</Item>
 </LVClass>
