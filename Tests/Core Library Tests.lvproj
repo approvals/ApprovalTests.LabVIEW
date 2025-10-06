@@ -22,6 +22,7 @@
 		<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
 		<Item Name="Namer.Tests.lvclass" Type="LVClass" URL="../Namer.Tests/Namer.Tests.lvclass"/>
 		<Item Name="Scrubber.Tests.lvclass" Type="LVClass" URL="../Scrubber.Tests/Scrubber.Tests.lvclass"/>
+		<Item Name="Test Initial Verify.approved.txt" Type="Document" URL="../Basic Mechanics Tests/Test Initial Verify.approved.txt"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
