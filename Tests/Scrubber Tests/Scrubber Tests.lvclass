@@ -72,6 +72,15 @@
 		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
 	</Item>
 	<Item Name="Verify With Regex Scrubber Count Unique.approved.txt" Type="Document" URL="../Verify With Regex Scrubber Count Unique.approved.txt"/>
+	<Item Name="Verify With Regex Scrubber Count Unique.vi" Type="VI" URL="../Verify With Regex Scrubber Count Unique.vi">
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%+!!!!#!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!$"!=!!?!!!4%62F=X1A1W&amp;T:3ZM&gt;G.M98.T!".-67ZJ&gt;#"5:8.U)%.B=W5A4X6U!$"!=!!?!!!4%62F=X1A1W&amp;T:3ZM&gt;G.M98.T!"*-67ZJ&gt;#"5:8.U)%.B=W5A37Y!!'%!]!!-!!-!"!!%!!5!"!!%!!1!"!!%!!1!"!!'!Q!!?!!!#1!!!!!!!!!!!!!!$1M!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!3!!!.!!!!$!!!!!!!!!!!!!!"!!=!!!!!</Property>
+		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
+		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
+	</Item>
 	<Item Name="Verify With Regex Scrubber Not Found.approved.txt" Type="Document" URL="../Verify With Regex Scrubber Not Found.approved.txt"/>
 	<Item Name="Verify With Regex Scrubber.approved.txt" Type="Document" URL="../Verify With Regex Scrubber.approved.txt"/>
 </LVClass>
