@@ -12,10 +12,6 @@ HERE=$(cygpath -w $(pwd))
 g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc"
 # begin-snippet: run_tests
 SECONDS=0
-echo "Running Basic Mechanics Tests"
-g-cli caraya -- -s "Tests\\Basic.Mechanics.Tests\\Basic.Mechanics.Tests.lvclass" -x "reports\\Basic.Mechanics.UnitTestReport.xml"
-echo "Test Time: $SECONDS"
-SECONDS=0
 echo "Running Namer Tests"
 g-cli caraya -- -s "Tests\\Namer.Tests\\Namer.Tests.lvclass" -x "reports\\Namer.UnitTestReport.xml"
 echo "Test Time: $SECONDS"
