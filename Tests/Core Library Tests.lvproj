@@ -24,6 +24,7 @@
 			<Item Name="Basic Mechanics Tests.lvclass" Type="LVClass" URL="../Basic Mechanics Tests/Basic Mechanics Tests.lvclass"/>
 		</Item>
 		<Item Name="Namer.Tests.lvclass" Type="LVClass" URL="../Namer.Tests/Namer.Tests.lvclass"/>
+		<Item Name="Namer Tests.lvclass" Type="LVClass" URL="../Namer Tests/Namer Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
