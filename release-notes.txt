@@ -1,3 +1,1 @@
-- Added the ability to add your own comparator - this what determines what counts as equal when evaluating the received and approved data. For use case see next bullet.
-- Added a comparator for JSON that checks the content of the JSON and ignores any formatting like extra whitespace or pretty printing. 
-- Added code to "Verify as JSON" so it defaults to the JSON Comparator. This means that the comparison ignores formatting and pretty printing. 
+- Removed code that automatically added approval file to project on creation.
