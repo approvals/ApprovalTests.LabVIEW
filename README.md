@@ -89,23 +89,6 @@ This is written in LV2020. If you want to contribute, reach out.
 
 If you happen to clone the repo and want to run the unit tests for the extensions, there is a run_unittests.sh script.
 
-<!-- snippet: run_tests -->
-<a id='snippet-run_tests'></a>
-```sh
-g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
-g-cli vitester -- -r "reports\\VITester.UnitTestReport.xml" "Tests\\Extension Tests.lvproj"
-SECONDS=0
-echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
-g-cli caraya -- -s "Tests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.UnitTestReport.xml"
-echo "Test Time: $SECONDS"
-SECONDS=0
-echo "Running Error Propagation Tests"
-g-cli caraya -- -s "Tests\\Error.Propagation.Tests\\Error.Propagation.Tests.lvclass" -x "reports\\Error.Propagation.UnitTestReport.xml"
-echo "Test Time: $SECONDS"
-```
-<sup><a href='/scripts/run_unittests.sh#L13-L24' title='Snippet source file'>snippet source</a> | <a href='#snippet-run_tests' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
 ## Need Help
 
 Reach us [here](https://sasworkshops.com/contact)
