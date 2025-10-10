@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+# Enforce version of Arlo's Commit messages
+
+if ! cat "$1" | egrep "^[.!*]\s[fFbBrRdDeEtT]\s" >/dev/null; then
+  echo "$(tput setaf 1)$(tput bold)Incorrect Format for commit message $(tput sgr0)"
+  exit 1
+fi
