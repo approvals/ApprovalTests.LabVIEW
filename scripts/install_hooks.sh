@@ -2,5 +2,5 @@
 
 #intended to be run from project root
 
-cp -r scripts/hooks .git/hooks
+cp scripts/hooks/* .git/hooks
 

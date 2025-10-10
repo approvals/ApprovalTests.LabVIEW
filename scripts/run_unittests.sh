@@ -5,8 +5,8 @@ rm "reports\\LUnit.UnitTestReport.xml" 2>/dev/null
 rm "reports\\VITester.UnitTestReport.xml" 2>/dev/null
 rm "reports\\Scrubber.UnitTestReport.xml" 2>/dev/null
 
-green=$(tput setaf2)
-red=$(tput setaf1)
+green=$(tput setaf 2)
+red=$(tput setaf 1)
 reset=$(tput sgr0)
 bold=$(tput bold)
 
