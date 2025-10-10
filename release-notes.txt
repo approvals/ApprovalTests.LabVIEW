@@ -1,1 +1,1 @@
-- Removed code that automatically added approval file to project on creation.
+- Added prompt to code that automatically adds approval file to project on creation - prompt disabled if running in unattended mode so it shouldn't impede any uses in CI.

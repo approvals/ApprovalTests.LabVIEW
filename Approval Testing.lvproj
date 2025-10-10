@@ -20,7 +20,6 @@
 			<Item Name="Extension Tests.lvproj" Type="Document" URL="../Tests/Extension Tests.lvproj"/>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
-		<Item Name="Test Using Label.label1.approved.txt" Type="Document" URL="../Tests/Basic Mechanics Tests/Test Using Label.label1.approved.txt"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
