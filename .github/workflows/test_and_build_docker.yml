@@ -32,7 +32,7 @@ jobs:
         shell: bash
         run: ./scripts/build.sh $GITHUB_RUN_NUMBER  
       - name: Install 
-        shell: bash
+        shell: bashvipm
         run: ./scripts/install.sh 
       - name: Create Install Tests
         shell: bash
