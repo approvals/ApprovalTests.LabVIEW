@@ -10,7 +10,11 @@ jobs:
     container:
       image: nationalinstruments/labview:latest-linux
       options: --user root
-    steps:
+    steps: 
+      - name: Install Git
+        run: |
+          apt-get update && apt-get install -y git
+          git --version
       - uses: actions/checkout@v4
         with:
           submodules: 'true'
