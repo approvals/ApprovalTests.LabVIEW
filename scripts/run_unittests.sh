@@ -1,14 +1,28 @@
 #! /usr/bin/env bash
 mkdir reports 2> /dev/null
-rm "reports\\Caraya.UnitTestReport.xml" 2>/dev/null
-rm "reports\\LUnit.UnitTestReport.xml" 2>/dev/null
-rm "reports\\VITester.UnitTestReport.xml" 2>/dev/null
-rm "reports\\Scrubber.UnitTestReport.xml" 2>/dev/null
 
+
+# Detect OS and set path separator and working directory accordingly
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
+    SEP="${SEP}"
+    HERE=$(cygpath -w $(pwd))
+else
+    SEP="/"
+    HERE=$(pwd)
+fi
+
+rm "reports${SEP}Caraya.UnitTestReport.xml" 2>/dev/null
+rm "reports${SEP}LUnit.UnitTestReport.xml" 2>/dev/null
+rm "reports${SEP}VITester.UnitTestReport.xml" 2>/dev/null
+rm "reports${SEP}Scrubber.UnitTestReport.xml" 2>/dev/null
+
+export TERM=${TERM:-xterm}
 green=$(tput setaf 2)
 red=$(tput setaf 1)
 reset=$(tput sgr0)
 bold=$(tput bold)
+
+
 
 fail() {
     echo "${bold}${red}FAIL${reset}"
@@ -17,18 +31,17 @@ fail() {
 
 set -euo pipefail
 
-HERE=$(cygpath -w $(pwd))
 
 g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc" || fail
-g-cli lunit -- -r "reports\\LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
-g-cli vitester -- -r "reports\\VITester.UnitTestReport.xml" "Tests\\Extension Tests.lvproj" || fail
+g-cli lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
+g-cli vitester -- -r "reports${SEP}VITester.UnitTestReport.xml" "Tests${SEP}Extension Tests.lvproj" || fail
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
-g-cli caraya -- -s "Tests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.UnitTestReport.xml" || fail
+g-cli caraya -- -s "Tests${SEP}Caraya.Tests${SEP}Caraya Extension Tests${SEP}Caraya Extension Tests.lvclass" -x "reports${SEP}Caraya.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 SECONDS=0
 echo "Running Error Propagation Tests"
-g-cli caraya -- -s "Tests\\Error.Propagation.Tests\\Error.Propagation.Tests.lvclass" -x "reports\\Error.Propagation.UnitTestReport.xml" || fail
+g-cli caraya -- -s "Tests${SEP}Error.Propagation.Tests${SEP}Error.Propagation.Tests.lvclass" -x "reports${SEP}Error.Propagation.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 echo "${bold}${green}PASS${reset}" 
 
