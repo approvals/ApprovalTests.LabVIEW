@@ -15,4 +15,6 @@ vipm activate --serial-number "${VIPM_SERIAL_NUMBER}" --name "${VIPM_FULL_NAME}"
 vipm about
 vipm_lv_version="${VIPM_LV_VERSION:-2026}"
 vipm package-list-refresh
+apt-get install -y nmap
+nmap -p 3363 127.0.0.1
 vipm install --labview-version ${vipm_lv_version} approvals-dev.vipc
