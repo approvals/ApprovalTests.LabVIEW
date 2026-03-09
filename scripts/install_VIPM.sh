@@ -15,6 +15,37 @@ vipm activate --serial-number "${VIPM_SERIAL_NUMBER}" --name "${VIPM_FULL_NAME}"
 vipm about
 vipm_lv_version="${VIPM_LV_VERSION:-2026}"
 vipm package-list-refresh
+LV_YEAR="2026"
+mkdir -p /root/natinst/.config/LabVIEW-${LV_YEAR} && \
+    echo "server.tcp.enabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "server.tcp.enabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.tcp.enabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+
+        echo "server.tcp.port=3363" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "server.tcp.port=3363" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.tcp.port=3363" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+
+        echo "server.tcp.access=*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "server.tcp.access=*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.tcp.access=*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+
+        echo "server.vi.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "server.vi.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.vi.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+
+ echo "server.vi.propertiesEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "server.vi.porpertiesEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.vi.propertiesEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+
+     echo "server.vi.callsEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "server.vi.callsEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.vi.callsEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+
+echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+
+
 apt-get update && apt-get install -y nmap
 nmap -p 3363 127.0.0.1
 vipm install --labview-version ${vipm_lv_version} approvals-dev.vipc
