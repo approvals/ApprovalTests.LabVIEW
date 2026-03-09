@@ -25,9 +25,9 @@ mkdir -p /root/natinst/.config/LabVIEW-${LV_YEAR} && \
     echo "server.tcp.port=3363" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
     echo "server.tcp.port=3363" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
 
-        echo "server.tcp.access=*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
-    echo "server.tcp.access=*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
-    echo "server.tcp.access=*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
+        echo "server.tcp.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
+    echo "server.tcp.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.tcp.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
 
         echo "server.vi.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
     echo "server.vi.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
