@@ -45,7 +45,7 @@ echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofu
     echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
     echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
 
-
+cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}
 apt-get update && apt-get install -y nmap
 nmap -p 3363 127.0.0.1
 vipm install --labview-version ${vipm_lv_version} approvals-dev.vipc
