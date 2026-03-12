@@ -35,7 +35,7 @@ mkdir -p /root/natinst/.config/LabVIEW-${LV_YEAR} && \
     echo "server.vi.access=+*" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
 
  echo "server.vi.propertiesEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
-    echo "server.vi.porpertiesEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
+    echo "server.vi.propertiesEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview.conf && \
     echo "server.vi.propertiesEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labview64.conf
 
      echo "server.vi.callsEnabled=True" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofull.conf && \
