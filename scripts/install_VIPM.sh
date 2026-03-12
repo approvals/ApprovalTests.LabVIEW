@@ -3,7 +3,7 @@
 echo "Installing VIPM"
 
 apt-get update \
-  && apt-get install -y wget \
+  && apt-get install -y wget xvfb \
   && rm -rf /var/lib/apt/lists/*
 mkdir -p /usr/local/jki/vipm /etc/jki \
     && touch /usr/local/jki/vipm/Settings.ini /etc/jki/jki.conf
@@ -48,7 +48,7 @@ echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofu
 
 echo 'cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}'
 cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}
-labview64 & disown
+xvfb-run labview64 & disown
 sleep 10
 apt-get update && apt-get install -y nmap net-tools
 nmap -p 3363 127.0.0.1
