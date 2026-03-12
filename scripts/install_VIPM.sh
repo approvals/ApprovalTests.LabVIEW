@@ -3,7 +3,7 @@
 echo "Installing VIPM"
 
 apt-get update \
-  && apt-get install -y wget ni-labview-2026-dotnetcoreinterop \
+  && apt-get install -y wget \
   && rm -rf /var/lib/apt/lists/*
 mkdir -p /usr/local/jki/vipm /etc/jki \
     && touch /usr/local/jki/vipm/Settings.ini /etc/jki/jki.conf
