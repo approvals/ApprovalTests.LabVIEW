@@ -48,10 +48,10 @@ echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofu
 
 echo 'cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}'
 cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}
-apt-get update && apt-get install -y nmap
+apt-get update && apt-get install -y nmap netstat
 nmap -p 3363 127.0.0.1
-echo "iptables -L"
-iptables -L
+# echo "iptables -L"
+# iptables -L
 echo "netstat -tuln"
 netstat -tuln
 vipm install --labview-version ${vipm_lv_version} approvals-dev.vipc
