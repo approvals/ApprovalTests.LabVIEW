@@ -49,7 +49,8 @@ echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofu
 echo 'cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}'
 cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}
 echo "searching for SO"
-find / -name libniDotNETCoreInterop.so 2>/dev/null
+# find / -name libniDotNETCoreInterop.so 2>/dev/null
+ls -l /root/natinst/.config/LabVIEW-2026/
 xvfb-run labview64 & disown
 sleep 10
 echo 'ps -aux | grep labview'
