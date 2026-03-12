@@ -50,6 +50,8 @@ echo 'cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labvie
 cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}
 xvfb-run labview64 & disown
 sleep 10
+echo 'ps -aux | grep labview'
+ps -aux | grep labview
 apt-get update && apt-get install -y nmap net-tools
 nmap -p 3363 127.0.0.1
 # echo "iptables -L"
