@@ -3,7 +3,7 @@
 echo "Installing VIPM"
 
 apt-get update \
-  && apt-get install -y wget xvfb ni-labview-2026-dotnetcoreinterop \
+  && apt-get install -y wget ni-labview-2026-dotnetcoreinterop \
   && rm -rf /var/lib/apt/lists/*
 mkdir -p /usr/local/jki/vipm /etc/jki \
     && touch /usr/local/jki/vipm/Settings.ini /etc/jki/jki.conf
@@ -48,10 +48,13 @@ echo "unattended=False" >> /root/natinst/.config/LabVIEW-${LV_YEAR}/labviewprofu
 
 echo 'cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}'
 cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf,labview64.conf}
+echo "searching for SO"
+find / -name libniDotNETCoreInterop.so 2>/dev/null
 xvfb-run labview64 & disown
 sleep 10
 echo 'ps -aux | grep labview'
 ps -aux | grep labview
+ls /usr/lib64
 apt-get update && apt-get install -y nmap net-tools
 nmap -p 3363 127.0.0.1
 # echo "iptables -L"
