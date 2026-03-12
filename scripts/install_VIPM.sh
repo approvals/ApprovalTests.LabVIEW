@@ -63,6 +63,8 @@ nmap -p 3363 127.0.0.1
 echo "netstat -tuln"git 
 netstat -tuln
 vipm install --labview-version ${vipm_lv_version} approvals-dev.vipc
-check license issuesgit 
+# check license issuesgit 
 grep -i license /var/local/natinst/labview/log/labview.log
 grep -i license /tmp/labview.log
+/usr/local/natinst/nilm/bin/nilmutil -l
+/usr/local/natinst/nilm/bin/nilmutil -s
