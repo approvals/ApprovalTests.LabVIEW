@@ -47,10 +47,10 @@ cat "/root/natinst/.config/LabVIEW-${LV_YEAR}/"{labviewprofull.conf,labview.conf
 echo "searching for SO"
 # find / -name libniDotNETCoreInterop.so 2>/dev/null
 ls -l /root/natinst/.config/LabVIEW-2026/
-xvfb-run labview64 & disown
-sleep 10
-echo 'ps -aux | grep labview'
-ps -aux | grep labview
+# xvfb-run labview64 & disown
+# sleep 10
+# echo 'ps -aux | grep labview'
+# ps -aux | grep labview
 # ls /usr/lib64
 apt-get update && apt-get install -y nmap net-tools
 nmap -p 3363 127.0.0.1
@@ -58,7 +58,8 @@ nmap -p 3363 127.0.0.1
 # iptables -L
 echo "netstat -tuln"  
 netstat -tuln
-vipm install --labview-version ${vipm_lv_version} approvals-dev.vipc
+vipm list --installed
+vipm install --labview-version "${vipm_lv_version}"approvals-dev.vipc
 # check license issuesgit 
 grep -i license /var/local/natinst/labview/log/labview.log
 grep -i license /tmp/labview.log
