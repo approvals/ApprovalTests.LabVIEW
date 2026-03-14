@@ -7,13 +7,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: nationalinstruments/labview:latest-linux
-      options: --user root
-    env:
-      VIPM_SERIAL_NUMBER: ${{ secrets.VIPM_SERIAL_NUMBER }}
-      VIPM_FULL_NAME: ${{ secrets.VIPM_FULL_NAME }}
-      VIPM_EMAIL: ${{ secrets.VIPM_EMAIL }}
     steps: 
       - name: Log in to GitLab Container Registry
         uses: docker/login-action@v3
