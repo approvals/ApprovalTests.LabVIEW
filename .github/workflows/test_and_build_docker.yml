@@ -7,17 +7,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: registry.gitlab.com/stagg54/labview-docker-builds:lv26q1_vipm_gcli
+      credentials:
+        username: ${{ secrets.GITLAB_REGISTRY_USERNAME }}
+        password: ${{ secrets.GITLAB_REGISTRY_TOKEN }}
     steps: 
-      - name: Log in to GitLab Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: registry.gitlab.com
-          username: ${{ secrets.GITLAB_REGISTRY_USERNAME }}
-          password: ${{ secrets.GITLAB_REGISTRY_TOKEN }}
-      - name: Pull and use GitLab image
-        run: docker pull registry.gitlab.com/stagg54/labview-docker-builds:lv26q1_vipm_gcli
-      - name: Create aliases
-        run: alias vipm=/usr/local/bin/vipm && alias g-cli=usr/local/bin/g-cli
       - name: Check activation
         run: vipm about
       - name: Refresh package list
