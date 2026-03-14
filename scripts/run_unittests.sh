@@ -32,7 +32,8 @@ fail() {
 set -euo pipefail
 
 
-g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc" || fail
+# g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc" || fail
+vipm install "approvals-dev.vipc" || fail
 g-cli lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
 g-cli vitester -- -r "reports${SEP}VITester.UnitTestReport.xml" "Tests${SEP}Extension Tests.lvproj" || fail
 SECONDS=0
