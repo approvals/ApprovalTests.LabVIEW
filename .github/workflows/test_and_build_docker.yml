@@ -12,12 +12,14 @@ jobs:
       credentials:
         username: ${{ secrets.GITLAB_REGISTRY_USERNAME }}
         password: ${{ secrets.GITLAB_REGISTRY_TOKEN }}
-    steps: 
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
       - name: Check activation
         run: vipm about
       - name: Refresh package list
         run: vipm package-list-refresh
-
       - name: Install project dependencies
         run: vipm install project.vipc
 
