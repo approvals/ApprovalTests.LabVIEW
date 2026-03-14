@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: registry.gitlab.com/stagg54/labview-docker-builds:lv26q1_vipm_gcli
+      image: registry.gitlab.com/stagg54/labview-docker-builds/lv26q1_vipm_gcli:approvals
       credentials:
         username: ${{ secrets.GITLAB_REGISTRY_USERNAME }}
         password: ${{ secrets.GITLAB_REGISTRY_TOKEN }}
