@@ -27,9 +27,8 @@ jobs:
         run: vipm about
       - name: Refresh package list
         run: vipm package-list-refresh
-      # - name: Install project dependencies
-      #   run: vipm install project.vipc
-
+      - name: Install project dependencies
+        run: vipm install approvals-dev.vipc
       - name: List installed packages
         run: vipm list --installed
       - name: Run Unit Tests
