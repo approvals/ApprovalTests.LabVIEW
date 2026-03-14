@@ -19,9 +19,9 @@ jobs:
       - name: Check activation
         run: vipm about
       - name: Refresh package list
-        run: vipm package-list-refresh
-      - name: Install project dependencies
-        run: vipm install project.vipc
+        run: xvfb-run vipm package-list-refresh
+      # - name: Install project dependencies
+      #   run: vipm install project.vipc
 
       - name: List installed packages
         run: vipm list --installed
