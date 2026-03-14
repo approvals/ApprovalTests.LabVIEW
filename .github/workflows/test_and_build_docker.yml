@@ -24,8 +24,9 @@ jobs:
           submodules: 'true'
       - name: Install VIPM
         run: |
+          apt-get update && apt install wget
           wget -O /tmp/vipm.deb https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
-          sudo dpkg -i /tmp/vipm.deb
+          dpkg -i /tmp/vipm.deb
           rm /tmp/vipm.deb
 
       - name: Activate VIPM
@@ -34,6 +35,8 @@ jobs:
             --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" \
             --name "${{ secrets.VIPM_FULL_NAME }}" \
             --email "${{ secrets.VIPM_EMAIL }}"
+      - name: Check activation
+        run: vipm about
 
       - name: Refresh package list
         run: vipm package-list-refresh
