@@ -30,11 +30,11 @@ jobs:
           LV_PID=$!
           echo "LabVIEW PID: $LV_PID"
           # Wait until LabVIEW is accepting connections on its port (default 3363)
-          until nc -z localhost 3363 2>/dev/null; do
-            sleep 2
-          echo "Waiting for LabVIEW..."
-          done
-          echo "LabVIEW is ready"
+          # until nc -z localhost 3363 2>/dev/null; do
+          #   sleep 2
+          # echo "Waiting for LabVIEW..."
+          # done
+          # echo "LabVIEW is ready"
       - name: Check activation
         run: vipm about
       - name: Refresh package list
