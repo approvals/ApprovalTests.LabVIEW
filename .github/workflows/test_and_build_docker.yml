@@ -26,7 +26,7 @@ jobs:
       - name: Pre-warm LabVIEW
         run: |
           # Launch LabVIEW in the background and wait until it's ready
-          labview &
+          labview64 &
           LV_PID=$!
           echo "LabVIEW PID: $LV_PID"
           # Wait until LabVIEW is accepting connections on its port (default 3363)
