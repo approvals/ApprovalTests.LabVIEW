@@ -12,14 +12,21 @@ jobs:
       credentials:
         username: ${{ secrets.GITLAB_REGISTRY_USERNAME }}
         password: ${{ secrets.GITLAB_REGISTRY_TOKEN }}
+    env:
+      DISPLAY: :99  # set at job level so every step inherits it
     steps:
+      - name: Start xvfb
+        run: |
+          xvfb :99 -screen 0 1920x1080x24 &
+          echo "xvfb PID: $!"
+          sleep 1 # let it initialize
       - uses: actions/checkout@v4
         with:
           submodules: 'true'
       - name: Check activation
         run: vipm about
       - name: Refresh package list
-        run: xvfb-run vipm package-list-refresh
+        run: vipm package-list-refresh
       # - name: Install project dependencies
       #   run: vipm install project.vipc
 
