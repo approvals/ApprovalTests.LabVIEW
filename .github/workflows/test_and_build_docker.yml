@@ -16,6 +16,8 @@ jobs:
           password: ${{ secrets.GITLAB_REGISTRY_TOKEN }}
       - name: Pull and use GitLab image
         run: docker pull registry.gitlab.com/stagg54/labview-docker-builds:lv26q1_vipm_gcli
+      - name: Create aliases
+        run: alias vipm=/usr/local/bin/vipm && alias g-cli=usr/local/bin/g-cli
       - name: Check activation
         run: vipm about
       - name: Refresh package list
