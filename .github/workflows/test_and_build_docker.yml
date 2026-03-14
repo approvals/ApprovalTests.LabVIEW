@@ -1,9 +1,6 @@
 name: CI - Test&Build - Docker
 on: 
   push:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *" # keeps GitHub from removing runner due to inactivity
 jobs:
   test:
     runs-on: ubuntu-latest
