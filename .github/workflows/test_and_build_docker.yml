@@ -17,21 +17,13 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 &
           echo "Xvfb PID: $!"
           sleep 1 # let it initialize
+      - name: Start NI Service Locator # needed for G-CLI
+        run: niscvloc &
       - uses: actions/checkout@v4
         with:
           submodules: 'true'
       - name: Pre-warm LabVIEW
-        run: |
-          # Launch LabVIEW in the background and wait until it's ready
-          labview64 &
-          LV_PID=$!
-          echo "LabVIEW PID: $LV_PID"
-          # Wait until LabVIEW is accepting connections on its port (default 3363)
-          # until nc -z localhost 3363 2>/dev/null; do
-          #   sleep 2
-          # echo "Waiting for LabVIEW..."
-          # done
-          # echo "LabVIEW is ready"
+        run: labview64 &
       - name: Check activation
         run: vipm about
       - name: Refresh package list
