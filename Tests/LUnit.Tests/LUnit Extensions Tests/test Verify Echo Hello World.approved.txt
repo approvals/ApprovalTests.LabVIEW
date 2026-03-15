@@ -1,5 +1,5 @@
 {
-  "standard output":"\"Hello World\"",
+  "standard output":"Hello World",
   "standard error":"",
   "return code":0
 }
