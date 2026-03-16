@@ -2,13 +2,11 @@
 mkdir reports 2> /dev/null
 rm "reports\\Caraya.InstallTestReport.xml" 2>/dev/null
 rm "reports\\LUnit.InstallTestReport.xml" 2>/dev/null
-rm "reports\\VITester.InstallTestReport.xml" 2>/dev/null
 
 set -euo pipefail
 
 HERE=$(cygpath -w $(pwd))
 g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc"
-g-cli vitester -- -r "reports\\VITester.InstallTestReport.xml" "InstallTests\\VITester.Tests\\VITester Extension Tests\\VITester Extension Tests.lvclass"
 # if above fails set LV_VERSION ENV variable. If you have the vip tool. then `g-cli vip -- --list` will list all available version strings. 
 g-cli lunit -- -r "reports\\LUnit.InstallTestReport.xml" "InstallTests"
 SECONDS=0

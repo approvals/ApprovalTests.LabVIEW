@@ -4,7 +4,7 @@ mkdir reports 2> /dev/null
 
 # Detect OS and set path separator and working directory accordingly
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
-    SEP="\\"
+    SEP="$SEP"
     HERE=$(cygpath -w $(pwd))
 else
     SEP="/"
@@ -13,7 +13,6 @@ fi
 
 rm "reports${SEP}Caraya.UnitTestReport.xml" 2>/dev/null
 rm "reports${SEP}LUnit.UnitTestReport.xml" 2>/dev/null
-rm "reports${SEP}VITester.UnitTestReport.xml" 2>/dev/null
 rm "reports${SEP}Scrubber.UnitTestReport.xml" 2>/dev/null
 
 export TERM=${TERM:-xterm}
@@ -32,10 +31,8 @@ fail() {
 set -euo pipefail
 
 
-# g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc" || fail
 vipm install "approvals-dev.vipc" || fail
 g-cli lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
-g-cli vitester -- -r "reports${SEP}VITester.UnitTestReport.xml" "Tests${SEP}Extension Tests.lvproj" || fail
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
 g-cli caraya -- -s "Tests${SEP}Caraya.Tests${SEP}Caraya Extension Tests${SEP}Caraya Extension Tests.lvclass" -x "reports${SEP}Caraya.UnitTestReport.xml" || fail
