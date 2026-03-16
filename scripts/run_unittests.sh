@@ -4,7 +4,7 @@ mkdir reports 2> /dev/null
 
 # Detect OS and set path separator and working directory accordingly
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
-    SEP="$SEP"
+    SEP="\\"
     HERE=$(cygpath -w $(pwd))
 else
     SEP="/"
@@ -27,7 +27,7 @@ fail() {
     echo "${bold}${red}FAIL${reset}"
     exit 1
 }
-
+set -x
 set -euo pipefail
 
 
