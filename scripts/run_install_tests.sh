@@ -11,5 +11,5 @@ g-cli vipc -- -v "${LV_VERSION:-"20.0 (64-bit)"}" -t 1200 "approvals-dev.vipc"
 g-cli lunit -- -r "reports\\LUnit.InstallTestReport.xml" "InstallTests"
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
-g-cli caraya -- -s "InstallTests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.InstallTestReport.xml"
+g-cli Caraya -- -s "InstallTests\\Caraya.Tests\\Caraya Extension Tests\\Caraya Extension Tests.lvclass" -x "reports\\Caraya.InstallTestReport.xml"
 echo "Test Time: $SECONDS"
