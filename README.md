@@ -1,4 +1,4 @@
-[![CI - Test&Build](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/test_and_build.yml/badge.svg)](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/test_and_build.yml)
+[![CI - Test&Build - Docker](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/test_and_build_docker.yml/badge.svg)](https://github.com/approvals/ApprovalTests.LabVIEW/actions/workflows/test_and_build_docker.yml)
 [![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=installs)](https://www.vipm.io/package/sas_lib_approval_tests/)
 [![Image](https://www.vipm.io/package/sas_lib_approval_tests/badge.svg?metric=stars)](https://www.vipm.io/package/sas_lib_approval_tests/)
 
