@@ -4,6 +4,7 @@
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Item Name="My Computer" Type="My Computer">
+		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.tcp.enabled" Type="Bool">false</Property>
@@ -13,12 +14,15 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="Common" Type="Folder" URL="../Common">
+		<Item Name="Common" Type="Folder" URL="../Tests/Common">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
-		<Item Name="Caraya Extension Tests.lvclass" Type="LVClass" URL="../Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass"/>
-		<Item Name="Error.Propagation.Tests.lvclass" Type="LVClass" URL="../Error.Propagation.Tests/Error.Propagation.Tests.lvclass"/>
-		<Item Name="LUnit Extensions Tests.lvclass" Type="LVClass" URL="../LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"/>
+		<Item Name="Namer Tests.lvclass" Type="LVClass" URL="../Tests/Namer Tests/Namer Tests.lvclass"/>
+		<Item Name="Comparator Tests.lvclass" Type="LVClass" URL="../Tests/Comparator Tests/Comparator Tests.lvclass"/>
+		<Item Name="Core Library Error Propagation.lvclass" Type="LVClass" URL="../Tests/Core Library Error Propagation/Core Library Error Propagation.lvclass"/>
+		<Item Name="Date Regex Finder Tests.lvclass" Type="LVClass" URL="../Tests/Date Regex Finder Tests/Date Regex Finder Tests.lvclass"/>
+		<Item Name="Scrubber Tests.lvclass" Type="LVClass" URL="../Tests/Scrubber Tests/Scrubber Tests.lvclass"/>
+		<Item Name="Basic Mechanics Tests.lvclass" Type="LVClass" URL="../Tests/Basic Mechanics Tests/Basic Mechanics Tests.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
