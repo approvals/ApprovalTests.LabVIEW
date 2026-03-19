@@ -5,11 +5,19 @@ set -euo pipefail
 
 echo "Building $VERSION.$1"
 
-HERE=$(cygpath -w $(pwd))
+# Detect OS and set path separator and working directory accordingly
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
+    SEP="\\"
+    HERE=$(cygpath -w $(pwd))
+else
+    SEP="/"
+    HERE=$(pwd)
+fi
+
 SECONDS=0
 g-cli clearlvcache
 g-cli quitLabVIEW
 sleep 2s
-g-cli vipc -- -v "20.0 (64-bit)" -t 1200 "approvals-dev.vipc"
+vipm install "approvals-dev.vipc"
 g-cli vipb -- -b "Approval Tests.vipb" -v "$VERSION.$1" -rn "release-notes.txt"
 echo "Script Time: $SECONDS"
