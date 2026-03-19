@@ -60,3 +60,4 @@ jobs:
           path: |
             build/*.vip
             reports
+            **/*.received.*
