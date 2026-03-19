@@ -29,12 +29,6 @@
 	<Item Name="LUnit Extensions Tests.ctl" Type="Class Private Data" URL="LUnit Extensions Tests.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
-	<Item Name="test All Verifies With Labels.cli.approved.txt" Type="Document" URL="../test All Verifies With Labels.cli.approved.txt"/>
-	<Item Name="test All Verifies With Labels.combo.approved.txt" Type="Document" URL="../test All Verifies With Labels.combo.approved.txt"/>
-	<Item Name="test All Verifies With Labels.file.approved.tmp" Type="Document" URL="../test All Verifies With Labels.file.approved.tmp"/>
-	<Item Name="test All Verifies With Labels.json.approved.json" Type="Document" URL="../test All Verifies With Labels.json.approved.json"/>
-	<Item Name="test All Verifies With Labels.params.approved.txt" Type="Document" URL="../test All Verifies With Labels.params.approved.txt"/>
-	<Item Name="test All Verifies With Labels.verify.approved.txt" Type="Document" URL="../test All Verifies With Labels.verify.approved.txt"/>
 	<Item Name="test All Verifies With Labels.vi" Type="VI" URL="../test All Verifies With Labels.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
@@ -51,7 +45,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1117782544</Property>
 	</Item>
-	<Item Name="test Verify AND Combos.approved.txt" Type="Document" URL="../test Verify AND Combos.approved.txt"/>
 	<Item Name="test Verify AND Combos.vi" Type="VI" URL="../test Verify AND Combos.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
@@ -60,7 +53,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1115685392</Property>
 	</Item>
-	<Item Name="test Verify AND Parameterized.approved.txt" Type="Document" URL="../test Verify AND Parameterized.approved.txt"/>
 	<Item Name="test Verify AND Parameterized.vi" Type="VI" URL="../test Verify AND Parameterized.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
@@ -69,7 +61,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1117782544</Property>
 	</Item>
-	<Item Name="test Verify Class Roster as JSON.approved.json" Type="Document" URL="../test Verify Class Roster as JSON.approved.json"/>
 	<Item Name="test Verify Class Roster as JSON.vi" Type="VI" URL="../test Verify Class Roster as JSON.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
@@ -78,7 +69,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1117782544</Property>
 	</Item>
-	<Item Name="test Verify Class Roster.approved.txt" Type="Document" URL="../test Verify Class Roster.approved.txt"/>
 	<Item Name="test Verify Class Roster.vi" Type="VI" URL="../test Verify Class Roster.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
@@ -87,8 +77,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1115685392</Property>
 	</Item>
-	<Item Name="test Verify Echo Hello World.approved.txt" Type="Document" URL="../test Verify Echo Hello World.approved.txt"/>
-	<Item Name="test Verify Echo Hello World.vi" Type="VI" URL="../test Verify Echo Hello World.vi">
+	<Item Name="test Verify CLI Echo Hello World.vi" Type="VI" URL="../test Verify CLI Echo Hello World.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 		<Property Name="NI.ClassItem.InvokeUsage" Type="UInt">0</Property>
@@ -96,9 +85,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1117782544</Property>
 	</Item>
-	<Item Name="test Verify g-cli.Linux.approved.txt" Type="Document" URL="../test Verify g-cli.Linux.approved.txt"/>
-	<Item Name="test Verify g-cli.Win.approved.txt" Type="Document" URL="../test Verify g-cli.Win.approved.txt"/>
-	<Item Name="test Verify g-cli.vi" Type="VI" URL="../test Verify g-cli.vi">
+	<Item Name="test Verify CLI STD ERR .vi" Type="VI" URL="../test Verify CLI STD ERR .vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 		<Property Name="NI.ClassItem.InvokeUsage" Type="UInt">0</Property>
@@ -106,8 +93,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1117782544</Property>
 	</Item>
-	<Item Name="test Verify Hello LUnit.approved.txt" Type="Document" URL="../test Verify Hello LUnit.approved.txt"/>
-	<Item Name="test Verify Hello LUnit.vi" Type="VI" URL="../test Verify Hello LUnit.vi">
+	<Item Name="test Verify Hello World.vi" Type="VI" URL="../test Verify Hello World.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 		<Property Name="NI.ClassItem.InvokeUsage" Type="UInt">0</Property>
@@ -115,7 +101,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1115685392</Property>
 	</Item>
-	<Item Name="test Verify Multi Combos.approved.txt" Type="Document" URL="../test Verify Multi Combos.approved.txt"/>
 	<Item Name="test Verify Multi Combos.vi" Type="VI" URL="../test Verify Multi Combos.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
@@ -124,7 +109,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1115685392</Property>
 	</Item>
-	<Item Name="test Verify Person as JSON.approved.json" Type="Document" URL="../test Verify Person as JSON.approved.json"/>
 	<Item Name="test Verify Person as JSON.vi" Type="VI" URL="../test Verify Person as JSON.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
@@ -133,7 +117,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1117782544</Property>
 	</Item>
-	<Item Name="test Verify Person.approved.txt" Type="Document" URL="../test Verify Person.approved.txt"/>
 	<Item Name="test Verify Person.vi" Type="VI" URL="../test Verify Person.vi">
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
