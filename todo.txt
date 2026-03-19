@@ -25,3 +25,5 @@
 - [x] Consider error propagagation tests for each extension, maybe combine with extension tests.
 - [x] Consider switching tests to LUnit.
 - [x] Consider moving scripts into scripts folder to cleanup base folder.
+
+- [ ] Consider shared approval files for extension tests.
