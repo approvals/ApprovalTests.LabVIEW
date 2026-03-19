@@ -27,3 +27,4 @@
 - [x] Consider moving scripts into scripts folder to cleanup base folder.
 
 - [ ] Consider shared approval files for extension tests.
+- [ ] Consider adding error propagation tests for Caraya in addition to LUnit. Can wire up the Assertion input.
