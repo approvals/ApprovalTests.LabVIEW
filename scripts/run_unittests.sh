@@ -34,13 +34,12 @@ set -euo pipefail
 vipm install "approvals-dev.vipc" || fail
 g-cli lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
 SECONDS=0
-echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
-g-cli --kill Caraya -- -s "Tests${SEP}Caraya.Tests${SEP}Caraya Extension Tests${SEP}Caraya Extension Tests.lvclass" -x "reports${SEP}Caraya.UnitTestReport.xml" || fail
-echo "Test Time: $SECONDS"
-SECONDS=0
-sleep 10
 echo "Running Error Propagation Tests"
 g-cli Caraya -- -s "Tests${SEP}Error.Propagation.Tests${SEP}Error.Propagation.Tests.lvclass" -x "reports${SEP}Error.Propagation.UnitTestReport.xml" || fail
+echo "Test Time: $SECONDS"
+SECONDS=0
+echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
+g-cli --kill Caraya -- -s "Tests${SEP}Caraya.Tests${SEP}Caraya Extension Tests${SEP}Caraya Extension Tests.lvclass" -x "reports${SEP}Caraya.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 echo "${bold}${green}PASS${reset}" 
 
