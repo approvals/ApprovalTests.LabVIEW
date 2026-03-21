@@ -18,7 +18,7 @@ jobs:
           echo "Xvfb PID: $!"
           sleep 1 # let it initialize
       - name: Start NI Service Locator # needed for G-CLI
-        run: nisvcloc &
+        run: nohup nisvcloc & disown
       - uses: actions/checkout@v6
         with:
           submodules: 'true'
