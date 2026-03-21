@@ -43,6 +43,9 @@ jobs:
       - name: Run LUnit Extension Tests
         shell: bash
         run: g-cli lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
+      - name: Clear LV Data folder
+        shell: bash
+        run: rm -rf "~/natinst/LabVIEW Data" || true
       - name: Run Error Propagation Tests
         shell: bash
         run: g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
