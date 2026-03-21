@@ -43,6 +43,9 @@ echo "Test Time: $SECONDS"
 
 
 echo "nisvcloc PID before suite 2: $(pgrep nisvcloc)"
+pkill nisvcloc || true
+nohup nisvcloc &
+sleep 2
 
 SECONDS=0
 echo "Running Error Propagation Tests"
@@ -50,6 +53,9 @@ g-cli --timeout 300000 Caraya -- -s "Tests${SEP}Error.Propagation.Tests${SEP}Err
 echo "Test Time: $SECONDS"
 
 echo "nisvcloc PID before suite 3: $(pgrep nisvcloc)"
+pkill nisvcloc || true
+nohup nisvcloc &
+sleep 2
 
 
 
