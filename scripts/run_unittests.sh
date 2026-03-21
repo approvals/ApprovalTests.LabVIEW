@@ -56,10 +56,9 @@ echo "nisvcloc PID before suite 3: $(pgrep nisvcloc)"
 pkill nisvcloc || true
 nohup nisvcloc &
 sleep 2
+ls ~/natinst/.config/LabVIEW-2026
+ls ~/natinst/.config/LabVIEW-2026 | xargs
 
-cat ~/natinst/.config/LabVIEW-2026/labview.ini
-cat ~/natinst/.config/LabVIEW-2026/labview64.ini
-cat ~/natinst/.config/LabVIEW-2026/labviewprofull.ini
 apt updated && apt install tree
 tree "~/natinst/.config/LabVIEW Data"
 rm -rf "~/natinst/.config/LabVIEW Data/lvfailurelog" || true
