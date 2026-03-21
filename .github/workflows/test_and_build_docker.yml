@@ -30,6 +30,7 @@ jobs:
           vipm about
           g-cli --version
           git --version
+          mkdir reports
       - name: Refresh package list
         run: vipm package-list-refresh
       - name: Install project dependencies
