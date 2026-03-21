@@ -59,7 +59,7 @@ sleep 2
 ls ~/natinst/.config/LabVIEW-2026
 ls ~/natinst/.config/LabVIEW-2026 | xargs
 
-apt updated && apt install tree
+apt update && apt install tree
 tree "~/natinst/.config/LabVIEW Data"
 rm -rf "~/natinst/.config/LabVIEW Data/lvfailurelog" || true
 g-cli --timeout 300000 lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
