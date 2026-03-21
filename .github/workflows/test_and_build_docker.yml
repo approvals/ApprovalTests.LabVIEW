@@ -25,7 +25,7 @@ jobs:
           submodules: 'true'
       - name: Check Versions
         run: |
-          cat /etc/os-os-release
+          cat /etc/os-release
           dpkg -l | grep labview
           vipm about
           g-cli --version
