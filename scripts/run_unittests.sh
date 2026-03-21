@@ -57,11 +57,10 @@ pkill nisvcloc || true
 nohup nisvcloc &
 sleep 2
 ls ~/natinst/.config/LabVIEW-2026
-ls ~/natinst/.config/LabVIEW-2026 | xargs
-
+cat ~/natinst/.config/LabVIEW-2026/*
 apt update && apt install tree
-tree "~/natinst/.config/LabVIEW Data"
-rm -rf "~/natinst/.config/LabVIEW Data/lvfailurelog" || true
+tree "~/natinst/LabVIEW Data"
+rm -rf "~/natinst/LabVIEW Data/lvfailurelog" || true
 g-cli --timeout 300000 lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
 echo "${bold}${green}PASS${reset}" 
 
