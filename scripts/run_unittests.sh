@@ -33,19 +33,11 @@ set -euo pipefail
 
 vipm install "approvals-dev.vipc" || fail
 
-echo "nisvcloc PID before suite 1: $(pgrep nisvcloc)"
-
-
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
 g-cli --timeout 300000 Caraya -- -s "Tests${SEP}Caraya.Tests${SEP}Caraya Extension Tests${SEP}Caraya Extension Tests.lvclass" -x "reports${SEP}Caraya.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 
-
-echo "nisvcloc PID before suite 2: $(pgrep nisvcloc)"
-pkill nisvcloc || true
-nohup nisvcloc &
-sleep 2
 
 SECONDS=0
 echo "Running Error Propagation Tests"
@@ -56,11 +48,7 @@ echo "nisvcloc PID before suite 3: $(pgrep nisvcloc)"
 pkill nisvcloc || true
 nohup nisvcloc &
 sleep 2
-ls ~/natinst/.config/LabVIEW-2026
-cat ~/natinst/.config/LabVIEW-2026/*
-apt update && apt install tree
-tree "~/natinst/LabVIEW Data"
-rm -rf "~/natinst/LabVIEW Data/lvfailurelog" || true
+
 g-cli --timeout 300000 lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
 echo "${bold}${green}PASS${reset}" 
 
