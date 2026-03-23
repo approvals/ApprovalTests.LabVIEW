@@ -20,6 +20,9 @@ jobs:
       - name: Start NI Service Locator # needed for G-CLI
         shell: bash
         run: nohup nisvcloc &
+      - name: Prep ini file
+        shell: bash
+        run: ./scripts/prep_ini.sh 
       - uses: actions/checkout@v6
         with:
           submodules: 'true'
