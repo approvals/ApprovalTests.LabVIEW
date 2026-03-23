@@ -20,12 +20,12 @@ jobs:
       - name: Start NI Service Locator # needed for G-CLI
         shell: bash
         run: nohup nisvcloc &
-      - name: Prep ini file
-        shell: bash
-        run: ./scripts/prep_ini_file.sh 
       - uses: actions/checkout@v6
         with:
           submodules: 'true'
+      - name: Prep ini file
+        shell: bash
+        run: ./scripts/prep_ini_file.sh 
       - name: Check Versions
         run: |
           cat /etc/os-release
@@ -42,10 +42,10 @@ jobs:
         run: vipm list --installed
       - name: Run Caraya Extension Tests
         shell: bash
-        run: g-cli --kill Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
+        run: g-cli Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
       - name: Run LUnit Extension Tests
         shell: bash
-        run: g-cli --kill lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
+        run: g-cli lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
       - name: Run Error Propagation Tests
         shell: bash
         run: g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
