@@ -22,7 +22,7 @@ jobs:
         run: nohup nisvcloc &
       - name: Prep ini file
         shell: bash
-        run: ./scripts/prep_ini.sh 
+        run: ./scripts/prep_ini_file.sh 
       - uses: actions/checkout@v6
         with:
           submodules: 'true'
@@ -46,12 +46,6 @@ jobs:
       - name: Run LUnit Extension Tests
         shell: bash
         run: g-cli --kill lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
-      - name: Clear LV Data folder
-        shell: bash
-        run: |
-          rm -rf "~/natinst/LabVIEW Data" || true
-          pkill labview || true
-          sleep 60
       - name: Run Error Propagation Tests
         shell: bash
         run: g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
