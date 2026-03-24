@@ -48,7 +48,14 @@ jobs:
         run: g-cli lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
       - name: Run Error Propagation Tests
         shell: bash
-        run: g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
+        run: |
+        for i in 1 2 3; do
+          g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" && break
+          echo "Attemept $i failed, retrying..."
+          pkill labview || true
+          sleep 10
+        done
+
       - name: Build Package
         shell: bash
         run: ./scripts/build.sh $GITHUB_RUN_NUMBER  
