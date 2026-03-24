@@ -16,7 +16,7 @@ fi
 
 SECONDS=0
 g-cli clearlvcache
-g-cli quitLabVIEW
+g-cli QuitLabVIEW
 sleep 2s
 vipm install "approvals-dev.vipc"
 curl -L -o xml.zip https://downloads.sourceforge.net/project/xmlstar/xmlstarlet/1.6.1/xmlstarlet-1.6.1-win32.zip
