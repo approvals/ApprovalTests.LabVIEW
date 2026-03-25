@@ -58,6 +58,7 @@ jobs:
       - name: Build Package
         shell: bash
         run: |
+          pkill labview || true
           version="3.0.0"
           full_version="${version}.${GITHUB_RUN_NUMBER}"
           vipb="Approval Tests.vipb"
