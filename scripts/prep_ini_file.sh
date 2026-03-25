@@ -22,20 +22,22 @@ KEYS=(
     "AllowMultipleInstances"
     "promoteDWarnInternals"
     "ShowAIVIsInErrorWindow"
+    "server.tcp.enabled"
 )
 
 VALUES=(
     "0"
-    "true"
-    "true"
-    "false"
-    "true"
+    "True"
+    "True"
+    "False"
+    "True"
     "3"
-    "false"
-    "false"
-    "true"
-    "false"
-    "true"
+    "False"
+    "False"
+    "True"
+    "False"
+    "True"
+    "True"
 )
 
 set_ini_value() {
