@@ -52,20 +52,23 @@ jobs:
           for i in 1 2 3; do
             g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" && break
             echo "Attempt $i failed, retrying..."
-            #pkill labview || true
             sleep 10
           done
       - name: Build Package
         shell: bash
         run: |
-          #pkill labview || true
           version="3.0.0"
           full_version="${version}.${GITHUB_RUN_NUMBER}"
           vipb="Approval Tests.vipb"
           apt update && apt install -y xmlstarlet dos2unix
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(dos2unix release-notes.txt && cat release-notes.txt)" "${vipb}"
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}" "${vipb}"
-          vipm build "${vipb}"
+          for i in 1 2 3; do
+            vipm build "${vipb}" && break
+            echo "Build attempt $i failed, retrying..."
+            sleep 10
+          done
+
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v6
