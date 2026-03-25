@@ -75,7 +75,7 @@ jobs:
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: 'reports/*.xml'
-      - name: Grab Artifacts
+      - name: Grab Reports 
         if: success() || failure() # always run even if the previous step fails
         uses: actions/upload-artifact@v6
         with:
@@ -83,6 +83,10 @@ jobs:
           path: |
             reports
             **/*.received.*
+      - name: Grab Artifacts
+        if: success() || failure() # always run even if the previous step fails
+        uses: actions/upload-artifact@v6
+        with:
           name: built_package
           path: build/*.vip
 
