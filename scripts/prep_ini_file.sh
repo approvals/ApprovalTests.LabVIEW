@@ -24,6 +24,10 @@ KEYS=(
     "ShowAIVIsInErrorWindow"
     "server.tcp.enabled"
     "server.tcp.access"
+    "server.tcp.port"
+    "server.vi.access"
+    "server.vi.callsEnabled"
+    "server.vi.propertiesEnabled"
 )
 
 VALUES=(
@@ -39,7 +43,11 @@ VALUES=(
     "False"
     "True"
     "True"
-    "+*"
+    "*"
+    "3363"
+    "*"
+    "True"
+    "True"
 )
 
 set_ini_value() {
