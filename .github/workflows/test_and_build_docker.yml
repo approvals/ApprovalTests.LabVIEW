@@ -97,7 +97,8 @@ jobs:
     env:
       DISPLAY: :99  # set at job level so every step inherits it
     steps:
-      uses: actions/download-artifact@v6
+      - name: Get Artifacts
+        uses: actions/download-artifact@v6
         with:
           name: built_package
           path: package.vip
