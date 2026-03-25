@@ -62,9 +62,9 @@ jobs:
           full_version="${version}.${GITHUB_RUN_NUMBER}"
           vipb="Approval Testing.vipb"
           apt update && apt install -y xmlstartlet
-          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(dos2unix release-notes.txt && cat release-notes.txt)" $vipb
-          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}  $vipb
-          vipm build $vipb
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(dos2unix release-notes.txt && cat release-notes.txt)" "${vipb}"
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}  "${vipb}"
+          vipm build "${vipb}"
       - name: Install 
         run: ./scripts/install.sh 
       - name: Create Install Tests
