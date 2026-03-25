@@ -78,9 +78,10 @@ jobs:
         with:
           name: artifacts 
           path: |
-            build/*.vip
             reports
             **/*.received.*
+          name: built_package
+          path: build/*.vip
 
   install_and_test:
     needs: test_and_build
@@ -93,6 +94,10 @@ jobs:
     env:
       DISPLAY: :99  # set at job level so every step inherits it
     steps:
+      uses: actions/download-artifact@v6
+        with:
+          name: built_package
+          path: package.vip
       - name: Start Xvfb
         run: |
           Xvfb :99 -screen 0 1920x1080x24 &
@@ -118,7 +123,7 @@ jobs:
         with:
           submodules: 'true'
       - name: Install 
-        run: ./scripts/install.sh 
+        run: vipm install package.vip
       - name: Create Install Tests
         shell: bash
         run: ./scripts/create_install_tests.sh
