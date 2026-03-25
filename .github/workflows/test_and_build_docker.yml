@@ -2,7 +2,7 @@ name: CI - Test&Build - Docker
 on: 
   push:
 jobs:
-  test:
+  test_and_build:
     runs-on: ubuntu-latest
     container:
       image: registry.gitlab.com/stagg54/labview-docker-builds/lv26q1_vipm_gcli:approvals
@@ -65,6 +65,57 @@ jobs:
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(dos2unix release-notes.txt && cat release-notes.txt)" "${vipb}"
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}  "${vipb}"
           vipm build "${vipb}"
+
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v6
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: 'reports/*.xml'
+      - name: Grab Artifacts
+        if: success() || failure() # always run even if the previous step fails
+        uses: actions/upload-artifact@v6
+        with:
+          name: artifacts 
+          path: |
+            build/*.vip
+            reports
+            **/*.received.*
+
+  install_and_test:
+    needs: test_and_build
+    runs-on: ubuntu-latest
+    container:
+      image: registry.gitlab.com/stagg54/labview-docker-builds/lv26q1_vipm_gcli:approvals
+      credentials:
+        username: ${{ secrets.GITLAB_REGISTRY_USERNAME }}
+        password: ${{ secrets.GITLAB_REGISTRY_TOKEN }}
+    env:
+      DISPLAY: :99  # set at job level so every step inherits it
+    steps:
+      - name: Start Xvfb
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 &
+          echo "Xvfb PID: $!"
+          sleep 1 # let it initialize
+      - name: Start NI Service Locator # needed for G-CLI
+        shell: bash
+        run: nohup nisvcloc &
+      - name: Prep ini file
+        shell: bash
+        run: ./scripts/prep_ini_file.sh 
+      - name: Check Versions
+        run: |
+          cat /etc/os-release
+          dpkg -l | grep labview
+          vipm about
+          g-cli --version
+          git --version
+          mkdir reports
+      - name: Refresh package list
+        run: vipm package-list-
+      - uses: actions/checkout@v6
+        with:
+          submodules: 'true'
       - name: Install 
         run: ./scripts/install.sh 
       - name: Create Install Tests
@@ -84,6 +135,5 @@ jobs:
         with:
           name: artifacts 
           path: |
-            build/*.vip
             reports
             **/*.received.*
