@@ -23,6 +23,7 @@ KEYS=(
     "promoteDWarnInternals"
     "ShowAIVIsInErrorWindow"
     "server.tcp.enabled"
+    "server.tcp.access"
 )
 
 VALUES=(
@@ -38,6 +39,7 @@ VALUES=(
     "False"
     "True"
     "True"
+    "+*"
 )
 
 set_ini_value() {
