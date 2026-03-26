@@ -64,7 +64,7 @@ jobs:
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(dos2unix release-notes.txt && cat release-notes.txt)" "${vipb}"
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}" "${vipb}"
           for i in 1 2 3; do
-            vipm build "${vipb}" && break
+            vipm --labview-version 2026 build "${vipb}" && break
             echo "Build attempt $i failed, retrying..."
             sleep 10
           done
