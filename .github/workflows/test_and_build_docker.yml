@@ -52,6 +52,7 @@ jobs:
           for i in 1 2 3; do
             g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" && break
             echo "Attempt $i failed, retrying..."
+            [ $i -eq 3 ] && exit 1
             sleep 10
           done
       - name: Build Package
@@ -66,6 +67,7 @@ jobs:
           for i in 1 2 3; do
             vipm --labview-version 2026 build "${vipb}" && break
             echo "Build attempt $i failed, retrying..."
+            [ $i -eq 3 ] && exit 1
             sleep 10
           done
 
