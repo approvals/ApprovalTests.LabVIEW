@@ -55,6 +55,12 @@ jobs:
             [ $i -eq 3 ] && exit 1
             sleep 10
           done
+      - name: Pre-launch LabVIEW
+        shell: bash
+        run: |
+          labview64 &
+          echo "Waiting for LabVIEW to initialize..."
+          sleep 60
       - name: Build Package
         shell: bash
         run: |
