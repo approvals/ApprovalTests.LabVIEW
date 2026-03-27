@@ -68,7 +68,7 @@ jobs:
             vipm --labview-version 2026 build "${vipb}" && break
             echo "Build attempt $i failed, retrying..."
             [ $i -eq 3 ] && exit 1
-            sleep 90
+            sleep 120
           done
 
 
