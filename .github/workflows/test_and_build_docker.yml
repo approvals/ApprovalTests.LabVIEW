@@ -61,6 +61,7 @@ jobs:
           labview64 &
           echo "Waiting for LabVIEW to initialize..."
           sleep 60
+          pkill labview
       - name: Build Package
         shell: bash
         run: |
