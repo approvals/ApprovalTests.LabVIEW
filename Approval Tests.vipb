@@ -159,6 +159,15 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
       <Exclusions>
         <Path>astemes-string-diff-utils/LICENSE</Path>
       </Exclusions>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/String Comparison.lvproj</Path>
+      </Exclusions>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/String Comparison.aliases</Path>
+      </Exclusions>
+      <Exclusions>
+        <Path>astemes-string-diff-utils/.lvversion</Path>
+      </Exclusions>
       <Place_Folder_Contents>
         <Path/>
       </Place_Folder_Contents>
