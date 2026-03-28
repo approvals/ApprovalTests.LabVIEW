@@ -68,7 +68,7 @@ jobs:
             nohup labview64 > /tmp/lv_launch.log 2>&1 &
             LV_PID=$!
             echo "LabVIEW PID: $LV_PID"
-            sleep 30
+            sleep 60
             echo "--- LabVIEW stdout/stderr ---"
             cat /tmp/lv_launch.log || true
             echo "--- Processes ---"
