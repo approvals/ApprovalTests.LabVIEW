@@ -61,6 +61,7 @@ jobs:
       - name: Launch LabVIEW and Verify VI Server
         shell: bash
         run: |
+          pkill -f g-cli || true
           pkill -f labview || true
           apt-get install -y lsof
           for i in {1..10}; do
