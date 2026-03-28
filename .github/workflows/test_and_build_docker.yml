@@ -40,6 +40,22 @@ jobs:
         run: vipm install approvals-dev.vipc
       - name: List installed packages
         run: vipm list --installed
+      - name: Pre Build Package
+        shell: bash
+        run: |
+          version="3.0.0"
+          full_version="${version}.${GITHUB_RUN_NUMBER}"
+          vipb="Approval Tests.vipb"
+          apt update && apt install -y xmlstarlet dos2unix
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Package_LabVIEW_Version --value "26.0 (64-bit)" "${vipb}"
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(dos2unix release-notes.txt && cat release-notes.txt)" "${vipb}"
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}" "${vipb}"
+          for i in 1 2 3; do
+            vipm --labview-version 2026 build "${vipb}" && break
+            echo "Build attempt $i failed, retrying..."
+            [ $i -eq 3 ] && exit 1
+            sleep 10
+          done
       - name: Run Caraya Extension Tests
         shell: bash
         run: g-cli Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
@@ -54,6 +70,27 @@ jobs:
             echo "Attempt $i failed, retrying..."
             [ $i -eq 3 ] && exit 1
             sleep 10
+          done
+      
+      - name: Launch LabVIEW and Verify VI Server
+        shell: bash
+        run: |
+          apt-get install -y lsof
+          for i in 1 2 3; do
+            echo "Attempt $i: launching LabVIEW..."
+            nohup labview &
+            sleep 15
+            if lsof -i :3363 | grep -i labview; then
+              echo "VI server is up on attempt $i"
+              break
+            fi
+            echo "VI server not detected on attempt $i, killing LabVIEW and retrying..."
+            pkill labview || true
+            sleep 5
+            if [ $i -eq 3 ]; then
+              echo "VI server failed to come up after 3 attempts"
+              exit 1
+            fi
           done
       - name: Build Package
         shell: bash
