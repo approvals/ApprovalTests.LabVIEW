@@ -62,7 +62,7 @@ jobs:
           apt-get install -y lsof
           for i in 1 2 3; do
             echo "Attempt $i: launching LabVIEW..."
-            nohup labview &
+            nohup labview64 &
             sleep 15
             if lsof -i :3363 | grep -i labview; then
               echo "VI server is up on attempt $i"
