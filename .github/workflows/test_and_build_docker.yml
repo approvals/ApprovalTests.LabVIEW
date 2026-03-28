@@ -55,7 +55,9 @@ jobs:
             [ $i -eq 3 ] && exit 1
             sleep 10
           done
-      
+      - name: Verify ini file
+        shell: bash
+        run: cat /usr/local/natinst/.config/LabVIEW-2026/labview64.ini 
       - name: Launch LabVIEW and Verify VI Server
         shell: bash
         run: |
