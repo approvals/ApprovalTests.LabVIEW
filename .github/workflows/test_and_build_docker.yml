@@ -57,21 +57,29 @@ jobs:
           done
       - name: Verify ini file
         shell: bash
-        run: cat /usr/local/natinst/.config/LabVIEW-2026/labview64.ini 
+        run: cat /root/natinst/.config/LabVIEW-2026/labview64.ini 
       - name: Launch LabVIEW and Verify VI Server
         shell: bash
         run: |
           apt-get install -y lsof
           for i in {1..10}; do
             echo "Attempt $i: launching LabVIEW..."
-            nohup labview64 &
+            nohup labview64 > /tmp/lv_launch.log 2>&1 &
+            LV_PID=$!
+            echo "LabVIEW PID: $LV_PID"
             sleep 30
-            if lsof -i :3363 | grep -i labview; then
+            echo "--- LabVIEW stdout/stderr ---"
+            cat /tmp/lv_launch.log || true
+            echo "--- Processes ---"
+            ps aux | grep -i labview || true
+            echo "--- Port 3363 ---"
+            lsof -i :3363 || true
+            if lsof -i :3363 | grep LISTEN; then
               echo "VI server is up on attempt $i"
               break
             fi
             echo "VI server not detected on attempt $i, killing LabVIEW and retrying..."
-            pkill labview || true
+            pkill -f labview64 || true
             sleep 5
             if [ $i -eq 10 ]; then
               echo "VI server failed to come up after 10 attempts"

@@ -4,7 +4,7 @@ set -euo pipefail
 ip=$(cat /etc/hosts | egrep '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}' | egrep -v 127.0.[0-9]+.1 | cut -f 1  | uniq | head -n 1)
 
 
-INI_DIR="$HOME/natinst/.config/LabVIEW-2026"
+INI_DIR="/root/natinst/.config/LabVIEW-2026"
 INI_FILES=(
     "$INI_DIR/labview.ini"
     "$INI_DIR/labview64.ini"
