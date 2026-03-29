@@ -46,9 +46,9 @@ VALUES=(
     "False"
     "True"
     "True"
-    '"+*"'
+    '"*"'
     "3363"
-    '"+*"'
+    '"*"'
     "True"
     "True"
 )
