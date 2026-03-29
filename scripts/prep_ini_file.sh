@@ -46,9 +46,9 @@ VALUES=(
     "False"
     "True"
     "True"
-    '"*, localhost, 127.0.0.1, '"$ip"'"'
+    '"+*"'
     "3363"
-    '"*"'
+    '"+*"'
     "True"
     "True"
 )
