@@ -31,6 +31,8 @@ KEYS=(
     "server.vi.access"
     "server.vi.callsEnabled"
     "server.vi.propertiesEnabled"
+    "server.tcp.acl"
+    "server.app.propertiesEnabled"
 )
 
 VALUES=(
@@ -50,6 +52,8 @@ VALUES=(
     "3363"
     '"*"'
     "True"
+    "True"
+    "560000000A000000020000002500000003000000090000003132372E302E302E31100000000300000000000100000000002500000003000000090000006C6F63616C686F737410000000030000000000010000000000"
     "True"
 )
 
