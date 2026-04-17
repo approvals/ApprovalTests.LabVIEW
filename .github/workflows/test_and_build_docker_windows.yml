@@ -1,0 +1,164 @@
+name: CI - Test&Build - Docker (Windows)
+on:
+  push:
+jobs:
+  test_and_build:
+    runs-on: windows-latest
+    container:
+      image: nationalinstruments/labview:2026q1patch1-windows
+    steps:
+      - name: Start NI Service Locator # needed for G-CLI
+        shell: pwsh
+        run: Start-Service nisvcloc
+      - uses: actions/checkout@v6
+        with:
+          submodules: 'true'
+      - name: Prep ini file
+        shell: bash
+        run: ./scripts/prep_ini_file.sh
+      - name: Check Versions
+        shell: pwsh
+        run: |
+          systeminfo | Select-String "OS Name"
+          vipm about
+          g-cli --version
+          git --version
+          New-Item -ItemType Directory -Force -Path reports
+      - name: Refresh package list
+        run: vipm package-list-refresh
+      - name: Install project dependencies
+        run: vipm install approvals-dev.vipc
+      - name: List installed packages
+        run: vipm list --installed
+      - name: Run Caraya Extension Tests
+        shell: bash
+        run: g-cli Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
+      - name: Run LUnit Extension Tests
+        shell: bash
+        run: g-cli lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
+      - name: Run Error Propagation Tests
+        shell: bash
+        run: |
+          for i in 1 2 3; do
+            g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" && break
+            echo "Attempt $i failed, retrying..."
+            [ $i -eq 3 ] && exit 1
+            sleep 10
+          done
+      - name: Verify ini file
+        shell: pwsh
+        run: Get-Content "$env:LOCALAPPDATA\National Instruments\LabVIEW 2026\labview.ini"
+      - name: Launch LabVIEW and Verify VI Server
+        shell: pwsh
+        run: |
+          Get-Process -Name LabVIEW -ErrorAction SilentlyContinue | Stop-Process -Force
+          for ($i = 1; $i -le 3; $i++) {
+            Write-Host "Attempt ${i}: launching LabVIEW..."
+            Start-Process -FilePath "LabVIEW.exe" -RedirectStandardOutput "C:\Temp\lv_launch.log" -PassThru
+            Start-Sleep -Seconds 60
+            Write-Host "--- LabVIEW stdout/stderr ---"
+            Get-Content "C:\Temp\lv_launch.log" -ErrorAction SilentlyContinue
+            Write-Host "--- Processes ---"
+            Get-Process -Name LabVIEW -ErrorAction SilentlyContinue
+            Write-Host "--- Port 3363 ---"
+            $portCheck = netstat -ano | Select-String ":3363.*LISTENING"
+            Write-Host $portCheck
+            if ($portCheck) {
+              Write-Host "VI server is up on attempt $i"
+              break
+            }
+            Write-Host "VI server not detected on attempt $i, killing LabVIEW and retrying..."
+            Get-Process -Name LabVIEW -ErrorAction SilentlyContinue | Stop-Process -Force
+            Start-Sleep -Seconds 5
+          }
+      - name: Build Package
+        shell: bash
+        run: |
+          version="3.0.0"
+          full_version="${version}.${GITHUB_RUN_NUMBER}"
+          vipb="Approval Tests.vipb"
+          choco install xmlstarlet -y
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Package_LabVIEW_Version --value "26.0 (64-bit)" "${vipb}"
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(cat release-notes.txt)" "${vipb}"
+          xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}" "${vipb}"
+          for i in 1 2 3; do
+            vipm --labview-version 2026 build "${vipb}" && break
+            echo "Build attempt $i failed, retrying..."
+            [ $i -eq 3 ] && exit 1
+            sleep 10
+          done
+
+
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v6
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: 'reports/*.xml'
+      - name: Grab Reports
+        if: success() || failure() # always run even if the previous step fails
+        uses: actions/upload-artifact@v6
+        with:
+          name: artifacts
+          path: |
+            reports
+            **/*.received.*
+            C:\ProgramData\JKI\VIPM\VIPM-CLI\error
+            C:\ProgramData\National Instruments\Logs
+      - name: Grab Artifacts
+        if: success() || failure() # always run even if the previous step fails
+        uses: actions/upload-artifact@v6
+        with:
+          name: built_package
+          path: build/*.vip
+
+  install_and_test:
+    needs: test_and_build
+    runs-on: windows-latest
+    container:
+      image: nationalinstruments/labview:2026q1patch1-windows
+    steps:
+      - name: Get Artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: built_package
+          path: package.vip
+      - name: Start NI Service Locator # needed for G-CLI
+        shell: pwsh
+        run: Start-Service nisvcloc
+      - name: Prep ini file
+        shell: bash
+        run: ./scripts/prep_ini_file.sh
+      - name: Check Versions
+        shell: pwsh
+        run: |
+          systeminfo | Select-String "OS Name"
+          vipm about
+          g-cli --version
+          git --version
+          New-Item -ItemType Directory -Force -Path reports
+      - name: Refresh package list
+        run: vipm package-list-
+      - uses: actions/checkout@v6
+        with:
+          submodules: 'true'
+      - name: Install
+        run: vipm install package.vip
+      - name: Create Install Tests
+        shell: bash
+        run: ./scripts/create_install_tests.sh
+      - name: Rerun Tests on Installed Libraries
+        shell: bash
+        run: ./scripts/run_install_tests.sh
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v6
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: 'reports/*.xml'
+      - name: Grab Artifacts
+        if: success() || failure() # always run even if the previous step fails
+        uses: actions/upload-artifact@v6
+        with:
+          name: artifacts
+          path: |
+            reports
+            **/*.received.*
