@@ -1,6 +1,6 @@
 name: CI - Test&Build - Docker
-on:
-  workflow_dispatch: # disabled automatic triggers; run manually via GitHub Actions UI if needed
+on: 
+  push:
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
