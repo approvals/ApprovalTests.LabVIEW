@@ -1,0 +1,260 @@
+name: CI - Test&Build - Docker (Windows)
+on:
+  push:
+jobs:
+  test_and_build:
+    runs-on: windows-latest
+    env:
+      CONTAINER_NAME: lv-test-container
+      # NOTE: You must build and push a Windows-based version of your image.
+      # The Linux image (registry.gitlab.com/.../approvals) cannot run on a Windows container host.
+      IMAGE: registry.gitlab.com/stagg54/labview-docker-builds/lv26q1_vipm_gcli:approvals-windows
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: 'true'
+
+      - name: Login to GitLab Registry
+        shell: pwsh
+        run: docker login registry.gitlab.com -u "${{ secrets.GITLAB_REGISTRY_USERNAME }}" -p "${{ secrets.GITLAB_REGISTRY_TOKEN }}"
+
+      - name: Pull LabVIEW container image
+        shell: pwsh
+        run: docker pull $env:IMAGE
+
+      - name: Start LabVIEW container
+        shell: pwsh
+        run: |
+          docker run -d --name $env:CONTAINER_NAME `
+            -w C:\workspace `
+            -e GITHUB_RUN_NUMBER="$env:GITHUB_RUN_NUMBER" `
+            -v "${{ github.workspace }}:C:\workspace" `
+            $env:IMAGE `
+            powershell -Command "while (`$true) { Start-Sleep 60 }"
+
+      - name: Start NI Service Locator
+        shell: pwsh
+        run: docker exec $env:CONTAINER_NAME powershell -Command "Start-Service nisvcloc; Start-Sleep 2"
+
+      - name: Prep ini file
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -File "C:\workspace\scripts\prep_ini_file.ps1"
+
+      - name: Check Versions
+        shell: pwsh
+        run: |
+          docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command `
+            "Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion; vipm about; g-cli --version; git --version; New-Item -ItemType Directory -Path C:\workspace\reports -Force | Out-Null"
+
+      - name: Refresh package list
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command "vipm package-list-refresh"
+
+      - name: Install project dependencies
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command "vipm install approvals-dev.vipc"
+
+      - name: List installed packages
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command "vipm list --installed"
+
+      - name: Run Caraya Extension Tests
+        shell: pwsh
+        run: |
+          docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command `
+            'g-cli Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"'
+
+      - name: Run LUnit Extension Tests
+        shell: pwsh
+        run: |
+          docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command `
+            'g-cli lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"'
+
+      - name: Run Error Propagation Tests
+        shell: pwsh
+        run: |
+          $script = @'
+          for ($i = 1; $i -le 3; $i++) {
+            g-cli Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
+            if ($LASTEXITCODE -eq 0) { break }
+            Write-Host "Attempt $i failed, retrying..."
+            if ($i -eq 3) { exit 1 }
+            Start-Sleep 10
+          }
+          '@
+          $script | Set-Content "${{ github.workspace }}\temp_script.ps1"
+          docker exec -w C:\workspace $env:CONTAINER_NAME powershell -File "C:\workspace\temp_script.ps1"
+          Remove-Item "${{ github.workspace }}\temp_script.ps1" -ErrorAction SilentlyContinue
+
+      - name: Verify ini file
+        shell: pwsh
+        run: |
+          docker exec $env:CONTAINER_NAME powershell -Command `
+            "Get-Content 'C:\Program Files\National Instruments\LabVIEW 2026\LabVIEW.ini'"
+
+      - name: Launch LabVIEW and Verify VI Server
+        shell: pwsh
+        run: |
+          $script = @'
+          Get-Process -Name g-cli -ErrorAction SilentlyContinue | Stop-Process -Force
+          Get-Process -Name LabVIEW* -ErrorAction SilentlyContinue | Stop-Process -Force
+          for ($i = 1; $i -le 3; $i++) {
+            Write-Host "Attempt $i: launching LabVIEW..."
+            $lv = Start-Process -FilePath "LabVIEW.exe" -PassThru -RedirectStandardOutput "C:\lv_launch.log" -RedirectStandardError "C:\lv_launch_err.log"
+            Write-Host "LabVIEW PID: $($lv.Id)"
+            Start-Sleep 60
+            Write-Host "--- LabVIEW log ---"
+            Get-Content "C:\lv_launch.log" -ErrorAction SilentlyContinue
+            Write-Host "--- Processes ---"
+            Get-Process -Name LabVIEW* -ErrorAction SilentlyContinue
+            Write-Host "--- Port 3363 ---"
+            $portCheck = netstat -ano | Select-String ":3363\s.*LISTENING"
+            Write-Host $portCheck
+            if ($portCheck) {
+              Write-Host "VI server is up on attempt $i"
+              break
+            }
+            Write-Host "VI server not detected on attempt $i, killing LabVIEW and retrying..."
+            Get-Process -Name LabVIEW* -ErrorAction SilentlyContinue | Stop-Process -Force
+            Start-Sleep 5
+          }
+          '@
+          $script | Set-Content "${{ github.workspace }}\temp_script.ps1"
+          docker exec -w C:\workspace $env:CONTAINER_NAME powershell -File "C:\workspace\temp_script.ps1"
+          Remove-Item "${{ github.workspace }}\temp_script.ps1" -ErrorAction SilentlyContinue
+
+      - name: Build Package
+        shell: pwsh
+        run: |
+          $script = @'
+          $version = "3.0.0"
+          $fullVersion = "$version.$env:GITHUB_RUN_NUMBER"
+          $vipb = "Approval Tests.vipb"
+          [xml]$xml = Get-Content $vipb
+          $xml.VI_Package_Builder_Settings.Advanced_Settings.Description.Package_LabVIEW_Version = "26.0 (64-bit)"
+          $xml.VI_Package_Builder_Settings.Advanced_Settings.Description.Release_Notes = (Get-Content "release-notes.txt" -Raw).TrimEnd()
+          $xml.VI_Package_Builder_Settings.Library_General_Settings.Library_Version = $fullVersion
+          $xml.Save((Resolve-Path $vipb).Path)
+          for ($i = 1; $i -le 3; $i++) {
+            vipm --labview-version 2026 build $vipb
+            if ($LASTEXITCODE -eq 0) { break }
+            Write-Host "Build attempt $i failed, retrying..."
+            if ($i -eq 3) { exit 1 }
+            Start-Sleep 10
+          }
+          '@
+          $script | Set-Content "${{ github.workspace }}\temp_script.ps1"
+          docker exec -w C:\workspace $env:CONTAINER_NAME powershell -File "C:\workspace\temp_script.ps1"
+          Remove-Item "${{ github.workspace }}\temp_script.ps1" -ErrorAction SilentlyContinue
+
+      - name: Stop container
+        if: always()
+        shell: pwsh
+        run: docker rm -f $env:CONTAINER_NAME
+
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v6
+        if: success() || failure()
+        with:
+          report_paths: 'reports/*.xml'
+
+      - name: Grab Reports
+        if: success() || failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: artifacts
+          path: |
+            reports
+            **/*.received.*
+
+      - name: Grab Artifacts
+        if: success() || failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: built_package
+          path: build/*.vip
+
+  install_and_test:
+    needs: test_and_build
+    runs-on: windows-latest
+    env:
+      CONTAINER_NAME: lv-install-container
+      IMAGE: registry.gitlab.com/stagg54/labview-docker-builds/lv26q1_vipm_gcli:approvals-windows
+    steps:
+      - name: Get Artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: built_package
+          path: package.vip
+
+      - uses: actions/checkout@v6
+        with:
+          submodules: 'true'
+
+      - name: Login to GitLab Registry
+        shell: pwsh
+        run: docker login registry.gitlab.com -u "${{ secrets.GITLAB_REGISTRY_USERNAME }}" -p "${{ secrets.GITLAB_REGISTRY_TOKEN }}"
+
+      - name: Pull LabVIEW container image
+        shell: pwsh
+        run: docker pull $env:IMAGE
+
+      - name: Start LabVIEW container
+        shell: pwsh
+        run: |
+          docker run -d --name $env:CONTAINER_NAME `
+            -w C:\workspace `
+            -e GITHUB_RUN_NUMBER="$env:GITHUB_RUN_NUMBER" `
+            -v "${{ github.workspace }}:C:\workspace" `
+            $env:IMAGE `
+            powershell -Command "while (`$true) { Start-Sleep 60 }"
+
+      - name: Start NI Service Locator
+        shell: pwsh
+        run: docker exec $env:CONTAINER_NAME powershell -Command "Start-Service nisvcloc; Start-Sleep 2"
+
+      - name: Prep ini file
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -File "C:\workspace\scripts\prep_ini_file.ps1"
+
+      - name: Check Versions
+        shell: pwsh
+        run: |
+          docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command `
+            "Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion; vipm about; g-cli --version; git --version; New-Item -ItemType Directory -Path C:\workspace\reports -Force | Out-Null"
+
+      - name: Refresh package list
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command "vipm package-list-"
+
+      - name: Install
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -Command "vipm install C:\workspace\package.vip"
+
+      - name: Create Install Tests
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -File "C:\workspace\scripts\create_install_tests.ps1"
+
+      - name: Rerun Tests on Installed Libraries
+        shell: pwsh
+        run: docker exec -w C:\workspace $env:CONTAINER_NAME powershell -File "C:\workspace\scripts\run_install_tests.ps1"
+
+      - name: Stop container
+        if: always()
+        shell: pwsh
+        run: docker rm -f $env:CONTAINER_NAME
+
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v6
+        if: success() || failure()
+        with:
+          report_paths: 'reports/*.xml'
+
+      - name: Grab Artifacts
+        if: success() || failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: artifacts
+          path: |
+            reports
+            **/*.received.*
