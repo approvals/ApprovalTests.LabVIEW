@@ -1,0 +1,179 @@
+name: ci-checks
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  Checks:
+  
+    runs-on: ubuntu-latest
+
+    env:
+      LABVIEW_VERSION_NUMBER: '20.1'
+      LABVIEW_VERSION_YEAR: '2020'
+      LABVIEW_BITNESS: '64'
+
+    steps:
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          # cache: 'pip'
+          
+
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+
+      - name: Install pylavi
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv
+          uv pip install pylavi
+
+      - name: Run pylavi Tests
+        run: |
+          echo running pylavi tests
+          source .venv/bin/activate
+          vi_validate \
+            --path source \
+            --path tests \
+            --gt 20 --lt 21 \
+            --skip *.vit \
+            --no-code \
+            --breakpoints
+          echo finished pylavi tests
+
+  Build:
+
+    runs-on: ubuntu-latest
+
+    # LabVIEW container defaults to `sh`. Set it to `bash`, so there are no surprises with syntax in the steps.
+    defaults:
+      run:
+        shell: bash
+
+    # The official LabVIEW container image from NI
+    container:
+      image: nationalinstruments/labview:2026q1patch2-linux
+
+    env:
+      LABVIEW_IMAGE: 2026q1patch2-linux
+      VIPM_RELEASE_TYPE: preview
+      VIPM_VERSION: 26.3.0-3859
+      VIPM_COMMUNITY_EDITION: true
+
+    steps:
+
+      - name: Setup Variables
+        run: |
+          # Derive LabVIEW version year from the container image tag
+          LABVIEW_VERSION_YEAR="${LABVIEW_IMAGE:0:4}" # e.g. "2026" from "2026q1-linux"
+          echo "LABVIEW_VERSION_YEAR=${LABVIEW_VERSION_YEAR}" >> "$GITHUB_ENV"
+
+      - name: GitHub Setup for LabVIEW Container
+        run: |
+          # LabVIEW Container images put default config in /root home dir, but GitHub Actions sets $HOME to /github/home.
+          cp -R /root/natinst /github/home/natinst
+          chown -R $(id -u):$(id -g) /github/home/natinst
+
+      # wget is required to download VIPM, and is not included in the base LabVIEW image.
+      - name: Install VIPM
+        run: |
+          apt-get update && apt-get install -y wget
+          wget -O /tmp/vipm.deb \
+            https://packages.jki.net/vipm/${VIPM_RELEASE_TYPE}/vipm_${VIPM_VERSION}_amd64.deb
+          dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
+          vipm --version
+
+      - name: Install git for actions/checkout
+        # git is required for the actions/checkout step, but is not included in the base LabVIEW image.                                                                         
+        run: apt-get update && apt-get install -y git                                                                         
+      - name: Checkout code                                                                                                   
+        uses: actions/checkout@v6
+
+        # This is a reusable script to set up the display for VIPM and LabVIEW.
+        # see https://docs.vipm.io/preview/cli/docker/#display-and-labview-setup-linux-containers
+      - name: Write setup-display.sh
+        run: |
+          cat > setup-display.sh <<'EOF'
+          TARGET_DISPLAY=:99
+          export DISPLAY="$TARGET_DISPLAY"
+          # Start Xvfb if it is not already running. If it is already running, assume it is correctly configured for this container and do nothing.
+          if ! pgrep -x Xvfb > /dev/null; then
+              Xvfb "$TARGET_DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
+                  > /tmp/xvfb.log 2>&1 &
+          fi
+          # Writing this marker file is critical and if if it is not present, the LabVIEW Runtime Engine (required by vipm) may not start properly.
+          mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
+          # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
+          echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
+          EOF
+
+      # Use GitHub's caching action to cache VIPM's package cache.
+      - name: Cache VIPM packages
+        uses: actions/cache@v5
+        env:
+          # Increment this to invalidate the cache (restore-keys included).
+          CACHE_VERSION: 1
+        with:
+          path: /usr/local/jki/vipm/cache/
+          # Key includes hashes of the project package manifests (.vipc and .dragon files)
+          key: vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-${{ hashFiles('source/.vipc', 'error.dragon') }}
+          restore-keys: |
+            vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-
+            vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-
+
+      - name: Print VIPM About
+        run: vipm about
+
+      - name: VIPM Refresh Package Index
+        # we will refresh before building the package
+        if: true
+        run: |
+          source setup-display.sh
+          echo "Starting LabVIEW"
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+
+          vipm refresh --show-progress --verbose
+
+      - name: VIPM List Packages
+        run: vipm list source/.vipc
+
+      - name: VIPM Install Packages
+        run: |
+          source setup-display.sh
+          echo "Starting LabVIEW"
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+          
+          vipm install error.dragon --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
+
+      - name: VIPM Build Package
+        run: |
+          source setup-display.sh
+          echo "Starting LabVIEW"
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+
+          vipm build source/.vipb --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --verbose
+
+      - name: Upload Built Package as Artifact
+        if: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: vi-package-${{ env.LABVIEW_IMAGE }}
+          path: |
+            *.vip
+
+      - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
+        if: false
+        uses: actions/upload-artifact@v7
+        with:
+          name: vipm-settings-${{ env.LABVIEW_IMAGE }}
+          path: |
+            /usr/local/jki/vipm/Settings.ini
+            /root/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
