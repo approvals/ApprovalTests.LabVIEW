@@ -6,11 +6,10 @@ on:
   workflow_dispatch:
 
 jobs:
-
+  PylaviChecks:
     branches:
       - main
       - master
-  PylaviChecks:
   
     runs-on: ubuntu-latest
 
