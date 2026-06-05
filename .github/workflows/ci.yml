@@ -120,7 +120,7 @@ jobs:
         with:
           path: /usr/local/jki/vipm/cache/
           # Key includes hashes of the project package manifests (.vipc and .dragon files)
-          key: vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-${{ hashFiles('source/.vipc', 'error.dragon') }}
+          key: vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-${{ hashFiles('approvals-dev.vipc', 'error.dragon') }}
           restore-keys: |
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-
@@ -139,7 +139,7 @@ jobs:
           vipm refresh --show-progress --verbose
 
       - name: VIPM List Packages
-        run: vipm list Source/approvals-dev.vipc
+        run: vipm list "approvals-dev.vipc"
 
       - name: VIPM Install Packages
         run: |
@@ -147,7 +147,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           
-          vipm install "Source/approvals-dev.vipc" --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
+          vipm install "approvals-dev.vipc" --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
 
       - name: VIPM Build Package
         run: |
@@ -155,7 +155,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
 
-          vipm build "Source/Approval Tests.vipb" --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --verbose
+          vipm build "Approval Tests.vipb" --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --verbose
 
       - name: Upload Built Package as Artifact
         if: true
