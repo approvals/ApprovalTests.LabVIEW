@@ -25,6 +25,8 @@ jobs:
 
       - name: Checkout Repo
         uses: actions/checkout@v6
+        with:
+          submodules: recursive
 
       - name: Install pylavi
         run: |
@@ -92,6 +94,8 @@ jobs:
         run: apt-get update && apt-get install -y git                                                                         
       - name: Checkout code                                                                                                   
         uses: actions/checkout@v6
+        with:
+          submodules: recursive
 
         # This is a reusable script to set up the display for VIPM and LabVIEW.
         # see https://docs.vipm.io/preview/cli/docker/#display-and-labview-setup-linux-containers
