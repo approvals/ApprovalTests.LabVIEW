@@ -7,9 +7,6 @@ on:
 
 jobs:
   PylaviChecks:
-    branches:
-      - main
-      - master
   
     runs-on: ubuntu-latest
 
