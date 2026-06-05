@@ -2,15 +2,15 @@ name: ci-checks
 
 on:
   push:
-    branches:
-      - main
-      - master
   pull_request:
   workflow_dispatch:
 
 jobs:
 
-  Checks:
+    branches:
+      - main
+      - master
+  PylaviChecks:
   
     runs-on: ubuntu-latest
 
@@ -143,7 +143,7 @@ jobs:
           vipm refresh --show-progress --verbose
 
       - name: VIPM List Packages
-        run: vipm list source/.vipc
+        run: vipm list Source/approvals-dev.vipc
 
       - name: VIPM Install Packages
         run: |
@@ -151,7 +151,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           
-          vipm install error.dragon --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
+          vipm install "Source/approvals-dev.vipc" --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
 
       - name: VIPM Build Package
         run: |
@@ -159,7 +159,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
 
-          vipm build source/.vipb --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --verbose
+          vipm build "Source/Approval Tests.vipb" --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --verbose
 
       - name: Upload Built Package as Artifact
         if: true
@@ -167,7 +167,7 @@ jobs:
         with:
           name: vi-package-${{ env.LABVIEW_IMAGE }}
           path: |
-            *.vip
+            build/*.vip
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
         if: false
