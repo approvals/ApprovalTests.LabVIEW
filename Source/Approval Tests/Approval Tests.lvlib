@@ -22,32 +22,15 @@
 		<Item Name="Global.vi" Type="VI" URL="../Global.vi">
 			<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		</Item>
+		<Item Name="LVCompare Options.ctl" Type="VI" URL="../../../LVCompare Options.ctl"/>
 		<Item Name="Set LVCompare Options.vi" Type="VI" URL="../Set LVCompare Options.vi"/>
-	</Item>
-	<Item Name="for pallettes" Type="Folder">
-		<Item Name="Add Date Scrubber.vi" Type="VI" URL="../Add Date Scrubber.vi"/>
-		<Item Name="Add Namer With Folder.vi" Type="VI" URL="../Add Namer With Folder.vi"/>
-		<Item Name="Add Namer with Shared Approval File.vi" Type="VI" URL="../Add Namer with Shared Approval File.vi"/>
-		<Item Name="Add Regex Scrubber Unique.vi" Type="VI" URL="../Add Regex Scrubber Unique.vi"/>
-		<Item Name="Add Regex Scrubber.vi" Type="VI" URL="../Add Regex Scrubber.vi"/>
-		<Item Name="Add Shared Approval File and Folder.vi" Type="VI" URL="../Add Shared Approval File and Folder.vi"/>
-		<Item Name="Options Cube.vi" Type="VI" URL="../Options Cube.vi"/>
 	</Item>
 	<Item Name="Namers" Type="Folder">
 		<Item Name="Namer Decorator.lvclass" Type="LVClass" URL="../Namer Decorator/Namer Decorator.lvclass"/>
-		<Item Name="Namer with Folder.lvclass" Type="LVClass" URL="../Namer with Folder/Namer with Folder.lvclass"/>
 		<Item Name="Namer With Shared Approved File.lvclass" Type="LVClass" URL="../Namer With Shared Approved File/Namer With Shared Approved File.lvclass"/>
+		<Item Name="Namer with Folder.lvclass" Type="LVClass" URL="../Namer with Folder/Namer with Folder.lvclass"/>
 		<Item Name="Namer.lvclass" Type="LVClass" URL="../Namer/Namer.lvclass"/>
 		<Item Name="Naming Data.lvclass" Type="LVClass" URL="../Naming Data/Naming Data.lvclass"/>
-	</Item>
-	<Item Name="private" Type="Folder">
-		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		<Item Name="Combo Recurse.vi" Type="VI" URL="../Combo Recurse.vi"/>
-		<Item Name="conv EOL.vi" Type="VI" URL="../conv EOL.vi"/>
-		<Item Name="Create Parameters List.vi" Type="VI" URL="../Create Parameters List.vi"/>
-		<Item Name="Parameterized Data to JSON.vi" Type="VI" URL="../Parameterized Data to JSON.vi"/>
-		<Item Name="Prepare VI for Parameterized Test.vi" Type="VI" URL="../Prepare VI for Parameterized Test.vi"/>
-		<Item Name="Verify Core.vi" Type="VI" URL="../Verify Core.vi"/>
 	</Item>
 	<Item Name="Reporters" Type="Folder">
 		<Item Name="Report Nothing.lvclass" Type="LVClass" URL="../Report Nothing/Report Nothing.lvclass"/>
@@ -68,11 +51,11 @@
 		<Item Name="Scrubber.lvclass" Type="LVClass" URL="../Scrubber/Scrubber.lvclass"/>
 	</Item>
 	<Item Name="Utility" Type="Folder">
-		<Item Name="array to array of variants.vim" Type="VI" URL="../array to array of variants.vim"/>
 		<Item Name="Options.ctl" Type="VI" URL="../Options.ctl"/>
 		<Item Name="Replace if Empty.vi" Type="VI" URL="../Replace if Empty.vi"/>
 		<Item Name="Replace with Caller if Empty.vi" Type="VI" URL="../Replace with Caller if Empty.vi"/>
 		<Item Name="Scalar To String.vim" Type="VI" URL="../Scalar To String.vim"/>
+		<Item Name="array to array of variants.vim" Type="VI" URL="../array to array of variants.vim"/>
 		<Item Name="to String.vim" Type="VI" URL="../to String.vim"/>
 	</Item>
 	<Item Name="Verifies" Type="Folder">
@@ -87,6 +70,24 @@
 	</Item>
 	<Item Name="Writers" Type="Folder">
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
+	</Item>
+	<Item Name="for pallettes" Type="Folder">
+		<Item Name="Add Date Scrubber.vi" Type="VI" URL="../Add Date Scrubber.vi"/>
+		<Item Name="Add Namer With Folder.vi" Type="VI" URL="../Add Namer With Folder.vi"/>
+		<Item Name="Add Namer with Shared Approval File.vi" Type="VI" URL="../Add Namer with Shared Approval File.vi"/>
+		<Item Name="Add Regex Scrubber Unique.vi" Type="VI" URL="../Add Regex Scrubber Unique.vi"/>
+		<Item Name="Add Regex Scrubber.vi" Type="VI" URL="../Add Regex Scrubber.vi"/>
+		<Item Name="Add Shared Approval File and Folder.vi" Type="VI" URL="../Add Shared Approval File and Folder.vi"/>
+		<Item Name="Options Cube.vi" Type="VI" URL="../Options Cube.vi"/>
+	</Item>
+	<Item Name="private" Type="Folder">
+		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
+		<Item Name="Combo Recurse.vi" Type="VI" URL="../Combo Recurse.vi"/>
+		<Item Name="Create Parameters List.vi" Type="VI" URL="../Create Parameters List.vi"/>
+		<Item Name="Parameterized Data to JSON.vi" Type="VI" URL="../Parameterized Data to JSON.vi"/>
+		<Item Name="Prepare VI for Parameterized Test.vi" Type="VI" URL="../Prepare VI for Parameterized Test.vi"/>
+		<Item Name="Verify Core.vi" Type="VI" URL="../Verify Core.vi"/>
+		<Item Name="conv EOL.vi" Type="VI" URL="../conv EOL.vi"/>
 	</Item>
 	<Item Name="Options.lvclass" Type="LVClass" URL="../Options/Options.lvclass"/>
 	<Item Name="Safe Trim.vi" Type="VI" URL="../Safe Trim.vi"/>
