@@ -35,11 +35,11 @@ jobs:
           git --version
           mkdir reports
       - name: Refresh package list
-        run: vipm package-list-refresh
+        run: sudo vipm package-list-refresh
       - name: Install project dependencies
-        run: vipm install approvals-dev.vipc
+        run: sudo vipm install approvals-dev.vipc
       - name: List installed packages
-        run: vipm list --installed
+        run: sudo vipm list --installed
       - name: Run Caraya Extension Tests
         shell: bash
         run: g-cli Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
@@ -99,7 +99,7 @@ jobs:
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Advanced_Settings/Description/Release_Notes --value "$(dos2unix release-notes.txt && cat release-notes.txt)" "${vipb}"
           xmlstarlet ed --inplace -u VI_Package_Builder_Settings/Library_General_Settings/Library_Version --value "${full_version}" "${vipb}"
           for i in 1 2 3; do
-            vipm --labview-version 2026 build "${vipb}" && break
+            sudo vipm --labview-version 2026 build "${vipb}" && break
             echo "Build attempt $i failed, retrying..."
             [ $i -eq 3 ] && exit 1
             sleep 10
