@@ -22,7 +22,7 @@
 		<Item Name="Global.vi" Type="VI" URL="../Global.vi">
 			<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		</Item>
-		<Item Name="LVCompare Options.ctl" Type="VI" URL="../../../LVCompare Options.ctl"/>
+		<Item Name="LVCompare Options.ctl" Type="VI" URL="../LVCompare Options.ctl"/>
 		<Item Name="Set LVCompare Options.vi" Type="VI" URL="../Set LVCompare Options.vi"/>
 	</Item>
 	<Item Name="Namers" Type="Folder">
