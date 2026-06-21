@@ -1,0 +1,5 @@
+{
+  "standard output":"",
+  "standard error":"Here is STD ERR",
+  "return code":0
+}

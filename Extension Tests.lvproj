@@ -22,8 +22,7 @@
 			<Item Name="Verify Class Roster as JSON.approved.json" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Class Roster as JSON.approved.json"/>
 			<Item Name="Verify Class Roster.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Class Roster.approved.txt"/>
 			<Item Name="Verify CLI Echo Hello World.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI Echo Hello World.approved.txt"/>
-			<Item Name="Verify CLI STD ERR.Linux.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI STD ERR.Linux.approved.txt"/>
-			<Item Name="Verify CLI STD ERR.Win.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI STD ERR.Win.approved.txt"/>
+			<Item Name="Verify CLI STD ERR.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI STD ERR.approved.txt"/>
 			<Item Name="Verify Hello World.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Hello World.approved.txt"/>
 			<Item Name="Verify Multi Combos.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Multi Combos.approved.txt"/>
 			<Item Name="Verify Person as JSON.approved.json" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Person as JSON.approved.json"/>
