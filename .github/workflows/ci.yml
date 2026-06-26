@@ -63,7 +63,7 @@ jobs:
     env:
       LABVIEW_IMAGE: 2026q1patch2-linux
       VIPM_RELEASE_TYPE: preview
-      VIPM_VERSION: 26.3.0-3859
+      VIPM_VERSION: 26.3.0-3991
       VIPM_COMMUNITY_EDITION: true
 
     steps:
