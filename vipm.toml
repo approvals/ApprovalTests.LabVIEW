@@ -1,0 +1,27 @@
+[project]
+name = "Approval.Tests"
+version = "0.1.0"
+labview-version = "2026" #version used in development?
+description = "Approval Testing Package for LabVIEW"
+authors = ["Sam Taggart and Llewellyn Falco, plus other contributors"]
+license = "MIT"
+repository = "https://github.com/approvals/ApprovalTests.LabVIEW"
+
+[dependencies]
+jdp_science_jsontext = "1.9.1.125"
+pnr_lib_jsontext_object_serialization = "1.0.4.25"
+
+[dev-dependencies]
+astemes_lib_lunit_parameterized_add_on = "1.1.10.8"
+astemes_lib_lunit = "2.0.13.6"
+jki_lib_caraya = "1.4.4.148"
+lvos_lib_caraya_cli_extension = "2.0.0.7"
+sas_workshops_lib_clearlvcache_for_g_cli = "1.0.3.58"
+jdp_science_lib_common_utilities = "1.4.2.19"
+sas_workshops_lib_lunit_for_g_cli = "1.2.1.85"
+wiresmith_technology_lib_g_cli = "3.0.1.98"
+
+[build.package]
+type = "vipb"
+path = "Approval Tests.vipb"
+
