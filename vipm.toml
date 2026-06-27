@@ -24,4 +24,3 @@ wiresmith_technology_lib_g_cli = "3.0.1.98"
 [build.package]
 type = "vipb"
 path = "Approval Tests.vipb"
-
