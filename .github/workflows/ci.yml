@@ -161,7 +161,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           
-          vipm install "approvals-dev.vipc" --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
+          vipm install --dev --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
 
       - name: VIPM Build Package
         run: |
