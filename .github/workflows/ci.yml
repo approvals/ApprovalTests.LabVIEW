@@ -69,8 +69,7 @@ jobs:
       VIPM_EMAIL: ${{ secrets.VIPM_EMAIL }}
       VIPM_FULL_NAME: ${{ secrets.VIPM_FULL_NAME }}
       VIPM_SERIAL_NUMBER: ${{ secrets.VIPM_SERIAL_NUMBER }}
-      VIPM_DEBUG: 1
-      VIPM_ASSUME_YES: 1
+
 
     steps:
 
