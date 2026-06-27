@@ -134,8 +134,11 @@ jobs:
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-
 
-      - name: Activate VIPM
-        run: vipm activate --serial-number "$VIPM_SERIAL_NUMBER" --name "$VIPM_FULL_NAME" --email "$VIPM_EMAIL"
+    - name: Activate VIPM
+      run: |
+        source setup-display.sh
+        echo "Activating VIPM"
+        vipm activate --serial-number "$VIPM_SERIAL_NUMBER" --name "$VIPM_FULL_NAME" --email "$VIPM_EMAIL"
 
       - name: Print VIPM About
         run: vipm about
