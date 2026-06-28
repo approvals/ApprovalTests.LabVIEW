@@ -150,7 +150,7 @@ jobs:
 
       - name: VIPM List Packages
         run: vipm list
-        
+
       - name: VIPM Install Packages
         run: |
           source setup-display.sh
@@ -159,6 +159,8 @@ jobs:
           
           vipm install --dev --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
 
+          vipm install "approvals-dev.vipc" --show-progress --verbose --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64
+          
       - name: VIPM Build Package
         run: |
           source setup-display.sh
