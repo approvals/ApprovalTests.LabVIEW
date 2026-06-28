@@ -149,8 +149,8 @@ jobs:
           vipm refresh --show-progress --verbose
 
       - name: VIPM List Packages
-        run: vipm list "approvals-dev.vipc"
-
+        run: vipm list
+        
       - name: VIPM Install Packages
         run: |
           source setup-display.sh
