@@ -114,9 +114,6 @@ jobs:
           mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
           # This container has no browser/D-Bus session. Some package post-install actions try to open a URL
           # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
-          # Shim xdg-open as a no-op so those calls return instantly instead of stalling the LabVIEW UI thread.
-          printf '#!/bin/sh\nexit 0\n' > /usr/bin/xdg-open && chmod +x /usr/bin/xdg-open
-          export BROWSER=/bin/true
           # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
           echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
           EOF
