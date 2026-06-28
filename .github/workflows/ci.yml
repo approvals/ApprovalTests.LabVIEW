@@ -65,9 +65,6 @@ jobs:
       VIPM_VERSION: 26.3.0-3991
       VIPM_COMMUNITY_EDITION: true
       VIPM_DESKTOP_LIVELINESS_TIMEOUT: 600
-      VIPM_EMAIL: ${{ secrets.VIPM_EMAIL }}
-      VIPM_FULL_NAME: ${{ secrets.VIPM_FULL_NAME }}
-      VIPM_SERIAL_NUMBER: ${{ secrets.VIPM_SERIAL_NUMBER }}
 
 
     steps:
@@ -137,8 +134,7 @@ jobs:
         run: |
           source setup-display.sh
           echo "Activating VIPM"
-          vipm activate --serial-number "$VIPM_SERIAL_NUMBER" --name "$VIPM_FULL_NAME" --email "$VIPM_EMAIL"
-
+          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}
       - name: Print VIPM About
         run: vipm about
 
