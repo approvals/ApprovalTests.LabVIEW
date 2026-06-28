@@ -46,7 +46,7 @@ jobs:
             --breakpoints
           echo finished pylavi tests
 
-  Build:
+  Test_And_Build:
 
     runs-on: ubuntu-latest
 
@@ -65,6 +65,7 @@ jobs:
       VIPM_VERSION: 26.3.0-3991
       VIPM_COMMUNITY_EDITION: true
       VIPM_DESKTOP_LIVELINESS_TIMEOUT: 600
+      PACKAGE_VERSION: 3.0.0
 
 
     steps:
@@ -169,7 +170,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
 
-          vipm build "Approval Tests.vipb" --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --verbose
+          vipm build "Approval Tests.vipb" --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --verbose --version-number ${PACKAGE_VERSION} --build-number ${GITHUB_RUN_NUMBER}
 
       - name: Upload Built Package as Artifact
         if: true
