@@ -152,7 +152,7 @@ jobs:
           vipm refresh --show-progress --verbose
 
       - name: VIPM List Packages
-        run: vipm list
+        run: vipm list approvals-dev.vipc
 
       - name: VIPM Install Packages
         run: |
