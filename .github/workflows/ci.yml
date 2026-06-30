@@ -167,6 +167,7 @@ jobs:
       - name: Run Unit Tests
         run: |
           source setup-display.sh
+          nisvcloc &
           echo "Running LUnit Tests"
           ./bin/g-cli --timeout 300000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
           echo "Running Caraya Tests"
