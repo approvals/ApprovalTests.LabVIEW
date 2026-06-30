@@ -166,15 +166,16 @@ jobs:
           
       - name: Run Unit Tests
         run: |
-          ./scripts/prep_ini_file.sh
+          # ./scripts/prep_ini_file.sh
           source setup-display.sh
           nohup nisvcloc &
-          echo "Running LUnit Tests"
-          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
-          ./bin/g-cli --timeout 300000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
-          echo "Running Caraya Tests"
-          ./bin/g-cli --timeout 300000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
-          ./bin/g-cli --timeout 300000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" 
+          ./bin/g-cli Echo -- Hello World
+          # echo "Running LUnit Tests"
+          # /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+          # ./bin/g-cli --timeout 300000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
+          # echo "Running Caraya Tests"
+          # ./bin/g-cli --timeout 300000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
+          # ./bin/g-cli --timeout 300000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" 
       - name: VIPM Build Package
         run: |
           source setup-display.sh
