@@ -168,7 +168,7 @@ jobs:
         run: |
           ./scripts/prep_ini_file.sh
           source setup-display.sh
-          nisvcloc &
+          nohup nisvcloc &
           echo "Running LUnit Tests"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           ./bin/g-cli --timeout 300000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
