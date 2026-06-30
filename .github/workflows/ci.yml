@@ -169,7 +169,7 @@ jobs:
           # ./scripts/prep_ini_file.sh
           source setup-display.sh
           nohup nisvcloc &
-          ./bin/g-cli Echo -- Hello World
+          ./bin/g-cli "/usr/local/natinst/LabVIEW-2026-64/vi.lib/G CLI Tools/Echo.vi" -- Hello World
           # echo "Running LUnit Tests"
           # /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           # ./bin/g-cli --timeout 300000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Approval Testing.lvproj"
