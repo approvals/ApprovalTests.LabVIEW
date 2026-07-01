@@ -149,7 +149,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
 
-          vipm refresh --show-progress # --verbose
+          vipm refresh --show-progress --verbose
 
       - name: VIPM List Packages
         run: vipm list approvals-dev.vipc
@@ -160,9 +160,9 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           
-          # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
+          # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --verbose
 
-          vipm install "approvals-dev.vipc" --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
+          vipm install "approvals-dev.vipc" --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --verbose
           
       - name: Run Unit Tests
         run: |
@@ -193,7 +193,7 @@ jobs:
             build/*.vip
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
-        if: false
+        if: true
         uses: actions/upload-artifact@v7
         with:
           name: vipm-settings-${{ env.LABVIEW_IMAGE }}
