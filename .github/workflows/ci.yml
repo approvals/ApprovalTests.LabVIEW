@@ -115,6 +115,14 @@ jobs:
           mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
           # This container has no browser/D-Bus session. Some package post-install actions try to open a URL
           # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
+          # Stub out xdg-open so those calls return immediately instead of hanging.
+          mkdir -p /tmp/fake-bin
+          cat > /tmp/fake-bin/xdg-open <<'XDGOPEN'
+          #!/bin/sh
+          exit 0
+          XDGOPEN
+          chmod +x /tmp/fake-bin/xdg-open
+          export PATH="/tmp/fake-bin:$PATH"
           # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
           echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
           EOF
@@ -182,7 +190,7 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
 
-          vipm build "Approval Tests.vipb" --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --version-number ${PACKAGE_VERSION} --build-number ${GITHUB_RUN_NUMBER} # --verbose
+          vipm build "Approval Tests.vipb" --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 --show-progress --version-number ${PACKAGE_VERSION} --build-number ${GITHUB_RUN_NUMBER} --verbose
 
       - name: Upload Built Package as Artifact
         if: true
