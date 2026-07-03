@@ -127,31 +127,15 @@ jobs:
       # attempt so far has just backgrounded nisvcloc with `&` and hoped for the best. This step checks
       # whether nisvcloc actually starts and stays alive in this container, before we build anything on
       # top of that assumption. It never fails the job.
-      - name: Diagnose nisvcloc
+      - name: Start nisvcloc
         continue-on-error: true
         run: |
-          apt-get update && apt-get install -y curl
           echo "=== Starting nisvcloc ==="
           nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
           NISVCLOC_PID=$!
           echo "nisvcloc PID: $NISVCLOC_PID"
-
           sleep 3
-          if kill -0 "$NISVCLOC_PID" 2>/dev/null; then
-            echo "nisvcloc is still running after 3s"
-          else
-            echo "nisvcloc exited early (it is no longer running)"
-          fi
-
-          echo "=== nisvcloc process list ==="
-          ps aux | grep -i nisvcloc | grep -v grep || echo "no nisvcloc process found"
-
-          echo "=== nisvcloc log output ==="
-          cat /tmp/nisvcloc.log || echo "no log produced"
-
-          echo "=== querying nisvcloc dumpinfo endpoint ==="
-          curl -sv http://localhost:3580/dumpinfo || echo "curl to dumpinfo endpoint failed (exit $?)"
-           
+  
        
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
