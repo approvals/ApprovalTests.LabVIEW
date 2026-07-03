@@ -127,7 +127,10 @@ jobs:
       # attempt so far has just backgrounded nisvcloc with `&` and hoped for the best. This step checks
       # whether nisvcloc actually starts and stays alive in this container, before we build anything on
       # top of that assumption. It never fails the job.
-         
+      - name: Start nisvcloc
+        run: |
+          nohup niscloc
+          sleep 3         
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
         uses: actions/cache@v5
