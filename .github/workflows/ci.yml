@@ -160,7 +160,10 @@ jobs:
           # Increment this to invalidate the cache (restore-keys included).
           CACHE_VERSION: 1
         with:
-          path: /usr/local/jki/vipm/cache/
+          path: |
+            /usr/local/natinst/LabVIEW*/
+            /usr/local/jki/vipm/cache/
+            /usr/local/jki/vipm/db/
           # Key includes hashes of the project package manifests (.vipc and .dragon files)
           key: vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-${{ hashFiles('approvals-dev.vipc', 'error.dragon') }}
           restore-keys: |
