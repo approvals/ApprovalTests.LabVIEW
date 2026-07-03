@@ -197,7 +197,7 @@ jobs:
       
       - name: Test G-CLI
         run: |
-          ls "/usr/local/natinst/LabVIEW-2026-64/vilib/G CLI Tools"
+          ls "/usr/local/natinst/LabVIEW-2026-64/vi.lib/G CLI Tools"
           ./bin/g-cli Echo -- Hello World
       - name: VIPM Build Package
         run: |
