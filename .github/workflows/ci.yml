@@ -181,7 +181,7 @@ jobs:
             build/*.vip
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
-        if: false
+        if: always() 
         uses: actions/upload-artifact@v7
         with:
           name: vipm-settings-${{ env.LABVIEW_IMAGE }}
