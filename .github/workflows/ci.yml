@@ -127,7 +127,7 @@ jobs:
       - name: Diagnose nisvcloc
         continue-on-error: true
         run: |
-
+          apt-get update && apt-get install -y curl
           echo "=== Starting nisvcloc ==="
           nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
           NISVCLOC_PID=$!
