@@ -197,6 +197,10 @@ jobs:
           # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
           vipm install wiresmith_technology_lib_g_cli
           vipm install "approvals-dev.vipc" --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
+
+      - name: VIPM List Installed packages
+        run: |
+          vipm list --installed
       
       - name: Test G-CLI
         run: |
