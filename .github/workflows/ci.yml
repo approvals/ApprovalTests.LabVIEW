@@ -155,6 +155,7 @@ jobs:
        
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
+        id: cache-vipm
         uses: actions/cache@v5
         env:
           # Increment this to invalidate the cache (restore-keys included).
