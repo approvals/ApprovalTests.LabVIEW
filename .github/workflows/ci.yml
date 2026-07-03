@@ -203,8 +203,9 @@ jobs:
 
           pkill labview || true
           pkill nisvcloc || true
+          sleep 3
           nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
-          sleep 5
+          sleep 3
 
           source setup-display.sh          
           echo "Running LUnit Tests"
