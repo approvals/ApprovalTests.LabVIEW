@@ -148,7 +148,8 @@ jobs:
 
           echo "=== querying nisvcloc dumpinfo endpoint ==="
           curl -sv http://localhost:3580/dumpinfo || echo "curl to dumpinfo endpoint failed (exit $?)"
-
+           
+       
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
         uses: actions/cache@v5
@@ -193,7 +194,11 @@ jobs:
           # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
 
           vipm install "approvals-dev.vipc" --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
-          
+      
+      - name: Test G-CLI
+        run: |
+          ls /usr/local/natinst/LabVIEW-2026-64/vilib/G\CLI\Tools
+          ./bin/g-cli Echo -- Hello World
       - name: VIPM Build Package
         run: |
           source setup-display.sh
