@@ -192,11 +192,12 @@ jobs:
           source setup-display.sh
           vipm list --installed
       
-      - name: Test G-CLI
+      - name: Pre-build Unit Tests
         run: |
           source setup-display.sh
-          ls "/usr/local/natinst/LabVIEW-2026-64/vi.lib/G CLI Tools"
-          ./bin/g-cli Echo -- "Hello World"
+          mkdir -p reports
+          ./bin/g-cli lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj"
+
       - name: VIPM Build Package
         run: |
           source setup-display.sh
