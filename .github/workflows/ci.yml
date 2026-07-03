@@ -192,6 +192,7 @@ jobs:
         run: vipm list approvals-dev.vipc
 
       - name: VIPM Install Packages
+        if: steps.cache-vipm.outputs.cache-hit != 'true'
         run: |
           source setup-display.sh
           echo "Starting LabVIEW"
