@@ -190,7 +190,7 @@ jobs:
       - name: VIPM List Installed packages
         run: |
           source setup-display.sh
-          vipm list --installed
+          vipm list --installed || true
 
       - name: Caraya Extension Tests
         run: |
