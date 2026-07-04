@@ -120,6 +120,21 @@ jobs:
           # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
           # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
           echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
+
+          # Debugging g-cli's "second launch" timeout: dump nisvcloc/labview process state and
+          # nisvcloc's own HTTP diagnostics (http://localhost:3580/dumpinfo?) before/after each
+          # g-cli invocation, so we can see whether the target VI actually registers its callback
+          # port with nisvcloc, and whether that differs between the 1st and 2nd g-cli call.
+          dump_diagnostics() {
+            echo "=== Diagnostics: $1 ==="
+            echo "--- nisvcloc process ---"
+            pgrep -af nisvcloc || echo "nisvcloc not running"
+            echo "--- labview process(es) ---"
+            pgrep -af labview || echo "no labview process running"
+            echo "--- nisvcloc dumpinfo (http://localhost:3580/dumpinfo?) ---"
+            curl -s "http://localhost:3580/dumpinfo?" || echo "dumpinfo request failed"
+            echo "=== end diagnostics: $1 ==="
+          }
           EOF
 
       # g-cli doesn't talk to LabVIEW over VI Server. It launches LabVIEW with a target VI, and that VI
@@ -194,19 +209,25 @@ jobs:
 
       - name: Caraya Extension Tests
         run: |
-          source setup-display.sh          
+          source setup-display.sh
           mkdir -p reports
           SECONDS=0
+          dump_diagnostics "before Caraya"
           echo "Running Caraya Extension Tests"
-          ./bin/g-cli -v Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
+          ./bin/g-cli -v Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml" || CARAYA_EXIT=$?
+          dump_diagnostics "after Caraya"
           echo "Test Time: $SECONDS"
-      
+          exit ${CARAYA_EXIT:-0}
+
       - name: Lunit Tests
         run: |
           source setup-display.sh
           mkdir -p reports
+          dump_diagnostics "before Lunit"
           echo "Running LUnit Tests"
-          ./bin/g-cli -v lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj"
+          ./bin/g-cli -v lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" || LUNIT_EXIT=$?
+          dump_diagnostics "after Lunit"
+          exit ${LUNIT_EXIT:-0}
 
           
           
@@ -234,3 +255,5 @@ jobs:
           path: |
             /usr/local/jki/vipm/Settings.ini
             /root/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
+            /tmp/nisvcloc.log
+            /tmp/xvfb.log
