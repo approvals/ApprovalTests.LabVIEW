@@ -143,7 +143,7 @@ jobs:
         uses: actions/cache@v5
         env:
           # Increment this to invalidate the cache (restore-keys included).
-          CACHE_VERSION: 2
+          CACHE_VERSION: 1
         with:
           path: |
             /usr/local/natinst/LabVIEW*/
