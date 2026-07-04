@@ -186,14 +186,10 @@ jobs:
           # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
           # vipm install wiresmith_technology_lib_g_cli
           vipm install "approvals-dev.vipc" --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
-
-          
       - name: VIPM List Installed packages
         run: |
           source setup-display.sh
           vipm list --installed
-      
-      
         - name: Caraya Extension Tests
         run: |
           source setup-display.sh          
