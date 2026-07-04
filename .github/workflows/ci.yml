@@ -192,7 +192,7 @@ jobs:
           source setup-display.sh
           vipm list --installed
 
-        - name: Caraya Extension Tests
+      - name: Caraya Extension Tests
         run: |
           source setup-display.sh          
           mkdir -p reports
@@ -201,7 +201,7 @@ jobs:
           ./bin/g-cli -v Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
           echo "Test Time: $SECONDS"
       
-        - name: Lunit Tests
+      - name: Lunit Tests
         run: |
           source setup-display.sh
           mkdir -p reports
