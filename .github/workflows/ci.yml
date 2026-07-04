@@ -194,7 +194,8 @@ jobs:
 
       - name: Caraya Extension Tests
         run: |
-          source setup-display.sh          
+          source setup-display.sh 
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           mkdir -p reports
           SECONDS=0
           echo "Running Caraya Extension Tests"
@@ -204,6 +205,7 @@ jobs:
       - name: Lunit Tests
         run: |
           source setup-display.sh
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           mkdir -p reports
           echo "Running LUnit Tests"
           ./bin/g-cli -v lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj"
