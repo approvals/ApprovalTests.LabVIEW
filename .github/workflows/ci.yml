@@ -196,7 +196,7 @@ jobs:
           source setup-display.sh
           mkdir -p reports
           echo "Running LUnit Tests"
-          ./bin/g-cli lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj"
+          ./bin/g-cli -v lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj"
       - name: Caraya Extension Tests
         run: |
           source setup-display.sh          
