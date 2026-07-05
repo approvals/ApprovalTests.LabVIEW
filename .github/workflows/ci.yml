@@ -34,7 +34,7 @@ jobs:
       - name: Run pylavi Tests
         run: |
           echo "running pylavi tests"
-          source .venv/bin/activate
+          source ./venv/bin/activate
           vi_validate \
             --path Source \
             --path Tests \
