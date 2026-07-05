@@ -6,7 +6,7 @@ on:
 
 jobs:
   PylaviChecks:
-  
+
     runs-on: ubuntu-latest
 
     env:
@@ -20,7 +20,6 @@ jobs:
         with:
           python-version: '3.11'
           # cache: 'pip'
-          
 
       - name: Checkout Repo
         uses: actions/checkout@v6
@@ -96,9 +95,10 @@ jobs:
           vipm --version
 
       - name: Install git for actions/checkout
-        # git is required for the actions/checkout step, but is not included in the base LabVIEW image.                                                                         
-        run: apt-get update && apt-get install -y git                                                                         
-      - name: Checkout code                                                                                                   
+        # git is required for the actions/checkout step, but is not included in the base LabVIEW image.
+        run: apt-get update && apt-get install -y git
+
+      - name: Checkout code
         uses: actions/checkout@v6
         with:
           submodules: recursive
@@ -151,8 +151,7 @@ jobs:
           NISVCLOC_PID=$!
           echo "nisvcloc PID: $NISVCLOC_PID"
           sleep 3
-  
-       
+
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
         id: cache-vipm
@@ -198,7 +197,7 @@ jobs:
           source setup-display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
-          
+
           # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
           # vipm install wiresmith_technology_lib_g_cli
           vipm install "approvals-dev.vipc" --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
@@ -271,8 +270,8 @@ jobs:
           dump_diagnostics "after Errorprop"
           echo "Test Time: $SECONDS"
           exit ${CARAYA_EXIT:-0}
-          
-      - name: VIPM Build Package          
+
+      - name: VIPM Build Package
         run: |
           source setup-display.sh
           echo "Starting LabVIEW"
@@ -289,7 +288,7 @@ jobs:
             build/*.vip
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
-        if: always() 
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: vipm-settings-${{ env.LABVIEW_IMAGE }}
