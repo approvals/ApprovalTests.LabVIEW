@@ -208,6 +208,26 @@ jobs:
           source setup-display.sh
           vipm list --installed || true
 
+
+
+      - name: Lunit Tests
+        run: |
+          source setup-display.sh
+          mkdir -p reports
+          dump_diagnostics "before Lunit"
+          echo "Running LUnit Tests"
+          # Same PID-capture cleanup as the Caraya step - see comment there for why
+          # `pkill -f` on the VI path doesn't work.
+          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" 2>&1 | tee /tmp/lunit_gcli.log || true
+          LUNIT_EXIT=${PIPESTATUS[0]}
+          LUNIT_PID=$(grep -oE 'Process launched with PID [0-9]+' /tmp/lunit_gcli.log | grep -oE '[0-9]+' | tail -1)
+          if [ -n "$LUNIT_PID" ]; then
+            echo "Killing LabVIEW process $LUNIT_PID launched by g-cli for Lunit so it doesn't linger into the VIPM Build Package step"
+            kill -9 "$LUNIT_PID" || true
+          fi
+          dump_diagnostics "after Lunit"
+          exit ${LUNIT_EXIT:-0}
+
       - name: Caraya Extension Tests
         run: |
           source setup-display.sh
@@ -230,25 +250,27 @@ jobs:
           echo "Test Time: $SECONDS"
           exit ${CARAYA_EXIT:-0}
 
-      - name: Lunit Tests
+      - name: Error Propagation Tests
         run: |
           source setup-display.sh
           mkdir -p reports
-          dump_diagnostics "before Lunit"
-          echo "Running LUnit Tests"
-          # Same PID-capture cleanup as the Caraya step - see comment there for why
-          # `pkill -f` on the VI path doesn't work.
-          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" 2>&1 | tee /tmp/lunit_gcli.log || true
-          LUNIT_EXIT=${PIPESTATUS[0]}
-          LUNIT_PID=$(grep -oE 'Process launched with PID [0-9]+' /tmp/lunit_gcli.log | grep -oE '[0-9]+' | tail -1)
-          if [ -n "$LUNIT_PID" ]; then
-            echo "Killing LabVIEW process $LUNIT_PID launched by g-cli for Lunit so it doesn't linger into the VIPM Build Package step"
-            kill -9 "$LUNIT_PID" || true
+          SECONDS=0
+          dump_diagnostics "before Error Tests"
+          echo "Running Error Propagation Tests"
+          # LabVIEW re-execs itself (same PID, argv wiped to bare "labview") within ms of
+          # launch, so matching on the VI path via `pkill -f` can't find it later - the
+          # string is gone from /proc/<pid>/cmdline by the time this step ends. Capture the
+          # PID from g-cli's own debug output instead and kill that directly.
+          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" 2>&1 | tee /tmp/errorprop_gcli.log || true
+          CARAYA_EXIT=${PIPESTATUS[0]}
+          CARAYA_PID=$(grep -oE 'Process launched with PID [0-9]+' /tmp/errorprop_gcli.log | grep -oE '[0-9]+' | tail -1)
+          if [ -n "$CARAYA_PID" ]; then
+            echo "Killing LabVIEW process $CARAYA_PID launched by g-cli for Caraya so it doesn't linger into the next g-cli step"
+            kill -9 "$CARAYA_PID" || true
           fi
-          dump_diagnostics "after Lunit"
-          exit ${LUNIT_EXIT:-0}
-
-          
+          dump_diagnostics "after Errorprop"
+          echo "Test Time: $SECONDS"
+          exit ${CARAYA_EXIT:-0}
           
       - name: VIPM Build Package          
         run: |
