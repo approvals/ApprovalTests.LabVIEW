@@ -69,7 +69,6 @@ jobs:
       VIPM_ASSUME_YES: 1
       VIPM_DEBUG: 1
 
-
     steps:
 
       - name: Setup Variables
@@ -175,6 +174,7 @@ jobs:
           source setup-display.sh
           echo "Activating VIPM"
           vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
+      
       - name: Print VIPM About
         run: vipm about
 
@@ -185,7 +185,6 @@ jobs:
           source setup-display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
-
           vipm refresh --show-progress # --verbose
 
       - name: VIPM List Packages
@@ -197,7 +196,6 @@ jobs:
           source setup-display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
-
           # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
           # vipm install wiresmith_technology_lib_g_cli
           vipm install "approvals-dev.vipc" --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
@@ -206,8 +204,6 @@ jobs:
         run: |
           source setup-display.sh
           vipm list --installed || true
-
-
 
       - name: Lunit Tests
         run: |
