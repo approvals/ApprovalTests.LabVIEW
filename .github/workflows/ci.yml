@@ -33,16 +33,18 @@ jobs:
       
       - name: Run pylavi Tests
         run: |
-          echo running pylavi tests
+          echo "running pylavi tests"
           source .venv/bin/activate
           vi_validate \
-            --path source \
-            --path tests \
+            --path Source \
+            --path Tests \
             --gt 20 --lt 21 \
             --skip *.vit \
             --no-code \
             --breakpoints
-          echo finished pylavi tests
+            --no-suspend-on-run 
+            --autoerror
+          echo "finished pylavi tests"
 
   Test_And_Build:
 
