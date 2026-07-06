@@ -42,12 +42,11 @@ jobs:
             --no-code \
             --breakpoints \
             --no-suspend-on-run #\
-            #--verbose \
-            # --no-absolute-path
-          vi-validate \
+            #--no-absolute-path
+          vi_validate \
             --path Source \
             --path Tests \
-            --skip "Source/Approval Tests/LVCompare Options.ctl"
+            --skip "Source/Approval Tests/LVCompare Options.ctl" \
             --skip "Source/Approval Tests/Global.vi"
           echo "finished pylavi tests"
 
