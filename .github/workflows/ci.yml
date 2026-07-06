@@ -43,8 +43,8 @@ jobs:
             --breakpoints \
             --no-suspend-on-run \
             --autoerror \
-            --verbose \
-            --no-absolute-path
+            --verbose #\
+            # --no-absolute-path
           echo "finished pylavi tests"
 
   Test_And_Build:
