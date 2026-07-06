@@ -48,6 +48,7 @@ jobs:
           echo "finished pylavi tests"
 
   Test_And_Build:
+    needs: PylaviChecks
 
     runs-on: ubuntu-latest
 
