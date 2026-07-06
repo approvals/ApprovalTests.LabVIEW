@@ -41,8 +41,8 @@ jobs:
             --gt 20 --lt 21 \
             --skip *.vit \
             --no-code \
-            --breakpoints
-            --no-suspend-on-run 
+            --breakpoints \
+            --no-suspend-on-run \ 
             --autoerror
           echo "finished pylavi tests"
 
