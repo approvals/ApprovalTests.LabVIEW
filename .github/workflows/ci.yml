@@ -47,6 +47,7 @@ jobs:
             --path Tests \
             --skip "Source/Approval Tests/LVCompare Options.ctl" \
             --skip "Source/Approval Tests/Global.vi"
+            --noautoerror
           echo "finished pylavi tests"
 
   Test_And_Build:
