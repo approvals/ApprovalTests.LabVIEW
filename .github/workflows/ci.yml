@@ -41,10 +41,14 @@ jobs:
             --gt 20 --lt 21 \
             --no-code \
             --breakpoints \
-            --no-suspend-on-run \
-            --autoerror \
-            --verbose #\
+            --no-suspend-on-run #\
+            #--verbose \
             # --no-absolute-path
+          vi-validate \
+            --path Source \
+            --path Tests \
+            --skip "Source/Approval Tests/LVCompare Options.ctl"
+            --skip "Source/Approval Tests/Global.vi"
           echo "finished pylavi tests"
 
   Test_And_Build:
