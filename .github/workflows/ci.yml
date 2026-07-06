@@ -41,8 +41,7 @@ jobs:
             --gt 20 --lt 21 \
             --no-code \
             --breakpoints \
-            --no-suspend-on-run #\
-            #--no-absolute-path
+            --no-suspend-on-run
           vi_validate \
             --path Source \
             --path Tests \
