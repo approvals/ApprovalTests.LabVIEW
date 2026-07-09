@@ -123,7 +123,14 @@ jobs:
           # Writing this marker file is critical and if if it is not present, the LabVIEW Runtime Engine (required by vipm) may not start properly.
           mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
           # This container has no browser/D-Bus session. Some package post-install actions try to open a URL
-          # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
+          # in the default browser via xdg-open, which hangs for minutes waiting on D-Bus before giving up -
+          # and since vipm install is transactional, that hang eventually rolls back with "No packages were
+          # installed." even though most packages had already downloaded and resolved fine. Stub xdg-open so
+          # any such attempt returns immediately instead of hanging.
+          mkdir -p /usr/local/bin
+          printf '#!/bin/sh\nexit 0\n' > /usr/local/bin/xdg-open
+          chmod +x /usr/local/bin/xdg-open
+          export BROWSER=true
           # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
           echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
 
@@ -163,7 +170,10 @@ jobs:
         uses: actions/cache@v5
         env:
           # Increment this to invalidate the cache (restore-keys included).
-          CACHE_VERSION: 1
+          # Bumped: previous cache generations (v1, v2) were built from runs where vipm install
+          # silently rolled back ("No packages were installed.") due to the xdg-open browser-open
+          # hang below, so they never actually contained the project's packages.
+          CACHE_VERSION: 3
         with:
           path: |
             /usr/local/natinst/LabVIEW*/
@@ -197,7 +207,7 @@ jobs:
         run: vipm list approvals-dev.vipc
 
       - name: VIPM Install Packages
-        # if: steps.cache-vipm.outputs.cache-hit != 'true'
+        if: steps.cache-vipm.outputs.cache-hit != 'true'
         run: |
           source setup-display.sh
           echo "Starting LabVIEW"
