@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2026-07-06 20:25:57" Creator="Samuel Taggart" Comments="" ID="d91557c6343157bcb528e37c22f31829">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2026-06-27 19:24:03" Creator="Samuel Taggart" Comments="" ID="32a6cd779451eb10656e25b4c85adabd">
   <Library_General_Settings>
     <Package_File_Name>SAS_lib_Approval_Tests</Package_File_Name>
-    <Library_Version>2.2.3.8</Library_Version>
+    <Library_Version>2.2.3.6</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>Source</Library_Source_Folder>
     <Library_Output_Folder>build</Library_Output_Folder>
@@ -290,7 +290,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Caraya</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>D8E74753D8CE5998F556427B3E5D855C</GUID>
+      <GUID>376B7E94EEBE75ADB17C3642D71A2871</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -409,7 +409,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>68F45A78BFD0AAB992F97BDD7AE8BCD8</GUID>
+      <GUID>92860B7841D06CBB36575F6B644A0C44</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -528,7 +528,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>F30C80112C0450D31D973556368DDD45</GUID>
+      <GUID>DD0EFCA7AAA02BD09D20B7120CB4D384</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -647,7 +647,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Add Shared Approval File and Folder.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>4E3C9250E1627E8C4DAE382D7A7F0FB2</GUID>
+      <GUID>2F2E73955ED2427006ECDAEBC74C71FB</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -780,7 +780,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Date Scrubber\Find Scrubber For Date.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>C03C6C5A2D562A976E422D501181521B</GUID>
+      <GUID>B2784C1B59997C1225041EB03B1C9CBE</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>1</Parent_Palette_Index>
@@ -885,7 +885,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\LUnit.Extension\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>C5137E8A4E6D7DAD758138D714459DAA</GUID>
+      <GUID>52A4BE5EC67C3B3C7DA2D749D405D818</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>2</Parent_Palette_Index>
@@ -990,7 +990,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\Caraya.Extension\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>9C3BAD7BE71D261271C375E87BF111C6</GUID>
+      <GUID>E2DF3977A0C61F83A95949987449B66E</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
   <Library_Palette_Definition>
@@ -1013,7 +1013,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Synchronyze_with_Directory>false</Synchronyze_with_Directory>
         <Synchronize_Directory_Path/>
       </Synchronization_Info>
-      <GUID>23361B6079D080C1D230149487B77EED</GUID>
+      <GUID>9F8C3D9C6B6D92D9B0220BB4020BD556</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>

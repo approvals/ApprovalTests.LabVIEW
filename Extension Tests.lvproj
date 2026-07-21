@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
-<Project Type="Project" LVVersion="20008000">
-	<Property Name="NI.LV.All.SaveVersion" Type="Str">20.0</Property>
+<Project Type="Project" LVVersion="26008000">
+	<Property Name="NI.LV.All.SaveVersion" Type="Str">Editor version</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Item Name="My Computer" Type="My Computer">
@@ -19,10 +19,10 @@
 		<Item Name="Extensions.Approved.Files" Type="Folder">
 			<Item Name="Verify AND Combos.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify AND Combos.approved.txt"/>
 			<Item Name="Verify AND Parameterized.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify AND Parameterized.approved.txt"/>
-			<Item Name="Verify CLI Echo Hello World.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI Echo Hello World.approved.txt"/>
-			<Item Name="Verify CLI STD ERR.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI STD ERR.approved.txt"/>
 			<Item Name="Verify Class Roster as JSON.approved.json" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Class Roster as JSON.approved.json"/>
 			<Item Name="Verify Class Roster.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Class Roster.approved.txt"/>
+			<Item Name="Verify CLI Echo Hello World.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI Echo Hello World.approved.txt"/>
+			<Item Name="Verify CLI STD ERR.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify CLI STD ERR.approved.txt"/>
 			<Item Name="Verify Hello World.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Hello World.approved.txt"/>
 			<Item Name="Verify Multi Combos.approved.txt" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Multi Combos.approved.txt"/>
 			<Item Name="Verify Person as JSON.approved.json" Type="Document" URL="../Tests/Extensions.Approved.Files/Verify Person as JSON.approved.json"/>
