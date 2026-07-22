@@ -209,6 +209,7 @@ jobs:
         run: |
           source setup-display.sh
           /usr/local/natinst/nilvcli/LabVIEWCLI \
+          -LabVIEWPath "/usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview" \
           -OperationName MassCompile \
           -Directory "$(pwd)" \
           -LogToConsole true \
