@@ -207,9 +207,11 @@ jobs:
 
       - name: Mass MassCompile
         run: |
-          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labviewcli \
+          /usr/local/natinst/nilvcli/LabVIEWCLI \
           -OperationName MassCompile \
-          -Directory "$(pwd)"
+          -Directory "$(pwd)" \
+          -LogToConsole true \
+          -Verbosity Detailed
 
       - name: Lunit Tests
         run: |
