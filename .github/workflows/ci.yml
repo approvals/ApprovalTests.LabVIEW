@@ -207,6 +207,7 @@ jobs:
 
       - name: Mass MassCompile
         run: |
+          source setup-display.sh
           /usr/local/natinst/nilvcli/LabVIEWCLI \
           -OperationName MassCompile \
           -Directory "$(pwd)" \
