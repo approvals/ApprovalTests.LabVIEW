@@ -213,7 +213,7 @@ jobs:
           -OperationName MassCompile \
           -LogToConsole true \
           -Verbosity Detailed \
-          -DirectoryToCompile .
+          -DirectoryToCompile "$(pwd)"
 
       - name: Lunit Tests
         run: |
