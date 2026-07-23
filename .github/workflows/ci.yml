@@ -219,7 +219,7 @@ jobs:
           vipm list --installed || true
 
       - name: Mass MassCompile
-        when: never
+        if: false
         run: |
           source setup-display.sh
           /usr/local/natinst/nilvcli/LabVIEWCLI \
