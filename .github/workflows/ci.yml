@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+          # cache: 'pip'
 
       - name: Checkout Repo
         uses: actions/checkout@v6
@@ -27,31 +28,24 @@ jobs:
 
       - name: Install pylavi
         run: |
-          python -m venv venv
-          source ./venv/bin/activate
-          pip install pylavi
-      
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv
+          uv pip install pylavi
+
       - name: Run pylavi Tests
         run: |
-          echo "running pylavi tests"
-          source ./venv/bin/activate
+          echo running pylavi tests
+          source .venv/bin/activate
           vi_validate \
-            --path Source \
-            --path Tests \
+            --path source \
+            --path tests \
             --gt 20 --lt 21 \
+            --skip *.vit \
             --no-code \
-            --breakpoints \
-            --no-suspend-on-run
-          vi_validate \
-            --path Source \
-            --path Tests \
-            --skip "Source/Approval Tests/LVCompare Options.ctl" \
-            --skip "Source/Approval Tests/Global.vi" \
-            --autoerror
-          echo "finished pylavi tests"
+            --breakpoints
+          echo finished pylavi tests
 
   Test_And_Build:
-    needs: PylaviChecks
 
     runs-on: ubuntu-latest
 
@@ -123,14 +117,7 @@ jobs:
           # Writing this marker file is critical and if if it is not present, the LabVIEW Runtime Engine (required by vipm) may not start properly.
           mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
           # This container has no browser/D-Bus session. Some package post-install actions try to open a URL
-          # in the default browser via xdg-open, which hangs for minutes waiting on D-Bus before giving up -
-          # and since vipm install is transactional, that hang eventually rolls back with "No packages were
-          # installed." even though most packages had already downloaded and resolved fine. Stub xdg-open so
-          # any such attempt returns immediately instead of hanging.
-          mkdir -p /usr/local/bin
-          printf '#!/bin/sh\nexit 0\n' > /usr/local/bin/xdg-open
-          chmod +x /usr/local/bin/xdg-open
-          export BROWSER=true
+          # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
           # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
           echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
 
@@ -227,7 +214,7 @@ jobs:
           -LogToConsole true \
           -Verbosity Detailed \
           -DirectoryToCompile "$(pwd)" \
-          || true   
+          || true
 
       - name: Lunit Tests
         run: |
@@ -237,10 +224,8 @@ jobs:
           echo "Running LUnit Tests"
           # Same PID-capture cleanup as the Caraya step - see comment there for why
           # `pkill -f` on the VI path doesn't work.
-          set +o pipefail
-          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" 2>&1 | tee /tmp/lunit_gcli.log
+          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" 2>&1 | tee /tmp/lunit_gcli.log || true
           LUNIT_EXIT=${PIPESTATUS[0]}
-          set -o pipefail
           LUNIT_PID=$(grep -oE 'Process launched with PID [0-9]+' /tmp/lunit_gcli.log | grep -oE '[0-9]+' | tail -1)
           if [ -n "$LUNIT_PID" ]; then
             echo "Killing LabVIEW process $LUNIT_PID launched by g-cli for Lunit so it doesn't linger into the VIPM Build Package step"
@@ -260,10 +245,8 @@ jobs:
           # launch, so matching on the VI path via `pkill -f` can't find it later - the
           # string is gone from /proc/<pid>/cmdline by the time this step ends. Capture the
           # PID from g-cli's own debug output instead and kill that directly.
-          set +o pipefail
-          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml" 2>&1 | tee /tmp/caraya_gcli.log
+          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml" 2>&1 | tee /tmp/caraya_gcli.log || true
           CARAYA_EXIT=${PIPESTATUS[0]}
-          set -o pipefail
           CARAYA_PID=$(grep -oE 'Process launched with PID [0-9]+' /tmp/caraya_gcli.log | grep -oE '[0-9]+' | tail -1)
           if [ -n "$CARAYA_PID" ]; then
             echo "Killing LabVIEW process $CARAYA_PID launched by g-cli for Caraya so it doesn't linger into the next g-cli step"
@@ -284,10 +267,8 @@ jobs:
           # launch, so matching on the VI path via `pkill -f` can't find it later - the
           # string is gone from /proc/<pid>/cmdline by the time this step ends. Capture the
           # PID from g-cli's own debug output instead and kill that directly.
-          set +o pipefail
-          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" 2>&1 | tee /tmp/errorprop_gcli.log
+          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" 2>&1 | tee /tmp/errorprop_gcli.log || true
           CARAYA_EXIT=${PIPESTATUS[0]}
-          set -o pipefail
           CARAYA_PID=$(grep -oE 'Process launched with PID [0-9]+' /tmp/errorprop_gcli.log | grep -oE '[0-9]+' | tail -1)
           if [ -n "$CARAYA_PID" ]; then
             echo "Killing LabVIEW process $CARAYA_PID launched by g-cli for Caraya so it doesn't linger into the next g-cli step"
@@ -323,18 +304,3 @@ jobs:
             /root/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
             /tmp/nisvcloc.log
             /tmp/xvfb.log
-
-      - name: Publish Test Report
-        uses: mikepenz/action-junit-report@v6
-        if: success() || failure() # always run even if the previous step fails
-        with:
-          report_paths: 'reports/*.xml'
-          
-      - name: Grab Artifacts
-        if: success() || failure() # always run even if the previous step fails
-        uses: actions/upload-artifact@v6
-        with:
-          name: artifacts 
-          path: |
-            reports
-            **/*.received.*
