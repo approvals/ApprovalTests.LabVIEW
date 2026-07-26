@@ -40,7 +40,6 @@ jobs:
             --path source \
             --path tests \
             --gt 20 --lt 21 \
- 
             --no-code \
             --breakpoints \
             --no-suspend-on-run
