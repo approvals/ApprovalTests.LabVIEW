@@ -230,24 +230,30 @@ jobs:
           mkdir -p reports
           echo "Running Unit Tests"
 
-          # Kill any LabVIEW instances left running in the background by earlier steps
-          # (VIPM Refresh/Install/Build all launch `labview --headless &` and never stop it).
-          # LabVIEW only supports one running instance at a time on Linux, so a leftover
-          # process here can silently absorb a g-cli launch instead of letting it spawn a
-          # fresh instance that registers a new callback port with nisvcloc.
-          pkill -f "labview" || true
+          # Orphaned LabVIEW instances accumulate across this step: neither the leftover
+          # `labview --headless &` from earlier VIPM steps, nor a g-cli invocation's own
+          # LabVIEW instance once its suite finishes, ever actually exits. By the 3rd g-cli
+          # call in a run there were 3-4 concurrent LabVIEW processes alive and the new
+          # launch could never connect back (confirmed via dump_diagnostics process counts).
+          # Plain `pkill -f labview` (SIGTERM) does not work - LabVIEW ignores it - so use
+          # SIGKILL, and run it before every invocation, not just the first.
+          kill_labview() { pkill -9 -f labview || true; }
 
+          kill_labview
           dump_diagnostics "before Error.Propagation.Tests"
           ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
           dump_diagnostics "after Error.Propagation.Tests"
 
+          kill_labview
           dump_diagnostics "before lunit"
           ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" || true
           dump_diagnostics "after lunit"
 
+          kill_labview
           dump_diagnostics "before Caraya Extension Tests"
           ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
           dump_diagnostics "after Caraya Extension Tests"
+          kill_labview
 
       - name: VIPM Build Package
         run: |
