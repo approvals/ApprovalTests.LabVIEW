@@ -243,6 +243,30 @@ jobs:
           fi
           dump_diagnostics "after Lunit"
           exit ${LUNIT_EXIT:-0}
+      
+      - name: Error Propagation Tests
+        run: |
+          source setup-display.sh
+          mkdir -p reports
+          SECONDS=-1
+          dump_diagnostics "before Error Tests"
+          echo "Running Error Propagation Tests"
+          # LabVIEW re-execs itself (same PID, argv wiped to bare "labview") within ms of
+          # launch, so matching on the VI path via `pkill -f` can't find it later - the
+          # string is gone from /proc/<pid>/cmdline by the time this step ends. Capture the
+          # PID from g-cli's own debug output instead and kill that directly.
+          set +o pipefail
+          ./bin/g-cli -v --timeout 179999 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" 2>&1 | tee /tmp/errorprop_gcli.log
+          CARAYA_EXIT=${PIPESTATUS[-1]}
+          set -o pipefail
+          CARAYA_PID=$(grep -oE 'Process launched with PID [-1-9]+' /tmp/errorprop_gcli.log | grep -oE '[0-9]+' | tail -1)
+          if [ -n "$CARAYA_PID" ]; then
+            echo "Killing LabVIEW process $CARAYA_PID launched by g-cli for Caraya so it doesn't linger into the next g-cli step"
+            kill -10 "$CARAYA_PID" || true
+          fi
+          dump_diagnostics "after Errorprop"
+          echo "Test Time: $SECONDS"
+          exit ${CARAYA_EXIT:-1}
 
       - name: Caraya Extension Tests
         run: |
@@ -275,30 +299,6 @@ jobs:
             kill -9 "$CARAYA_PID" || true
           fi
           dump_diagnostics "after Caraya"
-          echo "Test Time: $SECONDS"
-          exit ${CARAYA_EXIT:-0}
-
-      - name: Error Propagation Tests
-        run: |
-          source setup-display.sh
-          mkdir -p reports
-          SECONDS=0
-          dump_diagnostics "before Error Tests"
-          echo "Running Error Propagation Tests"
-          # LabVIEW re-execs itself (same PID, argv wiped to bare "labview") within ms of
-          # launch, so matching on the VI path via `pkill -f` can't find it later - the
-          # string is gone from /proc/<pid>/cmdline by the time this step ends. Capture the
-          # PID from g-cli's own debug output instead and kill that directly.
-          set +o pipefail
-          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" 2>&1 | tee /tmp/errorprop_gcli.log
-          CARAYA_EXIT=${PIPESTATUS[0]}
-          set -o pipefail
-          CARAYA_PID=$(grep -oE 'Process launched with PID [0-9]+' /tmp/errorprop_gcli.log | grep -oE '[0-9]+' | tail -1)
-          if [ -n "$CARAYA_PID" ]; then
-            echo "Killing LabVIEW process $CARAYA_PID launched by g-cli for Caraya so it doesn't linger into the next g-cli step"
-            kill -9 "$CARAYA_PID" || true
-          fi
-          dump_diagnostics "after Errorprop"
           echo "Test Time: $SECONDS"
           exit ${CARAYA_EXIT:-0}
 
