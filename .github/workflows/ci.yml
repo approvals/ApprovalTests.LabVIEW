@@ -7,7 +7,7 @@ on:
 jobs:
   PylaviChecks:
 
-    runs-on: ubuntu-latest
+    runs-on: python:3.11
 
     env:
       LABVIEW_VERSION_NUMBER: '20.1'
@@ -15,27 +15,15 @@ jobs:
       LABVIEW_BITNESS: '64'
 
     steps:
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.11'
-          # cache: 'pip'
-
       - name: Checkout Repo
         uses: actions/checkout@v6
         with:
           submodules: recursive
 
-      - name: Install pylavi
+      - name: Run pylavi
         run: |
-          python -m venv venv
-          source ./venv/bin/activate
           pip install pylavi
-      
-      - name: Run pylavi Tests
-        run: |
-          echo running pylavi tests
-          source ./venv/bin/activate
+          echo "running pylavi tests"
           vi_validate \
             --path source \
             --path tests \
