@@ -138,11 +138,21 @@ jobs:
             pgrep -af nisvcloc || echo "nisvcloc not running"
             echo "--- labview process(es) ---"
             pgrep -af labview || echo "no labview process running"
-            # pkill -9 is not removing these processes even after re-matching by name, which
-            # SIGKILL should never fail to do unless the process is stuck in an uninterruptible
-            # kernel wait (D state, e.g. blocked on I/O). ps STAT + WCHAN shows that directly.
+            # ps STAT/WCHAN confirmed pkill -9 IS working: prior instances show as Z/Zl
+            # (zombie, already dead, holding no resources) by the time the next g-cli call
+            # launches, so process pileup is not the cause of the timeout after all.
             echo "--- labview process state (STAT/WCHAN) ---"
             ps -eo pid,ppid,stat,wchan:32,cmd | grep -i labview | grep -v grep || echo "no labview process running"
+            # New theory: SIGKILL gives the process no chance to run its own cleanup code.
+            # Unlike file descriptors/memory, SysV semaphores and shared memory segments are
+            # NOT auto-released by the kernel on process death - they persist system-wide
+            # until explicitly removed. If LabVIEW uses a named semaphore for VI Server/startup
+            # synchronization, killing it with -9 twice could leak it in a state where a 3rd
+            # instance blocks forever waiting on it. Check whether these grow across calls.
+            echo "--- SysV semaphores ---"
+            ipcs -s
+            echo "--- SysV shared memory ---"
+            ipcs -m
             echo "--- nisvcloc dumpinfo (http://localhost:3580/dumpinfo?) ---"
             curl -s "http://localhost:3580/dumpinfo?" || echo "dumpinfo request failed"
             echo "=== end diagnostics: $1 ==="
