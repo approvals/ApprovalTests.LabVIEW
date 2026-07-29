@@ -231,29 +231,39 @@ jobs:
           echo "Running Unit Tests"
 
           # 64-bit LabVIEW stays running as a background process after a headless run
-          # finishes instead of exiting (see https://github.com/JamesMc86/G-CLI/issues/64).
-          # Left unchecked these pile up across the three g-cli calls below until a later
-          # launch can't get a connection back (confirmed via dump_diagnostics process counts).
-          # g-cli's own --kill flag handles this per-invocation: it kills the exact PID g-cli
-          # launched once that invocation reports its exit code, rather than us trying to
-          # pattern-match process names/cmdlines after the fact (LabVIEW clears its own argv
-          # once idle, which is why a manual `pkill -f labview` stopped matching it here).
-          # It doesn't cover the orphan left over from earlier VIPM steps' `labview --headless &`,
-          # so clear that one manually before the first test; match by name, not -f, for the
-          # same argv-clearing reason.
-          pkill -9 labview || true
+          # finishes instead of exiting. Left unchecked these pile up across the three g-cli
+          # calls below until a later launch can't get a connection back (confirmed via
+          # dump_diagnostics process counts).
+          #
+          # g-cli's own --kill flag (https://github.com/JamesMc86/G-CLI/issues/64) turned out
+          # not to help here: verbose logs show every invocation - passing or failing - logs
+          # "Process Lost" within ~10ms of launch, well before its 1s monitor poll interval,
+          # which is 64-bit LabVIEW re-execing/forking into a new PID right after start. Once
+          # g-cli loses the PID like that its internal tracking is permanently None, and its
+          # kill logic (rust-proxy/src/labview/process.rs) is gated on having a tracked PID -
+          # so --kill silently no-ops for the rest of that invocation, confirmed by the total
+          # absence of any "Killing LabVIEW process" log line across these runs.
+          #
+          # So cleanup is back on us. Match by process name, not -f (full cmdline): LabVIEW
+          # clears its own argv once idle, so a cmdline-based match stops finding it shortly
+          # after a suite finishes, which is why an earlier `pkill -f labview` silently failed.
+          kill_labview() { pkill -9 labview || true; }
 
+          kill_labview
           dump_diagnostics "before Error.Propagation.Tests"
-          ./bin/g-cli -v --timeout 180000 --kill Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
+          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
           dump_diagnostics "after Error.Propagation.Tests"
 
+          kill_labview
           dump_diagnostics "before lunit"
-          ./bin/g-cli -v --timeout 180000 --kill lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" || true
+          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" || true
           dump_diagnostics "after lunit"
 
+          kill_labview
           dump_diagnostics "before Caraya Extension Tests"
-          ./bin/g-cli -v --timeout 180000 --kill Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
+          ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
           dump_diagnostics "after Caraya Extension Tests"
+          kill_labview
 
       - name: VIPM Build Package
         run: |
