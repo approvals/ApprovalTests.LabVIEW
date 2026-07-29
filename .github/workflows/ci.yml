@@ -138,6 +138,11 @@ jobs:
             pgrep -af nisvcloc || echo "nisvcloc not running"
             echo "--- labview process(es) ---"
             pgrep -af labview || echo "no labview process running"
+            # pkill -9 is not removing these processes even after re-matching by name, which
+            # SIGKILL should never fail to do unless the process is stuck in an uninterruptible
+            # kernel wait (D state, e.g. blocked on I/O). ps STAT + WCHAN shows that directly.
+            echo "--- labview process state (STAT/WCHAN) ---"
+            ps -eo pid,ppid,stat,wchan:32,cmd | grep -i labview | grep -v grep || echo "no labview process running"
             echo "--- nisvcloc dumpinfo (http://localhost:3580/dumpinfo?) ---"
             curl -s "http://localhost:3580/dumpinfo?" || echo "dumpinfo request failed"
             echo "=== end diagnostics: $1 ==="
