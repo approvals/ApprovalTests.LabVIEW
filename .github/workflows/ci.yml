@@ -287,7 +287,7 @@ jobs:
 
           kill_labview
           dump_diagnostics "before lunit"
-          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj" || true
+          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj"
           dump_diagnostics "after lunit"
           kill_labview
 
