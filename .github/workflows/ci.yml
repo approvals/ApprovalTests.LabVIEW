@@ -271,26 +271,38 @@ jobs:
           # after a suite finishes, which is why an earlier `pkill -f labview` silently failed.
           kill_labview() { pkill -9 labview || true; }
 
-          # Diagnostic reorder: Caraya Extension Tests has failed in the 3rd slot on every
-          # run since dump_diagnostics existed. Running it 1st tells us whether that's about
-          # this specific suite/VI, or about being launched later in the job - if it passes
-          # here and whatever's now 3rd fails instead, it's a position/count-in-job issue.
+          # 4th g-cli launch in a run now reliably times out waiting to connect back
+          # (see "before/after core tests" diagnostics from the prior run), while the
+          # first 3 always succeed regardless of which suite occupies which slot. That
+          # points at nisvcloc (the service g-cli's target VI registers its callback
+          # port with) accumulating stale state across launches rather than anything
+          # LabVIEW-side. Restart it fresh before every suite, not just once at job start.
+          restart_nisvcloc() {
+            pkill -9 nisvcloc || true
+            nohup nisvcloc >> /tmp/nisvcloc.log 2>&1 &
+            sleep 2
+          }
+
           kill_labview
+          restart_nisvcloc
           dump_diagnostics "before Caraya Extension Tests"
           ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
           dump_diagnostics "after Caraya Extension Tests"
 
           kill_labview
+          restart_nisvcloc
           dump_diagnostics "before Error.Propagation.Tests"
           ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
           dump_diagnostics "after Error.Propagation.Tests"
 
           kill_labview
+          restart_nisvcloc
           dump_diagnostics "before core tests"
           ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
           dump_diagnostics "after core tests"
-          
+
           kill_labview
+          restart_nisvcloc
           dump_diagnostics "before lunit"
           ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Extension Tests.lvproj"
           dump_diagnostics "after lunit"
