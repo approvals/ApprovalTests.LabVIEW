@@ -19,6 +19,16 @@
 			<Item Name="Extension Tests.lvproj" Type="Document" URL="../Extension Tests.lvproj"/>
 			<Item Name="Extensions.lvproj" Type="Document" URL="../Extensions.lvproj"/>
 		</Item>
+		<Item Name="astemes" Type="Folder">
+			<Item Name="Diff Tool.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Diff Tool.vi"/>
+			<Item Name="Find Added Sections.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Added Sections.vi"/>
+			<Item Name="Find All Highlights.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find All Highlights.vi"/>
+			<Item Name="Find Common Chars.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Common Chars.vi"/>
+			<Item Name="Find Common Sections.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Common Sections.vi"/>
+			<Item Name="Find Highlights.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Highlights.vi"/>
+			<Item Name="Find Index to Insert at.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Index to Insert at.vi"/>
+			<Item Name="Find Removed Sections.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Removed Sections.vi"/>
+		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build"/>

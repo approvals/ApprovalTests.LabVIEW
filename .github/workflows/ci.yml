@@ -22,19 +22,7 @@ jobs:
       - name: Pylavi
         run: |
           pip install pylavi
-          vi_validate \
-            --path Source \
-            --path Tests \
-            --gt 20 --lt 21 \
-            --no-code \
-            --breakpoints \
-            --no-suspend-on-run
-          vi_validate \
-            --path Source \
-            --path Tests \
-            --skip "Source/Approval Tests/LVCompare Options.ctl" \
-            --skip "Source/Approval Tests/Global.vi" \
-            --autoerror
+          ./scripts/pylavi_check.sh
 
   Test_And_Build:
     needs: PylaviChecks
