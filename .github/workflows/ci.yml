@@ -323,7 +323,7 @@ jobs:
           kill_labview
           restart_nisvcloc
           dump_diagnostics "before lunit"
-          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Extension Tests.lvproj"
+          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"
           dump_diagnostics "after lunit"
           kill_labview
 
