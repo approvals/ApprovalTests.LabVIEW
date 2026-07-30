@@ -162,6 +162,25 @@ jobs:
             ipcs -m
             echo "--- nisvcloc dumpinfo (http://localhost:3580/dumpinfo?) ---"
             curl -s "http://localhost:3580/dumpinfo?" || echo "dumpinfo request failed"
+            # nisvcloc restarts each call didn't change anything, and the pre-call diagnostics
+            # were identical between a passing 3rd call and a failing 4th - so whatever's
+            # accumulating isn't captured above. Check other per-launch resources that a
+            # SIGKILL wouldn't release: open FDs (system-wide and per-process), TCP socket
+            # states (TIME_WAIT pileup), and X11 client-socket count against Xvfb. All read
+            # from /proc directly so this needs no extra packages (no lsof/ss install).
+            echo "--- system fd allocation (/proc/sys/fs/file-nr: allocated free max) ---"
+            cat /proc/sys/fs/file-nr
+            echo "--- open fd count by process (top 10) ---"
+            for fd_dir in /proc/[0-9]*/fd; do
+              pid="${fd_dir#/proc/}"; pid="${pid%/fd}"
+              count=$(ls "$fd_dir" 2>/dev/null | wc -l)
+              cmd=$(tr '\0' ' ' < "/proc/$pid/cmdline" 2>/dev/null)
+              echo "$count $pid $cmd"
+            done | sort -rn | head -10
+            echo "--- tcp socket states (/proc/net/tcp, col 4 = state) ---"
+            awk 'NR>1 {print $4}' /proc/net/tcp | sort | uniq -c
+            echo "--- X11 client-socket connections (/proc/net/unix entries for X11-unix) ---"
+            grep -c "X11-unix" /proc/net/unix || echo 0
             echo "=== end diagnostics: $1 ==="
           }
           EOF
