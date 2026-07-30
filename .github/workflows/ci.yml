@@ -8,34 +8,20 @@ jobs:
   PylaviChecks:
 
     runs-on: ubuntu-latest
-
-    env:
-      LABVIEW_VERSION_NUMBER: '20.1'
-      LABVIEW_VERSION_YEAR: '2020'
-      LABVIEW_BITNESS: '64'
+      
+    container:
+      image: python:3.11
 
     steps:
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.11'
-          # cache: 'pip'
 
       - name: Checkout Repo
         uses: actions/checkout@v6
         with:
           submodules: recursive
 
-      - name: Install pylavi
+      - name: Pylavi
         run: |
-          python -m venv venv
-          source ./venv/bin/activate
           pip install pylavi
-      
-      - name: Run pylavi Tests
-        run: |
-          echo running pylavi tests
-          source ./venv/bin/activate
           vi_validate \
             --path Source \
             --path Tests \
@@ -49,7 +35,6 @@ jobs:
             --skip "Source/Approval Tests/LVCompare Options.ctl" \
             --skip "Source/Approval Tests/Global.vi" \
             --autoerror
-          echo "finished pylavi tests"
 
   Test_And_Build:
     needs: PylaviChecks
