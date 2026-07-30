@@ -63,7 +63,7 @@ jobs:
 
     # The official LabVIEW container image from NI
     container:
-      image: nationalinstruments/labview:2026q1patch2-linux
+      image: nationalinstruments/labview:2026q3-linux
       # The runner's own container entrypoint is `tail -f /dev/null` as PID 1, which never
       # reaps orphaned children. LabVIEW daemonizes itself (double-forks, reparenting to PID 1),
       # so once we SIGKILL a stale instance in the Unit Tests step it becomes a permanent zombie
