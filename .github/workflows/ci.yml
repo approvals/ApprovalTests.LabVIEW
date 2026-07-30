@@ -286,8 +286,13 @@ jobs:
           dump_diagnostics "after Error.Propagation.Tests"
 
           kill_labview
+          dump_diagnostics "before core tests"
+          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
+          dump_diagnostics "after core tests"
+          
+          kill_labview
           dump_diagnostics "before lunit"
-          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/Lunit.UnitTestReport.xml" "Approval Testing.lvproj"
+          ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Extension Tests.lvproj"
           dump_diagnostics "after lunit"
           kill_labview
 
