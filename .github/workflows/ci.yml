@@ -232,23 +232,6 @@ jobs:
           mkdir -p reports
           echo "Running Unit Tests"
 
-          # 64-bit LabVIEW stays running as a background process after a headless run
-          # finishes instead of exiting. Left unchecked these pile up across the three g-cli
-          # calls below until a later launch can't get a connection back (confirmed via
-          # dump_diagnostics process counts).
-          #
-          # g-cli's own --kill flag (https://github.com/JamesMc86/G-CLI/issues/64) turned out
-          # not to help here: verbose logs show every invocation - passing or failing - logs
-          # "Process Lost" within ~10ms of launch, well before its 1s monitor poll interval,
-          # which is 64-bit LabVIEW re-execing/forking into a new PID right after start. Once
-          # g-cli loses the PID like that its internal tracking is permanently None, and its
-          # kill logic (rust-proxy/src/labview/process.rs) is gated on having a tracked PID -
-          # so --kill silently no-ops for the rest of that invocation, confirmed by the total
-          # absence of any "Killing LabVIEW process" log line across these runs.
-          #
-          # So cleanup is back on us. Match by process name, not -f (full cmdline): LabVIEW
-          # clears its own argv once idle, so a cmdline-based match stops finding it shortly
-          # after a suite finishes, which is why an earlier `pkill -f labview` silently failed.
           kill_labview() {
             pkill -x labview || true
             sleep 5
@@ -258,51 +241,20 @@ jobs:
             sleep 3
           } 
 
-          # 4th g-cli launch in a run now reliably times out waiting to connect back
-          # (see "before/after core tests" diagnostics from the prior run), while the
-          # first 3 always succeed regardless of which suite occupies which slot. That
-          # points at nisvcloc (the service g-cli's target VI registers its callback
-          # port with) accumulating stale state across launches rather than anything
-          # LabVIEW-side. Restart it fresh before every suite, not just once at job start.
           restart_nisvcloc() {
             pkill -9 nisvcloc || true
             nohup nisvcloc >> /tmp/nisvcloc.log 2>&1 &
             sleep 2
           }
 
-          kill_labview
-          # restart_nisvcloc
-          pgrep -af labview || true
-          ps -eo pid,ppid,stat,cmd | grep -i labview | grep -v grep || true
-          dump_diagnostics "before Caraya Extension Tests"
           ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
-          dump_diagnostics "after Caraya Extension Tests"
-
-          kill_labview
-          # restart_nisvcloc
-          pgrep -af labview || true
-          ps -eo pid,ppid,stat,cmd | grep -i labview | grep -v grep || true
-          dump_diagnostics "before Error.Propagation.Tests"
+          
           ./bin/g-cli -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
-          dump_diagnostics "after Error.Propagation.Tests"
-
-          kill_labview
-          # restart_nisvcloc
-          pgrep -af labview || true
-          ps -eo pid,ppid,stat,cmd | grep -i labview | grep -v grep || true
-          dump_diagnostics "before core tests"
+          
           ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
-          dump_diagnostics "after core tests"
-
-          kill_labview
-          # restart_nisvcloc
-          pgrep -af labview || true
-          ps -eo pid,ppid,stat,cmd | grep -i labview | grep -v grep || true
-          dump_diagnostics "before lunit"
+          
           ./bin/g-cli -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"
-          dump_diagnostics "after lunit"
-          kill_labview
-
+          
       - name: VIPM Build Package
         run: |
           source setup-display.sh

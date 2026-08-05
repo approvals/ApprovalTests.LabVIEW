@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
 
+./scripts/pylavi_check.sh
 ./scripts/run_unittests.sh
 
