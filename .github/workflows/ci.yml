@@ -232,54 +232,13 @@ jobs:
           mkdir -p reports
           echo "Running Unit Tests"
 
-          kill_labview() {
-            pkill -x labview || true
-            sleep 5
-            pgrep -x labview >/dev/null && pkill -15 -x labview || true
-            sleep 10
-            pgrep -x labview >/dev/null && pkill -9 -x labview || true
-            sleep 3
-          } 
-
-          restart_nisvcloc() {
-            pkill -9 nisvcloc || true
-            nohup nisvcloc >> /tmp/nisvcloc.log 2>&1 &
-            sleep 2
-          }
-
-          # Temporary: g-cli's own sysinfo-based process scan reports "No LabVIEW process
-          # found to kill" between calls even though something is clearly still alive (the
-          # prior suite's test run keeps executing for ~2 more minutes after that point).
-          # This dumps what's actually running, who owns it, and whether /proc/<pid>/exe is
-          # readable by our own user, to check whether that's a UID/permissions mismatch
-          # rather than a genuinely absent process.
-          diagnose_labview() {
-            echo "=== labview process diagnostics: $1 ==="
-            echo "--- our uid ---"
-            id
-            echo "--- matching processes (ps) ---"
-            ps -eo pid,ppid,uid,stat,cmd | grep -i labview | grep -v grep || echo "none found by ps"
-            echo "--- /proc/<pid>/exe readability ---"
-            for pid in $(pgrep -x labview || true); do
-              echo "pid $pid:"
-              ls -l "/proc/$pid/exe" 2>&1 || echo "  cannot stat /proc/$pid/exe"
-              readlink -f "/proc/$pid/exe" 2>&1 || echo "  cannot readlink /proc/$pid/exe"
-            done
-            echo "=== end diagnostics ==="
-          }
-
-          diagnose_labview "before Caraya Extension Tests"
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
 
-          diagnose_labview "before Error.Propagation.Tests"
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
 
-          diagnose_labview "before core tests"
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
 
-          diagnose_labview "before lunit"
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"
-          diagnose_labview "after lunit"
 
       - name: VIPM Build Package
         run: |
