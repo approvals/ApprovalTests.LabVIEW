@@ -167,7 +167,10 @@ jobs:
         continue-on-error: true
         run: |
           echo "=== Starting nisvcloc ==="
-          nohup nisvcloc 
+          nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
+          NISVCLOC_PID=$!
+          echo "nisvcloc PID: $NISVCLOC_PID"
+          sleep 3
 
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
