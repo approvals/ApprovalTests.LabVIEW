@@ -237,6 +237,16 @@ jobs:
           -DirectoryToCompile "$(pwd)" \
           || true
 
+      # MassCompile attaches to whatever LabVIEW instance is already running (the one left
+      # behind headless by the VIPM Refresh/Install steps) and loads the entire repo plus
+      # vi.lib dependencies into it. Left alive, that heavy instance competes for CPU/RAM
+      # with the fresh instances g-cli launches per test and was causing g-cli's later calls
+      # to time out waiting for the VI Server callback. Kill it so Unit Tests starts clean.
+      - name: Kill LabVIEW after Mass Compile
+        run: |
+          pkill -9 -x labview || true
+          sleep 3
+
       - name: Unit Tests
         run: |
           source setup-display.sh
