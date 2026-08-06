@@ -226,6 +226,17 @@ jobs:
           source setup-display.sh
           vipm list --installed || true
 
+      - name: Mass MassCompile
+        run: |
+          source setup-display.sh
+          /usr/local/natinst/nilvcli/LabVIEWCLI \
+          -LabVIEWPath "/usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview" \
+          -OperationName MassCompile \
+          -LogToConsole true \
+          -Verbosity Detailed \
+          -DirectoryToCompile "$(pwd)" \
+          || true
+
       - name: Unit Tests
         run: |
           source setup-display.sh
