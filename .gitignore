@@ -14,3 +14,4 @@ sandbox
 InstallTests
 *.swp
 reports
+.claude
