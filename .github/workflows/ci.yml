@@ -349,6 +349,7 @@ jobs:
 
 
   Install_and_Test:
+    # This separate job is necessary to install on a fresh machine. This plus the testes verify that we got all dependencies correct.
     needs: Test_and_Build
 
     runs-on: ubuntu-latest
@@ -432,6 +433,11 @@ jobs:
         # debugging the g-cli hang below.
         run: apt-get update && apt-get install -y git imagemagick
 
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
       - name: Write setup-display.sh
         run: |
           cat > setup-display.sh <<'EOF'
@@ -499,10 +505,6 @@ jobs:
           }
           EOF
 
-      - name: Checkout code
-        uses: actions/checkout@v6
-        with:
-          submodules: recursive
 
 
       # g-cli doesn't talk to LabVIEW over VI Server. It launches LabVIEW with a target VI, and that VI
@@ -560,8 +562,11 @@ jobs:
         with:
           name: vi-package-${{ env.LABVIEW_IMAGE }}    # Must match the upload name exactly
 
-      - name: Install new package
-        run: vipm install build/*.vip
+      - name: Install new package and Caraya LUnit
+        run: |
+          vipm install build/*.vip
+          vipm install astemes_lib_lunit
+          vipm install jki_lib_caraya
 
       - name: VIPM List Installed Packages
         run: vipm list --installed
