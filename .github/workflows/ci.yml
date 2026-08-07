@@ -82,7 +82,9 @@ jobs:
 
       - name: Install git for actions/checkout
         # git is required for the actions/checkout step, but is not included in the base LabVIEW image.
-        run: apt-get update && apt-get install -y git
+        # imagemagick (`import`) is installed here too, for screenshotting the Xvfb display while
+        # debugging the g-cli hang below.
+        run: apt-get update && apt-get install -y git imagemagick
 
       - name: Checkout code
         uses: actions/checkout@v6
@@ -266,14 +268,17 @@ jobs:
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
 
           # This specific call has been hanging silently (no "Starting LUnit" output at all,
-          # just a 180s g-cli timeout) since Mass Compile was reintroduced - only after Mass
-          # Compile, and regardless of whether the leftover LabVIEW instance from Mass Compile
-          # is killed first. Snapshot process/nisvcloc state before launch and twice during the
-          # hang window, to see whether the launched process is alive-but-stuck (e.g. blocked on
-          # a dialog LabVIEW can't dismiss headless) versus crashed/never starting.
+          # just a 180s g-cli timeout) since Mass Compile was reintroduced. Confirmed NOT caused
+          # by the leftover Mass Compile LabVIEW instance: even with that instance properly killed
+          # (see previous step), this call's process still hangs alone, unchanged, in Sl/futex_do_wait
+          # from 30s to 90s in - alive but stuck, never registering with g-cli. That's consistent with
+          # a modal dialog LabVIEW can't dismiss in -unattended mode. Screenshot the Xvfb display
+          # during the hang to see directly whether that's what's on screen.
           dump_diagnostics "before LUnit Extensions Tests"
           ( sleep 30; dump_diagnostics "30s into LUnit Extensions Tests" ) &
+          ( sleep 30; import -display :99 -window root /tmp/lunit-extensions-hang-30s.png || echo "screenshot capture failed" ) &
           ( sleep 90; dump_diagnostics "90s into LUnit Extensions Tests" ) &
+          ( sleep 90; import -display :99 -window root /tmp/lunit-extensions-hang-90s.png || echo "screenshot capture failed" ) &
 
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"
 
@@ -303,6 +308,7 @@ jobs:
             /root/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
             /tmp/nisvcloc.log
             /tmp/xvfb.log
+            /tmp/lunit-extensions-hang-*.png
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v6
