@@ -346,3 +346,221 @@ jobs:
           path: |
             reports
             **/*.received.*
+
+
+  Install_and_Test:
+    needs: Test_and_Build
+
+    runs-on: ubuntu-latest
+
+    # LabVIEW container defaults to `sh`. Set it to `bash`, so there are no surprises with syntax in the steps.
+    defaults:
+      run:
+        shell: bash
+
+    # The official LabVIEW container image from NI
+    container:
+      image: nationalinstruments/labview:2026q3-linux
+      # The runner's own container entrypoint is `tail -f /dev/null` as PID 1, which never
+      # reaps orphaned children. LabVIEW daemonizes itself (double-forks, reparenting to PID 1),
+      # so once we SIGKILL a stale instance in the Unit Tests step it becomes a permanent zombie
+      # for the rest of the job - nothing in a later step can reap it, since only the true
+      # parent can. --init injects a real init (tini) as PID 1 ahead of the entrypoint so
+      # orphaned/killed LabVIEW processes actually get reaped instead of piling up as zombies.
+      options: --init
+
+    env:
+      LABVIEW_IMAGE: 2026q3-linux
+      VIPM_RELEASE_TYPE: preview
+      VIPM_VERSION: 26.3.0-3991
+      VIPM_COMMUNITY_EDITION: true
+      VIPM_DESKTOP_LIVELINESS_TIMEOUT: 600
+      PACKAGE_VERSION: 3.0.0
+      VIPM_NON_INTERACTIVE: 1
+      VIPM_ASSUME_YES: 1
+      VIPM_DEBUG: 1
+
+    steps:
+
+      - name: Setup Variables
+        run: |
+          # Derive LabVIEW version year from the container image tag
+          LABVIEW_VERSION_YEAR="${LABVIEW_IMAGE:0:4}" # e.g. "2026" from "2026q1-linux"
+          echo "LABVIEW_VERSION_YEAR=${LABVIEW_VERSION_YEAR}" >> "$GITHUB_ENV"
+
+      - name: GitHub Setup for LabVIEW Container
+        run: |
+          # LabVIEW Container images put default config in /root home dir, but GitHub Actions sets $HOME to /github/home.
+          cp -R /root/natinst /github/home/natinst
+          chown -R $(id -u):$(id -g) /github/home/natinst
+
+      # Whenever a LabVIEW process exits uncleanly (e.g. our own pkill -9 after Mass Compile),
+      # the next LabVIEW-based process to start shows a blocking "The last time you ran LabVIEW,
+      # internal warning ... occurred" modal dialog asking to investigate. Headless -unattended
+      # runs have no one to click it, so the process just hangs forever (confirmed via an Xvfb
+      # screenshot mid-hang during the LUnit Extensions Tests g-cli call). `autoerr = 3` under
+      # [LabVIEW] in labview.conf preemptively disables that dialog. Set before anything launches
+      # LabVIEW, so it applies for the rest of the job.
+      # https://forums.ni.com/t5/Continuous-Integration/Preemptively-disable-internal-error-dialog/td-p/4407330
+      - name: Disable LabVIEW internal-error investigate dialog
+        run: |
+          CONF_DIR="$HOME/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}"
+          CONF_FILE="$CONF_DIR/labview.conf"
+          mkdir -p "$CONF_DIR"
+          touch "$CONF_FILE"
+          if grep -q '^\[LabVIEW\]' "$CONF_FILE"; then
+            grep -q '^autoerr' "$CONF_FILE" || sed -i '/^\[LabVIEW\]/a autoerr = 3' "$CONF_FILE"
+          else
+            printf '\n[LabVIEW]\nautoerr = 3\n' >> "$CONF_FILE"
+          fi
+          echo "--- $CONF_FILE ---"
+          cat "$CONF_FILE"
+
+      # curl is required to download VIPM, and is also used later by the nisvcloc diagnostics;
+      # it is not included in the base LabVIEW image.
+      - name: Install VIPM
+        run: |
+          apt-get update && apt-get install -y curl
+          curl -Ls -o /tmp/vipm.deb \
+            https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
+          dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
+          vipm --version
+
+      - name: Install git for actions/checkout
+        # git is required for the actions/checkout step, but is not included in the base LabVIEW image.
+        # imagemagick (`import`) is installed here too, for screenshotting the Xvfb display while
+        # debugging the g-cli hang below.
+        run: apt-get update && apt-get install -y git imagemagick
+
+      - name: Write setup-display.sh
+        run: |
+          cat > setup-display.sh <<'EOF'
+          TARGET_DISPLAY=:99
+          export DISPLAY="$TARGET_DISPLAY"
+          # Start Xvfb if it is not already running. If it is already running, assume it is correctly configured for this container and do nothing.
+          if ! pgrep -x Xvfb > /dev/null; then
+              Xvfb "$TARGET_DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
+                  > /tmp/xvfb.log 2>&1 &
+          fi
+          # Writing this marker file is critical and if if it is not present, the LabVIEW Runtime Engine (required by vipm) may not start properly.
+          mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
+          # This container has no browser/D-Bus session. Some package post-install actions try to open a URL
+          # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
+          # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
+          echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
+
+          # Debugging g-cli's "second launch" timeout: dump nisvcloc/labview process state and
+          # nisvcloc's own HTTP diagnostics (http://localhost:3580/dumpinfo?) before/after each
+          # g-cli invocation, so we can see whether the target VI actually registers its callback
+          # port with nisvcloc, and whether that differs between the 1st and 2nd g-cli call.
+          dump_diagnostics() {
+            echo "=== Diagnostics: $1 ==="
+            echo "--- nisvcloc process ---"
+            pgrep -af nisvcloc || echo "nisvcloc not running"
+            echo "--- labview process(es) ---"
+            pgrep -af labview || echo "no labview process running"
+            # ps STAT/WCHAN confirmed pkill -9 IS working: prior instances show as Z/Zl
+            # (zombie, already dead, holding no resources) by the time the next g-cli call
+            # launches, so process pileup is not the cause of the timeout after all.
+            echo "--- labview process state (STAT/WCHAN) ---"
+            ps -eo pid,ppid,stat,wchan:32,cmd | grep -i labview | grep -v grep || echo "no labview process running"
+            # New theory: SIGKILL gives the process no chance to run its own cleanup code.
+            # Unlike file descriptors/memory, SysV semaphores and shared memory segments are
+            # NOT auto-released by the kernel on process death - they persist system-wide
+            # until explicitly removed. If LabVIEW uses a named semaphore for VI Server/startup
+            # synchronization, killing it with -9 twice could leak it in a state where a 3rd
+            # instance blocks forever waiting on it. Check whether these grow across calls.
+            echo "--- SysV semaphores ---"
+            ipcs -s
+            echo "--- SysV shared memory ---"
+            ipcs -m
+            echo "--- nisvcloc dumpinfo (http://localhost:3580/dumpinfo?) ---"
+            curl -s "http://localhost:3580/dumpinfo?" || echo "dumpinfo request failed"
+            # nisvcloc restarts each call didn't change anything, and the pre-call diagnostics
+            # were identical between a passing 3rd call and a failing 4th - so whatever's
+            # accumulating isn't captured above. Check other per-launch resources that a
+            # SIGKILL wouldn't release: open FDs (system-wide and per-process), TCP socket
+            # states (TIME_WAIT pileup), and X11 client-socket count against Xvfb. All read
+            # from /proc directly so this needs no extra packages (no lsof/ss install).
+            echo "--- system fd allocation (/proc/sys/fs/file-nr: allocated free max) ---"
+            cat /proc/sys/fs/file-nr
+            echo "--- open fd count by process (top 10) ---"
+            for fd_dir in /proc/[0-9]*/fd; do
+              pid="${fd_dir#/proc/}"; pid="${pid%/fd}"
+              count=$(ls "$fd_dir" 2>/dev/null | wc -l)
+              cmd=$(tr '\0' ' ' < "/proc/$pid/cmdline" 2>/dev/null)
+              echo "$count $pid $cmd"
+            done | sort -rn | head -10
+            echo "--- tcp socket states (/proc/net/tcp, col 4 = state) ---"
+            awk 'NR>1 {print $4}' /proc/net/tcp | sort | uniq -c
+            echo "--- X11 client-socket connections (/proc/net/unix entries for X11-unix) ---"
+            grep -c "X11-unix" /proc/net/unix || echo 0
+            echo "=== end diagnostics: $1 ==="
+          }
+          EOF
+
+      # g-cli doesn't talk to LabVIEW over VI Server. It launches LabVIEW with a target VI, and that VI
+      # connects back to g-cli on a port it discovers via nisvcloc (the NI Service Locator). Every CI
+      # attempt so far has just backgrounded nisvcloc with `&` and hoped for the best. This step checks
+      # whether nisvcloc actually starts and stays alive in this container, before we build anything on
+      # top of that assumption. It never fails the job.
+      - name: Start nisvcloc
+        continue-on-error: true
+        run: |
+          echo "=== Starting nisvcloc ==="
+          nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
+          NISVCLOC_PID=$!
+          echo "nisvcloc PID: $NISVCLOC_PID"
+          sleep 3
+
+      # Use GitHub's caching action to cache VIPM's package cache.
+      - name: Cache VIPM packages
+        if: false
+        id: cache-vipm
+        uses: actions/cache@v5
+        env:
+          # Increment this to invalidate the cache (restore-keys included).
+          CACHE_VERSION: 2
+        with:
+          path: |
+            /usr/local/natinst/LabVIEW*/
+            /usr/local/jki/vipm/cache/
+            /usr/local/jki/vipm/db/
+          # Key includes hashes of the project package manifests (.vipc and .dragon files)
+          key: vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-${{ hashFiles('approvals-dev.vipc', 'error.dragon') }}
+          restore-keys: |
+            vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-
+            vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-
+
+      - name: Activate VIPM
+        run: |
+          source setup-display.sh
+          echo "Activating VIPM"
+          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
+      
+      - name: Print VIPM About
+        run: vipm about
+
+      - name: VIPM Refresh Package Index
+        # we will refresh before building the package
+        run: |
+          source setup-display.sh
+          echo "Starting LabVIEW"
+          /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+          vipm refresh --show-progress # --verbose
+
+      - name: Download the uploaded artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vi-package-${{ env.LABVIEW_IMAGE }}    # Must match the upload name exactly
+
+      - name: Install new package
+        run: vipm install build/*.vip
+
+      - name: VIPM List Installed Packages
+        run: vipm list --installed
+
+     
+
+
+      
