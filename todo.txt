@@ -28,3 +28,6 @@
 
 - [ ] Consider shared approval files for extension tests.
 - [ ] Consider adding error propagation tests for Caraya in addition to LUnit. Can wire up the Assertion input.
+
+- [ ] Also consider adding code to test upgrade from previous... maybe check for existing config file not stomped on.
+- [ ] Consider testing uninstall...
