@@ -499,6 +499,12 @@ jobs:
           }
           EOF
 
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+
       # g-cli doesn't talk to LabVIEW over VI Server. It launches LabVIEW with a target VI, and that VI
       # connects back to g-cli on a port it discovers via nisvcloc (the NI Service Locator). Every CI
       # attempt so far has just backgrounded nisvcloc with `&` and hoped for the best. This step checks
