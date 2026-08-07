@@ -70,6 +70,28 @@ jobs:
           cp -R /root/natinst /github/home/natinst
           chown -R $(id -u):$(id -g) /github/home/natinst
 
+      # Whenever a LabVIEW process exits uncleanly (e.g. our own pkill -9 after Mass Compile),
+      # the next LabVIEW-based process to start shows a blocking "The last time you ran LabVIEW,
+      # internal warning ... occurred" modal dialog asking to investigate. Headless -unattended
+      # runs have no one to click it, so the process just hangs forever (confirmed via an Xvfb
+      # screenshot mid-hang during the LUnit Extensions Tests g-cli call). `autoerr = 3` under
+      # [LabVIEW] in labview.conf preemptively disables that dialog. Set before anything launches
+      # LabVIEW, so it applies for the rest of the job.
+      # https://forums.ni.com/t5/Continuous-Integration/Preemptively-disable-internal-error-dialog/td-p/4407330
+      - name: Disable LabVIEW internal-error investigate dialog
+        run: |
+          CONF_DIR="$HOME/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}"
+          CONF_FILE="$CONF_DIR/labview.conf"
+          mkdir -p "$CONF_DIR"
+          touch "$CONF_FILE"
+          if grep -q '^\[LabVIEW\]' "$CONF_FILE"; then
+            grep -q '^autoerr' "$CONF_FILE" || sed -i '/^\[LabVIEW\]/a autoerr = 3' "$CONF_FILE"
+          else
+            printf '\n[LabVIEW]\nautoerr = 3\n' >> "$CONF_FILE"
+          fi
+          echo "--- $CONF_FILE ---"
+          cat "$CONF_FILE"
+
       # curl is required to download VIPM, and is also used later by the nisvcloc diagnostics;
       # it is not included in the base LabVIEW image.
       - name: Install VIPM
