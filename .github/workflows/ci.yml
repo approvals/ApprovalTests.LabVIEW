@@ -259,6 +259,16 @@ jobs:
 
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
 
+          # This specific call has been hanging silently (no "Starting LUnit" output at all,
+          # just a 180s g-cli timeout) since Mass Compile was reintroduced - only after Mass
+          # Compile, and regardless of whether the leftover LabVIEW instance from Mass Compile
+          # is killed first. Snapshot process/nisvcloc state before launch and twice during the
+          # hang window, to see whether the launched process is alive-but-stuck (e.g. blocked on
+          # a dialog LabVIEW can't dismiss headless) versus crashed/never starting.
+          dump_diagnostics "before LUnit Extensions Tests"
+          ( sleep 30; dump_diagnostics "30s into LUnit Extensions Tests" ) &
+          ( sleep 90; dump_diagnostics "90s into LUnit Extensions Tests" ) &
+
           ./bin/g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"
 
       - name: VIPM Build Package
