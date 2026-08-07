@@ -564,6 +564,7 @@ jobs:
 
       - name: Install new package and Caraya LUnit
         run: |
+          source setup-display.sh
           vipm install build/*.vip
           vipm install astemes_lib_lunit
           vipm install jki_lib_caraya
