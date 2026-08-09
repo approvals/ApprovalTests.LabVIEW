@@ -572,7 +572,7 @@ jobs:
           vipm install jki_lib_caraya
 
       - name: VIPM List Installed Packages
-        run: vipm list --installed
+        run: vipm list --installed || true # or true for core dump
 
      
 
