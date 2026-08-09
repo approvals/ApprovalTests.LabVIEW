@@ -67,12 +67,7 @@ jobs:
       - name: Setup Container
         run: |
           ./scripts/setup_container.sh
-
-      - name: Copy G-CLI
-        run: |
-          
       
-
         # This is a reusable script to set up the display for VIPM and LabVIEW.
         # see https://docs.vipm.io/preview/cli/docker/#display-and-labview-setup-linux-containers
       - name: Write setup-display.sh
