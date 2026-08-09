@@ -79,6 +79,11 @@ jobs:
           dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
           vipm --version
           apt-get update && apt-get install -y git imagemagick
+          # start NIsvcloc - needed for g-cli
+          nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
+          NISVCLOC_PID=$!
+          echo "nisvcloc PID: $NISVCLOC_PID"
+          sleep 3
 
       - name: Checkout code
         uses: actions/checkout@v6
@@ -87,6 +92,9 @@ jobs:
 
       - name: Copy G-CLI
         run: |
+          # We use a custom g-cli rust exe for 2 reasons.
+          # 1 - for some reason the VIPM package doesn't install the exe
+          # 2 - We made some modifications to avoid some issues with hanging. 
           cp bin/g-cli /usr/bin/g-cli
       
 
@@ -159,19 +167,7 @@ jobs:
           }
           EOF
 
-      # g-cli doesn't talk to LabVIEW over VI Server. It launches LabVIEW with a target VI, and that VI
-      # connects back to g-cli on a port it discovers via nisvcloc (the NI Service Locator). Every CI
-      # attempt so far has just backgrounded nisvcloc with `&` and hoped for the best. This step checks
-      # whether nisvcloc actually starts and stays alive in this container, before we build anything on
-      # top of that assumption. It never fails the job.
-      - name: Start nisvcloc
-        continue-on-error: true
-        run: |
-          echo "=== Starting nisvcloc ==="
-          nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
-          NISVCLOC_PID=$!
-          echo "nisvcloc PID: $NISVCLOC_PID"
-          sleep 3
+          
 
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
