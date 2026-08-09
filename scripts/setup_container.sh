@@ -26,7 +26,7 @@ set -euo pipefail
           dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb >/dev/null
           vipm --version
           # start NIsvcloc - needed for g-cli
-          nohup nisvcloc >/dev/null
+          nohup nisvcloc >/dev/null &
           sleep 3
 
           # We use a custom g-cli rust exe for 2 reasons.
