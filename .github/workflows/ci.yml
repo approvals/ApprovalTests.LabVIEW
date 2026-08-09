@@ -250,65 +250,20 @@ jobs:
 
     steps:
 
-      - name: Setup Variables
-        run: |
-          # Derive LabVIEW version year from the container image tag
-          LABVIEW_VERSION_YEAR="${LABVIEW_IMAGE:0:4}" # e.g. "2026" from "2026q1-linux"
-          echo "LABVIEW_VERSION_YEAR=${LABVIEW_VERSION_YEAR}" >> "$GITHUB_ENV"
+     
 
-      - name: GitHub Setup for LabVIEW Container
-        run: |
-          # LabVIEW Container images put default config in /root home dir, but GitHub Actions sets $HOME to /github/home.
-          cp -R /root/natinst /github/home/natinst
-          chown -R $(id -u):$(id -g) /github/home/natinst
-
-      # Whenever a LabVIEW process exits uncleanly (e.g. our own pkill -9 after Mass Compile),
-      # the next LabVIEW-based process to start shows a blocking "The last time you ran LabVIEW,
-      # internal warning ... occurred" modal dialog asking to investigate. Headless -unattended
-      # runs have no one to click it, so the process just hangs forever (confirmed via an Xvfb
-      # screenshot mid-hang during the LUnit Extensions Tests g-cli call). `autoerr = 3` under
-      # [LabVIEW] in labview.conf preemptively disables that dialog. Set before anything launches
-      # LabVIEW, so it applies for the rest of the job.
-      # https://forums.ni.com/t5/Continuous-Integration/Preemptively-disable-internal-error-dialog/td-p/4407330
-      - name: Disable LabVIEW internal-error investigate dialog
-        run: |
-          CONF_DIR="$HOME/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}"
-          CONF_FILE="$CONF_DIR/labview.conf"
-          mkdir -p "$CONF_DIR"
-          touch "$CONF_FILE"
-          if grep -q '^\[LabVIEW\]' "$CONF_FILE"; then
-            grep -q '^autoerr' "$CONF_FILE" || sed -i '/^\[LabVIEW\]/a autoerr = 3' "$CONF_FILE"
-          else
-            printf '\n[LabVIEW]\nautoerr = 3\n' >> "$CONF_FILE"
-          fi
-          echo "--- $CONF_FILE ---"
-          cat "$CONF_FILE"
-
-      # curl is required to download VIPM, and is also used later by the nisvcloc diagnostics;
-      # it is not included in the base LabVIEW image.
-      - name: Install VIPM
-        run: |
-          apt-get update && apt-get install -y curl
-          curl -Ls -o /tmp/vipm.deb \
-            https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
-          dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
-          vipm --version
-
-      - name: Install git for actions/checkout
-        # git is required for the actions/checkout step, but is not included in the base LabVIEW image.
-        # imagemagick (`import`) is installed here too, for screenshotting the Xvfb display while
-        # debugging the g-cli hang below.
-        run: apt-get update && apt-get install -y git imagemagick
+      - name: Install git
+        run: apt-get update && apt-get install git
 
       - name: Checkout code
         uses: actions/checkout@v6
         with:
           submodules: recursive
       
-      - name: Copy G-CLI
+      - name: Setup Container
         run: |
-          cp bin/g-cli /usr/bin/g-cli
-
+          ./scripts/setup_container.sh
+      
       - name: Write setup-display.sh
         run: |
           cat > setup-display.sh <<'EOF'
@@ -375,23 +330,7 @@ jobs:
             echo "=== end diagnostics: $1 ==="
           }
           EOF
-
-
-
-      # g-cli doesn't talk to LabVIEW over VI Server. It launches LabVIEW with a target VI, and that VI
-      # connects back to g-cli on a port it discovers via nisvcloc (the NI Service Locator). Every CI
-      # attempt so far has just backgrounded nisvcloc with `&` and hoped for the best. This step checks
-      # whether nisvcloc actually starts and stays alive in this container, before we build anything on
-      # top of that assumption. It never fails the job.
-      - name: Start nisvcloc
-        continue-on-error: true
-        run: |
-          echo "=== Starting nisvcloc ==="
-          nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
-          NISVCLOC_PID=$!
-          echo "nisvcloc PID: $NISVCLOC_PID"
-          sleep 3
-
+wq
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
         if: false
