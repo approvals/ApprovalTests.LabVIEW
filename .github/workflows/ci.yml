@@ -330,7 +330,6 @@ jobs:
             echo "=== end diagnostics: $1 ==="
           }
           EOF
-wq
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
         if: false
