@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Install git
         run: |
-          apt-get update && apt-get install -y git 
+          apt-get update && apt-get install -y git >/dev/null
       - name: Checkout code
         uses: actions/checkout@v6
         with:
@@ -77,9 +77,9 @@ jobs:
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           echo "Activating VIPM"
-          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
+          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}" >/dev/null
           vipm about
-          vipm refresh # --show-progress # --verbose
+          vipm refresh # --show-progress # --verbose >/dev/null
 
       - name: VIPM Install Packages
         if: steps.cache-vipm.outputs.cache-hit != 'true'
