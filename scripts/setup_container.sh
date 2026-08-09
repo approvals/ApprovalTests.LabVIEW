@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-
+set -euo pipefail
 # This script is for setting up a Linux Container to run LabVIEW, VIPM, G-CLI etc. Call this first, before setup_display.
 
 # Derive LabVIEW version year from the container image tag

@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
+# first install gh cli via `winget install --id GitHub.cli`
+# then install linter via `gh extension install cschleiden/gh-actionlint`
 
+gh actionlint
 ./scripts/pylavi_check.sh
 ./scripts/run_unittests.sh
 

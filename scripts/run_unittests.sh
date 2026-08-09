@@ -30,9 +30,6 @@ fail() {
 set -x
 set -euo pipefail
 
-
-vipm install "approvals-dev.vipc" || fail
-
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
 g-cli --timeout 300000 Caraya -- -s "Tests${SEP}Caraya.Tests${SEP}Caraya Extension Tests${SEP}Caraya Extension Tests.lvclass" -x "reports${SEP}Caraya.UnitTestReport.xml" || fail
