@@ -69,6 +69,7 @@ jobs:
           # LabVIEW Container images put default config in /root home dir, but GitHub Actions sets $HOME to /github/home.
           cp -R /root/natinst /github/home/natinst
           chown -R $(id -u):$(id -g) /github/home/natinst
+          cp bin/g-cli /usr/bin/g-cli
 
       # Whenever a LabVIEW process exits uncleanly (e.g. our own pkill -9 after Mass Compile),
       # the next LabVIEW-based process to start shows a blocking "The last time you ran LabVIEW,
@@ -394,6 +395,7 @@ jobs:
           # LabVIEW Container images put default config in /root home dir, but GitHub Actions sets $HOME to /github/home.
           cp -R /root/natinst /github/home/natinst
           chown -R $(id -u):$(id -g) /github/home/natinst
+          cp bin/g-cli /usr/local/bin/g-cli
 
       # Whenever a LabVIEW process exits uncleanly (e.g. our own pkill -9 after Mass Compile),
       # the next LabVIEW-based process to start shows a blocking "The last time you ran LabVIEW,
