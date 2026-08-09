@@ -78,7 +78,7 @@ jobs:
             https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
           dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
           vipm --version
-          apt-get update && apt-get install -y git imagemagick
+          apt-get update && apt-get install -y git 
           # start NIsvcloc - needed for g-cli
           nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
           NISVCLOC_PID=$!
@@ -117,57 +117,6 @@ jobs:
           # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
           echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
 
-          # Debugging g-cli's "second launch" timeout: dump nisvcloc/labview process state and
-          # nisvcloc's own HTTP diagnostics (http://localhost:3580/dumpinfo?) before/after each
-          # g-cli invocation, so we can see whether the target VI actually registers its callback
-          # port with nisvcloc, and whether that differs between the 1st and 2nd g-cli call.
-          dump_diagnostics() {
-            echo "=== Diagnostics: $1 ==="
-            echo "--- nisvcloc process ---"
-            pgrep -af nisvcloc || echo "nisvcloc not running"
-            echo "--- labview process(es) ---"
-            pgrep -af labview || echo "no labview process running"
-            # ps STAT/WCHAN confirmed pkill -9 IS working: prior instances show as Z/Zl
-            # (zombie, already dead, holding no resources) by the time the next g-cli call
-            # launches, so process pileup is not the cause of the timeout after all.
-            echo "--- labview process state (STAT/WCHAN) ---"
-            ps -eo pid,ppid,stat,wchan:32,cmd | grep -i labview | grep -v grep || echo "no labview process running"
-            # New theory: SIGKILL gives the process no chance to run its own cleanup code.
-            # Unlike file descriptors/memory, SysV semaphores and shared memory segments are
-            # NOT auto-released by the kernel on process death - they persist system-wide
-            # until explicitly removed. If LabVIEW uses a named semaphore for VI Server/startup
-            # synchronization, killing it with -9 twice could leak it in a state where a 3rd
-            # instance blocks forever waiting on it. Check whether these grow across calls.
-            echo "--- SysV semaphores ---"
-            ipcs -s
-            echo "--- SysV shared memory ---"
-            ipcs -m
-            echo "--- nisvcloc dumpinfo (http://localhost:3580/dumpinfo?) ---"
-            curl -s "http://localhost:3580/dumpinfo?" || echo "dumpinfo request failed"
-            # nisvcloc restarts each call didn't change anything, and the pre-call diagnostics
-            # were identical between a passing 3rd call and a failing 4th - so whatever's
-            # accumulating isn't captured above. Check other per-launch resources that a
-            # SIGKILL wouldn't release: open FDs (system-wide and per-process), TCP socket
-            # states (TIME_WAIT pileup), and X11 client-socket count against Xvfb. All read
-            # from /proc directly so this needs no extra packages (no lsof/ss install).
-            echo "--- system fd allocation (/proc/sys/fs/file-nr: allocated free max) ---"
-            cat /proc/sys/fs/file-nr
-            echo "--- open fd count by process (top 10) ---"
-            for fd_dir in /proc/[0-9]*/fd; do
-              pid="${fd_dir#/proc/}"; pid="${pid%/fd}"
-              count=$(ls "$fd_dir" 2>/dev/null | wc -l)
-              cmd=$(tr '\0' ' ' < "/proc/$pid/cmdline" 2>/dev/null)
-              echo "$count $pid $cmd"
-            done | sort -rn | head -10
-            echo "--- tcp socket states (/proc/net/tcp, col 4 = state) ---"
-            awk 'NR>1 {print $4}' /proc/net/tcp | sort | uniq -c
-            echo "--- X11 client-socket connections (/proc/net/unix entries for X11-unix) ---"
-            grep -c "X11-unix" /proc/net/unix || echo 0
-            echo "=== end diagnostics: $1 ==="
-          }
-          EOF
-
-          
 
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
@@ -249,19 +198,6 @@ jobs:
           g-cli --kill --kill-timeout 5000 -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
 
           g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
-
-          # This specific call has been hanging silently (no "Starting LUnit" output at all,
-          # just a 180s g-cli timeout) since Mass Compile was reintroduced. Confirmed NOT caused
-          # by the leftover Mass Compile LabVIEW instance: even with that instance properly killed
-          # (see previous step), this call's process still hangs alone, unchanged, in Sl/futex_do_wait
-          # from 30s to 90s in - alive but stuck, never registering with g-cli. That's consistent with
-          # a modal dialog LabVIEW can't dismiss in -unattended mode. Screenshot the Xvfb display
-          # during the hang to see directly whether that's what's on screen.
-          dump_diagnostics "before LUnit Extensions Tests"
-          ( sleep 30; dump_diagnostics "30s into LUnit Extensions Tests" ) &
-          ( sleep 30; import -display :99 -window root /tmp/lunit-extensions-hang-30s.png || echo "screenshot capture failed" ) &
-          ( sleep 90; dump_diagnostics "90s into LUnit Extensions Tests" ) &
-          ( sleep 90; import -display :99 -window root /tmp/lunit-extensions-hang-90s.png || echo "screenshot capture failed" ) &
 
           g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"
 
