@@ -91,7 +91,7 @@ jobs:
 
       - name: Activate VIPM
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           echo "Activating VIPM"
           vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
       
@@ -102,7 +102,7 @@ jobs:
         # we will refresh before building the package
         if: true
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           vipm refresh --show-progress # --verbose
@@ -113,7 +113,7 @@ jobs:
       - name: VIPM Install Packages
         if: steps.cache-vipm.outputs.cache-hit != 'true'
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
@@ -122,13 +122,13 @@ jobs:
 
       - name: VIPM List Installed packages
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           vipm list --installed || true
 
       - name: Mass MassCompile
         if: false
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           /usr/local/natinst/nilvcli/LabVIEWCLI \
           -LabVIEWPath "/usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview" \
           -OperationName MassCompile \
@@ -142,7 +142,7 @@ jobs:
 
       - name: Unit Tests
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           mkdir -p reports
           echo "Running Unit Tests"
 
@@ -156,7 +156,7 @@ jobs:
 
       - name: VIPM Build Package
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
 
@@ -268,7 +268,7 @@ jobs:
 
       - name: Activate VIPM
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           echo "Activating VIPM"
           vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
       
@@ -278,7 +278,7 @@ jobs:
       - name: VIPM Refresh Package Index
         # we will refresh before building the package
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           vipm refresh --show-progress # --verbose
@@ -290,7 +290,7 @@ jobs:
 
       - name: Install new package and Caraya LUnit
         run: |
-          /scripts/setup_display.sh
+          ./scripts/setup_display.sh
           package=$(ls *.vip)
           echo "Package is ${package}"
           vipm install "${package}"
