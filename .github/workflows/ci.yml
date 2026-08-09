@@ -68,24 +68,7 @@ jobs:
         run: |
           ./scripts/setup_container.sh
       
-        # This is a reusable script to set up the display for VIPM and LabVIEW.
-        # see https://docs.vipm.io/preview/cli/docker/#display-and-labview-setup-linux-containers
-      - name: Write setup-display.sh
-        run: |
-          cat > setup-display.sh <<'EOF'
-          TARGET_DISPLAY=:99
-          export DISPLAY="$TARGET_DISPLAY"
-          # Start Xvfb if it is not already running. If it is already running, assume it is correctly configured for this container and do nothing.
-          if ! pgrep -x Xvfb > /dev/null; then
-              Xvfb "$TARGET_DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
-                  > /tmp/xvfb.log 2>&1 &
-          fi
-          # Writing this marker file is critical and if if it is not present, the LabVIEW Runtime Engine (required by vipm) may not start properly.
-          mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
-          # This container has no browser/D-Bus session. Some package post-install actions try to open a URL
-          # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
-          # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
-          echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
+
 
 
       # Use GitHub's caching action to cache VIPM's package cache.
@@ -108,7 +91,7 @@ jobs:
 
       - name: Activate VIPM
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           echo "Activating VIPM"
           vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
       
@@ -119,7 +102,7 @@ jobs:
         # we will refresh before building the package
         if: true
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           vipm refresh --show-progress # --verbose
@@ -130,7 +113,7 @@ jobs:
       - name: VIPM Install Packages
         if: steps.cache-vipm.outputs.cache-hit != 'true'
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           # vipm install --dev --show-progress --labview-version ${LABVIEW_VERSION_YEAR} --labview-bitness 64 # --verbose
@@ -139,13 +122,13 @@ jobs:
 
       - name: VIPM List Installed packages
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           vipm list --installed || true
 
       - name: Mass MassCompile
         if: false
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           /usr/local/natinst/nilvcli/LabVIEWCLI \
           -LabVIEWPath "/usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview" \
           -OperationName MassCompile \
@@ -159,7 +142,7 @@ jobs:
 
       - name: Unit Tests
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           mkdir -p reports
           echo "Running Unit Tests"
 
@@ -173,7 +156,7 @@ jobs:
 
       - name: VIPM Build Package
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
 
@@ -263,73 +246,7 @@ jobs:
       - name: Setup Container
         run: |
           ./scripts/setup_container.sh
-      
-      - name: Write setup-display.sh
-        run: |
-          cat > setup-display.sh <<'EOF'
-          TARGET_DISPLAY=:99
-          export DISPLAY="$TARGET_DISPLAY"
-          # Start Xvfb if it is not already running. If it is already running, assume it is correctly configured for this container and do nothing.
-          if ! pgrep -x Xvfb > /dev/null; then
-              Xvfb "$TARGET_DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset \
-                  > /tmp/xvfb.log 2>&1 &
-          fi
-          # Writing this marker file is critical and if if it is not present, the LabVIEW Runtime Engine (required by vipm) may not start properly.
-          mkdir -p /tmp/natinst && echo "1" > /tmp/natinst/LVContainer.txt
-          # This container has no browser/D-Bus session. Some package post-install actions try to open a URL
-          # in the default browser, which can hang for minutes waiting on xdg-open/D-Bus before giving up.
-          # Start Xvfb before the LabVIEW Runtime Engine initializes, which happens on the first `vipm` command.
-          echo "$(pgrep -x Xvfb > /dev/null && echo "Xvfb running (DISPLAY=$TARGET_DISPLAY)" || echo "WARNING: Xvfb is required by vipm, but failed to start; DISPLAY=$DISPLAY may not work. Check /tmp/xvfb.log for details.")"
-
-          # Debugging g-cli's "second launch" timeout: dump nisvcloc/labview process state and
-          # nisvcloc's own HTTP diagnostics (http://localhost:3580/dumpinfo?) before/after each
-          # g-cli invocation, so we can see whether the target VI actually registers its callback
-          # port with nisvcloc, and whether that differs between the 1st and 2nd g-cli call.
-          dump_diagnostics() {
-            echo "=== Diagnostics: $1 ==="
-            echo "--- nisvcloc process ---"
-            pgrep -af nisvcloc || echo "nisvcloc not running"
-            echo "--- labview process(es) ---"
-            pgrep -af labview || echo "no labview process running"
-            # ps STAT/WCHAN confirmed pkill -9 IS working: prior instances show as Z/Zl
-            # (zombie, already dead, holding no resources) by the time the next g-cli call
-            # launches, so process pileup is not the cause of the timeout after all.
-            echo "--- labview process state (STAT/WCHAN) ---"
-            ps -eo pid,ppid,stat,wchan:32,cmd | grep -i labview | grep -v grep || echo "no labview process running"
-            # New theory: SIGKILL gives the process no chance to run its own cleanup code.
-            # Unlike file descriptors/memory, SysV semaphores and shared memory segments are
-            # NOT auto-released by the kernel on process death - they persist system-wide
-            # until explicitly removed. If LabVIEW uses a named semaphore for VI Server/startup
-            # synchronization, killing it with -9 twice could leak it in a state where a 3rd
-            # instance blocks forever waiting on it. Check whether these grow across calls.
-            echo "--- SysV semaphores ---"
-            ipcs -s
-            echo "--- SysV shared memory ---"
-            ipcs -m
-            echo "--- nisvcloc dumpinfo (http://localhost:3580/dumpinfo?) ---"
-            curl -s "http://localhost:3580/dumpinfo?" || echo "dumpinfo request failed"
-            # nisvcloc restarts each call didn't change anything, and the pre-call diagnostics
-            # were identical between a passing 3rd call and a failing 4th - so whatever's
-            # accumulating isn't captured above. Check other per-launch resources that a
-            # SIGKILL wouldn't release: open FDs (system-wide and per-process), TCP socket
-            # states (TIME_WAIT pileup), and X11 client-socket count against Xvfb. All read
-            # from /proc directly so this needs no extra packages (no lsof/ss install).
-            echo "--- system fd allocation (/proc/sys/fs/file-nr: allocated free max) ---"
-            cat /proc/sys/fs/file-nr
-            echo "--- open fd count by process (top 10) ---"
-            for fd_dir in /proc/[0-9]*/fd; do
-              pid="${fd_dir#/proc/}"; pid="${pid%/fd}"
-              count=$(ls "$fd_dir" 2>/dev/null | wc -l)
-              cmd=$(tr '\0' ' ' < "/proc/$pid/cmdline" 2>/dev/null)
-              echo "$count $pid $cmd"
-            done | sort -rn | head -10
-            echo "--- tcp socket states (/proc/net/tcp, col 4 = state) ---"
-            awk 'NR>1 {print $4}' /proc/net/tcp | sort | uniq -c
-            echo "--- X11 client-socket connections (/proc/net/unix entries for X11-unix) ---"
-            grep -c "X11-unix" /proc/net/unix || echo 0
-            echo "=== end diagnostics: $1 ==="
-          }
-          EOF
+    
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
         if: false
@@ -351,7 +268,7 @@ jobs:
 
       - name: Activate VIPM
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           echo "Activating VIPM"
           vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
       
@@ -361,7 +278,7 @@ jobs:
       - name: VIPM Refresh Package Index
         # we will refresh before building the package
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
           vipm refresh --show-progress # --verbose
@@ -373,7 +290,7 @@ jobs:
 
       - name: Install new package and Caraya LUnit
         run: |
-          source setup-display.sh
+          ./scripts/setup_dipslay.sh
           package=$(ls *.vip)
           echo "Package is ${package}"
           vipm install "${package}"

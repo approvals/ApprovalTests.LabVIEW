@@ -3,6 +3,9 @@
 # This sets up xvfb - a virtual frame buffer. This mimics a display and deals with the fact that LabVIEW and VIPM require a display to run properly.
 # Call this in each GitHub Action step that calls into LV or VIPM, as xvfb can shut down between steps based on the way GitHub handles the calls.
 
+# This is a reusable script to set up the display for VIPM and LabVIEW.
+# see https://docs.vipm.io/preview/cli/docker/#display-and-labview-setup-linux-containers
+
 TARGET_DISPLAY=:99
 export DISPLAY="$TARGET_DISPLAY"
 # Start Xvfb if it is not already running. If it is already running, assume it is correctly configured for this container and do nothing.
