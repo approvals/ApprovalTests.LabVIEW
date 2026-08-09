@@ -20,15 +20,13 @@ set -euo pipefail
             printf '\n[LabVIEW]\nautoerr = 3\n' >> "$CONF_FILE"
           fi
           # install vipm
-          apt-get update && apt-get install -y curl
+          apt-get update && apt-get install -y curl >/dev/null
           curl -Ls -o /tmp/vipm.deb \
-            https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb
-          dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb
+            https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb >/dev/null
+          dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb >/dev/null
           vipm --version
           # start NIsvcloc - needed for g-cli
-          nohup nisvcloc > /tmp/nisvcloc.log 2>&1 &
-          NISVCLOC_PID=$!
-          echo "nisvcloc PID: $NISVCLOC_PID"
+          nohup nisvcloc >/dev/null
           sleep 3
 
           # We use a custom g-cli rust exe for 2 reasons.
