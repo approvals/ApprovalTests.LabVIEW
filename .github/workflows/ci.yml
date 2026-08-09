@@ -1,24 +1,18 @@
 name: ci-checks
-
 on:
   push:
   workflow_dispatch:
 
 jobs:
   PylaviChecks:
-
     runs-on: ubuntu-latest
-      
     container:
       image: python:3.11
-
     steps:
-
       - name: Checkout Repo
         uses: actions/checkout@v6
         with:
           submodules: recursive
-
       - name: Pylavi
         run: |
           pip install pylavi
@@ -26,9 +20,7 @@ jobs:
 
   Test_And_Build:
     needs: PylaviChecks
-
     runs-on: ubuntu-latest
-
     # LabVIEW container defaults to `sh`. Set it to `bash`, so there are no surprises with syntax in the steps.
     defaults:
       run:
@@ -52,25 +44,16 @@ jobs:
       VIPM_DEBUG: 1
 
     steps:
-
-
       - name: Install git
         run: |
           apt-get update && apt-get install -y git 
-        
-
       - name: Checkout code
         uses: actions/checkout@v6
         with:
           submodules: recursive
-      
       - name: Setup Container
         run: |
           ./scripts/setup_container.sh
-      
-
-
-
       # Use GitHub's caching action to cache VIPM's package cache.
       - name: Cache VIPM packages
         id: cache-vipm
@@ -88,27 +71,15 @@ jobs:
           restore-keys: |
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-
-
       - name: Activate VIPM
-        run: |
-          source ./scripts/setup_display.sh
-          echo "Activating VIPM"
-          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
-      
-      - name: Print VIPM About
-        run: vipm about
-
-      - name: VIPM Refresh Package Index
-        # we will refresh before building the package
-        if: true
         run: |
           source ./scripts/setup_display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
+          echo "Activating VIPM"
+          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
+          vipm about
           vipm refresh --show-progress # --verbose
-
-      - name: VIPM List Packages
-        run: vipm list approvals-dev.vipc
 
       - name: VIPM Install Packages
         if: steps.cache-vipm.outputs.cache-hit != 'true'
@@ -124,21 +95,6 @@ jobs:
         run: |
           source ./scripts/setup_display.sh
           vipm list --installed || true
-
-      - name: Mass MassCompile
-        if: false
-        run: |
-          source ./scripts/setup_display.sh
-          /usr/local/natinst/nilvcli/LabVIEWCLI \
-          -LabVIEWPath "/usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview" \
-          -OperationName MassCompile \
-          -LogToConsole true \
-          -Verbosity Detailed \
-          -DirectoryToCompile "$(pwd)" \
-          || true
-          pkill -9 -x labview || true
-          pkill -9 -x labviewprofull || true
-          sleep 3
 
       - name: Unit Tests
         run: |
