@@ -3,7 +3,7 @@ mkdir reports 2> /dev/null
 echo "Running Unit Tests"
 kill=""
 if [ "${1:-}" == "kill" ]; then
-  kill="--kill --kill-timeout 300000"
+  kill="--kill --kill-timeout 5000"
 fi
 
 
@@ -29,21 +29,21 @@ set -euo pipefail
 
 
 
-g-cli ${kill} --timeout 300000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj" || fail
+g-cli ${kill} --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj" || fail
 
-g-cli ${kill} --timeout 300000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Extension Tests.lvproj" || fail
+g-cli ${kill} --timeout 180000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Extension Tests.lvproj" || fail
 
 
 
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
-g-cli ${kill} --timeout 300000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml" || fail
+g-cli ${kill} --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 
 
 SECONDS=0
 echo "Running Error Propagation Tests"
-g-cli ${kill} --timeout 300000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" || fail
+g-cli ${kill} --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 
 echo "${bold}${green}PASS${reset}" 
