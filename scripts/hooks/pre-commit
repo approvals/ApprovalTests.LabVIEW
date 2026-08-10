@@ -3,7 +3,30 @@
 # then install linter via `gh extension install cschleiden/gh-actionlint`
 # also look at https://github.com/nektos/act - could use that.
 
-gh actionlint
-./scripts/pylavi_check.sh
-./scripts/run_unittests.sh
+export TERM=${TERM:-xterm}
+green=$(tput setaf 2)
+red=$(tput setaf 1)
+reset=$(tput sgr0)
+bold=$(tput bold)
+
+
+fail() {
+    echo "${bold}${red}FAIL${reset} ${1}"
+    exit 1
+}
+set -euo pipefail
+
+pass() {
+    echo "${bold}${green}PASS${reset} ${1}"
+}
+
+gh actionlint || fail "Action Linter"
+pass "Action Linter"
+./scripts/pylavi_check.sh || fail "Pylavi"
+pass "Pylavi"
+./scripts/run_unittests.sh || fail "Unit Tests"
+pass "Unit Tests"
+
+
+
 
