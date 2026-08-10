@@ -19,8 +19,9 @@ set -euo pipefail
           else
             printf '\n[LabVIEW]\nautoerr = 3\n' >> "$CONF_FILE"
           fi
-          # install vipm
-          apt-get update && apt-get install -y curl >/dev/null
+          # install vipm 
+          # ncurses is for tput - used to output color in scripts"
+          apt-get update && apt-get install -y curl ncurses-bin >/dev/null
           curl -Ls -o /tmp/vipm.deb \
             https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb >/dev/null
           dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb >/dev/null
