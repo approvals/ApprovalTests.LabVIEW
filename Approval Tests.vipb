@@ -1,4 +1,4 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2026-08-09 18:42:28" Creator="Samuel Taggart" Comments="" ID="97eb2d5849b1b9e01158422e03548d2d">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2023-02-03 17:12:45" Modified_Date="2026-08-10 12:17:07" Creator="Samuel Taggart" Comments="" ID="04163de516eb3d0ba773fe3976b185b7">
   <Library_General_Settings>
     <Package_File_Name>SAS_lib_Approval_Tests</Package_File_Name>
     <Library_Version>2.2.3.7</Library_Version>
@@ -125,6 +125,11 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>.</Path>
         <Namespace_Type>Prefix</Namespace_Type>
         <Namespace/>
+      </Namespace_Overrides>
+      <Namespace_Overrides>
+        <Path>Approval Tests/Approval Tests.lvlib</Path>
+        <Namespace_Type>Prefix</Namespace_Type>
+        <Namespace>lib_</Namespace>
       </Namespace_Overrides>
       <Exclusions>
         <Path>astemes-string-diff-utils/.String Comparison.UserState</Path>
@@ -311,7 +316,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Caraya</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>55515E2D6352709C0F350EB662E87713</GUID>
+      <GUID>296FFDC59259B8A10A3E39B71E82CD19</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -430,7 +435,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>358BCC8B6C3585E1C68BB2C886E53956</GUID>
+      <GUID>694EE1D83004568A5B389EEA0878A5B8</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -549,7 +554,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Advanced</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>573A1E43300C96F0C04F72B3C0D46C80</GUID>
+      <GUID>E6FFCFF7D3A05874CF07DB51C3FC0DEF</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -668,7 +673,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Add Shared Approval File and Folder.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>898944822494EBC169B7DCC2D8BEDBB3</GUID>
+      <GUID>2A88A142765CDB224578C7B8C2D70315</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -801,7 +806,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Approval Tests\Date Scrubber\Find Scrubber For Date.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>443CE0054BBC91A09071C21B8CBB27D6</GUID>
+      <GUID>3228F05C8823CAE0099279002AA6F451</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>1</Parent_Palette_Index>
@@ -906,7 +911,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\LUnit.Extension\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>E53BB2F837618D5666DA228986E08BD6</GUID>
+      <GUID>D7324EADD8E0217253A0B886FFA4F250</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>2</Parent_Palette_Index>
@@ -1011,7 +1016,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Path>Source\Extensions\Caraya.Extension\Verify File.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>91D6EFB0078C6AB4A11EE1CD8CD79128</GUID>
+      <GUID>5B4B23C7BB30D0BC59964E1DFA5CB105</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
   <Library_Palette_Definition>
@@ -1034,7 +1039,7 @@ Find a starterproject with some examples here: https://github.com/approvals/Appr
         <Synchronyze_with_Directory>false</Synchronyze_with_Directory>
         <Synchronize_Directory_Path/>
       </Synchronization_Info>
-      <GUID>822DEFEDD5E7BD4E1DE5F5E72F37DAC6</GUID>
+      <GUID>9A70404D37B5782AF3AE37B42B30A7F9</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>
