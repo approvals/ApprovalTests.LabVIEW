@@ -215,19 +215,12 @@ jobs:
       - name: Activate VIPM
         run: |
           source ./scripts/setup_display.sh
-          echo "Activating VIPM"
-          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}"
-      
-      - name: Print VIPM About
-        run: vipm about
-
-      - name: VIPM Refresh Package Index
-        # we will refresh before building the package
-        run: |
-          source ./scripts/setup_display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
-          vipm refresh --show-progress # --verbose
+          echo "Activating VIPM"
+          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}" >/dev/null
+          vipm about
+          vipm refresh # --show-progress # --verbose >/dev/null
 
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
