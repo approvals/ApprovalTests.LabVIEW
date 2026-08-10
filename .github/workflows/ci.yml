@@ -230,7 +230,7 @@ jobs:
           vipm refresh --show-progress # --verbose
 
       - name: Download the uploaded artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: vi-package-${{ env.LABVIEW_IMAGE }}    # Must match the upload name exactly
 
