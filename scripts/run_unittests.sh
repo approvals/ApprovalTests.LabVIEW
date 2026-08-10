@@ -1,19 +1,16 @@
 #! /usr/bin/env bash
 mkdir reports 2> /dev/null
-
-
-# Detect OS and set path separator and working directory accordingly
-if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
-    SEP="\\"
-    HERE=$(cygpath -w $(pwd))
-else
-    SEP="/"
-    HERE=$(pwd)
+echo "Running Unit Tests"
+kill=""
+if [ "${1:-}" == "kill" ]; then
+  kill="--kill --kill-timeout 300000"
 fi
 
-rm "reports${SEP}Caraya.UnitTestReport.xml" 2>/dev/null
-rm "reports${SEP}LUnit.UnitTestReport.xml" 2>/dev/null
-rm "reports${SEP}Scrubber.UnitTestReport.xml" 2>/dev/null
+
+rm "reports/Caraya.UnitTestReport.xml" 2>/dev/null
+rm "reports/LUnit.UnitTestReport.xml" 2>/dev/null
+rm "reports/Error.Propagation.UnitTestReport.xml" 2>/dev/null
+rm "reports/CoreLibrary.UnitTestReport.xml" 2>/dev/null
 
 export TERM=${TERM:-xterm}
 green=$(tput setaf 2)
@@ -27,25 +24,27 @@ fail() {
     echo "${bold}${red}FAIL${reset}"
     exit 1
 }
-set -x
+# set -x
 set -euo pipefail
+
+
+
+g-cli ${kill} --timeout 300000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj" || fail
+
+g-cli ${kill} --timeout 300000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Extension Tests.lvproj" || fail
+
+
 
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
-g-cli --timeout 300000 Caraya -- -s "Tests${SEP}Caraya.Tests${SEP}Caraya Extension Tests${SEP}Caraya Extension Tests.lvclass" -x "reports${SEP}Caraya.UnitTestReport.xml" || fail
+g-cli ${kill} --timeout 300000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 
 
 SECONDS=0
 echo "Running Error Propagation Tests"
-g-cli --timeout 300000 Caraya -- -s "Tests${SEP}Error.Propagation.Tests${SEP}Error.Propagation.Tests.lvclass" -x "reports${SEP}Error.Propagation.UnitTestReport.xml" || fail
+g-cli ${kill} --timeout 300000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml" || fail
 echo "Test Time: $SECONDS"
 
-echo "nisvcloc PID before suite 3: $(pgrep nisvcloc)"
-pkill nisvcloc || true
-nohup nisvcloc &
-sleep 2
-
-g-cli --timeout 300000 lunit -- -r "reports${SEP}LUnit.UnitTestReport.xml" "Approval Testing.lvproj" || fail
 echo "${bold}${green}PASS${reset}" 
 

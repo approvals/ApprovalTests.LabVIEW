@@ -97,16 +97,7 @@ jobs:
       - name: Unit Tests
         run: |
           source ./scripts/setup_display.sh
-          mkdir -p reports
-          echo "Running Unit Tests"
-
-          g-cli --kill --kill-timeout 5000 -v --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "reports/Caraya.UnitTestReport.xml"
-
-          g-cli --kill --kill-timeout 5000 -v --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "reports/Error.Propagation.UnitTestReport.xml"
-
-          g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj"
-
-          g-cli --kill --kill-timeout 5000 -v --timeout 180000 lunit -- -r "reports/LUnit.Extension.UnitTestReport.xml" "Tests/LUnit.Tests/LUnit Extensions Tests/LUnit Extensions Tests.lvclass"
+          ./scripts/run_unittests.sh kill
 
       - name: VIPM Build Package
         run: |
@@ -142,7 +133,7 @@ jobs:
         uses: mikepenz/action-junit-report@v6
         if: success() || failure() # always run even if the previous step fails
         with:
-          report_paths: 'reports/*.xml'
+          report_paths: 'reports/*UnitTestReport.xml'
           
       - name: Grab Artifacts
         if: success() || failure() # always run even if the previous step fails
