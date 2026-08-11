@@ -230,6 +230,5 @@ jobs:
         run: |
           pip install pylavi
           unzip *.vip
-          vi_validate -l 21 -g 20 .
-
+          vi_validate -l 21 -g 20
   
