@@ -31,3 +31,8 @@
 
 - [ ] Also consider adding code to test upgrade from previous... maybe check for existing config file not stomped on.
 - [ ] Consider testing uninstall...
+
+- [ ] figure out drop from 91 to 89 tests. Caraya Extension Tests.lvclass:Verify CLI STD ERR.vi and Caraya Extension Tests.lvclass:Verify a VI.vi mysteriously stopped running
+- [ ] add code to test Caraya Error Propagation. Use Caraya and od the same thing as Lunit except wire the under test vi Assert only input to true.
+- [ ] investigate and fix packaging issue where it creates a system package and then installs to C:\
+- [ ] investigate and fix packaging issue where 2 Vis still end up in 2025 instead of 2020 after package build.
