@@ -2,6 +2,9 @@ name: ci-checks
 on:
   push:
   workflow_dispatch:
+env: 
+  PACKAGE_VERSION: 3.0.0
+  
 
 jobs:
   PylaviChecks:
@@ -38,10 +41,9 @@ jobs:
       VIPM_VERSION: 26.3.0-3991
       VIPM_COMMUNITY_EDITION: true
       VIPM_DESKTOP_LIVELINESS_TIMEOUT: 600
-      PACKAGE_VERSION: 3.0.0
       VIPM_NON_INTERACTIVE: 1
       VIPM_ASSUME_YES: 1
-      VIPM_DEBUG: 0
+      VIPM_DEBUG: 1
 
     steps:
       - name: Install git
@@ -160,17 +162,16 @@ jobs:
       image: nationalinstruments/labview:2026q3-linux
       # --init injects a real init (tini) as PID 1 ahead of the entrypoint so orphaned/killed LabVIEW processes actually get reaped instead of piling up as zombies.
       options: --init
-      
+
     env:
       LABVIEW_IMAGE: 2026q3-linux
       VIPM_RELEASE_TYPE: preview
       VIPM_VERSION: 26.3.0-3991
       VIPM_COMMUNITY_EDITION: true
       VIPM_DESKTOP_LIVELINESS_TIMEOUT: 600
-      PACKAGE_VERSION: 3.0.0
       VIPM_NON_INTERACTIVE: 1
       VIPM_ASSUME_YES: 1
-      VIPM_DEBUG: 0
+      VIPM_DEBUG: 1
 
     steps:
 
