@@ -41,7 +41,7 @@ jobs:
       PACKAGE_VERSION: 3.0.0
       VIPM_NON_INTERACTIVE: 1
       VIPM_ASSUME_YES: 1
-      VIPM_DEBUG: 1
+      VIPM_DEBUG: 0
 
     steps:
       - name: Install git
@@ -158,14 +158,9 @@ jobs:
     # The official LabVIEW container image from NI
     container:
       image: nationalinstruments/labview:2026q3-linux
-      # The runner's own container entrypoint is `tail -f /dev/null` as PID 1, which never
-      # reaps orphaned children. LabVIEW daemonizes itself (double-forks, reparenting to PID 1),
-      # so once we SIGKILL a stale instance in the Unit Tests step it becomes a permanent zombie
-      # for the rest of the job - nothing in a later step can reap it, since only the true
-      # parent can. --init injects a real init (tini) as PID 1 ahead of the entrypoint so
-      # orphaned/killed LabVIEW processes actually get reaped instead of piling up as zombies.
+      # --init injects a real init (tini) as PID 1 ahead of the entrypoint so orphaned/killed LabVIEW processes actually get reaped instead of piling up as zombies.
       options: --init
-
+      
     env:
       LABVIEW_IMAGE: 2026q3-linux
       VIPM_RELEASE_TYPE: preview
@@ -175,7 +170,7 @@ jobs:
       PACKAGE_VERSION: 3.0.0
       VIPM_NON_INTERACTIVE: 1
       VIPM_ASSUME_YES: 1
-      VIPM_DEBUG: 1
+      VIPM_DEBUG: 0
 
     steps:
 
@@ -193,24 +188,6 @@ jobs:
         run: |
           ./scripts/setup_container.sh
     
-      # Use GitHub's caching action to cache VIPM's package cache.
-      - name: Cache VIPM packages
-        if: false
-        id: cache-vipm
-        uses: actions/cache@v5
-        env:
-          # Increment this to invalidate the cache (restore-keys included).
-          CACHE_VERSION: 2
-        with:
-          path: |
-            /usr/local/natinst/LabVIEW*/
-            /usr/local/jki/vipm/cache/
-            /usr/local/jki/vipm/db/
-          # Key includes hashes of the project package manifests (.vipc and .dragon files)
-          key: vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-${{ hashFiles('approvals-dev.vipc', 'error.dragon') }}
-          restore-keys: |
-            vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-
-            vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-
 
       - name: Activate VIPM
         run: |
@@ -232,14 +209,26 @@ jobs:
           source ./scripts/setup_display.sh
           package=$(ls *.vip)
           echo "Package is ${package}"
-          vipm install "${package}"
-          vipm install astemes_lib_lunit
-          vipm install jki_lib_caraya
+          vipm install "${package}" astemes_lib_lunit jki_lib_caraya
 
       - name: VIPM List Installed Packages
         run: vipm list --installed || true # or true for core dump
 
-     
+   
+  PylaviChecks_on_Build:
+    runs-on: ubuntu-latest
+    needs: Test_And_Build
+    container:
+      image: python:3.11
+    steps:
+      - name: Download the uploaded artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: vi-package-${{ env.LABVIEW_IMAGE }}    # Must match the upload name exactly
+      - name: Pylavi
+        run: |
+          pip install pylavi
+          unzip *.vip
+          vi_validate -l 21 -g 20 .
 
-
-      
+  
