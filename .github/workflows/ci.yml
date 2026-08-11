@@ -115,7 +115,7 @@ jobs:
         if: true
         uses: actions/upload-artifact@v7
         with:
-          name: vi-package-${{ env.LABVIEW_IMAGE }}
+          name: vi-package
           path: |
             build/*.vip
 
@@ -203,7 +203,7 @@ jobs:
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
         with:
-          name: vi-package-${{ env.LABVIEW_IMAGE }}    # Must match the upload name exactly
+          name: vi-package    # Must match the upload name exactly
 
       - name: Install new package and Caraya LUnit
         run: |
@@ -225,7 +225,7 @@ jobs:
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
         with:
-          name: vi-package-${{ env.LABVIEW_IMAGE }}    # Must match the upload name exactly
+          name: vi-package    # Must match the upload name exactly
       - name: Pylavi
         run: |
           pip install pylavi
