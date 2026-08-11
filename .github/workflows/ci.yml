@@ -229,6 +229,9 @@ jobs:
       - name: Pylavi
         run: |
           pip install pylavi
-          unzip *.vip
+          mkdir -p
+          unzip sas_lib_approval_tests-{{ env.PACKAGE_VERSION }}.vip -d source
+          cd source
+          [[ -f "Packages"]] || exit 1
           vi_validate -l 21 -g 20
   
