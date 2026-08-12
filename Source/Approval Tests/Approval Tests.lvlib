@@ -90,5 +90,7 @@
 		<Item Name="Writer.lvclass" Type="LVClass" URL="../Writer/Writer.lvclass"/>
 	</Item>
 	<Item Name="Options.lvclass" Type="LVClass" URL="../Options/Options.lvclass"/>
+	<Item Name="OS Strings.ctl" Type="VI" URL="../OS Strings.ctl"/>
 	<Item Name="Safe Trim.vi" Type="VI" URL="../Safe Trim.vi"/>
+	<Item Name="Select String Based on OS.vi" Type="VI" URL="../Select String Based on OS.vi"/>
 </Library>
