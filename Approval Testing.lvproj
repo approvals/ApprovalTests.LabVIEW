@@ -24,10 +24,8 @@
 			<Item Name="Find Added Sections.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Added Sections.vi"/>
 			<Item Name="Find All Highlights.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find All Highlights.vi"/>
 			<Item Name="Find Common Chars.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Common Chars.vi"/>
-			<Item Name="Find Common Sections.vi" Type="VI" URL="../build/sas_lib_approval_tests-2.2.3.6/File Group 0/vi.lib/SAS/Approval Tests/astemes-string-diff-utils/source/Find Common Sections.vi"/>
 			<Item Name="Find Highlights.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Highlights.vi"/>
 			<Item Name="Find Index to Insert at.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Find Index to Insert at.vi"/>
-			<Item Name="Find Removed Sections.vi" Type="VI" URL="../build/sas_lib_approval_tests-2.2.3.6/File Group 0/vi.lib/SAS/Approval Tests/astemes-string-diff-utils/source/Find Removed Sections.vi"/>
 		</Item>
 		<Item Name="Approval Tests.lvlib" Type="Library" URL="../Source/Approval Tests/Approval Tests.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
