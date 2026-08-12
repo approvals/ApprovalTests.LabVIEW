@@ -230,7 +230,7 @@ jobs:
         run: |
           pip install pylavi
           mkdir -p source
-          unzip sas_lib_approval_tests-${{ env.PACKAGE_VERSION }}.vip -d source
+          unzip sas_lib_approval_tests-${{ env.PACKAGE_VERSION }}.*.vip -d source
           cd source
           [[ -f "Packages"]] || exit 1
           vi_validate -l 21 -g 20
