@@ -115,7 +115,7 @@ jobs:
         if: true
         uses: actions/upload-artifact@v7
         with:
-          name: vi-package-{{ env.PACKAGE_VERSION }}
+          name: vi-package-${{ env.PACKAGE_VERSION }}
           path: |
             build/*.vip
 
@@ -203,7 +203,7 @@ jobs:
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
         with:
-          name: vi-package-{{ env.PACKAGE_VERSION }}    # Must match the upload name exactly
+          name: vi-package-${{ env.PACKAGE_VERSION }}    # Must match the upload name exactly
 
       - name: Install new package and Caraya LUnit
         run: |
@@ -225,12 +225,12 @@ jobs:
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
         with:
-          name: vi-package-{{ env.PACKAGE_VERSION }}    # Must match the upload name exactly
+          name: vi-package-${{ env.PACKAGE_VERSION }}    # Must match the upload name exactly
       - name: Pylavi
         run: |
           pip install pylavi
           mkdir -p source
-          unzip sas_lib_approval_tests-{{ env.PACKAGE_VERSION }}.vip -d source
+          unzip sas_lib_approval_tests-${{ env.PACKAGE_VERSION }}.vip -d source
           cd source
           [[ -f "Packages"]] || exit 1
           vi_validate -l 21 -g 20
