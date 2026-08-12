@@ -36,3 +36,4 @@
 - [ ] add code to test Caraya Error Propagation. Use Caraya and od the same thing as Lunit except wire the under test vi Assert only input to true.
 - [ ] investigate and fix packaging issue where it creates a system package and then installs to C:\
 - [ ] investigate and fix packaging issue where 2 Vis still end up in 2025 instead of 2020 after package build.
+- [ ] fix OS cmd injection via paths.
