@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
 env: 
   PACKAGE_VERSION: 3.0.0
-  
+permissions:
+  checks: write
+  pull-requests: write # only required if `comment: true` was enabled
 
 jobs:
   PylaviChecks:
