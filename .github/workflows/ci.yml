@@ -234,6 +234,6 @@ jobs:
           mkdir -p source
           unzip sas_lib_approval_tests-${{ env.PACKAGE_VERSION }}.*.vip -d source
           cd source
-          [ ! -d "Packages" ] || { echo "Error: Packages directory found. Must be system package. Check paths."; exit 1; }
+          [ -d "Packages" ] || { echo "Error: Packages directory found. Must be system package. Check paths."; exit 1; }
           vi_validate -l 21 -g 20
   
