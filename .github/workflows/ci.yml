@@ -41,9 +41,9 @@ jobs:
       VIPM_VERSION: 26.3.0-3991
       VIPM_COMMUNITY_EDITION: true
       VIPM_DESKTOP_LIVELINESS_TIMEOUT: 600
-      VIPM_NON_INTERACTIVE: 1
+      VIPM_NON_INTERACTIVE: 1    
       VIPM_ASSUME_YES: 1
-      VIPM_DEBUG: 1
+      VIPM_DEBUG: 0
 
     steps:
       - name: Install git
@@ -171,7 +171,7 @@ jobs:
       VIPM_DESKTOP_LIVELINESS_TIMEOUT: 600
       VIPM_NON_INTERACTIVE: 1
       VIPM_ASSUME_YES: 1
-      VIPM_DEBUG: 1
+      VIPM_DEBUG: 0
 
     steps:
 
