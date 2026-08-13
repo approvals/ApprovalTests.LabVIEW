@@ -34,3 +34,5 @@ set -euo pipefail
           # 1 - for some reason the VIPM package doesn't install the exe
           # 2 - We made some modifications to avoid some issues with hanging. 
           cp bin/g-cli /usr/bin/g-cli
+          vipm refresh
+          vipm about
