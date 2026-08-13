@@ -194,6 +194,7 @@ jobs:
     
 
       - name: Activate VIPM
+        if: false
         run: |
           source ./scripts/setup_display.sh
           echo "Starting LabVIEW"
