@@ -76,7 +76,6 @@ jobs:
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-${{ env.VIPM_VERSION }}-
             vipm-v${{ env.CACHE_VERSION }}-${{ runner.os }}-${{ env.LABVIEW_IMAGE }}-
       - name: Activate VIPM
-        if: false
         run: |
           source ./scripts/setup_display.sh
           echo "Starting LabVIEW"
@@ -194,15 +193,15 @@ jobs:
           ./scripts/setup_container.sh
     
 
-      - name: Activate VIPM
-        if: false
+      - name: Refresh VIPM
         run: |
           source ./scripts/setup_display.sh
           echo "Starting LabVIEW"
           /usr/local/natinst/LabVIEW-${LABVIEW_VERSION_YEAR}-64/labview --headless &
-          echo "Activating VIPM"
-          vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}" >/dev/null
-          
+          # echo "Activating VIPM"
+          # vipm activate --serial-number "${{ secrets.VIPM_SERIAL_NUMBER }}" --name "${{ secrets.VIPM_FULL_NAME }}" --email "${{ secrets.VIPM_EMAIL}}" >/dev/null
+          vipm about
+          vipm refresh # --show-progress # --verbose >/dev/null
 
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
