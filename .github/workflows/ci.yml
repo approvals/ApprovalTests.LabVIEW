@@ -206,7 +206,7 @@ jobs:
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
         with:
-          name: vi-package-${{ env.PACKAGE_VERSION }}.${{ env.GITHUB_RUN_NUMBER }}    # Must match the upload name exactly
+          name: vi-package-${{ env.PACKAGE_VERSION }}.${{ github.run_number }}    # Must match the upload name exactly
 
       - name: Install new package and Caraya LUnit
         run: |
@@ -228,7 +228,7 @@ jobs:
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
         with:
-          name: vi-package-${{ env.PACKAGE_VERSION }}.${{ env.GITHUB_RUN_NUMBER }}    # Must match the upload name exactly
+          name: vi-package-${{ env.PACKAGE_VERSION }}.${{ github.run_number }}    # Must match the upload name exactly
       - name: Pylavi
         run: |
           pip install pylavi
