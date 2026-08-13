@@ -51,7 +51,7 @@
 	</Item>
 	<Item Name="Reporters" Type="Folder">
 		<Item Name="Report Nothing.lvclass" Type="LVClass" URL="../Report Nothing/Report Nothing.lvclass"/>
-		<Item Name="Report With Beyond Compare.lvclass" Type="LVClass" URL="../Report With Beyord Compare/Report With Beyond Compare.lvclass"/>
+		<Item Name="Report With Beyond Compare.lvclass" Type="LVClass" URL="../Report With Beyond Compare/Report With Beyond Compare.lvclass"/>
 		<Item Name="Report With Custom DiffTool.lvclass" Type="LVClass" URL="../Report With Custom DiffTool/Report With Custom DiffTool.lvclass"/>
 		<Item Name="Report With DiffTool.lvclass" Type="LVClass" URL="../Report With DiffTool/Report With DiffTool.lvclass"/>
 		<Item Name="Report With First Working.lvclass" Type="LVClass" URL="../Report With First Working/Report With First Working.lvclass"/>
