@@ -6,7 +6,6 @@
 	<Property Name="NI.Lib.Icon" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!**!!!*Q(C=\&gt;7^47N"%)&lt;B$U2![M!3)&lt;*U*92%.#WY"&lt;=Q,4AF&gt;!F-;%ME\M"S!Q44AFNQ#Y&gt;XF\(&amp;DX3.&gt;#_#A$XMQ@\W\W(0[C$V=CF&gt;;$B6RH]NHWBP0@K^^WWX3I&lt;B4@MQ0N['SI&gt;X\?.$J_(&gt;_*@]V34(`I&gt;_YY`L@^,`D_UHCH\,&lt;`H?=H`SE(\ZG4V4?R&amp;2ERJ5JZL;5E/3*XG3*XG3*XG1"XG1"XG1"\G4/\G4/\G4/\G2'\G2'\G2'XG`S%5O=J&amp;$3B:0&amp;EIG43:)/E.2=EM]C3@R*"[_+P%EHM34?")08:2Y%E`C34S*BW&amp;+0)EH]33?R-.58:,^)M?4?*B?A3@Q"*\!%XB95I%H!!3,"2-(E]"1U"B]#$S"*`$Q59%H]!3?Q".Y;&amp;&lt;A#4S"*`!%(I&lt;U89GO;2=Z(K;2YX%]DM@R/"[GFO.R0)\(]4A?FJ0D=4Q/QFH1G2S#H%&amp;/"_?,YX%]`*,D=4S/R`%Y(JL[%`+_-UX4,H)]BM@Q'"\$9XC91I&lt;(]"A?QW.YG&amp;;'R`!9(M.D?&amp;B+BM@Q'"Y$9CT+]D)G-Q9;H9T!]0$44YPVJR2&gt;9PW3[P#K$K8KM+E/E?JQK"[[[G'K(J*K]V7&lt;KNIMV3;I`DA67I62,;);X$JKTXV(X6,8V!6V4JV2J^1*&gt;&gt;3'`O?/_`V?O^V/W_V7[`6;C]6#]`F=M^F-U_F5E]F%I^(I_"KYZDK_%&amp;\?3`&gt;]&lt;H8V],2:0&gt;Y^LJ;XG_7@G_8G[GFZ;'PVC`[8`I"XI]\V?F\W["H)G8M-!!!!!!</Property>
 	<Property Name="NI.Lib.LocalName" Type="Str">Report With LVCompare</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
-	<Property Name="NI.LV.All.SaveVersion" Type="Str">20.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.LVClass.ClassNameVisibleInProbe" Type="Bool">true</Property>
 	<Property Name="NI.LVClass.DataValRefToSelfLimitedLibFlag" Type="Bool">true</Property>
@@ -30,10 +29,11 @@
 	<Item Name="Report Core.vi" Type="VI" URL="../Report Core.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">)!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!'4!!!!$!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!!R!)1&gt;8&lt;X*L:71`!&amp;B!=!!?!!!U&amp;%&amp;Q=(*P&gt;G&amp;M)&amp;2F=X2T,GRW&lt;'FC(6*F='^S&gt;#"8;82I)%R71W^N='&amp;S:3ZM&gt;G.M98.T!!!:5G6Q&lt;X*U)&amp;&gt;J&gt;'AA4&amp;:$&lt;WVQ98*F)'^V&gt;!!71&amp;!!!Q!!!!%!!ABF=H*P=C"J&lt;A!!%E!S`````QB3:7.F;8:F:!!!%E!S`````QB"=("S&lt;X:F:!!!7%"Q!"Y!!$1518"Q=G^W97QA6'6T&gt;(-O&lt;(:M;7)&gt;5G6Q&lt;X*U)&amp;&gt;J&gt;'AA4&amp;:$&lt;WVQ98*F,GRW9WRB=X-!!"B3:8"P=H1A6WFU;#"-6E.P&lt;8"B=G5A;7Y!!&amp;1!]!!-!!-!"!!&amp;!!9!"!!%!!1!"!!(!!A!#1!+!Q!!?!!!$1A!!!!!!!!*!!!!D1M!!!!!!!!!!!!!!!!!!!!!!!!)!!!!%!!!!"!!!!#1!!!!!!%!#Q!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
-		<Property Name="NI.ClassItem.Flags" Type="Int">16777344</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">160</Property>
 		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">false</Property>
-		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">3</Property>
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-		<Property Name="NI.ClassItem.State" Type="Int">1074274834</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1082130960</Property>
+		<Property Name="NI.LibItem.Scope" Type="Int">3</Property>
 	</Item>
 </LVClass>
