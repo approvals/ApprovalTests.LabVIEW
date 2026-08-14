@@ -214,7 +214,7 @@ jobs:
           vipm install "${package}" astemes_lib_lunit jki_lib_caraya sas_workshops_lib_switcheroo_for_g_cli
 
       - name: VIPM List Installed Packages
-        run: vipm list --installed
+        run: vipm list --installed || true
 
       - name: Create Install Tests
         run: |
