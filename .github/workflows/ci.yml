@@ -216,9 +216,12 @@ jobs:
       - name: VIPM List Installed Packages
         run: vipm list --installed
 
-      - name: Install Tests
+      - name: Create Install Tests
         run: |
           ./scripts/create_install_tests.sh
+      
+      - name: Run Install Tests
+        run: |
           ./scripts/run_install_tests.sh
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
