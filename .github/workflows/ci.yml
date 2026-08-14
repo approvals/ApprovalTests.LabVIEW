@@ -101,7 +101,7 @@ jobs:
       - name: Unit Tests
         run: |
           source ./scripts/setup_display.sh
-          ./scripts/run_unittests.sh
+          ./scripts/run_unittests.sh kill
 
       - name: VIPM Build Package
         run: |
