@@ -211,7 +211,7 @@ jobs:
           source ./scripts/setup_display.sh
           package=$(ls *.vip)
           echo "Package is ${package}"
-          vipm install "${package}" astemes_lib_lunit jki_lib_caraya
+          vipm install "${package}" astemes_lib_lunit jki_lib_caraya sas_workshops_lib_switcheroo_for_g_cli
 
       - name: VIPM List Installed Packages
         run: vipm list --installed
