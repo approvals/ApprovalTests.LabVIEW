@@ -226,14 +226,18 @@ jobs:
           vipm install "${package}" astemes_lib_lunit jki_lib_caraya sas_workshops_lib_switcheroo_for_g_cli
 
       - name: VIPM List Installed Packages
-        run: vipm list --installed || true
+        run: |
+          source ./scripts/setup_display.sh
+          vipm list --installed || true
 
       - name: Create Install Tests
         run: |
+          source ./scripts/setup_display.sh
           ./scripts/create_install_tests.sh
       
       - name: Run Install Tests
         run: |
+          source ./scripts/setup_display.sh
           ./scripts/run_install_tests.sh
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
