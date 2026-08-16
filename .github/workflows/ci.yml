@@ -230,10 +230,22 @@ jobs:
           source ./scripts/setup_display.sh
           vipm list --installed || true
 
-      - name: Debug LabVIEW Processes
+      - name: Kill LabVIEW Instances Before Switcheroo
         run: |
-          echo "LabVIEW-related processes still alive before Create Install Tests:"
+          echo "LabVIEW-related processes before kill:"
           ps auxww | grep -i labview | grep -v grep || echo "No labview processes found"
+          # VIPM's package install spawns its own "labviewprofull" binary, separate from
+          # the "labview --headless" instance started earlier in the job. g-cli's own
+          # --kill only appears to catch one of them, leaving the other holding the
+          # just-installed library open and locked for switcheroo. Kill by pattern so
+          # both are caught, and wait for them to actually exit before proceeding.
+          pkill -9 -f labview 2>/dev/null || true
+          for i in $(seq 1 20); do
+            pgrep -f labview > /dev/null || { echo "All LabVIEW processes exited"; break; }
+            sleep 1
+          done
+          echo "LabVIEW-related processes after kill:"
+          ps auxww | grep -i labview | grep -v grep || echo "No labview processes remain"
 
       - name: Create Install Tests
         run: |
