@@ -128,7 +128,7 @@ jobs:
           name: test_and_build_settings
           path: |
             /usr/local/jki/vipm/Settings.ini
-            /root/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
+            /github/home/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
             /tmp/xvfb.log
 
       - name: Publish Test Report
@@ -247,7 +247,7 @@ jobs:
           name: test_and_build_settings
           path: |
             /usr/local/jki/vipm/Settings.ini
-            /root/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
+            /github/home/natinst/.config/LabVIEW-${LABVIEW_VERSION_YEAR}/labview*
             /tmp/xvfb.log
 
       - name: Publish Test Report
