@@ -230,6 +230,11 @@ jobs:
           source ./scripts/setup_display.sh
           vipm list --installed || true
 
+      - name: Debug LabVIEW Processes
+        run: |
+          echo "LabVIEW-related processes still alive before Create Install Tests:"
+          ps auxww | grep -i labview | grep -v grep || echo "No labview processes found"
+
       - name: Create Install Tests
         run: |
           source ./scripts/setup_display.sh
