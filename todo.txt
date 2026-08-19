@@ -32,8 +32,15 @@
 - [ ] Also consider adding code to test upgrade from previous... maybe check for existing config file not stomped on.
 - [ ] Consider testing uninstall...
 
-- [ ] figure out drop from 91 to 89 tests. Caraya Extension Tests.lvclass:Verify CLI STD ERR.vi and Caraya Extension Tests.lvclass:Verify a VI.vi mysteriously stopped running
+- [x] figure out drop from 91 to 89 tests. Caraya Extension Tests.lvclass:Verify CLI STD ERR.vi and Caraya Extension Tests.lvclass:Verify a VI.vi mysteriously stopped running
 - [ ] add code to test Caraya Error Propagation. Use Caraya and od the same thing as Lunit except wire the under test vi Assert only input to true.
-- [ ] investigate and fix packaging issue where it creates a system package and then installs to C:\
-- [ ] investigate and fix packaging issue where 2 Vis still end up in 2025 instead of 2020 after package build.
+- [x] investigate and fix packaging issue where it creates a system package and then installs to C:\
+- [x] investigate and fix packaging issue where 2 Vis still end up in 2025 instead of 2020 after package build.
 - [ ] fix OS cmd injection via paths.
+- [ ] review todo and clean out
+- [ ] figure out why difference in test numbers pre and post install
+- [ ] clean up post install and instead of just pointing at directory make it mimic preinstall so we can compare results directly.
+- [ ] Get Sample Project up and running and working.
+- [ ] setup up CI so it triggers sample project
+- [ ] Update Readme for both projects. Link to GDevCon NA video.
+- [ ] Add CI for sample project so that it just runs tests.
