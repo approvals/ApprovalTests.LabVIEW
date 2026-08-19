@@ -14,11 +14,26 @@ set -euo pipefail
           CONF_FILE="$CONF_DIR/labview.conf"
           mkdir -p "$CONF_DIR"
           touch "$CONF_FILE"
-          if grep -q '^\[LabVIEW\]' "$CONF_FILE"; then
-            grep -q '^autoerr' "$CONF_FILE" || sed -i '/^\[LabVIEW\]/a autoerr = 3' "$CONF_FILE"
-          else
-            printf '\n[LabVIEW]\nautoerr = 3\n' >> "$CONF_FILE"
-          fi
+          grep -q '^\[LabVIEW\]' "$CONF_FILE" || printf '\n[LabVIEW]\n' >> "$CONF_FILE"
+          # autoerr disables the blocking internal-error dialog; the NIER* keys suppress the
+          # crash reporter's fatal/non-fatal dialogs; DWarnDialog/promoteDWarnInternals suppress
+          # internal warning dialogs. All of these otherwise block VI Server startup in CI.
+          CONF_KEYS=(
+            "autoerr = 3"
+            "NIERShowFatalDialog = 0"
+            "NIERFatalAutoSend = true"
+            "NIERNonFatalAutoSend = true"
+            "NIERShowNonFatalDialogOnExit = false"
+            "NIERSendDialogClose = true"
+            "DWarnDialog = false"
+            "promoteDWarnInternals = false"
+          )
+          SED_ARGS=()
+          for kv in "${CONF_KEYS[@]}"; do
+            key="${kv%% =*}"
+            grep -q "^${key}" "$CONF_FILE" || SED_ARGS+=(-e "/^\[LabVIEW\]/a ${kv}")
+          done
+          [ "${#SED_ARGS[@]}" -eq 0 ] || sed -i "${SED_ARGS[@]}" "$CONF_FILE"
           # install vipm 
           # ncurses is for tput - used to output color in scripts"
           apt-get update && apt-get install -y curl ncurses-bin >/dev/null
