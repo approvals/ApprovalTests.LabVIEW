@@ -29,9 +29,9 @@ set -euo pipefail
 
 
 
-g-cli ${kill} --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Core Library Tests.lvproj" || fail
+g-cli ${kill} --timeout 180000 lunit -- -r "reports/CoreLibrary.UnitTestReport.xml" "Tests/Core Library Tests.lvproj" || fail
 
-g-cli ${kill} --timeout 180000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Extension Tests.lvproj" || fail
+g-cli ${kill} --timeout 180000 lunit -- -r "reports/LUnit.UnitTestReport.xml" "Tests/Extension Tests.lvproj" || fail
 
 
 

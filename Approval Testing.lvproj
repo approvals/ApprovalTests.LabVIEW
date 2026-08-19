@@ -15,9 +15,9 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Other Relevant Projects" Type="Folder">
-			<Item Name="Core Library Tests.lvproj" Type="Document" URL="../Core Library Tests.lvproj"/>
-			<Item Name="Extension Tests.lvproj" Type="Document" URL="../Extension Tests.lvproj"/>
 			<Item Name="Extensions.lvproj" Type="Document" URL="../Extensions.lvproj"/>
+			<Item Name="Core Library Tests.lvproj" Type="Document" URL="../Tests/Core Library Tests.lvproj"/>
+			<Item Name="Extension Tests.lvproj" Type="Document" URL="../Tests/Extension Tests.lvproj"/>
 		</Item>
 		<Item Name="astemes" Type="Folder">
 			<Item Name="Diff Tool.vi" Type="VI" URL="../Source/astemes-string-diff-utils/source/Diff Tool.vi"/>
