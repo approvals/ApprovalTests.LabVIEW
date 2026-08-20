@@ -238,7 +238,7 @@ jobs:
       - name: Run Install Tests
         run: |
           source ./scripts/setup_display.sh
-          ./scripts/run_install_tests.sh
+          ./scripts/run_install_tests.sh kill
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
         if: always()
@@ -254,7 +254,7 @@ jobs:
         uses: mikepenz/action-junit-report@v6
         if: success() || failure() # always run even if the previous step fails
         with:
-          report_paths: 'reports/*InstallTestReport.xml'
+          report_paths: 'reports/*UnitTestReport.xml'
           include_passed: true
           
       - name: Grab Artifacts
