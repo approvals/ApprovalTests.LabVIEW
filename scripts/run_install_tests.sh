@@ -32,18 +32,18 @@ fail() {
 # set -x
 set -euo pipefail
 
-g-cli ${kill} --timeout 180000 lunit -- -r "${CORE_LIBRARY_REPORT}" "Tests/Core Library Tests.lvproj" || fail
+g-cli ${kill} --timeout 180000 lunit -- -r "${CORE_LIBRARY_REPORT}" "InstallTests/Core Library Tests.lvproj" || fail
 
-g-cli ${kill} --timeout 180000 lunit -- -r "${LUNIT_REPORT}" "Tests/Extension Tests.lvproj" || fail
+g-cli ${kill} --timeout 180000 lunit -- -r "${LUNIT_REPORT}" "InstallTests/Extension Tests.lvproj" || fail
 
 SECONDS=0
 echo "Running Caraya Extension Tests" # needed because caray tool is not very verbose.
-g-cli ${kill} --timeout 180000 Caraya -- -s "Tests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "${CARAYA_REPORT}" || fail
+g-cli ${kill} --timeout 180000 Caraya -- -s "InstallTests/Caraya.Tests/Caraya Extension Tests/Caraya Extension Tests.lvclass" -x "${CARAYA_REPORT}" || fail
 echo "Test Time: $SECONDS"
 
 SECONDS=0
 echo "Running Error Propagation Tests"
-g-cli ${kill} --timeout 180000 Caraya -- -s "Tests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "${ERROR_PROPAGATION_REPORT}" || fail
+g-cli ${kill} --timeout 180000 Caraya -- -s "InstallTests/Error.Propagation.Tests/Error.Propagation.Tests.lvclass" -x "${ERROR_PROPAGATION_REPORT}" || fail
 echo "Test Time: $SECONDS"
 
 echo "${bold}${green}PASS${reset}" 
