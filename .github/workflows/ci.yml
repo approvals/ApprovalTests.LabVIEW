@@ -265,14 +265,15 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: vi-package-${{ env.PACKAGE_VERSION }}.${{ github.run_number }}    # Must match the upload name exactly
-      - name: Pylavi check LV Version
+      - name: Pylavi Check LV Version
         run: |
           pip install pylavi
           mkdir -p source
           unzip sas_lib_approval_tests-${{ env.PACKAGE_VERSION }}.*.vip -d source
           cd source
           [ ! -d "Packages" ] || { echo "Error: Packages directory found. Must be system package. Check paths."; exit 1; }
-          vi_validate -l 21 -g 20
+          vi_validate -l 21 -g 20 
+          echo Pylavi check passed.
       - name: Verify Release Notes
         run: |
           python3 scripts/verify_release_notes.py
