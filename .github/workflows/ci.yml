@@ -122,7 +122,7 @@ jobs:
             build/*.vip
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v7
         with:
           name: test_and_build_settings
@@ -228,10 +228,10 @@ jobs:
           ./scripts/run_install_tests.sh kill
 
       - name: Upload VIPM and LabVIEW Settings as Artifacts (debugging)
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v7
         with:
-          name: test_and_build_settings
+          name: install_and_test_settings
           path: |
             /usr/local/jki/vipm/Settings.ini
             /github/home/natinst/.config/LabVIEW-${{ env.LABVIEW_VERSION_YEAR }}/labview*
