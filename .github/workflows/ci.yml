@@ -252,19 +252,20 @@ jobs:
           path: |
             reports
             **/*.received.*
-
    
-  PylaviChecks_on_Build:
+  Package_Checks:
     runs-on: ubuntu-latest
     needs: Test_And_Build
     container:
       image: python:3.11
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
       - name: Download the uploaded artifact
         uses: actions/download-artifact@v8
         with:
           name: vi-package-${{ env.PACKAGE_VERSION }}.${{ github.run_number }}    # Must match the upload name exactly
-      - name: Pylavi
+      - name: Pylavi check LV Version
         run: |
           pip install pylavi
           mkdir -p source
@@ -272,4 +273,7 @@ jobs:
           cd source
           [ ! -d "Packages" ] || { echo "Error: Packages directory found. Must be system package. Check paths."; exit 1; }
           vi_validate -l 21 -g 20
+      - name: Verify Release Notes
+        run: |
+          python3 scripts/verify_release_notes.py
   
