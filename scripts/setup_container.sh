@@ -37,8 +37,10 @@ set -euo pipefail
           # install vipm 
           # ncurses is for tput - used to output color in scripts"
           apt-get update && apt-get install -y curl ncurses-bin >/dev/null
+          # curl -Ls -o /tmp/vipm.deb \
+          #   https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb >/dev/null
           curl -Ls -o /tmp/vipm.deb \
-            https://packages.jki.net/vipm/preview/vipm_latest_preview_amd64.deb >/dev/null
+            https://traffic.libsyn.com/secure/jkinc/vipm_26.3.1-4025_amd64.deb >/dev/null
           dpkg -i /tmp/vipm.deb && rm /tmp/vipm.deb >/dev/null
           vipm --version
           # start NIsvcloc - needed for g-cli
