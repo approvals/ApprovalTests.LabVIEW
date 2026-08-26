@@ -272,9 +272,71 @@ jobs:
           unzip sas_lib_approval_tests-${{ env.PACKAGE_VERSION }}.*.vip -d source
           cd source
           [ ! -d "Packages" ] || { echo "Error: Packages directory found. Must be system package. Check paths."; exit 1; }
-          vi_validate -l 21 -g 20 
+          vi_validate -l 21 -g 20
           echo Pylavi check passed.
       - name: Verify Release Notes
         run: |
           python3 scripts/verify_release_notes.py
+
+  # Gates the release pipeline below to tag pushes whose tag matches PACKAGE_VERSION above.
+  # Runs independently of (and in parallel with) the CI jobs so it doesn't block them,
+  # but the release/dispatch job waits on both this and the CI jobs before doing anything.
+  Release_Gate:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.check.outputs.release }}
+      artifact_name: ${{ steps.check.outputs.artifact_name }}
+    steps:
+      - name: Check tag matches PACKAGE_VERSION
+        id: check
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          echo "artifact_name=vi-package-${{ env.PACKAGE_VERSION }}.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+          if [[ ! "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Tag '$TAG' is not a semver x.y.z tag. Skipping the StarterProject/release pipeline."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$TAG" != "${{ env.PACKAGE_VERSION }}" ]; then
+            echo "Tag '$TAG' does not match PACKAGE_VERSION '${{ env.PACKAGE_VERSION }}' in ci.yml. Skipping the StarterProject/release pipeline."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Tag '$TAG' matches PACKAGE_VERSION. Proceeding with the StarterProject/release pipeline."
+          echo "release=true" >> "$GITHUB_OUTPUT"
+
+  # Calls the StarterProject repo's own test workflow directly as a reusable workflow and waits
+  # on it like any other job dependency. Both repos are public, and a called reusable workflow's
+  # jobs run inside THIS run, so no PAT/cross-repo token is needed here (unlike a workflow_dispatch
+  # + poll approach) - the package artifact built above is downloaded there via its plain name.
+  Verify_With_StarterProject:
+    needs: [Release_Gate, Test_And_Build, Install_and_Test, Package_Checks]
+    if: needs.Release_Gate.outputs.release == 'true'
+    uses: approvals/ApprovalTests.LabVIEW.StarterProject/.github/workflows/Run_Example_Tests.yml@main
+    with:
+      package_artifact_name: ${{ needs.Release_Gate.outputs.artifact_name }}
+      starter_ref: main
+
+  # Only reached once CI has passed AND the StarterProject install/test run has passed.
+  Create_Release:
+    needs: [Release_Gate, Verify_With_StarterProject]
+    if: needs.Release_Gate.outputs.release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Download the built package
+        uses: actions/download-artifact@v8
+        with:
+          name: vi-package-${{ env.PACKAGE_VERSION }}.${{ github.run_number }}
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" *.vip \
+            --title "${{ github.ref_name }}" \
+            --notes-file release-notes.txt
   
