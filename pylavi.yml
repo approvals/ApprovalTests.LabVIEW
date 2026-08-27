@@ -1,0 +1,20 @@
+main check:
+  path: 
+    - Source
+    - Tests
+  gt: 20
+  lt: 21
+  no_code: true
+  breakpoints: true
+  no_suspend_on_run: true
+
+autoerror:
+  path:
+    - Source
+    - Tests
+  skip: 
+    - "Source/Approval Tests/LVCompare Options.ctl"
+    - "Source/Approval Tests/Global.vi"
+  autoerror: true
+  
+

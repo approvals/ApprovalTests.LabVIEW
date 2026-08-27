@@ -22,7 +22,7 @@ pass() {
 
 gh actionlint || fail "Action Linter"
 pass "Action Linter"
-./scripts/pylavi_check.sh || fail "Pylavi"
+vi_validate --config pylavi.yml || fail "Pylavi"
 pass "Pylavi"
 ./scripts/run_unittests.sh || fail "Unit Tests"
 pass "Unit Tests"
