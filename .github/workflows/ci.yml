@@ -317,6 +317,10 @@ jobs:
     with:
       package_artifact_name: ${{ needs.Release_Gate.outputs.artifact_name }}
       starter_ref: main
+      # Read from the StarterProject's VIPM cache but never write back into it - this run
+      # installs a freshly-built package artifact on top, which shouldn't get baked into
+      # the StarterProject's own cache entries.
+      skip_cache_save: true
 
   # Only reached once CI has passed AND the StarterProject install/test run has passed.
   Create_Release:
