@@ -314,6 +314,9 @@ jobs:
     needs: [Release_Gate, Test_And_Build, Install_and_Test, Package_Checks]
     if: needs.Release_Gate.outputs.release == 'true'
     uses: approvals/ApprovalTests.LabVIEW.StarterProject/.github/workflows/Run_Example_Tests.yml@main
+    # Passes the VIPM_* activation secrets through - a called workflow can't see its own repo's
+    # secrets, only what the caller hands it.
+    secrets: inherit
     with:
       package_artifact_name: ${{ needs.Release_Gate.outputs.artifact_name }}
       starter_ref: main
