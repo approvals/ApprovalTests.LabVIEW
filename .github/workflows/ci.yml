@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 env: 
-  PACKAGE_VERSION: 3.0.0
+  PACKAGE_VERSION: 3.0.1
 permissions:
   checks: write
   pull-requests: write # only required if `comment: true` was enabled
