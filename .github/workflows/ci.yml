@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 env: 
-  PACKAGE_VERSION: 3.0.1
+  PACKAGE_VERSION: 3.0.2
 permissions:
   checks: write
   pull-requests: write # only required if `comment: true` was enabled
@@ -277,6 +277,9 @@ jobs:
       - name: Verify Release Notes
         run: |
           python3 scripts/verify_release_notes.py
+      - name: Verify Palettes
+        run: |
+          python3 scripts/verify_palettes.py
 
   # Gates the release pipeline below to tag pushes whose tag matches PACKAGE_VERSION above.
   # Runs independently of (and in parallel with) the CI jobs so it doesn't block them,

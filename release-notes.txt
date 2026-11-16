@@ -1,1 +1,2 @@
-- fixed bug in which all vi/ctl verifies were failing. It was introduced in 3.0.0.e
+- fixed bug introduced with 3.0 series where lvlib and lvclass files were getting saved in 2026.
+- fixed bug where pallettes were no longer showing up in 3.0.0 series.
