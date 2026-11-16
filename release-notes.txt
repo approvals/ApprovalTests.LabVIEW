@@ -1,2 +1,4 @@
 - fixed bug introduced with 3.0 series where lvlib and lvclass files were getting saved in 2026.
 - fixed bug where pallettes were no longer showing up in 3.0.0 series.
+- fixed bug with verifying Vis that was causing an unnecessary Save of the approved file.
+- fixed bug with retry when trying to compare VIs that wasn't working correctly due to the way the error handling was. It was using a shift register for the error wire. Changed to use a regular ie. last value tunnel.
