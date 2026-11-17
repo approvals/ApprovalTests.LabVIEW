@@ -150,7 +150,9 @@ jobs:
 
   Install_and_Test:
     # This separate job is necessary to install on a fresh machine. This plus the testes verify that we got all dependencies correct.
-    needs: Test_And_Build
+    needs: 
+      - Test_And_Build
+      - Package_Checks
     runs-on: ubuntu-latest
 
     # LabVIEW container defaults to `sh`. Set it to `bash`, so there are no surprises with syntax in the steps.
