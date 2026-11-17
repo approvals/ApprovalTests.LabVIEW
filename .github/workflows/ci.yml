@@ -276,6 +276,9 @@ jobs:
           [ ! -d "Packages" ] || { echo "Error: Packages directory found. Must be system package. Check paths."; exit 1; }
           vi_validate -l 21 -g 20
           echo Pylavi check passed.
+      - name: Verify LV Version of XML files (lvlib, lvclass)
+        run: |
+          python3 scripts/verify_xml_lv_versions.py source --gt 20 --lt 21
       - name: Verify Release Notes
         run: |
           python3 scripts/verify_release_notes.py
