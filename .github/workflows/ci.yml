@@ -153,6 +153,8 @@ jobs:
     needs: 
       - Test_And_Build
       - Package_Checks
+      - Release_Gate
+    if: needs.Release_Gate.outputs.release == 'true'
     runs-on: ubuntu-latest
 
     # LabVIEW container defaults to `sh`. Set it to `bash`, so there are no surprises with syntax in the steps.
