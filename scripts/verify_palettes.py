@@ -8,6 +8,8 @@ palettes silently vanished from LabVIEW. This check fails the build if that happ
 Checks:
   - the top-level palette and every sub-palette install to exactly <menus>/Categories
     (they refer to each other by bare file name, so they must sit side by side);
+    an extra copy of the top-level palette in a Categories subfolder (the SAS
+    custom category) is allowed;
   - every sub-palette a palette links to is in the package under that exact name
     (case matters: Linux file systems are case-sensitive);
   - every other .mnu (e.g. a category's dir.mnu) installs somewhere under <menus>/Categories.
@@ -50,12 +52,20 @@ if not mnu_files:
 palettes = [m for m in mnu_files if PALETTE_FILE.match(os.path.basename(m[1]))]
 others = [m for m in mnu_files if m not in palettes]
 
+def under_palette_root(target_dir):
+    return (target_dir.lower() + "/").startswith(PALETTE_ROOT.lower() + "/")
+
 for target_dir, name, _ in palettes:
-    if target_dir.lower() != PALETTE_ROOT.lower() or "/" in name:
-        errors.append(f'"{name}" installs to "{target_dir}", not {PALETTE_ROOT}.')
+    if target_dir.lower() == PALETTE_ROOT.lower() and "/" not in name:
+        continue
+    # VIPM's custom-category palette set also drops a copy of the top-level palette
+    # into <menus>/Categories/<category> (2.5.1 shipped this too) - that's fine.
+    if name == TOP_LEVEL_MNU and under_palette_root(target_dir):
+        continue
+    errors.append(f'"{name}" installs to "{target_dir}", not {PALETTE_ROOT}.')
 
 for target_dir, name, _ in others:
-    if not (target_dir.lower() + "/").startswith(PALETTE_ROOT.lower() + "/"):
+    if not under_palette_root(target_dir):
         errors.append(f'"{name}" installs to "{target_dir}", which is not under {PALETTE_ROOT}.')
 
 installed = {name for target_dir, name, _ in palettes if target_dir.lower() == PALETTE_ROOT.lower()}
